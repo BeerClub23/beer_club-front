@@ -16,7 +16,8 @@ export default function Age() {
       <h1>Ingresa tu fecha de nacimiento?</h1>
       <Button size="small" variant="outlined" onClick={handleClickCheckAdult} sx={{pt:'5px'}}>
         Ir a la home
-    </Button>
+      </Button>
     </main>
   )
 }
+
