@@ -8,7 +8,7 @@ export default function Home() {
   <> 
     <HeaderPublico/>
     <Container>
-      <SubscriptionsSection></SubscriptionsSection>
+      <SubscriptionsSection ></SubscriptionsSection>
      
     </Container>
     <Footer/> 
