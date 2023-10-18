@@ -1,0 +1,82 @@
+.bc-subscription-card {
+    border-radius: 20px;
+    border: 2px solid #8D8D8D;
+    background: #FFF;
+    color: #000;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    padding: 20px;
+    box-shadow: 0px 5px 5px 0px rgba(0, 0, 0, 0.50);
+    max-width: 320px;
+    margin: auto;
+
+
+    &__header {
+        display: flex;
+        align-items: flex-start;
+        flex-direction: column;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+        letter-spacing: 2.4px;
+    }
+
+    &__title {
+        text-align: center;
+        font-size: 40px;
+        font-style: normal;
+        font-weight: 600;
+        line-height: normal;
+    }
+
+    &__price {
+        font-size: 24px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+    }
+
+    &__action {
+        border-radius: 20px;
+        border: 1px solid transparent;
+        background: #F5E1C1;
+        box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+        font-size: 24px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+        letter-spacing: 2.2px;
+        padding: 12px 50px;
+        width: 100%;
+        margin: 12px 0;
+
+        &:hover {
+            cursor: pointer;
+            background-color: #CEB5A7;
+        }
+
+        &:active, &:focus {
+            background-color: #EEE9E1;
+        }
+    }
+
+    ul {
+        margin-left: 20px; 
+        li {
+            font-size: 16px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: normal;
+            margin-bottom: 12px;
+        }
+    }
+
+    hr {
+        background: #000;
+        height: 2px;
+        margin: 12px 0px;
+    }
+}
