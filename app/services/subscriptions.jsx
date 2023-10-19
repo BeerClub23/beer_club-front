@@ -7,19 +7,25 @@ const subscriptions = [
         'title': 'Novato',
         'description': '',
         'price': '$ 100',
-        'benefits': ['Descuentos en cervezas y locales asociados 5%', 'Descuentos en Eventos de Miembros', 'Recomendación Mensual para novatos (Six pack, snacks, aperitivos)']
+        'benefits': ['Descuentos en cervezas y locales asociados 5%', 'Descuentos en Eventos de Miembros', 'Recomendación Mensual para novatos (Six pack, snacks, aperitivos)'],
+        'isRecommended': false
+        
     },
     {
         'title': 'Especialista',
         'description': '',
         'price': '$ 200',
-        'benefits': ['Descuentos en cervezas y locales asociados 8%', 'Descuentos en Eventos de Miembros', 'Recomendación Mensual para especialistas (Six pack, snacks, aperitivos)']
+        'benefits': ['Descuentos en cervezas y locales asociados 8%', 'Descuentos en Eventos de Miembros', 'Recomendación Mensual para especialistas (Six pack, snacks, aperitivos)'],
+        'isRecommended': true
+        
     },
     {
         'title': 'Experto',
         'description': '',
         'price': '$ 300',
-        'benefits': ['Descuentos en cervezas y locales asociados 10%', 'Descuentos en Eventos de Miembros', 'Recomendación Mensual para expertos (Six pack, snacks, aperitivos)']
+        'benefits': ['Descuentos en cervezas y locales asociados 10%', 'Descuentos en Eventos de Miembros', 'Recomendación Mensual para expertos (Six pack, snacks, aperitivos)'],
+        'isRecommended': false
+        
     }
 ]
 

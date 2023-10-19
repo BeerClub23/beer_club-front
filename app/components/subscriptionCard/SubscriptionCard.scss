@@ -7,16 +7,22 @@
     font-style: normal;
     font-weight: 400;
     line-height: normal;
-    padding: 20px;
+    padding: 30px 20px;
     box-shadow: 0px 5px 5px 0px rgba(0, 0, 0, 0.50);
-    max-width: 320px;
     margin: auto;
+    z-index: 1;
+    position: relative;
+
+    &-container {
+        max-width: 320px;
+    }
 
 
     &__header {
         display: flex;
         align-items: flex-start;
         flex-direction: column;
+        gap: 12px;
         font-size: 16px;
         font-style: normal;
         font-weight: 500;
@@ -51,7 +57,7 @@
         letter-spacing: 2.2px;
         padding: 12px 50px;
         width: 100%;
-        margin: 12px 0;
+        margin: 12px 0 0;
 
         &:hover {
             cursor: pointer;
@@ -60,6 +66,21 @@
 
         &:active, &:focus {
             background-color: #EEE9E1;
+        }
+    }
+
+    &__recommended {
+        height: 75px;
+        width: 100%;
+        border-radius: 20px 20px 0 0;
+        padding: 15px 20px;
+        position: relative;
+        bottom: -27px;
+        z-index: 0;
+
+
+        &.active {
+            background-color: #000;
         }
     }
 
@@ -77,6 +98,6 @@
     hr {
         background: #000;
         height: 2px;
-        margin: 12px 0px;
+        margin: 20px 0px;
     }
 }

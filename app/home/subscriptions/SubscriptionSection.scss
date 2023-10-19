@@ -10,6 +10,12 @@
         font-weight: 800;
         line-height: normal;
         letter-spacing: 6.4px;
-        margin-bottom: 50px;
+        color: black;
+    }
+
+    &-container {
+        background-color: white;
+        min-height: 100vh;
+        padding: 20px;
     }
 }
