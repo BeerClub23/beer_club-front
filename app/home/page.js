@@ -1,22 +1,16 @@
 import Footer from '../components/footer/footer'
 import HeaderPublico from '../components/headerPublico/headerPublico'
 import { Container, Typography } from '@mui/material'
+import SubscriptionsSection from './subscriptions/section'
 
-export default function Home() {  
+export default function Home() { 
   return (
   <> 
     <HeaderPublico/>
     <Container>
-      <Typography variant="h1">Estas en la Home</Typography>
-      <Typography variant="h1">Estas en la Home</Typography>
-      <Typography variant="h1">Estas en la Home</Typography>
-      <Typography variant="h1">Estas en la Home</Typography>
-      <Typography variant="h1">Estas en la Home</Typography>
-      <Typography variant="h1">Estas en la Home</Typography>
-      <Typography variant="h1">Estas en la Home</Typography>
-      <Typography variant="h1">Estas en la Home</Typography>
-      <Typography variant="h1">Estas en la Home</Typography>
+     
     </Container>
+    <SubscriptionsSection ></SubscriptionsSection>
     <Footer/> 
     
   </>

@@ -13,18 +13,18 @@ export default function Age() {
       router.push(`/home`);
   };
   return (
-    <main className={styles.main}>
-      <h1>Ingresa tu fecha de nacimiento?</h1>
-      
-      <Button size="small" variant="outlined" onClick={handleClickCheckAdult} sx={{pt:'5px'}}>
-        Ir a la home
-      </Button>
-      <Link href='suscribirse'>
-      <Button size="small" variant="outlined" sx={{pt:'5px'}}>
-        Ir a la suscribirse
-      </Button>
-      </Link>
-    </main>
+      <main className={styles.main}>
+        <h1>Ingresa tu fecha de nacimiento?</h1>
+        
+        <Button size="small" variant="outlined" onClick={handleClickCheckAdult} sx={{pt:'5px'}}>
+          Ir a la home
+        </Button>
+        <Link href='suscribirse'>
+        <Button size="small" variant="outlined" sx={{pt:'5px'}}>
+          Ir a la suscribirse
+        </Button>
+        </Link>
+      </main>
   )
 }
 
