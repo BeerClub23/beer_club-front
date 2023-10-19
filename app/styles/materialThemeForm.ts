@@ -12,9 +12,6 @@ export const theme = createTheme({
     
       // palette values for dark mode
       mode:'dark',
-<<<<<<< HEAD
-      primary: {main: '#F5E1C1'},
-=======
       primary: {
         main: '#CEB5A7',
         dark: '#907e74',
@@ -26,7 +23,6 @@ export const theme = createTheme({
         dark: '#ab9d87',
         light: '#f7e7cd'
       },
->>>>>>> develop
       divider: blueGrey[700],
       background: {
         default: grey[1000],

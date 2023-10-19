@@ -1,0 +1,28 @@
+.aboutSection {
+ 
+     &-container {
+         background-color: white;
+         min-height: 100vh;
+         padding: 20px;
+         justify-content: start;
+     }
+    }
+
+.title {
+    text-align: center;
+    font-size: 40px;
+    font-style: normal;    
+    line-height: normal;
+    letter-spacing: 2px;
+   
+}
+
+@media only screen and (min-width: 768px) {
+    .aboutSection {
+        display: grid;
+        grid-template-columns: auto auto auto auto;
+        gap: 3%;
+        align-items: start;
+    }
+    
+  }
