@@ -12,16 +12,26 @@ export const theme = createTheme({
     
       // palette values for dark mode
       mode:'dark',
-      primary: {main: '#ffef62'},
+      primary: {
+        main: '#CEB5A7',
+        dark: '#907e74',
+        light: '#d7c3b8'
+
+      },
+      secondary: {
+        main: '#F5E1C1',
+        dark: '#ab9d87',
+        light: '#f7e7cd'
+      },
       divider: blueGrey[700],
       background: {
         default: grey[1000],
-        paper: grey[900],    
-    },      
-    text: {
+        paper: grey[900],  
+      },      
+      text: {
         primary: '#fff',
         secondary: grey[500],
-    },
+      },
       
     }, 
    components:{
