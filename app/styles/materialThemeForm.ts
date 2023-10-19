@@ -6,13 +6,13 @@ export const theme = createTheme({
   
     
     typography: {
-        // fontFamily: 'Roboto, sans-serif',           
+      fontFamily: 'Roboto, sans-serif',           
     },
     palette: {
     
       // palette values for dark mode
       mode:'dark',
-      primary: {main: '#ffef62'},
+      primary: {main: '#F5E1C1'},
       divider: blueGrey[700],
       background: {
         default: grey[1000],
@@ -20,7 +20,7 @@ export const theme = createTheme({
     },      
     text: {
         primary: '#fff',
-        secondary: grey[500],
+        secondary: grey[500],       
     },
       
     }, 
