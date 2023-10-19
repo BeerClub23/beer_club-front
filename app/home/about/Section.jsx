@@ -12,7 +12,9 @@ const AboutSection = () => {
   return (
     <section >
       <Container>
-        <h2 className={styles.title }>Descubrí los beneficios de unirte a Beer Club</h2>
+        <h2 className={styles.title }>
+          Descubrí los beneficios de unirte a Beer Club
+        </h2>
         <div className={styles.aboutSection}> 
           {data.map((step, index)=>         
           <AboutStepCard
