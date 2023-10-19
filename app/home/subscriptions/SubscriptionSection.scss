@@ -1,0 +1,21 @@
+.bc-subscription-section {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    gap: 3%;
+
+    &__title {
+        text-align: center;
+        font-size: 64px;
+        font-style: normal;
+        font-weight: 800;
+        line-height: normal;
+        letter-spacing: 6.4px;
+        color: black;
+    }
+
+    &-container {
+        background-color: white;
+        min-height: 100vh;
+        padding: 20px;
+    }
+}
