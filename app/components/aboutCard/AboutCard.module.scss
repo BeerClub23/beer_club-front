@@ -5,6 +5,7 @@
     line-height: normal;
     padding: 30px 20px;    
     text-align: center; 
+    
 
 
     .iconContainer{
@@ -29,6 +30,14 @@
 }
 
 .description{
+    margin: 0 auto;
     margin-top: 10px;
     font-size: 0.9em;
+    width: 60%;
 }
+
+@media only screen and (min-width: 768px) {
+    .description{
+       width: 100%;
+    }
+  }
