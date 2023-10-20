@@ -1,5 +1,5 @@
 import HeaderPublic from '../components/headerPublic/headerPublic'
-import Footer from '../components/footer/Footer.jsx'
+import Footer from '../components/footer/Footer'
 import { Container, Typography } from '@mui/material'
 import SubscriptionsSection from './subscriptions/section'
 import AboutSection from './about/section'
