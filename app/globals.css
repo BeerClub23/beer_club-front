@@ -3,6 +3,10 @@
   --white:#FFFFFF;
   --primary:#CEB5A7;
   --secondary:#F5E1C1;
+  --rgb-dark: rgb(16, 16, 16);
+  --rgb-white:rgb(255, 255, 255);
+  --rgb-primary:rgb(206, 181, 167);
+  --rgb-secondary:rgb(245, 225, 193);
 }
 
 * {
@@ -31,3 +35,19 @@ a {
   font-family:var(--font-poppins);
 }
 
+
+
+/* Age */
+
+.recordar-datos{
+  text-align: center;
+}
+.recordar-datos .css-ahj2mt-MuiTypography-root{
+  font-size: 1.5rem;
+  font-family: var(--font-poppins);
+}
+
+.recordar-datos span{
+  display: block;
+  font-weight: 300;
+}
