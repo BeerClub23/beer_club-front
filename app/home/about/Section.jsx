@@ -11,6 +11,7 @@ const AboutSection = () => {
  
   return (
     <section className={styles.aboutSection}>
+    
          <h2 className={styles.aboutSection_title }>
           Descubrí los beneficios de unirte a Beer Club
         </h2>
@@ -20,7 +21,9 @@ const AboutSection = () => {
             key={index}
             data={step}
             />)}
-        </article>     
+        </article>    
+
+     
     </section>
   )
 }
