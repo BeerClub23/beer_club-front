@@ -10,7 +10,8 @@
     }   
    
 
-    @media only screen and (min-width: 768px) {
+    // @media only screen and (min-width: 768px) {
+        @media (min-width: 900px) {
         margin-top: 10px;
        
         &_aboutArticle {
@@ -28,6 +29,9 @@
        
         
       }
+
+   
+      
 }
 
 

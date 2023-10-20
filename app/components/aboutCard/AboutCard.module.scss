@@ -1,8 +1,7 @@
 .cardContainer {   
     font-style: normal;
     font-weight: 400;
-    line-height: normal;
-    padding: 30px 20px;    
+    line-height: normal;        
     text-align: center; 
 
     &_iconContainer{
@@ -27,14 +26,28 @@
         margin-top: 10px;
         font-size: 1em;       
         letter-spacing: 0.5px;
+        width: 90%;
     }
-    
-@media only screen and (min-width: 768px) {
+    @media (min-width: 451px) and (max-width: 899px) {    
+     padding: 10px;
+
+        &_description{
+        width: 70%;
+        }
+  }
+
+  @media (min-width: 900px){
+    padding: 10px;
+
     &_description{
        width: 100%;
     }
   }
+
+
+
+}
     
    
-}
+
 
