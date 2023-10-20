@@ -13,7 +13,7 @@ const SubscriptionsSection = () => {
     const router = useRouter();
 
     const goToRegister = (subscription) => {
-        setContext({subscription});
+        setContext( {...context, subscription});
         router.push('/register');
     }
 

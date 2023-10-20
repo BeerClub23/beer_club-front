@@ -1,8 +1,8 @@
 "use client"
-import styles from './page.module.css'
+import styles from './page.module.scss'
 import * as React from 'react';
 import { useRouter } from 'next/navigation';
-import { Button, Checkbox, ThemeProvider } from '@mui/material';
+import { Button, Checkbox, ThemeProvider, Typography } from '@mui/material';
 import Image from 'next/image';
 import Logo from 'public/images/logo/Logo_sin_escudo_Color_Original.svg';
 // import Logo1 from 'public/images/logo/Logo_sin_escudo_Blanco.svg';
@@ -14,7 +14,7 @@ import FormControlLabel from '@mui/material/FormControlLabel';
 import { theme } from './styles/materialThemeForm';
 
 
-export default function Age() {
+export default function AgePage() {
 
   const router = useRouter();
 
@@ -30,28 +30,28 @@ export default function Age() {
         height={300}
         alt='Beer Club Logo'
       />
-      <h1 className='poppins'>Ingresa tu fecha de nacimiento?</h1>
-      
-      <Button size="small" variant="outlined" onClick={handleClickCheckAdult} sx={{pt:'5px'}}>
-        Ir a la home
-      </Button>
+      <Typography variant="h3" className='poppins'>Ingresa tu fecha de nacimiento?</Typography>
       <FormControl component="fieldset">
+        <Button size="small" variant="outlined" onClick={handleClickCheckAdult} sx={{pt:'5px', mx:'auto'}}>
+          Ingresar a la web
+        </Button>
         <FormGroup aria-label="position" row>
           <div>
             
           </div>
-          <div>
+          <div className="recordar-datos">
           <FormControlLabel
               value="end"
               control={
                 <Checkbox
-                  color="primary"
+                  color="secondary"
                   sx={{ '& .MuiSvgIcon-root': { fontSize: 28 } }}
                 />
               }
               label="Recordar mis datos"
               labelPlacement="end"
             />
+            <Typography variant="p">*BEER CLUB ES SOLO PARA MAYORES DE 18 AÑOS, <br/> NO SELECCIONES ESTA OPCIÓN SI COMPARTES ESTE COMPUTADOR CON MENORES DE EDAD.</Typography>
           </div>
         </FormGroup>
       </FormControl>

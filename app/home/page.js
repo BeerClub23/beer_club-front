@@ -1,16 +1,16 @@
+import HeaderPublic from '../components/headerPublic/headerPublic'
 import Footer from '../components/footer/Footer.jsx'
-import HeaderPublico from '../components/headerPublico/headerPublico'
 import { Container, Typography } from '@mui/material'
 import SubscriptionsSection from './subscriptions/section'
+import Box from '@mui/material/Box';
 
-export default function Home() { 
+export default function HomePage() { 
   return (
   <> 
-    <HeaderPublico/>
-    <Container>
-     
-    </Container>
-    <SubscriptionsSection ></SubscriptionsSection>
+    <HeaderPublic/>
+    <Box component="main" sx={{ pt: 13 }}>
+      <SubscriptionsSection />
+    </Box>
     <Footer/> 
     
   </>
