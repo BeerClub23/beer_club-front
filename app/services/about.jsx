@@ -13,7 +13,7 @@ const aboutSteps = [
         'icon': 'CardMembershipIcon',
         'title': 'Paso 2',
         'subtitle':  'Suscripción',
-        'description': 'Eligí la membresía que mejor se adapte a tu nivel cervecero. Completá tu suscripción en pocos minutos. Proporcioná tus datos de contacto junto con los detalles de pago',
+        'description': 'Eligí la membresía que mejor se adapte a tu nivel cervecero. Completá tu suscripción en pocos minutos. Ingresá tus datos de contacto, junto con los detalles de pago.',
     },
     {
         'icon': 'CardGiftcardIcon',
@@ -25,7 +25,7 @@ const aboutSteps = [
         'icon':'SportsBarIcon',
         'title': 'Último Paso',
         'subtitle':  'Beneficios',
-        'description': 'Disfruta de los beneficios de ser miembro del Beer Club. Obtené descuentos exclusivos, acceso a eventos de degustación y únete a una comunidad apasionada por la cerveza',
+        'description': 'Disfruta de los beneficios de ser miembro del Beer Club. Obtené descuentos exclusivos, acceso a eventos de degustación y unite a una comunidad apasionada por la cerveza.',
     }
 ]
 
