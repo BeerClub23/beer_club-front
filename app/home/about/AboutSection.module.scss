@@ -1,18 +1,25 @@
-.title {
-    text-align: center;
-    font-size: 46px;
-    font-style: normal;    
-    line-height: normal;
-    letter-spacing: 2px;
+.aboutSection{
+    width: 100%;
+    
+    &_title {
+        text-align: center;
+        font-size: 46px;
+        font-style: normal;    
+        line-height: normal;
+        letter-spacing: 2px;   
+    }   
    
+
+    @media only screen and (min-width: 768px) {
+        &_aboutArticle {
+            display: grid;
+            grid-template-columns: auto auto auto auto;
+            gap: 3%;
+            align-items: start;
+            padding: 30px;
+        }
+        
+      }
 }
 
-@media only screen and (min-width: 768px) {
-    .aboutSection {
-        display: grid;
-        grid-template-columns: auto auto auto auto;
-        gap: 3%;
-        align-items: start;
-    }
-    
-  }
+
