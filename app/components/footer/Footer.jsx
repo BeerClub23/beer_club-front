@@ -24,7 +24,7 @@ export default function Footer() {
         <Grid container spacing={2} alignItems="center" columnSpacing={{ sm: 1 }}>
           <Grid item xs={12} sm={4}>
             <Link href={"../../home"}>
-              <Image src={Logo} width={150} height={150} />
+              <Image src={Logo} width={150} height={150} alt={'logo Beer Club'}/>
             </Link>
           </Grid>
           <Grid item xs={12} sm={4}  >
