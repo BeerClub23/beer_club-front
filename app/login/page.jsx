@@ -1,14 +1,14 @@
+import { Typography } from '@mui/material';
 import Footer from '../components/footer/footer'
 import HeaderPublic from '../components/headerPublic/headerPublic'
-import SubscriptionsSection from './subscriptions/section'
 import Box from '@mui/material/Box';
 
-export default function HomePage() { 
+export default function LoginPage() { 
   return (
   <> 
     <HeaderPublic/>
     <Box component="main" sx={{ pt: 13 }}>
-      <SubscriptionsSection />
+        <Typography variant="h1">Login</Typography> 
     </Box>
     <Footer/> 
     
