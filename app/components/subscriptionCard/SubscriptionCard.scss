@@ -14,7 +14,7 @@
     position: relative;
 
     &-container {
-        max-width: 320px;
+        max-width: 350px;
     }
 
 
@@ -99,5 +99,27 @@
         background: #000;
         height: 2px;
         margin: 20px 0px;
+    }
+
+    @media (max-width: 450px) {
+        &-container {
+            width: 100%;
+        }
+
+        &__title {
+            font-size: 28px;
+        }
+    }
+
+    @media (min-width: 451px) and (max-width: 600px) {
+        &-container {
+           margin: auto;
+        }
+    }
+
+    @media (min-width: 601px) and (max-width: 900px) {
+        &-container {
+           margin: auto;
+        }
     }
 }
