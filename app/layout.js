@@ -31,8 +31,8 @@ export default function RootLayout({ children }) {
     <html lang="es" className={`${roboto.className} ${poppins.className}`}>
       {/* <ThemeProvider theme={theme}> */}
         <body >
-        <AppContext>
-          {children}
+          <AppContext>
+            {children}
           </AppContext>
         </body>
       {/* </ThemeProvider> */}
