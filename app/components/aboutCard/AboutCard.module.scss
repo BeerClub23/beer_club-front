@@ -28,15 +28,15 @@
         letter-spacing: 0.5px;
         width: 90%;
     }
-    @media (min-width: 451px) and (max-width: 899px) {    
+    @media (min-width: 899px) and (max-width: 1199px) {    
      padding: 10px;
 
         &_description{
-        width: 70%;
+        width: 90%;
         }
   }
 
-  @media (min-width: 900px){
+  @media (min-width: 1200px) {
     padding: 10px;
 
     &_description{
@@ -48,6 +48,9 @@
 
 }
     
-   
+
+
+
+
 
 
