@@ -6,5 +6,39 @@
     position: relative;
     background-size: cover;
     width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    
+    
+    &_title{
+        text-transform: uppercase;
+        // position: absolute;
+        font-size: 54px;
+        color: #000;
+        border: 10px solid #000;
+        padding: 10px;
+        // transform: translate(-50%, -50%);
+        animation: appearAndGrow 2s ease-in-out ;
+      
+        @keyframes appearAndGrow {
+          0% {
+            opacity: 0;
+            transform: scale(2, 1);           
+          }
+      
+        }
+        
+    }
+    
+   
+    &_slogan{
+        margin-top: 30px;
+        color: var(--rgb-dark);
+        letter-spacing: 2px;
+      
+    }
+
     
 }
