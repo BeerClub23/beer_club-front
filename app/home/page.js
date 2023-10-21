@@ -1,6 +1,5 @@
 import HeaderPublic from '../components/headerPublic/headerPublic'
 import Footer from '../components/footer/Footer'
-import { Container, Typography } from '@mui/material'
 import SubscriptionsSection from './subscriptions/section'
 import BannerSection from './banner/Section'
 import AboutSection from './about/Section'
@@ -12,7 +11,7 @@ export default function HomePage() {
      <HeaderPublic/>
     <Box component="main" sx={{ pt: 13 }}>
       <BannerSection/>
-      <AboutSection/>
+      <AboutSection/>    
       <SubscriptionsSection />
     </Box>
     <Footer/> 
