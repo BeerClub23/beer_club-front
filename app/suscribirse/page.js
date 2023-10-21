@@ -8,10 +8,7 @@ import { yupResolver } from '@hookform/resolvers/yup'
 import { FormProvider, useForm } from 'react-hook-form'
 // import { useRouter } from 'next/navigation';
 import { Typography } from '@mui/material'
-
-
-
-
+import PlanCardFrom from '../components/planCardForm/PlanCardForm'
 
 const CheckoutPage = ({ id=1})=>{
   // const router = useRouter();  
@@ -28,7 +25,8 @@ const CheckoutPage = ({ id=1})=>{
 
    <Box sx={{ mt:"20px", width: '100%' ,display:'flex', flexDirection:'column', justifyContent: "space-evenly" }}>
        <Box sx={{ mb:"20px"}}>             
-         {/* <CardPanel data={comic} /> */}
+        <PlanCardFrom/>
+
       </Box>
       {/* {comic.stock !==0 ? */}
       <>

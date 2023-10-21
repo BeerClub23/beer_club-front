@@ -21,6 +21,7 @@ const steps = [
 
 
 export const FormCheckout = ({id
+    
     // , comic
 }) => { 
     const router = useRouter()  
@@ -29,9 +30,8 @@ export const FormCheckout = ({id
     const [step, setStep] = useState(1);
     const [status, setStatus] = useState('');
     
-    
-    const onSubmit = (data) => {      
-        
+    const onSubmit = (data) => {  
+              
         if(step == 1){
             setFormData({...formData, customer: data})
             
@@ -42,16 +42,18 @@ export const FormCheckout = ({id
         }        
         if(step == 3){
         //  setFormData({...formData, card: data})   
-        // fetch('http://localhost:3000/api/checkout', 
-        fetch('https://ctd-esp-fe3-final-claralisle.vercel.app/api/checkout', 
+        fetch('http://localhost:3000/api/checkout', 
+        // fetch('https://ctd-esp-fe3-final-claralisle.vercel.app/api/checkout', 
         { 
         method: "POST",
-        body: JSON.stringify({...data, comic:comic.id}),       
+        // body: JSON.stringify({...data, comic:1}),       
+        body: JSON.stringify({...data}),          
         headers:{
             'Content-Type': 'application/json'
         }}
         )
         .then((response) => {
+            console.log(response);
         if(response.status ===200){
             
             const nombre = JSON.stringify(data.customer.name);
@@ -64,7 +66,8 @@ export const FormCheckout = ({id
             localStorage.setItem("direccion", direccion);
             localStorage.setItem("ciudad", ciudad);
             localStorage.setItem("provincia", provincia);
-            router.push(`/confirmacion-compra/${id}`)
+            // router.push(`/confirmacion-compra/${id}`)
+            router.push(`/congratulations`)
         }
        
         return response.json();
@@ -108,7 +111,7 @@ export const FormCheckout = ({id
             <Box sx={{maxWidth: "500px", margin: "0 auto"}}>
                 <Paper
                     elevation={1}
-                    sx={{p: "32px", display: "flex", flexDirection: "column", gap: 3, marginTop:'20px'}}
+                    sx={{p: "32px", display: "flex", flexDirection: "column", gap: 3, marginTop:'20px', marginBottom:'20px'}}
                 >
                     {step==1 &&<Typography variant="h4" align="center">
                         Datos personales

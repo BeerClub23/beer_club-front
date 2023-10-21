@@ -53,6 +53,32 @@ const PersonalData = () => {
                 <Typography variant='caption' color='red'>
                     <ErrorMessage errors={errors} name="customer.email" />
                 </Typography>
+
+                <CustomTextField
+                    name="customer.password"
+                    label="Contraseña"
+                    type="password"
+                    control={control}
+                    defaultValue=""
+                    autocomplete="current-password"
+                />
+
+                <Typography variant='caption' color='red'>
+                    <ErrorMessage errors={errors} name="customer.email" />
+                </Typography>
+
+                <CustomTextField
+                    name="customer.password2"
+                    label="Confirmacion de contraseña"
+                    type="password"
+                    control={control}
+                    defaultValue=""
+                    autocomplete="current-password"
+                />
+
+                <Typography variant='caption' color='red'>
+                    <ErrorMessage errors={errors} name="customer.email" />
+                </Typography>
             </Box>
            
   

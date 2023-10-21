@@ -1,0 +1,53 @@
+.cardContainer {   
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;        
+    text-align: center; 
+
+    &_iconContainer{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    width: 120px;
+    height: 120px;
+    border: 2px solid #8D8D8D;       
+    color: #000;         
+    margin: 0 auto;
+    margin-top: 10px;
+    }
+
+    &_icon{
+        font-size: 60px;       
+    } 
+
+    &_description{
+        margin: 0 auto;
+        margin-top: 10px;
+        font-size: 1em;       
+        letter-spacing: 0.5px;
+        width: 90%;
+    }
+    @media (min-width: 451px) and (max-width: 899px) {    
+     padding: 10px;
+
+        &_description{
+        width: 70%;
+        }
+  }
+
+  @media (min-width: 900px){
+    padding: 10px;
+
+    &_description{
+       width: 100%;
+    }
+  }
+
+
+
+}
+    
+   
+
+
