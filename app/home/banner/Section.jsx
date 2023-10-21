@@ -1,8 +1,7 @@
 
 import React from 'react'
 import styles from './BannerSection.module.scss'
-import { Button, ThemeProvider } from '@mui/material'
-import { theme } from '../../styles/materialThemeForm';
+
 
 const BannerSection = () => {
   return (
