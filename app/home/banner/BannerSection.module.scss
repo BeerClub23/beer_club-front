@@ -1,5 +1,5 @@
 .bannerContainer{
-    min-height: 70vh;
+    min-height: 50vh;
     margin: 0;
     padding: 0;
     background: url('../../../public/images/banner/banner.jpg')  no-repeat  center;    
@@ -15,7 +15,7 @@
     &_title{
         text-transform: uppercase;
         // position: absolute;
-        font-size: 54px;
+        font-size: 36px;
         color: #000;
         border: 10px solid #000;
         padding: 10px;
@@ -33,12 +33,27 @@
     }
     
    
-    &_slogan{
-        margin-top: 30px;
+    &_slogan{       
         color: var(--rgb-dark);
-        letter-spacing: 2px;
+        text-align: center;
       
     }
 
+  
+}
+
+@media (min-width: 899px) {
+  .bannerContainer{
+    min-height: 70vh;  
+
+    &_title{
+      font-size: 54px;
+    }
+
+    &_slogan{
+      margin-top: 30px;
+      letter-spacing: 2px;
     
+    }
+  }
 }
