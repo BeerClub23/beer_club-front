@@ -13,7 +13,7 @@ const Section = () => {
         <Container>
 
             <Image src={logo} width={56} height={56} alt='logo'  className={styles.aboutUsSection_logo}/>   
-            <h1 className={styles.aboutUsSection_title}>¡Bienvenidos Beer Club!</h1> 
+            <h1 className={styles.aboutUsSection_title}>Sobre nosotros...</h1> 
             <article className={styles.aboutUsSection_container}>
                 <div className={styles.aboutUsSection_textContainer}>
                     <p className={styles.aboutUsSection_text}>En Beer Club somos una comunidad apasionada por la cerveza, compartiendo un profundo aprecio por la artesanía y diversidad de esta bebida milenaria. Nuestra historia comenzó con un grupo de entusiastas de la cerveza que anhelaban llevar la experiencia cervecera a un nivel superior, y así surgió Beer Club.</p>
