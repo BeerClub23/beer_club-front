@@ -1,46 +1,60 @@
 .bannerContainer{
-    min-height: 70vh;
-    margin: 0;
-    padding: 0;
-    // background:rgba(0,0,0,0.8) ;
-    background: linear-gradient(rgba(0,0,0,0.8),rgba(231, 230, 230, 0.1)), url('../../../public/images/banner/banner.jpg') no-repeat center;
-    // background-image: url('../../../public/images/banner/banner.jpg')  , linear-gradient(rgba(0,0,0,0.8),rgba(231, 230, 230, 0.1));    
-    background-size: cover;
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
+  min-height: 50vh;
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(rgba(0,0,0,0.8),rgba(231, 230, 230, 0.1)), url('../../../public/images/banner/banner.jpg') no-repeat center;
+  position: relative;
+  background-size: cover;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  
+  
+  &_title{
+      text-transform: uppercase;
+      // position: absolute;
+      font-size: 36px;
+      color: #fff;
+      border: 10px solid #fff;
+      padding: 10px;
+      // transform: translate(-50%, -50%);
+      animation: appearAndGrow 2s ease-in-out ;
     
-    
-    &_title{
-        text-transform: uppercase;
-        // position: absolute;
-        font-size: 36px;
-        color: #fff;
-        border: 10px solid #fff;
-        padding: 10px;
-        // transform: translate(-50%, -50%);
-        animation: appearAndGrow 2s ease-in-out ;
-      
-        @keyframes appearAndGrow {
-          0% {
-            opacity: 0;
-            transform: scale(1.5, 1);           
-          }
-      
+      @keyframes appearAndGrow {
+        0% {
+          opacity: 0;
+          transform: scale(1.5, 1);           
         }
-        
-    }
     
-   
-    &_slogan{
-        margin-top: 30px;
-        color: #fff;
-        letter-spacing: 2px;
-        text-align: center;
+      }
       
-    }
-
+  }
+  
+ 
+  &_slogan{      
+      margin-top: 10px; 
+      color: #fff;
+      text-align: center;
     
+  }
+
+
+}
+
+@media (min-width: 899px) {
+.bannerContainer{
+  min-height: 70vh;  
+
+  &_title{
+    font-size: 54px;
+  }
+
+  &_slogan{
+    margin-top: 30px;
+    letter-spacing: 2px;
+  
+  }
+}
 }
