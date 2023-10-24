@@ -29,7 +29,7 @@ export default function Footer() {
           </Grid>
           <Grid item xs={12} sm={4}  >
             <Typography variant="body1" component="div" fontWeight="bold">
-              <Link href="https://example.com">Preguntas frecuentes</Link>
+              <Link href={"../../faqs"}>Preguntas frecuentes</Link>
             </Typography>
             <Typography variant="body1" component="div" fontWeight="bold">
               <Link href="https://example.com">Información legal</Link>

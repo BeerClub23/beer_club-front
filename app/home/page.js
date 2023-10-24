@@ -9,11 +9,11 @@ export default function HomePage() {
   return (
   <> 
      <HeaderPublic/>
-    <Box component="main" sx={{ pt: 13 }}>
-      <BannerSection/>
-      <AboutSection/>    
-      <SubscriptionsSection />
-    </Box>
+      <Box component="main" sx={{ pt: 13 }}>
+        <BannerSection/>
+        <AboutSection/>    
+        <SubscriptionsSection />
+      </Box>
     <Footer/> 
     
   </>
