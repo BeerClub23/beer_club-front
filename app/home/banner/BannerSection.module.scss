@@ -2,8 +2,9 @@
     min-height: 70vh;
     margin: 0;
     padding: 0;
-    background: url('../../../public/images/banner/banner.jpg')  no-repeat  center;    
-    position: relative;
+    // background:rgba(0,0,0,0.8) ;
+    background: linear-gradient(rgba(0,0,0,0.8),rgba(231, 230, 230, 0.1)), url('../../../public/images/banner/banner.jpg') no-repeat center;
+    // background-image: url('../../../public/images/banner/banner.jpg')  , linear-gradient(rgba(0,0,0,0.8),rgba(231, 230, 230, 0.1));    
     background-size: cover;
     width: 100%;
     display: flex;
@@ -15,9 +16,9 @@
     &_title{
         text-transform: uppercase;
         // position: absolute;
-        font-size: 54px;
-        color: #000;
-        border: 10px solid #000;
+        font-size: 36px;
+        color: #fff;
+        border: 10px solid #fff;
         padding: 10px;
         // transform: translate(-50%, -50%);
         animation: appearAndGrow 2s ease-in-out ;
@@ -25,7 +26,7 @@
         @keyframes appearAndGrow {
           0% {
             opacity: 0;
-            transform: scale(2, 1);           
+            transform: scale(1.5, 1);           
           }
       
         }
@@ -35,8 +36,9 @@
    
     &_slogan{
         margin-top: 30px;
-        color: var(--rgb-dark);
+        color: #fff;
         letter-spacing: 2px;
+        text-align: center;
       
     }
 
