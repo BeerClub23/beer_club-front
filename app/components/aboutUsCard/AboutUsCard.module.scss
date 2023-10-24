@@ -1,0 +1,100 @@
+.containerArticle{
+    box-shadow: 0px 5px 5px 0px rgba(0, 0, 0, 0.50);
+    display: grid;       
+    grid-template-columns: 70% auto;
+    gap: 3%;
+    width: 100%;
+    min-height: 30vh;
+    display: flex;
+    flex-direction: column;
+   
+&_textContainer{
+   padding: 20px;
+    grid-area: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    overflow: hidden;
+    
+    // opacity: 0;
+    // align-items: center;        
+    // transform: translateY(100%); /* El texto está fuera de la vista al principio */
+    // @keyframes slideDown {
+    //     0% {
+    //         opacity: 0;
+    //         transform: translateY(100%);
+    //     }
+    //     100% {
+    //         opacity: 1;
+    //         transform: translateY(0);
+    //     }
+    // }
+    //  animation: slideDown 3s ease forwards;      
+    
+}
+
+
+
+&_text{       
+    text-align: justify;   
+    font-size: 18px;
+   
+}
+
+
+
+&_image{
+    grid-area: auto;
+    display: flex;
+    align-items: center;
+    filter: drop-shadow(8px 8px 10px gray);
+    // background:linear-gradient(rgba(0,0,0,0.8),rgba(231, 230, 230, 0.1)), url('../../../public/images/aboutUs/aboutUs.jpg') center;
+    // background:linear-gradient(rgba(0,0,0,0.8),rgba(231, 230, 230, 0.1)), url('../../../public/images/logo/Logo_sin_escudo_Negro.svg') center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    opacity: 0.9;  
+    margin: 20px;
+    transform: rotateX(30deg);
+}    
+
+&_spanText{
+    padding-top: 20px;
+    font-weight: 700;
+    font-size: 24px;
+    text-align: center;
+   
+}
+
+@media (min-width: 899px) {
+        display: grid;       
+        grid-template-columns: 70% auto;
+        gap: 3%;
+        width: 100%;
+        min-height: 30vh;
+        position: relative;
+        z-index: 1;
+        
+        // &_textContainer{
+        //     z-index: 2;
+        // }
+
+        // &_text{
+        //     z-index: 1;
+        // }
+        
+        &_logo{
+            position: absolute;
+            z-index: 0;        
+            left: -130px;
+            top: -100px;
+         }
+
+    &_spanText{           
+        text-align: right;
+        
+    }      
+ 
+    
+}
+
+}
