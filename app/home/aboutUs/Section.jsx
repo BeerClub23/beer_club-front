@@ -10,14 +10,17 @@ const Section = () => {
    
   return (
     <section className={styles.aboutUsSection}>
-        <Container>
+                
+                  
+               
+        <Container className={styles.aboutUsSection_container} >
 
-            <Image src={logo} width={56} height={56} alt='logo'  className={styles.aboutUsSection_logo}/>   
-            <h1 className={styles.aboutUsSection_title}>Sobre nosotros...</h1> 
-            <article className={styles.aboutUsSection_container}>
+            <h1 className={styles.aboutUsSection_title}>¡Bienvenidos a Beer Club!</h1> 
+            <article className={styles.aboutUsSection_containerArticle}>
+             <Image src={logo} width={200} height={200} alt='logo'  className={styles.aboutUsSection_logo} />   
                 <div className={styles.aboutUsSection_textContainer}>
-                    <p className={styles.aboutUsSection_text}>En Beer Club somos una comunidad apasionada por la cerveza, compartiendo un profundo aprecio por la artesanía y diversidad de esta bebida milenaria. Nuestra historia comenzó con un grupo de entusiastas de la cerveza que anhelaban llevar la experiencia cervecera a un nivel superior, y así surgió Beer Club.</p>
-                    <p className={styles.aboutUsSection_text}>Nuestra misión es brindarte acceso a cervezas excepcionales y enriquecer tu vida cervecera. Unite a nosotros en esta emocionante travesía cervecera.</p>
+                    <p className={styles.aboutUsSection_text}>Imagina un mundo donde cada sorbo es una nueva aventura, donde cada cerveza es una puerta a un universo de sabores, aromas y tradiciones. Al unirte a nosotros, te sumerges en un mundo de descubrimiento y camaradería, donde recibes mensualmente una selección curada de cervezas artesanales de todo el mundo en tu puerta. Pero Beer Club es más que un servicio de entrega de cervezas; organizamos eventos exclusivos, catas virtuales con cerveceros destacados y te conectamos con otros miembros apasionados.</p>
+                    <p className={styles.aboutUsSection_text}>Si estás listo para unirte a una comunidad que celebra la diversidad de la cerveza y experimentar un mundo de sabores y amistades que solo los verdaderos amantes de la cerveza pueden disfrutar, entonces Beer Club es tu destino cervecero definitivo. </p>
                     <p className={styles.aboutUsSection_spanText}><span >... y salud a la pasión por la cerveza!</span></p>
                 </div>
                 <div className={styles.aboutUsSection_image}>
