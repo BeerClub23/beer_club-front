@@ -1,0 +1,27 @@
+.linkContainer {
+  display: flex;
+  justify-content: center;
+}
+
+.socialStack {
+  justify-content: flex-end;
+}
+
+.socialIcon,
+.linkItem {
+  transition: all 0.2s;
+
+  &:hover {
+    color: #b8a295;
+  }
+}
+
+@media (max-width: 600px) {
+
+  .logoContainer,
+  .linkContainer,
+  .socialStack {
+    justify-content: center;
+    text-align: center;
+  }
+}
