@@ -29,7 +29,7 @@ export default function Footer() {
           justifyContent={"center"}
           spacing={2}
         >
-          <Grid item xs={12} sm={4}>
+          <Grid item xs={12} sm={4} className="logoContainer">
             <Link href={"/home"}>
               <Image
                 src={Logo}

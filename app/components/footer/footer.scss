@@ -1,24 +1,27 @@
 .linkContainer {
-    display: flex;
-    justify-content: center;
+  display: flex;
+  justify-content: center;
+}
+
+.socialStack {
+  justify-content: flex-end;
+}
+
+.socialIcon,
+.linkItem {
+  transition: all 0.2s;
+
+  &:hover {
+    color: #b8a295;
   }
+}
+
+@media (max-width: 600px) {
+
+  .logoContainer,
+  .linkContainer,
   .socialStack {
-    justify-content: flex-end;
+    justify-content: center;
+    text-align: center;
   }
-  
-  .socialIcon,
-  .linkItem {
-    transition: all 0.2s;
-    &:hover {
-      color: #b8a295;
-    }
-  }
-  
-  @media (max-width: 600px) {
-    .socialStack {
-      justify-content: flex-start;
-    }
-    .linkContainer {
-      justify-content: left;
-    }
-  }
+}
