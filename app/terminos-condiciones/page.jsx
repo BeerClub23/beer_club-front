@@ -5,7 +5,7 @@ import Box from '@mui/material/Box';
 export default function Terms() { 
   return (
   <>     
-    <Box  sx={{ pt: 13, backgroundColor: '#fff', height:'100vh'}} >
+    <Box  sx={{ pt: 13, backgroundColor: '#fff', minHeight:'100vh'}} >
         <Container>
             <Typography variant="h4"color='text.secondary' sx={{paddingTop:'10px', fontWeight:"bold"}}>Términos y condiciones.</Typography> 
             <Typography  sx={{paddingTop:'10px'}}variant="subtitle1" display="block"  align='justify' color='text.secondary' >Las presentes condiciones regulan el acceso, descarga y uso de la página web y/o aplicación en la que está navegando (en adelante, de manera conjunta, el “Sitio Web”), propiedad de Beer Club. (en adelante, “Beer Club ”). Estas condiciones regulan asimismo el acceso, descarga y uso de cualquier otra información, texto, gráficos, fotos, imágenes, música, etc. a los que se pueda acceder desde el Sitio Web (en adelante, el “Contenido”). 
