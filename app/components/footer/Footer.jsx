@@ -32,7 +32,7 @@ export default function Footer() {
               <Link href="https://example.com">Preguntas frecuentes</Link>
             </Typography>
             <Typography variant="body1" component="div" fontWeight="bold">
-              <Link href="https://example.com">Información legal</Link>
+              <Link href="/terminos-condiciones">Términos y condiciones</Link>
             </Typography>
             <Typography variant="body1" component="div" fontWeight="bold">
               <Link href="https://example.com">Acerca de nosotros</Link>
