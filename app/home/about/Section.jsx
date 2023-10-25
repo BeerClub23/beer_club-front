@@ -10,7 +10,7 @@ const AboutSection = () => {
   
  
   return (
-    <section className={styles.aboutSection}>
+    <section id='como-funciona' className={styles.aboutSection}>
           <h2 className={styles.aboutSection_title }>
             Descubrí los beneficios de unirte a Beer Club
           </h2>

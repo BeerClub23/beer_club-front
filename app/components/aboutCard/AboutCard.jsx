@@ -13,8 +13,8 @@
       <ThemeProvider theme={theme}>
           <article className={styles.cardContainer}>
             <h3>{data.title}</h3>
-            <div className={styles.cardContainer_iconContainer}>
-              {data?.icon =="LoyaltyIcon"?<LoyaltyIcon color='primary' className={styles.cardContainer_icon}></LoyaltyIcon>:
+            <div className={styles.cardContainer_iconContainer} data-aos="fade-down">
+              {data?.icon =="LoyaltyIcon"?<LoyaltyIcon  color='primary' className={styles.cardContainer_icon}></LoyaltyIcon>:
               data?.icon =="CardMembershipIcon"?<CardMembershipIcon color='primary' className={styles.cardContainer_icon}></CardMembershipIcon>:
               data?.icon =="CardGiftcardIcon"?<CardGiftcardIcon color='primary' className={styles.cardContainer_icon}></CardGiftcardIcon>:
               <SportsBarIcon color='primary'className={styles.cardContainer_icon}></SportsBarIcon>}

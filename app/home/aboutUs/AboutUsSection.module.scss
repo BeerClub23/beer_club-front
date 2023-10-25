@@ -1,132 +1,26 @@
 .aboutUsSection{
-    background-color: var(--rgb-secondary);
+    // background-color: #fff;
+    // background-color: var(--rgb-secondary);
+    background-color: var(--rgb-primary);
     min-height: 70vh;
     color: #000;   
     text-align: center;
-    padding-top: 50px; 
-    
-    // transform: translateZ(0);  
-    // opacity: 1;   
-    
-    
-    
-    &_container{
-        
-        // position: relative;
-    }
-    
+    padding-top: 50px;  
+    padding-bottom: 50px;   
+
     &_title{
-        font-size: 48px;
-        // transition-duration: 0.8s;
-        // transition-property: transform, opacity;
-        // transition-timing-function: ease-in-out;
-        // will-change: transform, opacity;
-        // padding-top: 50px;
-        
-    }
-    
-    &_containerArticle{
-        box-shadow: 0px 5px 5px 0px rgba(0, 0, 0, 0.50);
-        display: grid;       
-        grid-template-columns: 70% auto;
-        gap: 3%;
-        width: 100%;
-        min-height: 30vh;
-        display: flex;
-        flex-direction: column;
-        position: relative;
-        z-index: 1000;
-       
-    
+        font-size: 36px;
+        font-style: normal;    
+        line-height: normal;
+        letter-spacing: 6px;    
     }
 
-   
-
-    &_textContainer{
-       padding: 20px;
-        grid-area: auto;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        overflow: hidden;
-        position: relative;
-        opacity: 0;
-        // align-items: center;        
-        transform: translateY(100%); /* El texto está fuera de la vista al principio */
-        @keyframes slideDown {
-            0% {
-                opacity: 0;
-                transform: translateY(100%);
-            }
-            100% {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-         animation: slideDown 3s ease forwards;      
-        
-    }
-    
-   
-
-    &_text{       
-        text-align: justify;   
-        font-size: 18px;
-       
-    }
-
-    
-
-    &_image{
-        grid-area: auto;
-        display: flex;
-        align-items: center;
-        background:rgba(0,0,0,0.8) ;  
-        background-image: url('../../../public/images/aboutUs/aboutUs.jpg');
-
-        position: relative;
-        background-size: cover;
-        background-repeat: no-repeat;
-        opacity: 0.9;  
-        margin: 20px;
+    @media (min-width: 1200px) {
       
-    }    
-
-    &_spanText{
-        padding-top: 20px;
-        font-weight: 700;
-        font-size: 24px;
-        text-align: center;
-       
-    }
-    
-    @media (min-width: 899px) {
-
-        &_containerArticle{
-            display: grid;       
-            grid-template-columns: 70% auto;
-            gap: 3%;
-            width: 100%;
-            min-height: 30vh;
-            // position: relative;
-            // z-index: 1;
-           
-            
+        &_title {
+           font-size: 48px;         
         }
         
-        &_spanText{           
-            text-align: right;
-            
-        }      
-     
-        
-        &_logo{
-            position: absolute;
-            z-index: 0;        
-            left: -130px;
-            top: -100px;
-         }
     }
- 
 }
 
