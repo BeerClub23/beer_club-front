@@ -8,7 +8,7 @@ import Box from '@mui/material/Box';
 export default function HomePage() { 
   return (
   <> 
-     <HeaderPublic/>
+    <HeaderPublic/>
     <Box component="main" sx={{ pt: 13 }}>
       <BannerSection/>
       <AboutSection/>    
