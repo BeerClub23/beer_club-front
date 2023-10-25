@@ -7,7 +7,7 @@
     position: relative;
    
 &_textContainer{
-    background-color:var(--rgb-secondary) ;
+    background-color:var(--rgb-primary) ;
     padding: 20px;
     grid-area: auto;
     display: flex;
@@ -33,7 +33,7 @@
 &_imageAside{
     grid-area: auto;
     display: flex;
-    background-color: var(--rgb-secondary);
+    background-color: var(--rgb-primary);
     align-items: center;   
     z-index: 3;  
 }    
@@ -56,7 +56,7 @@
 @media (min-width: 1200px) {
         display: grid;       
         grid-template-columns: 70% auto;
-        gap: 3%;
+        // gap: 3%;
         width: 100%;
         min-height: 30vh;
         position: relative;
@@ -96,13 +96,13 @@
 
 @media (min-width: 1300px) {
     &_logo1{            
-        left: -50px;
+        left: -15px;
         top: -100px;        
     }
     
     
     &_logo2{
-        right: -50px;
+        right: -15px;
         top: -100px;
        
      
