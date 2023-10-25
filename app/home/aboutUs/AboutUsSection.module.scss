@@ -1,5 +1,7 @@
 .aboutUsSection{
-    background-color: var(--rgb-secondary);
+    // background-color: #fff;
+    // background-color: var(--rgb-secondary);
+    background-color: var(--rgb-primary);
     min-height: 70vh;
     color: #000;   
     text-align: center;
@@ -10,18 +12,15 @@
         font-size: 36px;
         font-style: normal;    
         line-height: normal;
-        letter-spacing: 6px;   ;     
+        letter-spacing: 6px;    
     }
 
     @media (min-width: 1200px) {
-        margin-top: 10px;       
-       
+      
         &_title {
-           font-size: 48px;
-         
-        }   
-       
+           font-size: 48px;         
+        }
         
-      }
+    }
 }
 
