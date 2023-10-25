@@ -17,11 +17,16 @@ import Image from 'next/image';
 import Logo from 'public/images/logo/Logo_sin_escudo_Color_Original.svg';
 import Link from 'next/link';
 import { Content } from 'next/font/google';
+import { usePathname, useSearchParams } from 'next/navigation'
+import { useRouter } from 'next/navigation';
+
 
 const drawerWidth = 240;
-const navItems = [{name:'Nosotros',route:'/nosotros'}, {name:'Subscribite',route:'/suscribirse'}, {name:'Login',route:'/login'}];
+const navItems = [{name:'Nosotros',route:'#nosotros'},{name:'Como funciona',route:'#como-funciona'}, {name:'Subscribite',route:'#suscribirse'}, {name:'Login',route:'/login'}];
 
 export default function HeaderGeneral(props) {
+  const pathname = usePathname()  
+ 
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
   const handleDrawerToggle = () => {
@@ -37,8 +42,9 @@ export default function HeaderGeneral(props) {
       <List>
         {navItems.map((item) => (
           <ListItem key={item.name} disablePadding>
-            <ListItemButton sx={{ textAlign: 'center' }}>
-              <Link href={item.route}><ListItemText primary={item.name} /></Link>
+            <ListItemButton sx={{ textAlign: 'center' }}>             
+              <Link href={ pathname === '/home' ? `${item.route}` : `/home${item.route}`}><ListItemText primary={item.name} />
+              </Link>
             </ListItemButton>
           </ListItem>
         ))}
@@ -73,7 +79,8 @@ export default function HeaderGeneral(props) {
               </Link>
               <Box sx={{ display: { xs: 'none', sm: 'flex' }, gap:5 }}>
                 {navItems.map((item) => (
-                  <Link href={item.route} key={item.name} sx={{ color: '#fff'}} className='navItem'>{item.name}</Link>
+                  // <Link href={item.route} key={item.name} sx={{ color: '#fff'}} className='navItem'>{item.name}</Link>
+                  <Link href={ pathname === '/home' ? `${item.route}` : `/home${item.route}`} key={item.name} sx={{ color: '#fff'}} className='navItem'>{item.name}</Link>
                 ))}
               </Box>
             </Toolbar>

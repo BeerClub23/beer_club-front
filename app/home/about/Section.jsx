@@ -10,18 +10,20 @@ const AboutSection = () => {
   
  
   return (
-    <section className={styles.aboutSection}>
-    
-         <h2 className={styles.aboutSection_title }>
-          Descubrí los beneficios de unirte a Beer Club
-        </h2>
-        <article className={styles.aboutSection_aboutArticle}> 
-          {data.map((step, index)=>         
-          <AboutStepCard
-            key={index}
-            data={step}
-            />)}
-        </article>    
+    <section id='como-funciona' className={styles.aboutSection}>
+          <h2 className={styles.aboutSection_title }>
+            Descubrí los beneficios de unirte a Beer Club
+          </h2>
+        <Container>        
+          <article className={styles.aboutSection_aboutArticle}> 
+            {data.map((step, index)=>         
+            <AboutStepCard
+              key={index}
+              data={step}
+              />)}
+          </article>    
+
+      </Container>
 
      
     </section>

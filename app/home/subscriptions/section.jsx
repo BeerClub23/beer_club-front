@@ -21,7 +21,7 @@ const SubscriptionsSection = () => {
         <div className='bc-subscription-section-container'>
             <Container >
                 <h2 className='bc-subscription-section__title'>Elige según tu nivel de experticia</h2>
-                <section className='bc-subscription-section'>
+                <section className='bc-subscription-section' id='suscribirse'>
                     {
                         subscriptions.map((subscription) => <SubscriptionCard key={subscription.title} action={() => goToRegister(subscription.title)} title={subscription.title} price={subscription.price} benefits={subscription.benefits} isRecommended={subscription.isRecommended}></SubscriptionCard>)
                     }
