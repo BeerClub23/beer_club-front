@@ -1,3 +1,4 @@
+'use client'
 import "./footer.scss";
 import { Box, Stack, Container, Grid, Typography } from "@mui/material";
 import Logo from "../../../public/images/logo/Logo_sin_escudo_Negro.svg";
@@ -7,8 +8,26 @@ import TwitterIcon from "@mui/icons-material/Twitter";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import Link from "next/link";
 import Image from "next/image";
+import WhatsAppIcon from '@mui/icons-material/WhatsApp';
+import { useEffect, useState } from 'react';
+import { usePathname } from "next/navigation";
+
 
 export default function Footer() {
+  const pathname = usePathname()  
+  const [whatsapp, setWhatsapp] = useState('')
+ 
+  useEffect(()=>{
+
+    if (screen.width < 768) {
+      setWhatsapp(`wa.me/${process.env.NEXT_PUBLIC_PHONE_NUMBER}?`)      
+    }
+    else{
+      setWhatsapp(`web.whatsapp.com/send?phone=${process.env.NEXT_PUBLIC_PHONE_NUMBER}&`)
+    } 
+
+  }, [])
+
   return (
     <Box
       component="footer"
@@ -48,10 +67,11 @@ export default function Footer() {
                 <Link href="/informacion-legal">Información legal</Link>
               </Typography>
               <Typography variant="body1" component="div" className="linkItem" sx={{fontWeight:"bold",marginBottom:"2px"}}>
-                <Link href="/nosotros">Acerca de nosotros</Link>
+                <Link href={pathname === '/home' ? `#nosotros` : `/home/#nosotros`}>Acerca de nosotros</Link>
               </Typography>
-              <Typography variant="body1" component="div" className="linkItem" sx={{fontWeight:"bold",marginBottom:"2px"}}>
-                <Link href={`https://wa.me/${process.env.PHONE_NUMBER}?text=Bienvenido+a+beer+club+%21%21%21`}>Contáctanos</Link>
+              <Typography variant="body1" component="div" className="linkItem" sx={{fontWeight:"bold",marginBottom:"2px", display:'flex', alignItems:'center'}}>
+                <WhatsAppIcon/>
+                <Link href={`https://${whatsapp}text=Hola,%20necesito%20hacerles%20una%20consulta...`} target="_blank">Contáctanos</Link>
               </Typography>
             </div>
           </Grid>

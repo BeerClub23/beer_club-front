@@ -1,5 +1,5 @@
 import { Typography } from '@mui/material';
-import Footer from '../components/footer/footer'
+import Footer from '../components/footer/Footer'
 import HeaderPublic from '../components/headerPublic/headerPublic'
 import Box from '@mui/material/Box';
 

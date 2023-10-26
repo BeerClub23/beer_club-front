@@ -1,15 +1,17 @@
-nav{
+.nav{
     background-color: rgba(16, 16, 16, 0.8)!important;
-}
 
-.logo{
+
+&_logo{
     margin: 5px 0px;
 }
 
-.navItem{
+&_navItem{
     transition: all 0.3s;
     &:hover,&:focus{
         transform: scale(1.1);
         color:var(--secondary)
     }
+}
+
 }
