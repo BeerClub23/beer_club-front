@@ -1,5 +1,5 @@
 "use client"
-import './headerPublic.scss';
+
 import * as React from 'react';
 import { Container, Typography } from "@mui/material";
 import AppBar from '@mui/material/AppBar';
@@ -19,6 +19,7 @@ import Link from 'next/link';
 import { Content } from 'next/font/google';
 import { usePathname, useSearchParams } from 'next/navigation'
 import { useRouter } from 'next/navigation';
+import styles from './headerPublic.module.scss'
 
 
 const drawerWidth = 240;
@@ -56,7 +57,7 @@ export default function HeaderGeneral(props) {
     return (
       <header>
         
-          <AppBar component="nav">
+          <AppBar component="nav" className={styles.nav}>
           <Container>
             <Toolbar sx={{ justifyContent: 'space-between'}}>
               <IconButton
@@ -68,7 +69,7 @@ export default function HeaderGeneral(props) {
               >
                 <MenuIcon />
               </IconButton>
-              <Link href={'/home'} className='logo'>
+              <Link href={'/home'} className={styles.nav_logo}>
                 <Image
                   src={Logo}
                   width={90}
@@ -80,13 +81,13 @@ export default function HeaderGeneral(props) {
               <Box sx={{ display: { xs: 'none', sm: 'flex' }, gap:5 }}>
                 {navItems.map((item) => (
                   // <Link href={item.route} key={item.name} sx={{ color: '#fff'}} className='navItem'>{item.name}</Link>
-                  <Link href={ pathname === '/home' ? `${item.route}` : `/home${item.route}`} key={item.name} sx={{ color: '#fff'}} className='navItem'>{item.name}</Link>
+                  <Link href={ pathname === '/home' ? `${item.route}` : `/home${item.route}`} key={item.name} sx={{ color: '#fff'}} className={styles.nav_navItem}>{item.name}</Link>
                 ))}
               </Box>
             </Toolbar>
             </Container>
           </AppBar>
-        <nav>
+        <nav className={styles.nav}>
           <Drawer
             container={container}
             variant="temporary"
