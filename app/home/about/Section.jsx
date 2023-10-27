@@ -4,9 +4,10 @@ import { useGetAboutSteps } from '../../services/about';
 import { Container } from '@mui/material';
 import AboutStepCard from '../../components/aboutCard/AboutCard'
 import styles from './AboutSection.module.scss'
+import {aboutSteps} from '../../services/about'
 
 const AboutSection = () => {
-  const { data, isLoading, isError} = useGetAboutSteps();
+  // const { data, isLoading, isError} = useGetAboutSteps();
   
  
   return (
@@ -16,7 +17,7 @@ const AboutSection = () => {
           </h2>
         <Container>        
           <article className={styles.aboutSection_aboutArticle}> 
-            {data.map((step, index)=>         
+            {aboutSteps.map((step, index)=>         
             <AboutStepCard
               key={index}
               data={step}
