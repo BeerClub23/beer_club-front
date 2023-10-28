@@ -1,12 +1,15 @@
-.nav{
+nav{
     background-color: rgba(16, 16, 16, 0.8)!important;
 
 
-&_logo{
+
+
+}
+.logo{
     margin: 5px 0px;
 }
 
-&_navItem{
+.navItem{
     transition: all 0.3s;
     &:hover,&:focus{
         transform: scale(1.1);
@@ -14,4 +17,7 @@
     }
 }
 
+.css-4t3x6l-MuiPaper-root-MuiDrawer-paper{
+    background-color: var(--dark);
+    color:var(--white);
 }

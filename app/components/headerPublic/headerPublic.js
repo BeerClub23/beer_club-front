@@ -19,7 +19,7 @@ import Link from 'next/link';
 import { Content } from 'next/font/google';
 import { usePathname, useSearchParams } from 'next/navigation'
 import { useRouter } from 'next/navigation';
-import styles from './headerPublic.module.scss'
+import './headerPublic.scss'
 
 
 const drawerWidth = 240;
@@ -43,8 +43,8 @@ export default function HeaderGeneral(props) {
       <List>
         {navItems.map((item) => (
           <ListItem key={item.name} disablePadding>
-            <ListItemButton sx={{ textAlign: 'center' }}>             
-              <Link href={ pathname === '/home' ? `${item.route}` : `/home${item.route}`}><ListItemText primary={item.name} />
+            <ListItemButton sx={{ textAlign: 'center' }}  >             
+              <Link href={ pathname === '/home' ? `${item.route}` : `/home${item.route}`} ><ListItemText primary={item.name} />
               </Link>
             </ListItemButton>
           </ListItem>
@@ -57,7 +57,7 @@ export default function HeaderGeneral(props) {
     return (
       <header>
         
-          <AppBar component="nav" className={styles.nav}>
+          <AppBar component="nav" >
           <Container>
             <Toolbar sx={{ justifyContent: 'space-between'}}>
               <IconButton
@@ -65,11 +65,11 @@ export default function HeaderGeneral(props) {
                 aria-label="open drawer"
                 edge="start"
                 onClick={handleDrawerToggle}
-                sx={{ mr: 2, display: { sm: 'none' } }}
+                sx={{ mr: 2, display: { md: 'none' } }}
               >
                 <MenuIcon />
               </IconButton>
-              <Link href={'/home'} className={styles.nav_logo}>
+              <Link href={'/home'} className={"nav_logo"}>
                 <Image
                   src={Logo}
                   width={90}
@@ -78,16 +78,16 @@ export default function HeaderGeneral(props) {
                   
                 />
               </Link>
-              <Box sx={{ display: { xs: 'none', sm: 'flex' }, gap:5 }}>
+              <Box sx={{ display: { xs: 'none', md: 'flex' }, gap:5 }}>
                 {navItems.map((item) => (
                   // <Link href={item.route} key={item.name} sx={{ color: '#fff'}} className='navItem'>{item.name}</Link>
-                  <Link href={ pathname === '/home' ? `${item.route}` : `/home${item.route}`} key={item.name} sx={{ color: '#fff'}} className={styles.nav_navItem}>{item.name}</Link>
+                  <Link href={ pathname === '/home' ? `${item.route}` : `/home${item.route}`} key={item.name} sx={{ color: '#fff'}} className={"nav_navItem"}  style={{scrollBehavior:'smooth'}} >{item.name} </Link>
                 ))}
               </Box>
             </Toolbar>
             </Container>
           </AppBar>
-        <nav className={styles.nav}>
+        <nav >
           <Drawer
             container={container}
             variant="temporary"
@@ -97,7 +97,7 @@ export default function HeaderGeneral(props) {
               keepMounted: true, // Better open performance on mobile.
             }}
             sx={{
-              display: { xs: 'block', sm: 'none' },
+              display: { sm: 'block', md: 'none' },
               '& .MuiDrawer-paper': { boxSizing: 'border-box', width: drawerWidth },
             }}
           >
