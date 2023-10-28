@@ -38,21 +38,6 @@ export default function Terms() {
               Beer Club se reserva, sin necesidad de previo aviso y en cualquier momento, el derecho  a suspender con carácter temporal o definitivo el acceso al Sitio Web, así como a todo o parte de su Contenido y a efectuar las modificaciones que considere oportunas en el mismo. 
               En relación con el Contenido ofrecido por Beer Club de buena fe, dada la gran cantidad de información que se ofrece, algunas de estas informaciones pueden no ser totalmente exactas o estar desactualizadas, si bien Beer Club hace importantes esfuerzos para que no sea así. 
             </Typography> 
-            <Box sx={{ display:'flex' ,  justifyContent:'center'}}>
-                <Button href='/home' sx={{
-                  borderRadius: '20px',
-                  border: '1px solid transparent',
-                  background: '#F5E1C1',
-                  boxShadow: '0px 4px 4px 0px rgba(0, 0, 0, 0.25)',
-                  fontSize: '24px',            
-                  width: '20%',
-                  margin: '12px 0 0',
-                  textDecoration: 'none',
-                  color:'var(--rgb-dark)',                
-                 
-                }}>Inicio</Button> 
-
-            </Box>
                
               
         </Container>

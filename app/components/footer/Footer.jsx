@@ -64,7 +64,7 @@ export default function Footer() {
                 <Link href="/faqs">Preguntas frecuentes</Link>
               </Typography>
               <Typography variant="body1" component="div" className="linkItem" sx={{fontWeight:"bold",marginBottom:"2px"}}>
-                <Link href="/informacion-legal">Información legal</Link>
+                <Link href="/informacion-legal"  target={"_blank"}>Información legal</Link>
               </Typography>
               <Typography variant="body1" component="div" className="linkItem" sx={{fontWeight:"bold",marginBottom:"2px"}}>
                 <Link href={pathname === '/home' ? `#nosotros` : `/home/#nosotros`}>Acerca de nosotros</Link>
