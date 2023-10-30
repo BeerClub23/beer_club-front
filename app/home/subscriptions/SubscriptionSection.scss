@@ -4,8 +4,6 @@
     gap: 3%;*/
    
     gap: 3%;
-    
-
 
     &__title {
         text-align: center;
@@ -23,13 +21,20 @@
         padding: 20px;
     }
 
+    
+    &_slicks{
+        margin-bottom: 30px;    
+       
+    }
+
+      
     @media (max-width: 450px) {
     /*    grid-template-columns: auto;
         gap: 10px;*/
 
         width: 80%;
         margin: 0 auto;
-
+       
         &__title {
             font-size: 36px;
         }

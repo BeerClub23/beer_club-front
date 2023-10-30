@@ -38,13 +38,16 @@
     z-index: 3;  
 }    
 
-&_pic{
+&_picMobile{
     transform: rotate(45deg);
     margin: 0 auto;
     filter: sepia(30%) drop-shadow(8px 8px 10px (grey));
-    width:110;
-    height: 162.5;    
-  
+    width: auto;
+    height: auto; 
+}
+
+&_pic{
+    display: none;
 }
 
 &_spanText{
@@ -91,6 +94,20 @@
         top: -115px;
         transform: rotate(-20deg)scaleX(-1);
      
+    }
+    
+    &_picMobile{
+        display: none;
+    }
+
+    &_pic{
+        display: flex;
+        transform: rotate(45deg);
+        margin: 0 auto;
+        filter: sepia(30%) drop-shadow(8px 8px 10px (grey));
+        width: auto;
+        height: auto;
+      
     }
  
     

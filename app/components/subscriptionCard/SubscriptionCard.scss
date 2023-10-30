@@ -12,6 +12,7 @@
     margin: auto;
     z-index: 1;
     position: relative;
+    margin-bottom: 10px;
     
 
     &-container {
@@ -112,13 +113,13 @@
         }
     }
 
-    @media (min-width: 451px) and (max-width: 600px) {
+    @media (min-width: 451px) and (max-width: 768px) {
         &-container {
            margin: 0 auto;
         }
     }
 
-    @media (min-width: 601px) and (max-width: 1200px) {
+    @media (min-width: 769px) and (max-width: 1200px) {
         &-container {
            margin: 0 auto;
         }

@@ -2,31 +2,42 @@
    
     padding-top: 30px;
     
-    &_title {
-        text-align: center;
-        font-size: 36px;
+    &_title{
+        font-size: 30px;
         font-style: normal;    
         line-height: normal;
-        letter-spacing: 6px;   
-    }   
-    
+        text-align: center;
+  } 
+
+   
     &_aboutArticle {
         width: 80%;
         margin: 0 auto;
+        
     }    
 
-    @media (min-width: 899px) and (max-width: 1199px) {
+    &_slicks{
+        margin-bottom: 30px;    
+       
+    }
 
-     /*  &_aboutArticle {
 
-          display: grid;
-            grid-template-columns: auto auto ;
-            grid-template-rows: auto auto;
-            gap: 3%;
-            align-items: start;
-            padding: 30px;
-        }*/
+    @media (min-width: 345px) {
+      
+        &_title {
+          letter-spacing: 4px;
+          font-size: 36px;         
+        }
+        
+    }
 
+
+    @media (min-width: 768px) {
+  
+      &_title{
+        font-size: 48px;
+        letter-spacing: 6px;
+      }
     }
 
 

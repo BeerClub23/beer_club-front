@@ -1,6 +1,5 @@
 'use client'
 import React from 'react'
-import { useGetAboutSteps } from '../../services/about';
 import { Container } from '@mui/material';
 import AboutStepCard from '../../components/aboutCard/AboutCard'
 import styles from './AboutSection.module.scss'
@@ -15,7 +14,7 @@ const AboutSection = () => {
   // const { data, isLoading, isError} = useGetAboutSteps();
   const settings = {
     dots: true,
-    infinite: true,
+    infinite: false,
     speed: 500,
     slidesToShow: 4,
     slidesToScroll: 0,
@@ -43,12 +42,12 @@ const AboutSection = () => {
 
   return (
     <section id='como-funciona' className={styles.aboutSection}>
+        <Container>        
           <h2 className={styles.aboutSection_title }>
             Descubrí los beneficios de unirte a Beer Club
           </h2>
-        <Container>        
           <article className={styles.aboutSection_aboutArticle}> 
-          <Slider {...settings}>
+          <Slider className={styles.aboutSection_slicks}{...settings}>
             {aboutSteps.map((step, index)=>         
             <AboutStepCard
               key={index}
