@@ -28,19 +28,21 @@ const SubscriptionsSection = () => {
         {
           breakpoint: 1200,
           settings: {
-            slidesToShow: 1,
-            // slidesToScroll: 1,
-            
+            slidesToShow: 2,
           }
         },
         {
-          breakpoint: 450,
+          breakpoint: 870,
+          settings: {
+            slidesToShow: 1,
+          }
+        },
+        {
+          breakpoint: 600,
           settings: {
             autoplay: true,    
             slidesToShow: 1,
             arrows: false
-            // slidesToScroll: 1,
-                     
           }
         }
       ]

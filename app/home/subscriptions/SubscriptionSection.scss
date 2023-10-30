@@ -26,8 +26,15 @@
         margin-bottom: 30px;    
        
     }
+    .slick-prev:before, .slick-next:before{
+        content: url('../../../public/images/icons/chevron-right-solid-black.svg');
+        color:var(--primary);
+    }
+    .slick-prev{
+        transform: rotateY(180deg);
+    }
 
-      
+
     @media (max-width: 450px) {
     /*    grid-template-columns: auto;
         gap: 10px;*/
@@ -50,3 +57,4 @@
     }
 
 }
+
