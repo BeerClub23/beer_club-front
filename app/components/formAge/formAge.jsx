@@ -9,6 +9,7 @@ import { useRouter } from 'next/navigation';
 import { useForm } from "react-hook-form";
 import 'aos/dist/aos.css';
 import AOS from 'aos';
+import './formAge.scss';
 // import myRoute from 'app/services/IpService/ipService.jsx';
 // import { format } from 'date-fns';
 // import moment from 'moment';
@@ -96,7 +97,6 @@ export default function FormAge() {
   React.useEffect(() => {
     AOS.init({
         duration: 1200,
-        once: false,
       })
   }, [])
 
@@ -104,12 +104,12 @@ export default function FormAge() {
   <form onSubmit={handleSubmit(onSubmit)}> 
 
     <FormControl component="fieldset">
-        <Typography variant="h3" className='poppins' sx={{ textAlign:'center'}}>Ingresa tu fecha de nacimiento?</Typography>
+        <Typography variant="h4" className='poppins' sx={{ textAlign:'center'}}>Ingresa tu fecha de nacimiento?</Typography>
         
         <FormGroup aria-label="position">
-          <Box sx={{ mb:5, mt:2}}>
+          <Box sx={{ mb:5, mt:2, mx:'auto', textAlign:'center' }}>
             
-            <FormControl sx={{ m: 1, width: '25ch' }} variant="outlined">
+            <FormControl sx={{ m: 1 }} variant="outlined">
               <FormHelperText id="outlined-day-helper-text">DÍA</FormHelperText>
               <TextField
                 id="outlined-adornment-day"
@@ -120,7 +120,7 @@ export default function FormAge() {
                 onInput = {(e) =>{e.target.value =e.target.value.padStart(2, '0').slice(-2)}}
               />
             </FormControl>
-            <FormControl sx={{ m: 1, width: '25ch' }} variant="outlined">
+            <FormControl sx={{ m: 1 }} variant="outlined">
               <FormHelperText id="outlined-month-helper-text">MES</FormHelperText>
               <TextField
                 id="outlined-adornment-month"
@@ -131,7 +131,7 @@ export default function FormAge() {
                 onInput = {(e) =>{e.target.value =e.target.value.padStart(2, '0').slice(-2)}}
               />
             </FormControl>
-            <FormControl sx={{ m: 1, width: '25ch' }} variant="outlined">
+            <FormControl sx={{ m: 1}} variant="outlined" className="input-year">
               <FormHelperText id="outlined-year-helper-text">AÑO</FormHelperText>
               <TextField
                 id="outlined-adornment-year"
@@ -158,14 +158,12 @@ export default function FormAge() {
               labelPlacement="end"
             />
             <Typography variant="p">*BEER CLUB ES SOLO PARA MAYORES DE 18 AÑOS, <br/> NO SELECCIONES ESTA OPCIÓN SI COMPARTES ESTE COMPUTADOR CON MENORES DE EDAD.</Typography>
+            <Button variant="contained" size="large" type="submit" sx={{pt:'7px', mx:'auto', my: 5, fontWeight: 'bold' }}>
+              Ingresar
+            </Button>
           </div>
           )}
         </FormGroup>
-        {dirtyFields.day && dirtyFields.month && dirtyFields.year && (
-        <Button variant="contained" size="large" type="submit" sx={{pt:'7px', mx:'auto', my: 5, fontWeight: 'bold' }} data-aos="fade-up">
-          Ingresar
-        </Button>
-        )}
       </FormControl>
     
     </form>
