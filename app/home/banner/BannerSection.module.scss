@@ -21,7 +21,7 @@
       padding: 10px;
       // transform: translate(-50%, -50%);
       animation: appearAndGrow 2s ease-in-out ;
-    
+    }
     
     &_title{
         text-transform: uppercase;
@@ -42,7 +42,7 @@
       
         }    
    
-      }
+    
       &_slogan{      
           margin-top: 10px; 
           color: #fff;
@@ -67,4 +67,6 @@
     
     }
   }
+
+}
 }
