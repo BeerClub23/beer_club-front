@@ -20,6 +20,8 @@ import { Content } from 'next/font/google';
 import { usePathname, useSearchParams } from 'next/navigation'
 import { useRouter } from 'next/navigation';
 import './headerPublic.scss'
+import Slide from '@mui/material/Slide';
+import useScrollTrigger from '@mui/material/useScrollTrigger';
 
 
 const drawerWidth = 240;
@@ -53,10 +55,13 @@ export default function HeaderGeneral(props) {
     </Box>
   );
 
+  const trigger = useScrollTrigger({
+    target: window ? window() : undefined,
+  });
   const container = window !== undefined ? () => window().document.body : undefined;
     return (
       <header>
-        
+        <Slide appear={false} direction="down" in={!trigger}>
           <AppBar component="nav" >
           <Container>
             <Toolbar sx={{ justifyContent: 'space-between'}}>
@@ -87,6 +92,7 @@ export default function HeaderGeneral(props) {
             </Toolbar>
             </Container>
           </AppBar>
+        </Slide>
         <nav >
           <Drawer
             container={container}
