@@ -2,7 +2,7 @@ import useSWR from "swr";
 
 const get = url => fetch(url).then(r => r.json());
 
-const aboutSteps = [
+export const aboutSteps = [
     {   
         'icon': 'LoyaltyIcon',
         'title': 'Paso 1',
@@ -29,7 +29,7 @@ const aboutSteps = [
     }
 ]
 
-export const useGetAboutSteps = () => {
+/*export const useGetAboutSteps = () => {
     const { data, error, isLoading } = useSWR(`/api/v1/aboutSteps`, get, { fallbackData: aboutSteps, shouldRetryOnError: false, errorRetryCount: 1 });
 
     return {
@@ -37,4 +37,4 @@ export const useGetAboutSteps = () => {
         isLoading,
         isError: error
     }
-}
+}*/

@@ -36,7 +36,7 @@ const settings = {
 };
 
 const AboutSection = () => {
-  const { data, isLoading, isError} = useGetAboutSteps();
+  // const { data, isLoading, isError} = useGetAboutSteps();
   
  
   return (

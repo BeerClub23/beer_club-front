@@ -16,7 +16,7 @@ export default function AgePage() {
 
 
   return (
-    <main className={styles.main}>
+    <main className={styles.mainAge}>
       <ThemeProvider theme={theme}>
       <Image
         src={Logo}
