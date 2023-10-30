@@ -1,7 +1,11 @@
 .bc-subscription-section {
-    display: grid;
+   /* display: grid;
     grid-template-columns: auto auto auto;
+    gap: 3%;*/
+   
     gap: 3%;
+    
+
 
     &__title {
         text-align: center;
@@ -20,17 +24,20 @@
     }
 
     @media (max-width: 450px) {
-        grid-template-columns: auto;
-        gap: 10px;
+    /*    grid-template-columns: auto;
+        gap: 10px;*/
+
+        width: 80%;
+        margin: 0 auto;
 
         &__title {
             font-size: 36px;
         }
     }
 
-    @media (min-width: 451px) and (max-width: 900px) {
-        grid-template-columns: auto;
-        gap: 0;
+    @media (min-width: 451px) and (max-width: 1200px) {
+     /*   grid-template-columns: auto;
+        gap: 0;*/
 
         &__title {
             font-size: 48px;

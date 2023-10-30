@@ -12,6 +12,7 @@
     margin: auto;
     z-index: 1;
     position: relative;
+    
 
     &-container {
         max-width: 350px;
@@ -113,13 +114,13 @@
 
     @media (min-width: 451px) and (max-width: 600px) {
         &-container {
-           margin: auto;
+           margin: 0 auto;
         }
     }
 
-    @media (min-width: 601px) and (max-width: 900px) {
+    @media (min-width: 601px) and (max-width: 1200px) {
         &-container {
-           margin: auto;
+           margin: 0 auto;
         }
     }
 }

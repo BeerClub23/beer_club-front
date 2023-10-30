@@ -16,7 +16,7 @@ export const AboutUsCard = () => {
                 <p className={styles.containerArticle_spanText}data-aos="fade-up"><span >... y salud a la pasión por la cerveza!</span></p>
             </div>
             <div className={styles.containerArticle_imageAside}> 
-                <Image src={lupulo} width={220} height={285} className={styles.containerArticle_pic}alt='logo' />   
+                <Image src={lupulo} width={220} height={285} className={styles.containerArticle_pic}alt='Imagen' />   
             </div>
       </article>
   )
