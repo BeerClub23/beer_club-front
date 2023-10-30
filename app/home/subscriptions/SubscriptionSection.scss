@@ -27,11 +27,17 @@
        
     }
     .slick-prev:before, .slick-next:before{
-        content: url('../../../public/images/icons/chevron-right-solid-black.svg');
-        color:var(--primary);
+        content: url('../../../public/images/icons/chevron-right-solid-primary.svg');
+        opacity: 0.7;
+        margin: -40px;
     }
+
     .slick-prev{
         transform: rotateY(180deg);
+    }
+
+    .slick-dots {
+        margin-bottom: 10px;
     }
 
 

@@ -2,7 +2,7 @@
 import React from 'react'
 import { Container } from '@mui/material';
 import AboutStepCard from '../../components/aboutCard/AboutCard'
-import styles from './AboutSection.module.scss'
+import './AboutSection.scss'
 import {aboutSteps} from '../../services/about'
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
@@ -30,10 +30,18 @@ const AboutSection = () => {
         }
       },
       {
-        breakpoint: 900,
+        breakpoint: 870,
         settings: {
           slidesToShow: 1,
           slidesToScroll: 1
+        }
+      },
+      {
+        breakpoint: 600,
+        settings: {
+          autoplay: true,    
+          slidesToShow: 1,
+          arrows: false
         }
       }
     ]
@@ -41,13 +49,13 @@ const AboutSection = () => {
  
 
   return (
-    <section id='como-funciona' className={styles.aboutSection}>
+    <section id='como-funciona' className='aboutSection'>
         <Container>        
-          <h2 className={styles.aboutSection_title }>
+          <h2 className='aboutSection_title'>
             Descubrí los beneficios de unirte a Beer Club
           </h2>
-          <article className={styles.aboutSection_aboutArticle}> 
-          <Slider className={styles.aboutSection_slicks}{...settings}>
+          <article className='aboutSection_aboutArticle'> 
+          <Slider {...settings}>
             {aboutSteps.map((step, index)=>         
             <AboutStepCard
               key={index}

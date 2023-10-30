@@ -16,12 +16,32 @@
         
     }    
 
-    &_slicks{
-        margin-bottom: 30px;    
-       
+    
+    .slick-prev:before, .slick-next:before{
+      color: aliceblue;
+      content: url('../../../public/images/icons/chevron-right-solid-black.svg');
+      opacity: 0.2;
+    }
+    
+    .slick-prev{
+      transform: rotateY(180deg);
+    }
+    
+    .slick-dots li button:before {
+      color: #fff;
+      
     }
 
+    .slick-dots li.slick-active button:before{     
+      color: white;
+    }
 
+    .slick-dots {
+      position: static;
+      margin-bottom: 10px;
+    }
+    
+  
     @media (min-width: 345px) {
       
         &_title {
