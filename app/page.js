@@ -1,5 +1,5 @@
 "use client"
-import styles from './page.module.scss'
+import './page.scss'
 import * as React from 'react';
 import {  ThemeProvider } from '@mui/material';
 import Image from 'next/image';
@@ -16,14 +16,14 @@ export default function AgePage() {
 
 
   return (
-    <main className={styles.mainAge}>
+    <main className="mainAge">
       <ThemeProvider theme={theme}>
       <Image
         src={Logo}
-        width={300}
-        height={300}
+        width={200}
+        height={200}
         alt='Beer Club Logo'
-        className={styles.logo_age}
+        className="logo_age"
       />
       <FormAge/>
       
