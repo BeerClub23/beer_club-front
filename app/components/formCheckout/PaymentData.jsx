@@ -4,13 +4,44 @@ import { useFormContext} from 'react-hook-form'
 import { CustomTextField } from './inputs/CustomTextFields';
 import { ErrorMessage } from '@hookform/error-message';
 import { Box } from '@mui/material';
+import Cards ,{Focused}from 'react-credit-cards-2';
+import { useState, ChangeEvent, FocusEvent, } from 'react';
+import 'react-credit-cards-2/dist/es/styles-compiled.css';
+
 
 
 const PaymentData = () => {
-    const {control, formState:{errors}}=useFormContext()      
+    const {control, formState:{errors}, trigger}=useFormContext()
+    
+    const [state, setState] = useState({
+      number: '',
+      expiry: '',
+      cvc: '',
+      name: '',
+      focus: '',
+    });
+    
+    const handleInputChange = (evt) => {
+      const { name, value } = evt.target;
+      
+      setState((prev) => ({ ...prev, [name]: value }));
+    }
+  
+    const handleInputFocus = (evt) => {
+      console.log(evt.target.name)
+      setState((prev) => ({ ...prev, focus: evt.target.name }));
+    }
     
   return (
     <>
+    <Cards
+        number={state.number}
+        expiry={state.expDate}
+        cvc={state.cvc}
+        name={state.nameOnCard}
+        focused={state.focus}
+     
+      />
       
       <Box
         sx={{
@@ -25,55 +56,81 @@ const PaymentData = () => {
      
       </Box>
         <CustomTextField
-            name="card.number"
+            name="number"
             label="Numero de Tarjeta"
             type="text"                 
             control={control}
             defaultValue=""
-            autocomplete=''         
+            autocomplete=''
+            // value={state.number}            
+            onChange={(e)=>{
+              handleInputChange(e)
+              trigger("number")
+            }
+          }     
+            onFocus={handleInputFocus}    
           
         />
 
         <Typography variant='caption' color='red'>
-            <ErrorMessage errors={errors} name="card.number" />
+            <ErrorMessage errors={errors} name="number" />
         </Typography>
 
         <CustomTextField
-            name="card.nameOnCard"
+            name="nameOnCard"
             label="Nombre en la Tarjeta"
             type="text"
             control={control}
             defaultValue=""
-            autocomplete=""          
+            autocomplete=""  
+            // value={state.name}
+            onChange={(e)=>{
+              handleInputChange(e)
+              trigger("nameOnCard")
+            }}     
+            onFocus={handleInputFocus}       
         />
 
         <Typography variant='caption' color='red'>
-            <ErrorMessage errors={errors} name="card.nameOnCard" />
+            <ErrorMessage errors={errors} name="nameOnCard" />
         </Typography>
 
         <CustomTextField
-            name="card.expDate"
+            name="expDate"
             label="Fecha de expiración"
             type="text"
             control={control}
             autocomplete=""
             defaultValue=""
+            // value={state.expiry}
+            onChange={(e)=>{
+              handleInputChange(e)
+              trigger("expDate")
+            }}     
+            onFocus={handleInputFocus} 
+            
         />
 
         <Typography variant='caption' color='red'>
-            <ErrorMessage errors={errors} name="card.expDate" />
+            <ErrorMessage errors={errors} name="expDate" />
         </Typography>           
         <CustomTextField
-            name="card.cvc"
+            name="cvc"
             label="codigo de seguridad cvc"
             type="password"
             control={control}
             defaultValue=""
             autocomplete="current-password"
+            // value={state.cvc}
+            onChange={(e)=>{
+              handleInputChange(e)
+              trigger("cvc")
+            }}     
+            onFocus={handleInputFocus} 
         />
 
         <Typography variant='caption' color='red'>
-            <ErrorMessage errors={errors} name="card.cvc" />
+            <ErrorMessage errors={errors} name="cvc" />
         </Typography>
 
         </>

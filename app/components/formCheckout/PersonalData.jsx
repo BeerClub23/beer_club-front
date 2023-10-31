@@ -7,7 +7,7 @@ import InputMask from 'react-input-mask';
 
 const PersonalData = () => {
     const {control, formState:{errors}, trigger} =useFormContext()
-    console.log(errors)
+    
       
   return (
     <>  

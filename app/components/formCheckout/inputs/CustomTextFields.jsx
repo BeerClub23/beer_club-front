@@ -13,6 +13,8 @@ export const CustomTextField = ({
   textFieldProps,
   error,
   message,
+  onChange,
+  onFocus
 }) => {
   return (
     <Controller
@@ -29,7 +31,13 @@ export const CustomTextField = ({
           required={required}
           sx={{ mb: 2, backgroundColor:'transparent' }}
           {...textFieldProps}   
-         
+          onChange={(e) => {
+            field.onChange(e);
+            onChange?.(e);
+          }}
+          onFocus={(e) => {
+            onFocus?.(e);
+          }}
         />
       )}
     />

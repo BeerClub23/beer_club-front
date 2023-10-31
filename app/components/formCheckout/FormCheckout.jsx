@@ -111,7 +111,7 @@ export const FormCheckout = ({id
         }
     };
     const handleNext3 = async() => {
-        await trigger(["card.number","card.nameOnCard","card.expDate","card.cvc"]);
+        await trigger(["number","nameOnCard","expDate","cvc"]);
     };
 
     const handleBack = () => {

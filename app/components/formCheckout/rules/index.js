@@ -1,19 +1,14 @@
 import * as yup from "yup";
 
 function calculateAge(birthDate) {
-    const today = new Date();
-    
-    const dob = new Date(birthDate);
-    
-    dob.setHours(dob.getHours() + 3);
-    console.log(dob);
+    const today = new Date();    
+    const dob = new Date(birthDate);    
+    dob.setHours(dob.getHours() + 3);   
     const age = today.getFullYear() - dob.getFullYear();
-    const monthDiff = today.getMonth() - dob.getMonth();
-  
+    const monthDiff = today.getMonth() - dob.getMonth();  
     if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < dob.getDate())) {
       return age - 1;
-    }
-    console.log(age)
+    }    
     return age;
   }
 
