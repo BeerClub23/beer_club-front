@@ -7,26 +7,8 @@ import InputMask from 'react-input-mask';
 
 const PersonalData = () => {
     const {control, formState:{errors}, trigger} =useFormContext()
-    
-    function calculateAge(birthDate) {
-        const today = new Date();
-        console.log(today);
-        const dob = new Date(birthDate);
-        dob.setHours(dob.getHours() + 3);
-        console.log(dob);
-        const age = today.getFullYear() - dob.getFullYear();
-        const monthDiff = today.getMonth() - dob.getMonth();
+    console.log(errors)
       
-        if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < dob.getDate())) {
-          return age - 1;
-        }
-      
-        return age;
-      }
-    const age =  ((value) =>{      
-        const age = calculateAge(new Date(value));     
-        return age >= 18})
-    
   return (
     <>  
       
@@ -60,27 +42,24 @@ const PersonalData = () => {
                     }}
                 />
 
-
                 <Typography variant='caption' color='red'>
                     <ErrorMessage errors={errors} name="customer.lastName" />
                 </Typography>
                
               <CustomTextField
                     name="customer.dateOfBirth"
-                    label="DDMMAAAA"
+                    label="DD/MM/AAAA"
                     type="date"
                     control={control}
                     defaultValue="DD-MM-AAAA"
                     autocomplete=""
                     onChange={()=>{
                         trigger("customer.dateOfBirth")
-                        trigger(age)
                     }}
                 /> 
 
-
                 <Typography variant='caption' color='red'>
-                    <ErrorMessage errors={errors} name="customer.datoOfBirth" />
+                    <ErrorMessage errors={errors} name="customer.dateOfBirth" />
                 </Typography>
 
                 <CustomTextField
@@ -91,12 +70,11 @@ const PersonalData = () => {
                     defaultValue="+54 9 "
                     autocomplete=""
                     onChange={()=>{
-                        trigger("customer.dateOfBirth")
+                        trigger("customer.phoneNumber")
                     }}
                 /> 
 
-
-                <Typography variant='caption' color='red'>
+                <Typography variant='caption' color='red' sx={{marginBottom:'0px'}}>
                     <ErrorMessage errors={errors} name="customer.phoneNumber" />
                 </Typography>
 

@@ -97,7 +97,7 @@ export const FormCheckout = ({id
     /***************************************************** */
 
     const handleNext = async() => {
-        let isValidate= await trigger(["customer.name","customer.lastName","customer.email", "customer.password", "customer.passwordConfirm"]);
+        let isValidate= await trigger(["customer.name","customer.lastName","customer.dateOfBirth","customer.phoneNumber","customer.email", "customer.password", "customer.passwordConfirm"]);
         if(step == 1 && isValidate){
             // setFormData({...formData, customer: data})
             setStep((prevStep) => prevStep + 1)
@@ -151,21 +151,15 @@ export const FormCheckout = ({id
                         {step==2 &&<AddressData/>}
                         {status && <Alert severity="error">{status}</Alert>} 
                         {step==3 &&<PaymentData/>}  
-                        
-                        {/* <Box>
-                            {step>1 && <Button  variant="contained" color="primary"sx={{margin: 2}} onClick={handlePrevStep}>Anterior</Button>}
-                            {step<3 && <Button  type="submit" variant="contained" color="primary"sx={{margin: 2}} onClick={handleNextStep}>Siguiente</Button>}
-                            {step==3 &&  <Button type="submit" variant="contained" color="primary"sx={{margin: 2}}>
-                                Enviar
-                            </Button> }
-                        </Box> */}
+                       
 
                             <Box>
-                                {/* <Box sx={{ display: 'flex', flexDirection: 'row', pt: 2 }}> */}
+                              
                             <Button
-                                variant="outlined"
-                                color="inherit"
+                                variant="contained"
+                                color="primary"
                                 disabled={step === 1}
+                                sx={{margin: 2}}
                                 onClick={handleBack}
                                 sx={{ mr: 1 }}
                              >
