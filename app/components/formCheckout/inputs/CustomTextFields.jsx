@@ -28,8 +28,7 @@ export const CustomTextField = ({
           fullWidth
           required={required}
           sx={{ mb: 2, backgroundColor:'transparent' }}
-          {...textFieldProps}
-     
+          {...textFieldProps}   
          
         />
       )}

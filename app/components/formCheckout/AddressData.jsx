@@ -17,6 +17,9 @@ const AddressData = () => {
             control={control}
             defaultValue=""
             autocomplete=""
+            onChange={()=>{
+                trigger("address.address1")
+            }}
         />
 
         <Typography variant='caption' color='red'>
@@ -30,6 +33,9 @@ const AddressData = () => {
             control={control}
             defaultValue=""
             autocomplete=""
+            onChange={()=>{
+                trigger("address.address2")
+            }}
         />
         <Typography variant='caption'color='red'>
             <ErrorMessage errors={errors} name="address.address2" />
@@ -42,6 +48,9 @@ const AddressData = () => {
             control={control}
             defaultValue=""
             autocomplete=""
+            onChange={()=>{
+                trigger("address.city")
+            }}
         />
         <Typography variant='caption'color='red'>
             <ErrorMessage errors={errors} name="address.city" />
@@ -54,6 +63,9 @@ const AddressData = () => {
             control={control}
             defaultValue=""
             autocomplete=""
+            onChange={()=>{
+                trigger("address.state")
+            }}
         />
         <Typography variant='caption' color='red'>
             <ErrorMessage errors={errors} name="address.state" />
@@ -66,13 +78,13 @@ const AddressData = () => {
             control={control}
             defaultValue=""
             autocomplete=""
+            onChange={()=>{
+                trigger("address.zipCode")
+            }}
         />
         <Typography variant='caption' color='red'>
             <ErrorMessage errors={errors} name="address.zipCode" />
         </Typography>
-
-
-
         </>
   )
   
