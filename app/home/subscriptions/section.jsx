@@ -18,23 +18,26 @@ const SubscriptionsSection = () => {
     const router = useRouter();
     const settings = {
       dots: true,
-      infinite: false,
+      infinite: true,
       speed: 500,
       slidesToShow: 3,
       slidesToScroll: 1,
       initialSlide:1,      
       arrows:true,  
+      mobileFirst: false,
       responsive: [    
         {
           breakpoint: 1200,
           settings: {
             slidesToShow: 2,
+            slidesToScroll:1
           }
         },
         {
           breakpoint: 870,
           settings: {
             slidesToShow: 1,
+            slidesToScroll:1,
           }
         },
         {
@@ -42,6 +45,7 @@ const SubscriptionsSection = () => {
           settings: {
             autoplay: true,    
             slidesToShow: 1,
+            slidesToScroll:1,
             arrows: false
           }
         }
@@ -51,7 +55,7 @@ const SubscriptionsSection = () => {
 
     const goToRegister = (subscription) => {
         setContext( {...context, subscription});
-        router.push('/register');
+        router.push('/suscribirse');
     }
 
     return (

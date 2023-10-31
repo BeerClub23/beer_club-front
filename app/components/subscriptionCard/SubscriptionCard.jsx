@@ -2,6 +2,8 @@ import React from 'react';
 import './SubscriptionCard.scss';
 
 const SubscriptionCard = ({title, benefits, price, isRecommended, action}) => {
+
+    
     return (
       <article className='bc-subscription-card-container'>
         <div className={`bc-subscription-card__recommended ${isRecommended ? 'active' : ''}`} >

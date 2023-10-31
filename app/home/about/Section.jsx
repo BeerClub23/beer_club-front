@@ -20,6 +20,7 @@ const AboutSection = () => {
     slidesToScroll: 0,
     initialSlide: 0,
     arrows: true,
+    mobileFirst:false,
     responsive: [    
       {
         breakpoint: 1200,
@@ -41,6 +42,7 @@ const AboutSection = () => {
         settings: {
           autoplay: true,    
           slidesToShow: 1,
+          slidesToScroll:1,
           arrows: false
         }
       }
