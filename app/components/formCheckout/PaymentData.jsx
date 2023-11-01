@@ -71,7 +71,7 @@ const PaymentData = () => {
           
         />
 
-        <Typography variant='caption' color='red'>
+        <Typography variant='caption' color='#d32f2fcf'>
             <ErrorMessage errors={errors} name="card.number" />
         </Typography>
 
@@ -90,7 +90,7 @@ const PaymentData = () => {
             onFocus={handleInputFocus}       
         />
 
-        <Typography variant='caption' color='red'>
+        <Typography variant='caption' color='#d32f2fcf'>
             <ErrorMessage errors={errors} name="card.nameOnCard" />
         </Typography>
 
@@ -110,7 +110,7 @@ const PaymentData = () => {
             
         />
 
-        <Typography variant='caption' color='red'>
+        <Typography variant='caption' color='#d32f2fcf'>
             <ErrorMessage errors={errors} name="card.expDate" />
         </Typography>           
         
@@ -129,7 +129,7 @@ const PaymentData = () => {
             onFocus={handleInputFocus} 
         />
 
-        <Typography variant='caption' color='red'>
+        <Typography variant='caption' color='#d32f2fcf'>
             <ErrorMessage errors={errors} name="card.cvc" />
         </Typography>
 

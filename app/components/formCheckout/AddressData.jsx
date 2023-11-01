@@ -22,7 +22,7 @@ const AddressData = () => {
             }}
         />
 
-        <Typography variant='caption' color='red'>
+        <Typography variant='caption' color='#d32f2fcf'>
             <ErrorMessage errors={errors} name="address.address1" />
         </Typography>
 
@@ -37,7 +37,7 @@ const AddressData = () => {
                 trigger("address.address2")
             }}
         />
-        <Typography variant='caption'color='red'>
+        <Typography variant='caption'color='#d32f2fcf'>
             <ErrorMessage errors={errors} name="address.address2" />
         </Typography>
 
@@ -52,7 +52,7 @@ const AddressData = () => {
                 trigger("address.city")
             }}
         />
-        <Typography variant='caption'color='red'>
+        <Typography variant='caption'color='#d32f2fcf'>
             <ErrorMessage errors={errors} name="address.city" />
         </Typography>
 
@@ -67,7 +67,7 @@ const AddressData = () => {
                 trigger("address.state")
             }}
         />
-        <Typography variant='caption' color='red'>
+        <Typography variant='caption' color='#d32f2fcf'>
             <ErrorMessage errors={errors} name="address.state" />
         </Typography>
 
@@ -82,7 +82,7 @@ const AddressData = () => {
                 trigger("address.zipCode")
             }}
         />
-        <Typography variant='caption' color='red'>
+        <Typography variant='caption' color='#d32f2fcf'>
             <ErrorMessage errors={errors} name="address.zipCode" />
         </Typography>
         </>

@@ -26,7 +26,7 @@ const PersonalData = () => {
                     }}    
                     
                 />
-                <Typography variant='caption' color='red' >
+                <Typography variant='caption' color='#d32f2fcf' >
                     <ErrorMessage errors={errors} name="customer.name"/>
                 </Typography>
 
@@ -42,7 +42,7 @@ const PersonalData = () => {
                     }}
                 />
 
-                <Typography variant='caption' color='red'>
+                <Typography variant='caption' color='#d32f2fcf'>
                     <ErrorMessage errors={errors} name="customer.lastName" />
                 </Typography>
                
@@ -58,7 +58,7 @@ const PersonalData = () => {
                     }}
                 /> 
 
-                <Typography variant='caption' color='red'>
+                <Typography variant='caption' color='#d32f2fcf'>
                     <ErrorMessage errors={errors} name="customer.dateOfBirth" />
                 </Typography>
 
@@ -74,7 +74,7 @@ const PersonalData = () => {
                     }}
                 /> 
 
-                <Typography variant='caption' color='red' sx={{marginBottom:'0px'}}>
+                <Typography variant='caption' color='#d32f2fcf' sx={{marginBottom:'0px'}}>
                     <ErrorMessage errors={errors} name="customer.phoneNumber" />
                 </Typography>
 
@@ -91,7 +91,7 @@ const PersonalData = () => {
                     }}
                 />
 
-                <Typography variant='caption' color='red'>
+                <Typography variant='caption' color='#d32f2fcf'>
                     <ErrorMessage errors={errors} name="customer.email" />
                 </Typography>
 
@@ -107,7 +107,7 @@ const PersonalData = () => {
                     
                    }}              
             /> 
-            <Typography variant='caption' color='red'>
+            <Typography variant='caption' color='#d32f2fcf'>
                 <ErrorMessage errors={errors} name="customer.password" />
             </Typography>  
 
@@ -144,7 +144,7 @@ const PersonalData = () => {
               
         </CustomTextField>
 
-                <Typography variant='caption' color='red'>
+                <Typography variant='caption' color='#d32f2fcf'>
                     <ErrorMessage errors={errors} name="customer.password" />
                 </Typography>
       */}
@@ -157,7 +157,7 @@ const PersonalData = () => {
                     autocomplete="new-password"
                 />
 
-                <Typography variant='caption' color='red'>
+                <Typography variant='caption' color='#d32f2fcf'>
                     <ErrorMessage errors={errors} name="customer.passwordConfirm" />
                 </Typography>
             </Box>
