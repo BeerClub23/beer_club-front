@@ -14,8 +14,8 @@ import './PlanCardForm.scss'
 const PlanCardForm = () => {
   return (
     <ThemeProvider theme={theme}>
-      <Card className='container'sx={{ minWidth: 200, maxWidth:'500px', margin:'0 auto'}}>
-        <CardContent>
+      <Card className='cardContainer'sx={{ minWidth: 200, maxWidth:'500px', margin:'0 auto'}}>
+        <CardContent className='cardContainer_text'>
           <Typography sx={{ fontSize: 16, fontWeight:'600' }} color="text.primary" gutterBottom>
             Tu Plan: Novato
           </Typography>
@@ -29,7 +29,7 @@ const PlanCardForm = () => {
           </Typography>
       </CardContent>
       <CardContent>
-      <Image src={chop} width={50} height={71} alt='logo' className='container_picMobile'  />  
+      <Image src={chop} width={50} height={71} alt='logo' className='cardContainer_picMobile'  />  
       </CardContent>
        {/* <CardActions>
         <Button sx={{ margin:'0 auto'}} size="small">Detalles</Button>

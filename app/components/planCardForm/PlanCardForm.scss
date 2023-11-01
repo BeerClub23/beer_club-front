@@ -1,6 +1,10 @@
-.container{
+.cardContainer{
     display: grid;
-grid-template-columns: 70% auto;
+    grid-template-columns: 70% auto;
+
+    &_text{
+        padding-left: 24px;
+    }
 
     &_picMobile{
         transform: rotate(45deg);
