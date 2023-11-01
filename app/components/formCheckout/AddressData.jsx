@@ -6,7 +6,7 @@ import { ErrorMessage } from '@hookform/error-message';
 
 
 const AddressData = () => {
-    const {control, formState:{errors}} =useFormContext()
+    const {control, formState:{errors}, trigger} =useFormContext()
 
   return (
     <>

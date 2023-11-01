@@ -38,9 +38,10 @@ export const FormCheckout = ({id
            
         }        
         if(step === 3){
+            
             console.log(JSON.stringify({...data}));
             router.push('/congratulations');
-        //  setFormData({...formData, card: data})   
+            // setFormData({...formData, card: data})   
         // fetch('http://localhost:3000/api/checkout', 
         // fetch('https://ctd-esp-fe3-final-claralisle.vercel.app/api/checkout', 
       /*  { 
@@ -111,7 +112,7 @@ export const FormCheckout = ({id
         }
     };
     const handleNext3 = async() => {
-        await trigger(["number","nameOnCard","expDate","cvc"]);
+        await trigger(["card.number","card.nameOnCard","card.expDate","card.cvc"]);
     };
 
     const handleBack = () => {

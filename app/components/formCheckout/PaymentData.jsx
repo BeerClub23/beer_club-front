@@ -15,21 +15,21 @@ const PaymentData = () => {
     
     const [state, setState] = useState({
       number: '',
-      expiry: '',
+      expDate: '',
       cvc: '',
-      name: '',
+      nameOnCard: '',
       focus: '',
     });
     
     const handleInputChange = (evt) => {
       const { name, value } = evt.target;
-      
-      setState((prev) => ({ ...prev, [name]: value }));
+      const fieldName = name.replace('card.', '');
+      setState((prev) => ({ ...prev, [fieldName]: value.replace('card.', "") }));
     }
   
     const handleInputFocus = (evt) => {
-      console.log(evt.target.name)
-      setState((prev) => ({ ...prev, focus: evt.target.name }));
+      console.log(evt.target.name.replace('card.', ''))
+      setState((prev) => ({ ...prev, focus: evt.target.name.replace('card.', '') }));
     }
     
   return (
@@ -40,7 +40,6 @@ const PaymentData = () => {
         cvc={state.cvc}
         name={state.nameOnCard}
         focused={state.focus}
-     
       />
       
       <Box
@@ -56,7 +55,7 @@ const PaymentData = () => {
      
       </Box>
         <CustomTextField
-            name="number"
+            name="card.number"
             label="Numero de Tarjeta"
             type="text"                 
             control={control}
@@ -65,7 +64,7 @@ const PaymentData = () => {
             // value={state.number}            
             onChange={(e)=>{
               handleInputChange(e)
-              trigger("number")
+              trigger("card.number")
             }
           }     
             onFocus={handleInputFocus}    
@@ -73,11 +72,11 @@ const PaymentData = () => {
         />
 
         <Typography variant='caption' color='red'>
-            <ErrorMessage errors={errors} name="number" />
+            <ErrorMessage errors={errors} name="card.number" />
         </Typography>
 
         <CustomTextField
-            name="nameOnCard"
+            name="card.nameOnCard"
             label="Nombre en la Tarjeta"
             type="text"
             control={control}
@@ -86,17 +85,17 @@ const PaymentData = () => {
             // value={state.name}
             onChange={(e)=>{
               handleInputChange(e)
-              trigger("nameOnCard")
+              trigger("card.nameOnCard")
             }}     
             onFocus={handleInputFocus}       
         />
 
         <Typography variant='caption' color='red'>
-            <ErrorMessage errors={errors} name="nameOnCard" />
+            <ErrorMessage errors={errors} name="card.nameOnCard" />
         </Typography>
 
         <CustomTextField
-            name="expDate"
+            name="card.expDate"
             label="Fecha de expiración"
             type="text"
             control={control}
@@ -105,17 +104,18 @@ const PaymentData = () => {
             // value={state.expiry}
             onChange={(e)=>{
               handleInputChange(e)
-              trigger("expDate")
+              trigger("card.expDate")
             }}     
             onFocus={handleInputFocus} 
             
         />
 
         <Typography variant='caption' color='red'>
-            <ErrorMessage errors={errors} name="expDate" />
+            <ErrorMessage errors={errors} name="card.expDate" />
         </Typography>           
+        
         <CustomTextField
-            name="cvc"
+            name="card.cvc"
             label="codigo de seguridad cvc"
             type="password"
             control={control}
@@ -124,13 +124,13 @@ const PaymentData = () => {
             // value={state.cvc}
             onChange={(e)=>{
               handleInputChange(e)
-              trigger("cvc")
+              trigger("card.cvc")
             }}     
             onFocus={handleInputFocus} 
         />
 
         <Typography variant='caption' color='red'>
-            <ErrorMessage errors={errors} name="cvc" />
+            <ErrorMessage errors={errors} name="card.cvc" />
         </Typography>
 
         </>
