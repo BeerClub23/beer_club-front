@@ -133,7 +133,7 @@ export const FormCheckout = ({id
                     sx={{p: "32px", display: "flex", flexDirection: "column", gap: 3,  marginBottom:'20px' }}
                 >
                     <Typography variant="p" align="center" sx={{padding:'-32px'}}>
-                         <Image src={logo} width={50} heigth={50} alt='imagen' sx={{margin:'0 auto'}}></Image>
+                         <Image src={logo} width={80} heigth={80} alt='imagen' sx={{margin:'0 auto'}}></Image>
                     </Typography>
                     {step==1 &&<Typography variant="h4" align="center"  sx={{margin:'0'}}>
                         Datos personales                        

@@ -24,13 +24,13 @@ export const theme = createTheme({
         light: '#f7e7cd'
       },
       divider: blueGrey[700],
-        backgroundColor: {
-        // default: grey[1000],
-        // paper: grey[900],  
+        background: {
+         default: grey[1000],
+         paper: grey[900],  
      },      
       text: {
-        primary:  grey[900],
-        secondary: grey[800],
+        primary:  grey[800],
+        secondary: grey[600],
       },
       
     }, 
@@ -39,8 +39,8 @@ export const theme = createTheme({
       styleOverrides:{
         root:{
           backgroundColor:'#Fff',
-          boxShadow:'0px 2px 1px -1px rgba(0,0,0,0.2), 0px 1px 1px 0px rgba(0,0,0,0.5), 0px 1px 3px 0px rgba(0,0,0,0.8)'
-
+          boxShadow:'0px 2px 1px -1px rgba(0,0,0,0.2), 0px 1px 1px 0px rgba(0,0,0,0.5), 0px 1px 3px 0px rgba(0,0,0,0.8)',
+          gap:'0px !important',
         }
       }
     },
@@ -54,10 +54,10 @@ export const theme = createTheme({
     },
     MuiOutlinedInput: {
       styleOverrides:{
-        input: {          
+        input: {     
           '&:-webkit-autofill': {
-            // WebkitBoxShadow: ' 100px inset;',
-            WebkitTextFillColor: '#000',
+           // WebkitBoxShadow: ' 100px inset;',
+           WebkitTextFillColor: '#000',
             // WebkitFillColor: '#907e74',
            },
           '&:-internal-autofill-selected':{            
@@ -69,23 +69,7 @@ export const theme = createTheme({
     },
 
    }
-    /*  components: {
-         MuiInputBase:{
-         // MuiTextField: {
-           styleOverrides:{  
-         
-             root: {
-               '&.Mui-focused':{
-                 backgroundColor: 'yellow', 
-           },   
-               '&.Mui-filled':{
-                 backgroundColor: 'transparent !important', 
-           }             
-             
-             },
-           }
-         },
-       },*/
+    
     
    
 });
