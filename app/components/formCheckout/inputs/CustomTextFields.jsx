@@ -2,6 +2,19 @@ import { TextField } from '@mui/material';
 import React, { ChangeEvent, FocusEvent } from "react";
 import {  Controller } from 'react-hook-form';
 
+/*** */
+import IconButton from '@mui/material/IconButton';
+import Input from '@mui/material/Input';
+import FilledInput from '@mui/material/FilledInput';
+import OutlinedInput from '@mui/material/OutlinedInput';
+import InputLabel from '@mui/material/InputLabel';
+import InputAdornment from '@mui/material/InputAdornment';
+import FormHelperText from '@mui/material/FormHelperText';
+import FormControl from '@mui/material/FormControl';
+
+import Visibility from '@mui/icons-material/Visibility';
+import VisibilityOff from '@mui/icons-material/VisibilityOff';
+/*** */
 
 export const CustomTextField = ({
   name,
@@ -14,14 +27,16 @@ export const CustomTextField = ({
   error,
   message,
   onChange,
-  onFocus
+  onFocus,
+  onBlur,
+
 }) => {
   return (
     <Controller
       name={name}
       control={control}
       defaultValue={defaultValue}
-         render={({ field }) => (
+      render={({ field }) => (
         <TextField
           {...field}
           type={type}
@@ -30,15 +45,20 @@ export const CustomTextField = ({
           fullWidth
           required={required}
           sx={{ mb: 2, backgroundColor:'transparent' }}
-          {...textFieldProps}   
+          {...textFieldProps}  
+          onBlur={(e) => {
+            field.onBlur(e);           
+          }} 
           onChange={(e) => {
             field.onChange(e);
             onChange?.(e);
           }}
           onFocus={(e) => {
             onFocus?.(e);
-          }}
-        />
+          }}           
+        />             
+      
+       
       )}
     />
   );

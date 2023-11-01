@@ -9,8 +9,11 @@ import { FC, useState } from "react";
 import { useFormContext } from "react-hook-form";
 // import { ComicData } from "dh-marvel/features/marvel/comic.types";
 import { useRouter } from "next/navigation";
-import {theme} from '../../styles/materialThemeForm'
+import {theme} from '../../styles/materialThemeFormCheckout'
 import ThemeProvider  from "@mui/material/styles/ThemeProvider";
+import beer from '../../../public/images/aboutUs/dark-chop.png'
+import logo from '../../../public/images/logo/Logo_sin_escudo_Negro.svg'
+import Image from "next/image";
 
 const steps = [
     'Datos Personales',
@@ -27,8 +30,9 @@ export const FormCheckout = ({id
     const [step, setStep] = useState(1);
     const [status, setStatus] = useState('');
     
-    const onSubmit = (data) => {  
-              
+    const onSubmit = (data) => {             
+        
+
         if(step === 1){
             setFormData({...formData, customer: data})
             
@@ -40,7 +44,9 @@ export const FormCheckout = ({id
         if(step === 3){
             
             console.log(JSON.stringify({...data}));
-            router.push('/congratulations');
+            
+            router.push('/bienvenido');
+            
             // setFormData({...formData, card: data})   
         // fetch('http://localhost:3000/api/checkout', 
         // fetch('https://ctd-esp-fe3-final-claralisle.vercel.app/api/checkout', 
@@ -85,19 +91,8 @@ export const FormCheckout = ({id
         }
     };    
 
-    /***************************************************** */
-  
-    /*const handlePrevStep = ()=>{        
-        setStep(step - 1)
-    }
-
-    const handleNextStep = ()=>{    
-        setStep(step + 1)
-    }*/
-
-    /***************************************************** */
-
     const handleNext = async() => {
+      
         let isValidate= await trigger(["customer.name","customer.lastName","customer.dateOfBirth","customer.phoneNumber","customer.email", "customer.password", "customer.passwordConfirm"]);
         if(step == 1 && isValidate){
             // setFormData({...formData, customer: data})
@@ -123,8 +118,8 @@ export const FormCheckout = ({id
 	return (
         <>
         <ThemeProvider theme={theme}>
-           <Box >
-                <Stepper activeStep={step-1} alternativeLabel>
+           <Box>
+                <Stepper sx={{margin:"20px"}} activeStep={step-1} alternativeLabel>
                         {steps.map((label) => (
                         <Step key={label}  >
                             <StepLabel>{label}</StepLabel>
@@ -135,11 +130,15 @@ export const FormCheckout = ({id
             <Box sx={{maxWidth: "500px", margin: "0 auto"}}>
                 <Paper
                     elevation={1}
-                    sx={{p: "32px", display: "flex", flexDirection: "column", gap: 3, marginTop:'20px', marginBottom:'20px'}}
+                    sx={{p: "32px", display: "flex", flexDirection: "column", gap: 3,  marginBottom:'20px' }}
                 >
-                    {step==1 &&<Typography variant="h4" align="center">
-                        Datos personales
+                    <Typography variant="p" align="center" sx={{padding:'-32px'}}>
+                         <Image src={logo} width={50} heigth={50} alt='imagen' sx={{margin:'0 auto'}}></Image>
+                    </Typography>
+                    {step==1 &&<Typography variant="h4" align="center"  sx={{margin:'0'}}>
+                        Datos personales                        
                     </Typography>}
+                    
                     {step==2 && <Typography variant="h4" align="center">
                         Dirección de envio
                     </Typography>}
@@ -162,7 +161,7 @@ export const FormCheckout = ({id
                                 disabled={step === 1}
                                 sx={{margin: 2}}
                                 onClick={handleBack}
-                                sx={{ mr: 1 }}
+                                // sx={{ mr: 1 }}
                              >
                                 Volver
                              </Button>

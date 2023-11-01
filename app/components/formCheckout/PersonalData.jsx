@@ -3,12 +3,13 @@ import { Box, Typography } from '@mui/material'
 import React from 'react'
 import { CustomTextField } from './inputs/CustomTextFields'
 import { useFormContext } from 'react-hook-form'
-import InputMask from 'react-input-mask';
+
+
+
 
 const PersonalData = () => {
     const {control, formState:{errors}, trigger} =useFormContext()
-    
-      
+
   return (
     <>  
       
@@ -22,8 +23,7 @@ const PersonalData = () => {
                     autocomplete=""
                     onChange={()=>{
                         trigger("customer.name")
-                    }}
-                   
+                    }}    
                     
                 />
                 <Typography variant='caption' color='red' >
@@ -52,8 +52,8 @@ const PersonalData = () => {
                     type="date"
                     control={control}
                     defaultValue="DD-MM-AAAA"
-                    autocomplete=""
-                    onChange={()=>{
+                    // autocomplete=""
+                    onBlur={()=>{
                         trigger("customer.dateOfBirth")
                     }}
                 /> 
@@ -64,12 +64,12 @@ const PersonalData = () => {
 
                 <CustomTextField
                     name="customer.phoneNumber"
-                    label="phone number"
+                    label="Teléfono"
                     type='text'
                     control={control}
-                    defaultValue="+54 9 "
+                    defaultValue=""
                     autocomplete=""
-                    onChange={()=>{
+                    onBlur={()=>{
                         trigger("customer.phoneNumber")
                     }}
                 /> 
@@ -86,7 +86,7 @@ const PersonalData = () => {
                     control={control}
                     defaultValue=""
                     autocomplete=""
-                    onChange={()=>{
+                    onBlur={()=>{
                         trigger("customer.email")
                     }}
                 />
@@ -95,19 +95,59 @@ const PersonalData = () => {
                     <ErrorMessage errors={errors} name="customer.email" />
                 </Typography>
 
-                <CustomTextField
+                  <CustomTextField
                     name="customer.password"
                     label="Contraseña"
-                    type="password"
+                    type='password'
                     control={control}
                     defaultValue=""
-                    autocomplete="new-password"                    
-                />
+                    autocomplete="new-password"  
+                    onBlur={()=>{
+                        trigger("customer.password")                   
+                    
+                   }}              
+            /> 
+            <Typography variant='caption' color='red'>
+                <ErrorMessage errors={errors} name="customer.password" />
+            </Typography>  
+
+
+        {/* <CustomTextField sx={{ m: 1, width: '25ch' }} variant="outlined"
+            fullWidth       
+            sx={{ mb: 2, backgroundColor:'transparent' }}
+            name='customer.password'    
+            type='password'       
+            control={control}
+            onBlur={()=>{
+                trigger("customer.password")
+        }}                   
+       >
+        
+        <InputLabel htmlFor="filled-adornment-password">Contraseña</InputLabel>
+          <FilledInput
+          
+            id="filled-adornment-password"
+            type={showPassword ? 'text' : 'password'}
+            endAdornment={
+              <InputAdornment position="end">
+                <IconButton
+                  aria-label="toggle password visibility"
+                  onClick={handleClickShowPassword}
+                //   onMouseDown={handleMouseDownPassword}
+                  edge="end"
+                >
+                  {showPassword ? <VisibilityOff /> : <Visibility />}
+                </IconButton>
+              </InputAdornment>
+            }
+          />   
+              
+        </CustomTextField>
 
                 <Typography variant='caption' color='red'>
                     <ErrorMessage errors={errors} name="customer.password" />
                 </Typography>
-
+      */}
                 <CustomTextField
                     name="customer.passwordConfirm"
                     label="Confirmacion de contraseña"
