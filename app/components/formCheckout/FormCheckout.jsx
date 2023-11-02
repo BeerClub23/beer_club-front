@@ -5,13 +5,11 @@ import Typography from "@mui/material/Typography";
 import PersonalData from "./PersonalData";
 import AddressData from "./AddressData";
 import PaymentData from "./PaymentData";
-import { FC, useState } from "react";
+import { FC, useEffect, useState } from "react";
 import { useFormContext } from "react-hook-form";
-// import { ComicData } from "dh-marvel/features/marvel/comic.types";
 import { useRouter } from "next/navigation";
 import {theme} from '../../styles/materialThemeFormCheckout'
 import ThemeProvider  from "@mui/material/styles/ThemeProvider";
-import beer from '../../../public/images/aboutUs/dark-chop.png'
 import logo from '../../../public/images/logo/Logo_sin_escudo_Negro.svg'
 import Image from "next/image";
 
@@ -21,27 +19,37 @@ const steps = [
     'Datos del pago',
   ];
 
-export const FormCheckout = ({id    
-    // , comic
-}) => { 
+export const FormCheckout = ({category}) => { 
+    
     const router = useRouter()  
     const {handleSubmit, trigger} =useFormContext()
-    const [formData, setFormData] = useState({});
+    const [formData, setFormData] = useState({data:{category}});
     const [step, setStep] = useState(1);
     const [status, setStatus] = useState('');
-    
-    const onSubmit = (data) => {             
-        
 
+    console.log(JSON.stringify({...formData}));
+   /* useEffect(()=>{
+        setFormData({...formData, category:category})
+    }, [])*/
+    
+    
+    
+    const onSubmit = (data) => {    
+        
+        
+        
         if(step === 1){
-            setFormData({...formData, customer: data})
+            setFormData({...formData, customer: data})            
             
         }
+        
         if(step === 2){
             setFormData({...formData, address: data})
-           
+          
+            
         }        
-        if(step === 3){
+        if(step === 3){            
+            
             
             console.log(JSON.stringify({...data}));
             

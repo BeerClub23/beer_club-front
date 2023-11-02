@@ -28,7 +28,7 @@ const PaymentData = () => {
     }
   
     const handleInputFocus = (evt) => {
-      console.log(evt.target.name.replace('card.', ''))
+      
       setState((prev) => ({ ...prev, focus: evt.target.name.replace('card.', '') }));
     }
     

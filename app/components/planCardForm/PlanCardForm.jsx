@@ -11,25 +11,26 @@ import Image from 'next/image';
 import chop from '../../../public/images/aboutUs/lupulo.png'
 import './PlanCardForm.scss'
 
-const PlanCardForm = () => {
+const PlanCardForm = ({category}) => {
+  
   return (
     <ThemeProvider theme={theme}>
       <Card className='cardContainer'sx={{ minWidth: 200, maxWidth:'500px', margin:'0 auto'}}>
         <CardContent className='cardContainer_text'>
           <Typography sx={{ fontSize: 16, fontWeight:'600' }} color="text.primary" gutterBottom>
-            Tu Plan: Novato
+            Tu Plan: {category?.title}
           </Typography>
           <Typography variant="h5" component="div">          
           </Typography>
           <Typography sx={{ mb: 1.5, fontSize:'1rem', fontWeight:'500' }} color="text.secondary">
-            $100 Mensuales
+            Valor mensual: {category?.price}.
           </Typography>
           <Typography variant="body2" color="text.secondary">
             *Envio gratis
           </Typography>
       </CardContent>
       <CardContent>
-      <Image src={chop} width={50} height={71} alt='logo' className='cardContainer_picMobile'  />  
+      <Image src={chop} width={50} height={71} alt='logo' priority className='cardContainer_picMobile'  />  
       </CardContent>
        {/* <CardActions>
         <Button sx={{ margin:'0 auto'}} size="small">Detalles</Button>

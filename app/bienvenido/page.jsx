@@ -17,14 +17,14 @@ const ConfirmPage = () => {
   <ThemeProvider theme={theme}>
     <HeaderPublic/>
       <Box component="main" sx={{ pt: 13 } } className='containerBox' >
+        
+        <Typography variant="h4" className='containerBox_title'>Ya sos parte de Beer Club!!! </Typography> 
         <Image src={Logo}
           width={300}
           height={300}
           alt='Beer Club Logo'
           />
-        <Typography variant="h4" className='container_title'>Felicitaciones por tu suscripcion!!! </Typography> 
-        
-        
+      
       </Box>
     
       <Footer/> 
