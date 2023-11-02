@@ -1,20 +1,31 @@
-import React from 'react';
-import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
+import * as React from 'react';
+import Accordion from '@mui/material/Accordion';
+import AccordionDetails from '@mui/material/AccordionDetails';
+import AccordionSummary from '@mui/material/AccordionSummary';
+import Typography from '@mui/material/Typography';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import './accordion.scss';
 
-const Accordion = ({title, content, isActive, setQuestion}) => {
+const AccordionWrapper = ({title, content, isActive, setQuestion}) => {
 
     return (
-      <section className={`bc-accordion ${isActive ? 'active' : ''}`} onClick={setQuestion}>
-        <div className='bc-accordion-title'>{title}<KeyboardArrowDownIcon className='bc-accordion-arrow' sx={{ fontSize: "30px" }}/></div>
-        <hr/>
-        <div className='bc-accordion-content'>
-            {
-                content
-            }
-        </div>
-      </section>   
+      <Accordion expanded={isActive} onChange={setQuestion}>
+        <AccordionSummary
+          expandIcon={<ExpandMoreIcon />}
+          aria-controls="panel1bh-content"
+          id={title}
+        >
+          <Typography sx={{  flexShrink: 0 }}>
+            {title}
+          </Typography>
+        </AccordionSummary>
+        <AccordionDetails>
+          <Typography>
+            {content}
+          </Typography>
+        </AccordionDetails>
+      </Accordion> 
     )
   }
   
-  export default Accordion;
+  export default AccordionWrapper;
