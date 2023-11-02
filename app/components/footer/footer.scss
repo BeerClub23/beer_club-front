@@ -9,10 +9,11 @@
 
 .socialIcon,
 .linkItem {
-  transition: all 0.2s;
+  transition: all 0.3s;
 
   &:hover {
     color: #b8a295;
+    transform: scale(1.1);
   }
 }
 
