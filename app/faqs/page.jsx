@@ -6,6 +6,7 @@ import { Container } from '@mui/material';
 import { useGetFaqs } from "../services/faqs";
 import './faqs.scss'
 import { useState } from "react";
+import AccordionWrapper from "../components/accordion/accordion";
 
 const FaqsPage = () => {
     const { faqs, isLoading, isError } = useGetFaqs();
@@ -24,9 +25,9 @@ const FaqsPage = () => {
             <HeaderPublic/>
             <div className="bc-faqs-container">
                 <Container>
-                    <h2>Resuelve tus dudas</h2>
+                    <h1 className="bc-faqs-container_title">Resuelve tus dudas</h1>
                     {
-                        faqs.map((faq, index) => <Accordion key={index} title={faq.question} content={faq.answer} isActive={activeQuestion === index} setQuestion={() => setQuestion(index)}></Accordion>)
+                        faqs.map((faq, index) => <AccordionWrapper key={index} title={faq.question} content={faq.answer} isActive={activeQuestion === index} setQuestion={() => setQuestion(index)}></AccordionWrapper>)
                     }
                 </Container>
             </div>
