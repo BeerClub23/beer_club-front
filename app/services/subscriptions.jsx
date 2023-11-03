@@ -3,7 +3,7 @@ import useSWR from 'swr';
 const get = url => fetch(url).then(r => r.json());
 
 const subscriptions = [
-    {
+    {   
         'title': 'Novato',
         'description': '',
         'price': '$ 100',

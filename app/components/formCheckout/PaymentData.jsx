@@ -4,13 +4,43 @@ import { useFormContext} from 'react-hook-form'
 import { CustomTextField } from './inputs/CustomTextFields';
 import { ErrorMessage } from '@hookform/error-message';
 import { Box } from '@mui/material';
+import Cards from 'react-credit-cards-2';
+import { useState, ChangeEvent, FocusEvent, } from 'react';
+import 'react-credit-cards-2/dist/es/styles-compiled.css';
+
 
 
 const PaymentData = () => {
-    const {control, formState:{errors}}=useFormContext()      
+    const {control, formState:{errors}, trigger}=useFormContext()
+    
+    const [state, setState] = useState({
+      number: '',
+      expDate: '',
+      cvc: '',
+      nameOnCard: '',
+      focus: '',
+    });
+    
+    const handleInputChange = (evt) => {
+      const { name, value } = evt.target;
+      const fieldName = name.replace('card.', '');
+      setState((prev) => ({ ...prev, [fieldName]: value.replace('card.', "") }));
+    }
+  
+    const handleInputFocus = (evt) => {
+      
+      setState((prev) => ({ ...prev, focus: evt.target.name.replace('card.', '') }));
+    }
     
   return (
     <>
+    <Cards
+        number={state.number}
+        expiry={state.expDate}
+        cvc={state.cvc}
+        name={state.nameOnCard}
+        focused={state.focus}
+      />
       
       <Box
         sx={{
@@ -30,11 +60,18 @@ const PaymentData = () => {
             type="text"                 
             control={control}
             defaultValue=""
-            autocomplete=''         
+            autocomplete=''
+            // value={state.number}            
+            onChange={(e)=>{
+              handleInputChange(e)
+              trigger("card.number")
+            }
+          }     
+            onFocus={handleInputFocus}    
           
         />
 
-        <Typography variant='caption' color='red'>
+        <Typography variant='caption' color='#d32f2fcf'>
             <ErrorMessage errors={errors} name="card.number" />
         </Typography>
 
@@ -44,10 +81,16 @@ const PaymentData = () => {
             type="text"
             control={control}
             defaultValue=""
-            autocomplete=""          
+            autocomplete=""  
+            // value={state.name}
+            onChange={(e)=>{
+              handleInputChange(e)
+              trigger("card.nameOnCard")
+            }}     
+            onFocus={handleInputFocus}       
         />
 
-        <Typography variant='caption' color='red'>
+        <Typography variant='caption' color='#d32f2fcf'>
             <ErrorMessage errors={errors} name="card.nameOnCard" />
         </Typography>
 
@@ -58,11 +101,19 @@ const PaymentData = () => {
             control={control}
             autocomplete=""
             defaultValue=""
+            // value={state.expiry}
+            onChange={(e)=>{
+              handleInputChange(e)
+              trigger("card.expDate")
+            }}     
+            onFocus={handleInputFocus} 
+            
         />
 
-        <Typography variant='caption' color='red'>
+        <Typography variant='caption' color='#d32f2fcf'>
             <ErrorMessage errors={errors} name="card.expDate" />
         </Typography>           
+        
         <CustomTextField
             name="card.cvc"
             label="codigo de seguridad cvc"
@@ -70,9 +121,15 @@ const PaymentData = () => {
             control={control}
             defaultValue=""
             autocomplete="current-password"
+            // value={state.cvc}
+            onChange={(e)=>{
+              handleInputChange(e)
+              trigger("card.cvc")
+            }}     
+            onFocus={handleInputFocus} 
         />
 
-        <Typography variant='caption' color='red'>
+        <Typography variant='caption' color='#d32f2fcf'>
             <ErrorMessage errors={errors} name="card.cvc" />
         </Typography>
 

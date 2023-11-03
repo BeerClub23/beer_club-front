@@ -55,7 +55,8 @@ const SubscriptionsSection = () => {
 
     const goToRegister = (subscription) => {
         setContext( {...context, subscription});
-        router.push('/suscribirse');
+        
+        router.push(`/registro`);
     }
 
     return (
@@ -65,7 +66,7 @@ const SubscriptionsSection = () => {
                 <section className='bc-subscription-section' id='suscribirse'>
                     <Slider {...settings}>
                     {
-                        subscriptions.map((subscription) => <SubscriptionCard key={subscription.title} action={() => goToRegister(subscription.title)} title={subscription.title} price={subscription.price} benefits={subscription.benefits} isRecommended={subscription.isRecommended}></SubscriptionCard>)
+                        subscriptions.map((subscription) => <SubscriptionCard key={subscription.title} action={() => goToRegister(subscription)} title={subscription.title} price={subscription.price} benefits={subscription.benefits} isRecommended={subscription.isRecommended}></SubscriptionCard>)
                     }
                     </Slider>
                 </section>

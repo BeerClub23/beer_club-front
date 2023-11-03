@@ -6,7 +6,7 @@ import { ErrorMessage } from '@hookform/error-message';
 
 
 const AddressData = () => {
-    const {control, formState:{errors}} =useFormContext()
+    const {control, formState:{errors}, trigger} =useFormContext()
 
   return (
     <>
@@ -17,9 +17,12 @@ const AddressData = () => {
             control={control}
             defaultValue=""
             autocomplete=""
+            onChange={()=>{
+                trigger("address.address1")
+            }}
         />
 
-        <Typography variant='caption' color='red'>
+        <Typography variant='caption' color='#d32f2fcf'>
             <ErrorMessage errors={errors} name="address.address1" />
         </Typography>
 
@@ -30,8 +33,11 @@ const AddressData = () => {
             control={control}
             defaultValue=""
             autocomplete=""
+            onChange={()=>{
+                trigger("address.address2")
+            }}
         />
-        <Typography variant='caption'color='red'>
+        <Typography variant='caption'color='#d32f2fcf'>
             <ErrorMessage errors={errors} name="address.address2" />
         </Typography>
 
@@ -42,8 +48,11 @@ const AddressData = () => {
             control={control}
             defaultValue=""
             autocomplete=""
+            onChange={()=>{
+                trigger("address.city")
+            }}
         />
-        <Typography variant='caption'color='red'>
+        <Typography variant='caption'color='#d32f2fcf'>
             <ErrorMessage errors={errors} name="address.city" />
         </Typography>
 
@@ -54,8 +63,11 @@ const AddressData = () => {
             control={control}
             defaultValue=""
             autocomplete=""
+            onChange={()=>{
+                trigger("address.state")
+            }}
         />
-        <Typography variant='caption' color='red'>
+        <Typography variant='caption' color='#d32f2fcf'>
             <ErrorMessage errors={errors} name="address.state" />
         </Typography>
 
@@ -66,13 +78,13 @@ const AddressData = () => {
             control={control}
             defaultValue=""
             autocomplete=""
+            onChange={()=>{
+                trigger("address.zipCode")
+            }}
         />
-        <Typography variant='caption' color='red'>
+        <Typography variant='caption' color='#d32f2fcf'>
             <ErrorMessage errors={errors} name="address.zipCode" />
         </Typography>
-
-
-
         </>
   )
   

@@ -7,10 +7,9 @@ import {AboutUsCard} from '../../components/aboutUsCard/AboutUsCard'
 const Section = () => {
    
   return (
-    <section id='nosotros' className={styles.aboutUsSection} >     
-                  
+    <section id='nosotros' className={styles.aboutUsSection} >                  
                
-        <Container className={styles.aboutUsSection_container} >
+        <Container >
 
             <h1 className={styles.aboutUsSection_title} >¡Bienvenidos a Beer Club!</h1> 
             <AboutUsCard/>

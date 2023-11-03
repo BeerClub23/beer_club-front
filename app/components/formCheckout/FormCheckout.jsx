@@ -5,12 +5,13 @@ import Typography from "@mui/material/Typography";
 import PersonalData from "./PersonalData";
 import AddressData from "./AddressData";
 import PaymentData from "./PaymentData";
-import { FC, useState } from "react";
+import { FC, useEffect, useState } from "react";
 import { useFormContext } from "react-hook-form";
-// import { ComicData } from "dh-marvel/features/marvel/comic.types";
 import { useRouter } from "next/navigation";
-import {theme} from '../../styles/materialThemeForm'
+import {theme} from '../../styles/materialThemeFormCheckout'
 import ThemeProvider  from "@mui/material/styles/ThemeProvider";
+import logo from '../../../public/images/logo/Logo_sin_escudo_Negro.svg'
+import Image from "next/image";
 
 const steps = [
     'Datos Personales',
@@ -18,33 +19,38 @@ const steps = [
     'Datos del pago',
   ];
 
-
-
-export const FormCheckout = ({id
+export const FormCheckout = ({category}) => { 
     
-    // , comic
-}) => { 
     const router = useRouter()  
-    const {handleSubmit, watch} =useFormContext()
-    const [formData, setFormData] = useState({});
+    const {handleSubmit, trigger} =useFormContext()
+    const [formData, setFormData] = useState({category: category.title});
     const [step, setStep] = useState(1);
     const [status, setStatus] = useState('');
     
-    const onSubmit = (data) => {  
-              
-        if(step == 1){
-            setFormData({...formData, customer: data})
+    const onSubmit = (data) => {           
+        
+        
+        if(step === 1){
+            setFormData({...formData, customer: data})            
             
         }
-        if(step == 2){
+        
+        if(step === 2){
             setFormData({...formData, address: data})
-           
+          
+            
         }        
-        if(step == 3){
-        //  setFormData({...formData, card: data})   
-        fetch('http://localhost:3000/api/checkout', 
+        if(step === 3){   
+            
+            
+            console.log(JSON.stringify({...formData,...data}));
+            
+            router.push('/bienvenido');
+            
+            // setFormData({...formData, card: data})   
+        // fetch('http://localhost:3000/api/checkout', 
         // fetch('https://ctd-esp-fe3-final-claralisle.vercel.app/api/checkout', 
-        { 
+      /*  { 
         method: "POST",
         // body: JSON.stringify({...data, comic:1}),       
         body: JSON.stringify({...data}),          
@@ -81,26 +87,39 @@ export const FormCheckout = ({id
         .catch((error) => {           
             console.log(error);         
       
-        }); 
+        });*/ 
         }
     };    
 
-  
-    const handlePrevStep = ()=>{        
-        setStep(step - 1)
-    }
+    const handleNext = async() => {
+      
+        let isValidate= await trigger(["customer.name","customer.lastName","customer.dateOfBirth","customer.phoneNumber","customer.email", "customer.password", "customer.passwordConfirm"]);
+        if(step == 1 && isValidate){
+            // setFormData({...formData, customer: data})
+            setStep((prevStep) => prevStep + 1)
+        }
+    };
+    const handleNext2 = async() => {
+        let isValidate= await trigger(["address.address1","address.address2","address.city","address.state","address.zipCode"]);
+        if(step == 2 && isValidate){
+            // setFormData({...formData, address: data})
+            setStep((prevStep) => prevStep + 1)
+        }
+    };
+    const handleNext3 = async() => {
+        await trigger(["card.number","card.nameOnCard","card.expDate","card.cvc"]);
+    };
 
-    const handleNextStep = ()=>{    
-        setStep(step + 1)
-    }
+    const handleBack = () => {
+        setStep((prevStep) => prevStep - 1);
+    };
 
- 
 
 	return (
         <>
         <ThemeProvider theme={theme}>
-           <Box >
-                <Stepper activeStep={step-1} alternativeLabel>
+           <Box>
+                <Stepper sx={{margin:"20px"}} activeStep={step-1} alternativeLabel>
                         {steps.map((label) => (
                         <Step key={label}  >
                             <StepLabel>{label}</StepLabel>
@@ -111,11 +130,15 @@ export const FormCheckout = ({id
             <Box sx={{maxWidth: "500px", margin: "0 auto"}}>
                 <Paper
                     elevation={1}
-                    sx={{p: "32px", display: "flex", flexDirection: "column", gap: 3, marginTop:'20px', marginBottom:'20px'}}
+                    sx={{p: "32px", display: "flex", flexDirection: "column", gap: 3,  marginBottom:'20px' }}
                 >
-                    {step==1 &&<Typography variant="h4" align="center">
-                        Datos personales
+                    <Typography variant="p" align="center" sx={{padding:'-32px'}}>
+                         <Image src={logo} width={80} heigth={80} alt='imagen' sx={{margin:'0 auto'}}></Image>
+                    </Typography>
+                    {step==1 &&<Typography variant="h4" align="center"  sx={{margin:'0'}}>
+                        Datos personales                        
                     </Typography>}
+                    
                     {step==2 && <Typography variant="h4" align="center">
                         Dirección de envio
                     </Typography>}
@@ -128,14 +151,30 @@ export const FormCheckout = ({id
                         {step==2 &&<AddressData/>}
                         {status && <Alert severity="error">{status}</Alert>} 
                         {step==3 &&<PaymentData/>}  
-                        
-                        <Box>
-                            {step>1 && <Button  variant="contained" color="primary"sx={{margin: 2}} onClick={handlePrevStep}>Anterior</Button>}
-                            {step<3 && <Button  type="submit" variant="contained" color="primary"sx={{margin: 2}} onClick={handleNextStep}>Siguiente</Button>}
-                            {step==3 &&  <Button type="submit" variant="contained" color="primary"sx={{margin: 2}}>
-                                Enviar
-                            </Button> }
-                        </Box>
+                       
+
+                            <Box>
+                              
+                            <Button
+                                variant="contained"
+                                color="primary"
+                                disabled={step === 1}
+                                sx={{margin: 2}}
+                                onClick={handleBack}
+                                // sx={{ mr: 1 }}
+                             >
+                                Volver
+                             </Button>
+                            {step === 1 && <Button type="button" variant="contained" color="primary"sx={{margin: 2}} onClick={handleNext}>
+                                    Siguiente
+                                </Button>}
+                            {step === 2 && <Button type="button" variant="contained" color="primary"sx={{margin: 2}} onClick={handleNext2}>
+                                    Siguiente
+                                </Button>}
+                            {step === 3 && <Button type='submit'variant="contained" color="primary"sx={{margin: 2}} onClick={handleNext3}>
+                                    Enviar
+                                </Button>}
+                            </Box>
                     </form>
                 </Paper>
             </Box>
