@@ -1,6 +1,6 @@
 .bc-subscription-section {
-    display: grid;
-    grid-template-columns: auto auto auto;
+  /*  display: grid;
+    grid-template-columns: auto auto auto;*/
     gap: 3%;
 
     &__title {
@@ -15,22 +15,44 @@
 
     &-container {
         background-color: white;
-        min-height: 100vh;
+        // min-height: 100vh;
         padding: 20px;
+     
     }
 
-    @media (max-width: 450px) {
-        grid-template-columns: auto;
-        gap: 10px;
+       
 
+    .slick-prev:before, .slick-next:before{
+        content: url('../../../public/images/icons/chevron-right-solid-primary.svg');
+        opacity: 0.7;
+    }
+
+    .slick-prev{
+        transform: rotateY(180deg);
+    }
+
+    .slick-dots {
+        margin-bottom: 10px;
+    }
+
+
+    @media (max-width: 450px) {
+    /*    grid-template-columns: auto;
+        gap: 10px;*/
+
+        width: 80%;
+        margin: 0 auto;
+       
         &__title {
             font-size: 36px;
         }
     }
 
-    @media (min-width: 451px) and (max-width: 900px) {
-        grid-template-columns: auto;
-        gap: 0;
+    @media (min-width: 451px) and (max-width: 1200px) {
+     /*   grid-template-columns: auto;
+        gap: 0;*/
+        width: 80%;
+        margin: 0 auto;
 
         &__title {
             font-size: 48px;
@@ -38,3 +60,4 @@
     }
 
 }
+

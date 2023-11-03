@@ -5,7 +5,7 @@ import Logo from 'public/images/logo/Logo_sin_escudo_Color_Original.svg';
 import { theme } from '../styles/materialThemeForm';
 import {  ThemeProvider } from '@mui/material';
 import Image from 'next/image';
-import styles from '../page.module.scss'
+// import styles from '../page.module.scss'
 
 export default function MenorPage() { 
   return (
