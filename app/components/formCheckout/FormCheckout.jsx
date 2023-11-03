@@ -23,19 +23,11 @@ export const FormCheckout = ({category}) => {
     
     const router = useRouter()  
     const {handleSubmit, trigger} =useFormContext()
-    const [formData, setFormData] = useState({data:{category}});
+    const [formData, setFormData] = useState({category: category.title});
     const [step, setStep] = useState(1);
     const [status, setStatus] = useState('');
-
-    console.log(JSON.stringify({...formData}));
-   /* useEffect(()=>{
-        setFormData({...formData, category:category})
-    }, [])*/
     
-    
-    
-    const onSubmit = (data) => {    
-        
+    const onSubmit = (data) => {           
         
         
         if(step === 1){
@@ -48,10 +40,10 @@ export const FormCheckout = ({category}) => {
           
             
         }        
-        if(step === 3){            
+        if(step === 3){   
             
             
-            console.log(JSON.stringify({...data}));
+            console.log(JSON.stringify({...formData,...data}));
             
             router.push('/bienvenido');
             
