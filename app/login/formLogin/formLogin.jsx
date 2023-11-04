@@ -2,9 +2,8 @@ import * as React from "react";
 import FormGroup from "@mui/material/FormGroup";
 import FormControl from "@mui/material/FormControl";
 import { Button, Typography } from "@mui/material";
-import { useRouter } from "next/navigation";
+// import { useRouter } from "next/navigation";
 import "aos/dist/aos.css";
-import AOS from "aos";
 import "./formLogin.scss";
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
@@ -16,9 +15,11 @@ import { ErrorMessage } from "@hookform/error-message";
 import { useFormContext } from "react-hook-form";
 import { Controller } from "react-hook-form";
 import { CustomTextField } from "../../components/inputs/CustomTextFields";
+// import Swal from 'sweetalert2';
+import ApiFormLogin from "@/app/services/login";
 
 export default function FormLogin() {
-  const router = useRouter();
+  // const router = useRouter();
   const [showPassword, setShowPassword] = React.useState(false);
   const handleClickShowPassword = () => setShowPassword((show) => !show);
 
@@ -30,29 +31,25 @@ export default function FormLogin() {
     handleSubmit,
     control,
     setFocus,
-    formState: { errors },
+    formState: { errors, isSubmitting },
   } = useFormContext();
 
   const onSubmit = async (data) => {
-    // const response = await fetch(``);
-    const response = true;
-    if (response) {
+    if (await ApiFormLogin(data)) {
       // const dataApi = await response.json();
       // router.push(`/home`)
       console.log("Estas dentro");
+      // console.log();
     } else {
       console.error("denegado");
     }
   };
   React.useEffect(() => {
     setFocus("email");
-  }, [setFocus, router]);
-
-  // React.useEffect(() => {
-  //   AOS.init({
-  //       duration: 1200,
-  //     })
-  // }, [])
+  }, [setFocus]);
+  React.useEffect(() => {
+    console.log(isSubmitting);
+  }, [isSubmitting]);
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} autoComplete="off">
@@ -111,14 +108,25 @@ export default function FormLogin() {
             <ErrorMessage errors={errors} name="pass" />
           </Typography>
 
-          <Button
-            variant="contained"
-            size="large"
-            type="submit"
-            sx={{ pt: "7px", mx: "auto", mt: 10, mb: 8, fontWeight: "bold" }}
-          >
-            Ingresar
-          </Button>
+          {isSubmitting ? (
+            <Button
+              variant="contained"
+              size="large"
+              sx={{ pt: "7px", mx: "auto", mt: 10, mb: 8, fontWeight: "bold" }}
+              disabled
+            >
+              Procesando...
+            </Button>
+          ) : (
+            <Button
+              variant="contained"
+              size="large"
+              type="submit"
+              sx={{ pt: "7px", mx: "auto", mt: 10, mb: 8, fontWeight: "bold" }}
+            >
+              Ingresar
+            </Button>
+          )}
         </FormGroup>
       </FormControl>
     </form>
