@@ -1,7 +1,6 @@
-import { TextField } from '@mui/material';
-import React, { ChangeEvent, FocusEvent } from "react";
-import {  Controller } from 'react-hook-form';
-
+import { TextField } from "@mui/material";
+import React from "react";
+import { Controller } from "react-hook-form";
 
 export const CustomTextField = ({
   name,
@@ -9,19 +8,20 @@ export const CustomTextField = ({
   type,
   required,
   control,
-  variant="outlined",
+  variant = "outlined",
   defaultValue,
   textFieldProps,
   aria_describedby,
-  error,
-  message,
+  onChange,
+  onFocus,
+  onBlur,
 }) => {
   return (
     <Controller
       name={name}
       control={control}
       defaultValue={defaultValue}
-         render={({ field }) => (
+      render={({ field }) => (
         <TextField
           {...field}
           type={type}
@@ -30,10 +30,18 @@ export const CustomTextField = ({
           fullWidth
           required={required}
           aria-describedby={aria_describedby}
-          sx={{ mt: 2, backgroundColor:'transparent' }}
+          sx={{ mt: 2, backgroundColor: "transparent" }}
           {...textFieldProps}
-     
-         
+          onBlur={(e) => {
+            field.onBlur(e);
+          }}
+          onChange={(e) => {
+            field.onChange(e);
+            onChange?.(e);
+          }}
+          onFocus={(e) => {
+            onFocus?.(e);
+          }}
         />
       )}
     />
