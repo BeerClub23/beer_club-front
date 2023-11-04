@@ -1,23 +1,20 @@
-nav{
-    background-color: rgba(16, 16, 16, 0.8)!important;
-
-
-
-
+nav {
+  background-color: rgba(16, 16, 16, 0.8) !important;
 }
-.logo{
-    margin: 5px 0px;
+.logo {
+  margin: 5px 0px;
 }
 
-.navItem{
-    transition: all 0.3s;
-    &:hover,&:focus{
-        transform: scale(1.1);
-        color:var(--secondary)
-    }
+.navItem {
+  transition: all 0.3s;
+  &:hover,
+  &:focus {
+    transform: scale(1.1);
+    color: var(--secondary);
+  }
 }
 
-.css-4t3x6l-MuiPaper-root-MuiDrawer-paper{
-    background-color: var(--dark);
-    color:var(--white);
+.css-4t3x6l-MuiPaper-root-MuiDrawer-paper {
+  background-color: var(--dark);
+  color: var(--white);
 }

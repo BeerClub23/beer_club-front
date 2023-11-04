@@ -1,44 +1,36 @@
-.aboutUsSection{
-    // background-color: #fff;
-    // background-color: var(--rgb-secondary);
-    background-color: var(--rgb-primary);
-    min-height: 70vh;
-    color: #000;   
-    text-align: center;
-    padding-top: 50px;  
-    padding-bottom: 50px;   
+.aboutUsSection {
+  // background-color: #fff;
+  // background-color: var(--rgb-secondary);
+  background-color: var(--rgb-primary);
+  min-height: 70vh;
+  color: #000;
+  text-align: center;
+  padding-top: 50px;
+  padding-bottom: 50px;
 
-    &_title{
-        font-size: 30px;
-        font-style: normal;    
-        line-height: normal;
-        text-align: center;
+  &_title {
+    font-size: 30px;
+    font-style: normal;
+    line-height: normal;
+    text-align: center;
   }
 
-  
-
-    @media (min-width: 345px) {
-      
-        &_title {
-          letter-spacing: 4px;
-          font-size: 36px;         
-        }
-        
+  @media (min-width: 345px) {
+    &_title {
+      letter-spacing: 4px;
+      font-size: 36px;
     }
+  }
 
-    @media (min-width: 768px) {
-  
-      &_title{
-        font-size: 48px;
-        letter-spacing: 6px;
-      }
+  @media (min-width: 768px) {
+    &_title {
+      font-size: 48px;
+      letter-spacing: 6px;
     }
-    @media (min-width: 1200px) {
-      
-      &_title {
-        font-size: 48px;         
-      }
-      
+  }
+  @media (min-width: 1200px) {
+    &_title {
+      font-size: 48px;
+    }
   }
 }
-
