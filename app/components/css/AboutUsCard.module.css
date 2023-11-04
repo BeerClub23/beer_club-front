@@ -7,7 +7,7 @@
   position: relative;
 }
 .containerArticle_textContainer {
-  background-color: var(--rgb-primary);
+  background-color: rgb(206, 181, 167);
   padding: 20px;
   grid-area: auto;
   display: flex;
@@ -29,7 +29,7 @@
 .containerArticle_imageAside {
   grid-area: auto;
   display: flex;
-  background-color: var(--rgb-primary);
+  background-color: rgb(206, 181, 167);
   align-items: center;
   z-index: 3;
 }

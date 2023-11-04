@@ -1,3 +1,5 @@
+@import "@/app/globals.scss";
+
 nav {
   background-color: rgba(16, 16, 16, 0.8) !important;
 }
@@ -10,11 +12,11 @@ nav {
   &:hover,
   &:focus {
     transform: scale(1.1);
-    color: var(--secondary);
+    color: $secondary;
   }
 }
 
 .css-4t3x6l-MuiPaper-root-MuiDrawer-paper {
-  background-color: var(--dark);
-  color: var(--white);
+  background-color: $dark;
+  color: $white;
 }

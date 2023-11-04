@@ -7,7 +7,7 @@ import Box from "@mui/material/Box";
 import { theme } from "../styles/materialThemeForm";
 import FormLogin from "./formLogin/formLogin";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { loginSchema } from "../rules/index.js";
+import { loginSchema } from "./rules/index.js";
 import { FormProvider, useForm } from "react-hook-form";
 import "./login.scss";
 import AOS from "aos";
