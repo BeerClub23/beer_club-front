@@ -39,6 +39,7 @@ export default function Footer() {
         paddingBottom: "1rem",
         color: "#000000",
         bottom: "0",
+        position: "absolute",
       }}
     >
       <Container maxWidth="lg">
