@@ -1,0 +1,13 @@
+.bc-faqs-container {
+  min-height: 100vh;
+  width: 100%;
+  margin-top: 50px;
+  display: flex;
+  align-items: center;
+}
+.bc-faqs-container_title {
+  font-size: 48px;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: 6px;
+}/*# sourceMappingURL=faqs.css.map */
