@@ -1,20 +1,6 @@
 import { TextField } from "@mui/material";
-import React, { ChangeEvent, FocusEvent } from "react";
+import React from "react";
 import { Controller } from "react-hook-form";
-
-/*** */
-import IconButton from "@mui/material/IconButton";
-import Input from "@mui/material/Input";
-import FilledInput from "@mui/material/FilledInput";
-import OutlinedInput from "@mui/material/OutlinedInput";
-import InputLabel from "@mui/material/InputLabel";
-import InputAdornment from "@mui/material/InputAdornment";
-import FormHelperText from "@mui/material/FormHelperText";
-import FormControl from "@mui/material/FormControl";
-
-import Visibility from "@mui/icons-material/Visibility";
-import VisibilityOff from "@mui/icons-material/VisibilityOff";
-/*** */
 
 export const CustomTextField = ({
   name,
@@ -22,10 +8,10 @@ export const CustomTextField = ({
   type,
   required,
   control,
+  variant = "outlined",
   defaultValue,
   textFieldProps,
-  error,
-  message,
+  aria_describedby,
   onChange,
   onFocus,
   onBlur,
@@ -40,10 +26,11 @@ export const CustomTextField = ({
           {...field}
           type={type}
           label={label}
-          variant="outlined"
+          variant={variant}
           fullWidth
           required={required}
-          sx={{ mb: 2, backgroundColor: "transparent" }}
+          aria-describedby={aria_describedby}
+          sx={{ mt: 2, backgroundColor: "transparent" }}
           {...textFieldProps}
           onBlur={(e) => {
             field.onBlur(e);

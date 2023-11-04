@@ -1,7 +1,6 @@
 .mainAge {
   display: flex;
   flex-direction: column;
-  // justify-content: space-between;
   align-items: center;
   padding: 1rem;
   min-height: 100vh;
@@ -20,4 +19,4 @@
     width: 300px;
     height: 300px;
   }
-}
+}/*# sourceMappingURL=page.css.map */

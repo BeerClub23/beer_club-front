@@ -1,0 +1,31 @@
+.aboutUsSection {
+  background-color: var(--rgb-primary);
+  min-height: 70vh;
+  color: #000;
+  text-align: center;
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
+.aboutUsSection_title {
+  font-size: 30px;
+  font-style: normal;
+  line-height: normal;
+  text-align: center;
+}
+@media (min-width: 345px) {
+  .aboutUsSection_title {
+    letter-spacing: 4px;
+    font-size: 36px;
+  }
+}
+@media (min-width: 768px) {
+  .aboutUsSection_title {
+    font-size: 48px;
+    letter-spacing: 6px;
+  }
+}
+@media (min-width: 1200px) {
+  .aboutUsSection_title {
+    font-size: 48px;
+  }
+}/*# sourceMappingURL=AboutUsSection.module.css.map */

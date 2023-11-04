@@ -20,14 +20,18 @@
       {
         "name": "next"
       }
-    ]
+    ],
+    "paths":{
+      "@/*": ["./*"]
+    }
   },
   "include": [
     "next-env.d.ts",
     ".next/types/**/*.ts",
     "**/*.ts",
-    "**/*.tsx"
-, "app/components/formCheckout/rules/index.js", "app/registro/page.jsx", "app/components/formCheckout/AddressData.jsx", "app/components/formCheckout/PaymentData.jsx", "app/components/formCheckout/PersonalData.jsx", "app/components/formCheckout/FormCheckout.jsx", "app/components/formCheckout/inputs/CustomTextFields.jsx", "app/api/checkout/route.js"  ],
+    "**/*.tsx",
+    "app/components/formCheckout/rules/index.js", "app/suscribirse/page.js", "app/components/formCheckout/AddressData.jsx", "app/components/formCheckout/PaymentData.jsx", "app/components/formCheckout/PersonalData.jsx", "app/components/formCheckout/FormCheckout.jsx", "app/components/inputs/CustomTextFields.jsx", "app/api/checkout/route.js", "app/rules/index.js" , "app/registro/page.jsx" 
+  ],
   "exclude": [
     "node_modules"
   ]

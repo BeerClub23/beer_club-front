@@ -1,0 +1,7 @@
+// No funciona el cambiar el stilo del autocompletado
+.loginBox input:-internal-autofill-selected {
+  background-color: #101010 !important;
+  color: white !important;
+  appearance: menulist-button;
+}
+
