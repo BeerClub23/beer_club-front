@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "lint:fix": "eslint app/ --fix"
+    "lint:fix": "eslint app/ --fix && prettier app/ --write"
   },
   "dependencies": {
     "@emotion/react": "^11.11.1",

@@ -1,127 +1,125 @@
 .bc-subscription-card {
-    border-radius: 20px;
-    border: 2px solid #8D8D8D;
-    background: #FFF;
-    color: #000;
+  border-radius: 20px;
+  border: 2px solid #8d8d8d;
+  background: #fff;
+  color: #000;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  padding: 30px 20px;
+  box-shadow: 0px 5px 5px 0px rgba(0, 0, 0, 0.5);
+  margin: auto;
+  z-index: 1;
+  position: relative;
+  margin-bottom: 10px;
+
+  &-container {
+    max-width: 350px;
+  }
+
+  &__header {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 12px;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    letter-spacing: 2.4px;
+  }
+
+  &__title {
+    text-align: center;
+    font-size: 40px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+  }
+
+  &__price {
     font-size: 24px;
     font-style: normal;
     font-weight: 400;
     line-height: normal;
-    padding: 30px 20px;
-    box-shadow: 0px 5px 5px 0px rgba(0, 0, 0, 0.50);
-    margin: auto;
-    z-index: 1;
-    position: relative;
-    margin-bottom: 10px;
-    
+  }
 
-    &-container {
-        max-width: 350px;
+  &__action {
+    border-radius: 20px;
+    border: 1px solid transparent;
+    background: #f5e1c1;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    letter-spacing: 2.2px;
+    padding: 12px 50px;
+    width: 100%;
+    margin: 12px 0 0;
+
+    &:hover {
+      cursor: pointer;
+      background-color: #ceb5a7;
     }
 
+    &:active,
+    &:focus {
+      background-color: #eee9e1;
+    }
+  }
 
-    &__header {
-        display: flex;
-        align-items: flex-start;
-        flex-direction: column;
-        gap: 12px;
-        font-size: 16px;
-        font-style: normal;
-        font-weight: 500;
-        line-height: normal;
-        letter-spacing: 2.4px;
+  &__recommended {
+    height: 75px;
+    width: 100%;
+    border-radius: 20px 20px 0 0;
+    padding: 15px 20px;
+    position: relative;
+    bottom: -27px;
+    z-index: 0;
+
+    &.active {
+      background-color: #000;
+    }
+  }
+
+  ul {
+    margin-left: 20px;
+    li {
+      font-size: 16px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: normal;
+      margin-bottom: 12px;
+    }
+  }
+
+  hr {
+    background: #000;
+    height: 2px;
+    margin: 20px 0px;
+  }
+
+  @media (max-width: 450px) {
+    &-container {
+      width: 100%;
     }
 
     &__title {
-        text-align: center;
-        font-size: 40px;
-        font-style: normal;
-        font-weight: 600;
-        line-height: normal;
+      font-size: 28px;
     }
+  }
 
-    &__price {
-        font-size: 24px;
-        font-style: normal;
-        font-weight: 400;
-        line-height: normal;
+  @media (min-width: 451px) and (max-width: 768px) {
+    &-container {
+      margin: 0 auto;
     }
+  }
 
-    &__action {
-        border-radius: 20px;
-        border: 1px solid transparent;
-        background: #F5E1C1;
-        box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
-        font-size: 24px;
-        font-style: normal;
-        font-weight: 500;
-        line-height: normal;
-        letter-spacing: 2.2px;
-        padding: 12px 50px;
-        width: 100%;
-        margin: 12px 0 0;
-
-        &:hover {
-            cursor: pointer;
-            background-color: #CEB5A7;
-        }
-
-        &:active, &:focus {
-            background-color: #EEE9E1;
-        }
+  @media (min-width: 769px) and (max-width: 1200px) {
+    &-container {
+      margin: 0 auto;
     }
-
-    &__recommended {
-        height: 75px;
-        width: 100%;
-        border-radius: 20px 20px 0 0;
-        padding: 15px 20px;
-        position: relative;
-        bottom: -27px;
-        z-index: 0;
-
-
-        &.active {
-            background-color: #000;
-        }
-    }
-
-    ul {
-        margin-left: 20px; 
-        li {
-            font-size: 16px;
-            font-style: normal;
-            font-weight: 400;
-            line-height: normal;
-            margin-bottom: 12px;
-        }
-    }
-
-    hr {
-        background: #000;
-        height: 2px;
-        margin: 20px 0px;
-    }
-
-    @media (max-width: 450px) {
-        &-container {
-            width: 100%;
-        }
-
-        &__title {
-            font-size: 28px;
-        }
-    }
-
-    @media (min-width: 451px) and (max-width: 768px) {
-        &-container {
-           margin: 0 auto;
-        }
-    }
-
-    @media (min-width: 769px) and (max-width: 1200px) {
-        &-container {
-           margin: 0 auto;
-        }
-    }
+  }
 }
