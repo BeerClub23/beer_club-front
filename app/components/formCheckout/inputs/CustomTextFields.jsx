@@ -9,8 +9,10 @@ export const CustomTextField = ({
   type,
   required,
   control,
+  variant="outlined",
   defaultValue,
   textFieldProps,
+  aria_describedby,
   error,
   message,
 }) => {
@@ -24,10 +26,11 @@ export const CustomTextField = ({
           {...field}
           type={type}
           label={label}
-          variant="outlined"
+          variant={variant}
           fullWidth
           required={required}
-          sx={{ mb: 2, backgroundColor:'transparent' }}
+          aria-describedby={aria_describedby}
+          sx={{ mt: 2, backgroundColor:'transparent' }}
           {...textFieldProps}
      
          
