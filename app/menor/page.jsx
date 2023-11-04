@@ -5,19 +5,18 @@ import Logo from "public/images/logo/Logo_sin_escudo_Color_Original.svg";
 import { theme } from "../styles/materialThemeForm";
 import { ThemeProvider } from "@mui/material";
 import Image from "next/image";
-// import styles from '../page.module.scss'
 
 export default function MenorPage() {
   return (
     <>
       <ThemeProvider theme={theme}>
-        <Box component="main" sx={{ pt: 13 }} className={styles.main}>
+        <Box component="main" sx={{ pt: 13 }}>
           <Image
             src={Logo}
             width={300}
             height={300}
             alt="Beer Club Logo"
-            className={styles.logo_age}
+            className="logo_age"
           />
           <Typography variant="h4">ACCESO DENEGADO </Typography>
           <Typography variant="h5" sx={{ textAlign: "center" }}>

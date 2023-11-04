@@ -10,8 +10,8 @@ const ApiFormLogin = async (store) => {
       },
       data: store,
     })
-      .then(() => resolve(true))
-      .catch(() => resolve(false));
+      .then((response) => resolve(response.data))
+      .catch((error) => resolve(error));
   });
 };
 

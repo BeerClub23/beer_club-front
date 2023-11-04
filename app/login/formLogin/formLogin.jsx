@@ -15,7 +15,7 @@ import { ErrorMessage } from "@hookform/error-message";
 import { useFormContext } from "react-hook-form";
 import { Controller } from "react-hook-form";
 import { CustomTextField } from "../../components/inputs/CustomTextFields";
-// import Swal from 'sweetalert2';
+import Swal from "sweetalert2";
 import ApiFormLogin from "@/app/services/login";
 
 export default function FormLogin() {
@@ -35,13 +35,31 @@ export default function FormLogin() {
   } = useFormContext();
 
   const onSubmit = async (data) => {
-    if (await ApiFormLogin(data)) {
-      // const dataApi = await response.json();
+    let respuesta = await ApiFormLogin(data);
+    if (respuesta.token) {
       // router.push(`/home`)
+      console.log(respuesta.token);
       console.log("Estas dentro");
-      // console.log();
-    } else {
-      console.error("denegado");
+    } else if (respuesta.response.request.status == 401) {
+      Swal.fire({
+        title: "Error!",
+        text: "Usuario no registrado",
+        icon: "error",
+        confirmButtonText: "OK",
+        confirmButtonColor: "#ceb5a7",
+        focusConfirm: false,
+      });
+      console.error(respuesta.response.data.message);
+    } else if (respuesta.response.request.status == 500) {
+      Swal.fire({
+        title: "Error!",
+        text: "No se pudo ingresar, intentelo mas tarde",
+        icon: "error",
+        confirmButtonText: "OK",
+        confirmButtonColor: "#ceb5a7",
+        focusConfirm: false,
+      });
+      console.error(respuesta.response.data.message);
     }
   };
   React.useEffect(() => {

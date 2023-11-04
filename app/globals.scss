@@ -1,13 +1,13 @@
-:root {
-  --dark: #101010;
-  --white: #ffffff;
-  --primary: #ceb5a7;
-  --secondary: #f5e1c1;
-  --rgb-dark: rgb(16, 16, 16);
-  --rgb-white: rgb(255, 255, 255);
-  --rgb-primary: rgb(206, 181, 167);
-  --rgb-secondary: rgb(245, 225, 193);
-}
+
+$dark: #101010;
+$white: #ffffff;
+$primary: #ceb5a7;
+$secondary: #f5e1c1;
+$rgb-dark: rgb(16, 16, 16);
+$rgb-white: rgb(255, 255, 255);
+$rgb-primary: rgb(206, 181, 167);
+$rgb-secondary: rgb(245, 225, 193);
+
 
 * {
   box-sizing: border-box;
@@ -23,8 +23,8 @@ body {
 }
 
 body {
-  color: var(--white);
-  background: var(--dark);
+  color: $white;
+  background: $dark;
 }
 
 a {
@@ -50,3 +50,5 @@ a {
   display: block;
   font-weight: 300;
 }
+
+
