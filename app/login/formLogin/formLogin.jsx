@@ -1,12 +1,8 @@
 import * as React from "react";
 import FormGroup from "@mui/material/FormGroup";
 import FormControl from "@mui/material/FormControl";
-import FormControlLabel from "@mui/material/FormControlLabel";
-import TextField from "@mui/material/TextField";
-import FormHelperText from "@mui/material/FormHelperText";
-import { Box, Button, Checkbox, Typography } from "@mui/material";
+import { Button, Typography } from "@mui/material";
 import { useRouter } from "next/navigation";
-import { useForm } from "react-hook-form";
 import "aos/dist/aos.css";
 import AOS from "aos";
 import "./formLogin.scss";
@@ -19,7 +15,7 @@ import Input from "@mui/material/Input";
 import { ErrorMessage } from "@hookform/error-message";
 import { useFormContext } from "react-hook-form";
 import { Controller } from "react-hook-form";
-import { CustomTextField } from "../../components/formCheckout/inputs/CustomTextFields";
+import { CustomTextField } from "../../components/inputs/CustomTextFields";
 
 export default function FormLogin() {
   const router = useRouter();
@@ -59,7 +55,7 @@ export default function FormLogin() {
   // }, [])
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
+    <form onSubmit={handleSubmit(onSubmit)} autoComplete="off">
       <FormControl component="fieldset">
         <Typography
           variant="h4"
@@ -69,7 +65,7 @@ export default function FormLogin() {
           Bienvenido
         </Typography>
 
-        <FormGroup aria-label="position" sx={{ mt: 3 }}>
+        <FormGroup aria-label="position" sx={{ mt: 3 }} className="loginBox">
           <CustomTextField
             name="email"
             label="Email"
@@ -119,7 +115,7 @@ export default function FormLogin() {
             variant="contained"
             size="large"
             type="submit"
-            sx={{ pt: "7px", mx: "auto", my: 5, fontWeight: "bold" }}
+            sx={{ pt: "7px", mx: "auto", mt: 10, mb: 8, fontWeight: "bold" }}
           >
             Ingresar
           </Button>

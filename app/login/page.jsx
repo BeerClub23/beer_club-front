@@ -16,21 +16,23 @@ export default function LoginPage() {
     defaultValues: {},
   });
   return (
-    <>
-      <Box className="login">
-        <ThemeProvider theme={theme}>
-          <Image
-            src={Logo}
-            width={200}
-            height={200}
-            alt="Beer Club Logo"
-            className="logo_age"
-          />
-          <FormProvider {...method}>
-            <FormLogin />
-          </FormProvider>
-        </ThemeProvider>
-      </Box>
-    </>
+    <main className="mainLogin">
+      <div className="divLogin">
+        <Box className="login">
+          <ThemeProvider theme={theme}>
+            <Image
+              src={Logo}
+              width={200}
+              height={200}
+              alt="Beer Club Logo"
+              className="logo_age"
+            />
+            <FormProvider {...method}>
+              <FormLogin />
+            </FormProvider>
+          </ThemeProvider>
+        </Box>
+      </div>
+    </main>
   );
 }

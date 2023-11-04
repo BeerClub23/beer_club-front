@@ -1,7 +1,7 @@
 import React from "react";
 import Typography from "@mui/material/Typography";
 import { useFormContext } from "react-hook-form";
-import { CustomTextField } from "./inputs/CustomTextFields";
+import { CustomTextField } from "../inputs/CustomTextFields";
 import { ErrorMessage } from "@hookform/error-message";
 
 const AddressData = () => {

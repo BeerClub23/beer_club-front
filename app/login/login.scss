@@ -1,6 +1,36 @@
+.mainLogin{
+  min-height: 100vh;
+
+}
+
+.divLogin{
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 40px;
+}
+
 .login {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+
+@media (min-width: 600px) {
+  .mainLogin{
+    background-image:linear-gradient(rgb(16,16,16, 0.5), rgb(16,16,16, 0.5)), url('../../public/images/login/bg_login.png') ;
+  }
+  .login{
+    background-color: rgb(16,16,16, 0.8);
+    width: 500px;
+    margin: auto;
+    border-radius: 40px;
+  }
+  .logo_age{
+    width: 240px;
+    height: 240px;
+    margin: 40px 20px 20px ;
+  }
 }
