@@ -1,11 +1,11 @@
 import React from "react";
 import Typography from "@mui/material/Typography";
 import { useFormContext } from "react-hook-form";
-import { CustomTextField } from "./inputs/CustomTextFields";
+import { CustomTextField } from "../inputs/CustomTextFields";
 import { ErrorMessage } from "@hookform/error-message";
 import { Box } from "@mui/material";
 import Cards from "react-credit-cards-2";
-import { useState } from "react";
+import { useState, ChangeEvent, FocusEvent } from "react";
 import "react-credit-cards-2/dist/es/styles-compiled.css";
 
 const PaymentData = () => {

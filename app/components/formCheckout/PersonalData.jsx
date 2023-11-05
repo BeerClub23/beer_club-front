@@ -1,7 +1,7 @@
 import { ErrorMessage } from "@hookform/error-message";
 import { Box, Typography } from "@mui/material";
 import React from "react";
-import { CustomTextField } from "./inputs/CustomTextFields";
+import { CustomTextField } from "../inputs/CustomTextFields";
 import { useFormContext } from "react-hook-form";
 
 const PersonalData = () => {
