@@ -1,15 +1,15 @@
-"use client"
+"use client";
 import { createContext, useContext, useState } from "react";
 export const BeerClubContext = createContext({});
 
 export const AppContext = ({ children }) => {
-    const [context, setContext] = useState();
-  
-    return (
-      <BeerClubContext.Provider value={{ context, setContext }}>
-        {children}
-      </BeerClubContext.Provider>
-    );
-}
+  const [context, setContext] = useState();
 
-export const useAppContext = () => useContext(BeerClubContext)
+  return (
+    <BeerClubContext.Provider value={{ context, setContext }}>
+      {children}
+    </BeerClubContext.Provider>
+  );
+};
+
+export const useAppContext = () => useContext(BeerClubContext);
