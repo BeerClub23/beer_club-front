@@ -1,0 +1,109 @@
+.bc-subscription-card {
+  border-radius: 20px;
+  border: 2px solid #8d8d8d;
+  background: #fff;
+  color: #000;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  padding: 30px 20px;
+  box-shadow: 0px 5px 5px 0px rgba(0, 0, 0, 0.5);
+  margin: auto;
+  z-index: 1;
+  position: relative;
+  margin-bottom: 10px;
+}
+.bc-subscription-card-container {
+  max-width: 350px;
+}
+.bc-subscription-card__header {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  gap: 12px;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  letter-spacing: 2.4px;
+}
+.bc-subscription-card__title {
+  text-align: center;
+  font-size: 40px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+.bc-subscription-card__price {
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+.bc-subscription-card__action {
+  border-radius: 20px;
+  border: 1px solid transparent;
+  background: #f5e1c1;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  letter-spacing: 2.2px;
+  padding: 12px 50px;
+  width: 100%;
+  margin: 12px 0 0;
+}
+.bc-subscription-card__action:hover {
+  cursor: pointer;
+  background-color: #ceb5a7;
+}
+.bc-subscription-card__action:active, .bc-subscription-card__action:focus {
+  background-color: #eee9e1;
+}
+.bc-subscription-card__recommended {
+  height: 75px;
+  width: 100%;
+  border-radius: 20px 20px 0 0;
+  padding: 15px 20px;
+  position: relative;
+  bottom: -27px;
+  z-index: 0;
+}
+.bc-subscription-card__recommended.active {
+  background-color: #000;
+}
+.bc-subscription-card ul {
+  margin-left: 20px;
+}
+.bc-subscription-card ul li {
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  margin-bottom: 12px;
+}
+.bc-subscription-card hr {
+  background: #000;
+  height: 2px;
+  margin: 20px 0px;
+}
+@media (max-width: 450px) {
+  .bc-subscription-card-container {
+    width: 100%;
+  }
+  .bc-subscription-card__title {
+    font-size: 28px;
+  }
+}
+@media (min-width: 451px) and (max-width: 768px) {
+  .bc-subscription-card-container {
+    margin: 0 auto;
+  }
+}
+@media (min-width: 769px) and (max-width: 1200px) {
+  .bc-subscription-card-container {
+    margin: 0 auto;
+  }
+}/*# sourceMappingURL=SubscriptionCard.css.map */

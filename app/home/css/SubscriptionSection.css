@@ -1,0 +1,51 @@
+.bc-subscription-section {
+  /*  display: grid;
+    grid-template-columns: auto auto auto;*/
+  gap: 3%;
+}
+.bc-subscription-section__title {
+  text-align: center;
+  font-size: 58px;
+  font-style: normal;
+  font-weight: 800;
+  line-height: normal;
+  letter-spacing: 6.4px;
+  color: black;
+}
+.bc-subscription-section-container {
+  background-color: white;
+  padding: 20px;
+}
+.bc-subscription-section .slick-prev:before,
+.bc-subscription-section .slick-next:before {
+  content: url("../../../public/images/icons/chevron-right-solid-primary.svg");
+  opacity: 0.7;
+}
+.bc-subscription-section .slick-prev {
+  transform: rotateY(180deg);
+}
+.bc-subscription-section .slick-dots {
+  margin-bottom: 10px;
+}
+@media (max-width: 450px) {
+  .bc-subscription-section {
+    /*    grid-template-columns: auto;
+        gap: 10px;*/
+    width: 80%;
+    margin: 0 auto;
+  }
+  .bc-subscription-section__title {
+    font-size: 36px;
+  }
+}
+@media (min-width: 451px) and (max-width: 1200px) {
+  .bc-subscription-section {
+    /*   grid-template-columns: auto;
+        gap: 0;*/
+    width: 80%;
+    margin: 0 auto;
+  }
+  .bc-subscription-section__title {
+    font-size: 48px;
+  }
+}/*# sourceMappingURL=SubscriptionSection.css.map */

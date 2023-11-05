@@ -1,7 +1,6 @@
 // import type {NextApiRequest, NextApiResponse} from 'next';
 // import {CheckoutInput} from "dh-marvel/features/checkout/checkout.types";
 
-import { redirect } from "next/dist/server/api-utils";
 import {
   ERROR_CARD_DATA_INCORRECT,
   ERROR_CARD_WITHOUT_AUTHORIZATION,

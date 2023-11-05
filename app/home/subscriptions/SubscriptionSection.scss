@@ -1,63 +1,58 @@
 .bc-subscription-section {
   /*  display: grid;
     grid-template-columns: auto auto auto;*/
-    gap: 3%;
+  gap: 3%;
 
-    &__title {
-        text-align: center;
-        font-size: 58px;
-        font-style: normal;
-        font-weight: 800;
-        line-height: normal;
-        letter-spacing: 6.4px;
-        color: black;
-    }
+  &__title {
+    text-align: center;
+    font-size: 58px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    letter-spacing: 6.4px;
+    color: black;
+  }
 
-    &-container {
-        background-color: white;
-        // min-height: 100vh;
-        padding: 20px;
-     
-    }
+  &-container {
+    background-color: white;
+    // min-height: 100vh;
+    padding: 20px;
+  }
 
-       
+  .slick-prev:before,
+  .slick-next:before {
+    content: url("../../../public/images/icons/chevron-right-solid-primary.svg");
+    opacity: 0.7;
+  }
 
-    .slick-prev:before, .slick-next:before{
-        content: url('../../../public/images/icons/chevron-right-solid-primary.svg');
-        opacity: 0.7;
-    }
+  .slick-prev {
+    transform: rotateY(180deg);
+  }
 
-    .slick-prev{
-        transform: rotateY(180deg);
-    }
+  .slick-dots {
+    margin-bottom: 10px;
+  }
 
-    .slick-dots {
-        margin-bottom: 10px;
-    }
-
-
-    @media (max-width: 450px) {
+  @media (max-width: 450px) {
     /*    grid-template-columns: auto;
         gap: 10px;*/
 
-        width: 80%;
-        margin: 0 auto;
-       
-        &__title {
-            font-size: 36px;
-        }
-    }
+    width: 80%;
+    margin: 0 auto;
 
-    @media (min-width: 451px) and (max-width: 1200px) {
-     /*   grid-template-columns: auto;
+    &__title {
+      font-size: 36px;
+    }
+  }
+
+  @media (min-width: 451px) and (max-width: 1200px) {
+    /*   grid-template-columns: auto;
         gap: 0;*/
-        width: 80%;
-        margin: 0 auto;
+    width: 80%;
+    margin: 0 auto;
 
-        &__title {
-            font-size: 48px;
-        }
+    &__title {
+      font-size: 48px;
     }
-
+  }
 }
-

@@ -4,7 +4,7 @@ import Footer from "../components/footer/Footer";
 import SubscriptionsSection from "./subscriptions/section";
 import BannerSection from "./banner/Section";
 import AboutSection from "./about/Section";
-import AboutUsSection from "./AboutUs/Section";
+import AboutUsSection from "./aboutUs/Section";
 import Box from "@mui/material/Box";
 import AOS from "aos";
 import "aos/dist/aos.css";
