@@ -8,7 +8,7 @@ import FormControl from "@mui/material/FormControl";
 import InputLabel from "@mui/material/InputLabel";
 import InputAdornment from "@mui/material/InputAdornment";
 import IconButton from "@mui/material/IconButton";
-import OutlinedInput from '@mui/material/OutlinedInput';
+import OutlinedInput from "@mui/material/OutlinedInput";
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
 
@@ -18,14 +18,16 @@ const PersonalData = () => {
     formState: { errors },
     trigger,
   } = useFormContext();
-
   const [showPassword, setShowPassword] = React.useState(false);
+  const [showPasswordConf, setShowPasswordConf] = React.useState(false);
+
   const handleClickShowPassword = () => setShowPassword((show) => !show);
+
+  const handleClickShowPasswordConf = () => setShowPasswordConf((show) => !show);
 
   const handleMouseDownPassword = (event) => {
     event.preventDefault();
   };
-
 
   return (
     <>
@@ -36,7 +38,7 @@ const PersonalData = () => {
           type="text"
           control={control}
           defaultValue=""
-          autocomplete=""
+          autocomplete=""s
           onChange={() => {
             trigger("customer.name");
           }}
@@ -118,7 +120,7 @@ const PersonalData = () => {
           control={control}
           defaultValue=""
           render={({ field }) => (
-            <FormControl sx={{ width: "100%" , mt:'10px'}} variant="outlined">
+            <FormControl sx={{ width: "100%", mt: "10px" }} variant="outlined">
               <InputLabel htmlFor="outlined-adornment-password">
                 Contraseña
               </InputLabel>
@@ -151,23 +153,23 @@ const PersonalData = () => {
           control={control}
           defaultValue=""
           render={({ field }) => (
-            <FormControl sx={{ width: "100%" , mt:'10px'}} variant="outlined">
+            <FormControl sx={{ width: "100%", mt: "10px" }} variant="outlined">
               <InputLabel htmlFor="outlined-adornment-password">
                 Confirmar contraseña
               </InputLabel>
               <OutlinedInput
                 {...field}
                 id="outlined-adornment-password"
-                type={showPassword ? "text" : "password"}
+                type={showPasswordConf ? "text" : "password"}
                 variant="outlined"
                 endAdornment={
                   <InputAdornment position="end">
                     <IconButton
                       aria-label="toggle password visibility"
-                      onClick={handleClickShowPassword}
+                      onClick={handleClickShowPasswordConf}
                       onMouseDown={handleMouseDownPassword}
                     >
-                      {showPassword ? <VisibilityOff /> : <Visibility />}
+                      {showPasswordConf ? <VisibilityOff /> : <Visibility />}
                     </IconButton>
                   </InputAdornment>
                 }
@@ -176,7 +178,7 @@ const PersonalData = () => {
           )}
         />
 
-      {/* <CustomTextField
+        {/* <CustomTextField
           name="customer.passwordConfirm"
           label="Confirmacion de contraseña"
           type="password"

@@ -7,6 +7,14 @@ import { Box } from "@mui/material";
 import Cards from "react-credit-cards-2";
 import { useState, ChangeEvent, FocusEvent } from "react";
 import "react-credit-cards-2/dist/es/styles-compiled.css";
+import { Controller } from "react-hook-form";
+import FormControl from "@mui/material/FormControl";
+import InputLabel from "@mui/material/InputLabel";
+import InputAdornment from "@mui/material/InputAdornment";
+import IconButton from "@mui/material/IconButton";
+import OutlinedInput from "@mui/material/OutlinedInput";
+import Visibility from "@mui/icons-material/Visibility";
+import VisibilityOff from "@mui/icons-material/VisibilityOff";
 
 const PaymentData = () => {
   const {
@@ -22,6 +30,14 @@ const PaymentData = () => {
     nameOnCard: "",
     focus: "",
   });
+
+  const [showPassword, setShowPassword] = React.useState(false);
+
+  const handleClickShowPassword = () => setShowPassword((show) => !show);
+
+  const handleMouseDownPassword = (event) => {
+    event.preventDefault();
+  };
 
   const handleInputChange = (evt) => {
     const { name, value } = evt.target;
@@ -113,25 +129,40 @@ const PaymentData = () => {
         <ErrorMessage errors={errors} name="card.expDate" />
       </Typography>
 
-      <CustomTextField
+      <Controller
         name="card.cvc"
-        label="codigo de seguridad cvc"
-        type="password"
         control={control}
         defaultValue=""
-        autocomplete="current-password"
-        // value={state.cvc}
-        onChange={(e) => {
-          handleInputChange(e);
-          trigger("card.cvc");
-        }}
-        onFocus={handleInputFocus}
+        render={({ field }) => (
+          <FormControl sx={{ width: "100%", mt: "10px" }} variant="outlined">
+            <InputLabel htmlFor="outlined-adornment-password">
+              Codigo de seguridad cvc
+            </InputLabel>
+            <OutlinedInput
+              {...field}
+              id="outlined-adornment-password"
+              type={showPassword ? "text" : "password"}
+              variant="outlined"
+              endAdornment={
+                <InputAdornment position="end">
+                  <IconButton
+                    aria-label="toggle password visibility"
+                    onClick={handleClickShowPassword}
+                    onMouseDown={handleMouseDownPassword}
+                  >
+                    {showPassword ? <VisibilityOff /> : <Visibility />}
+                  </IconButton>
+                </InputAdornment>
+              }
+              inputProps={{ maxLength: 3 }}
+            />
+          </FormControl>
+        )}
       />
-
       <Typography variant="caption" color="#d32f2fcf">
         <ErrorMessage errors={errors} name="card.cvc" />
       </Typography>
-    </>
+    </>    
   );
 };
 
