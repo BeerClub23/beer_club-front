@@ -1,6 +1,6 @@
 .cardContainer {
   display: grid;
-  grid-template-columns: 70% auto;
+  grid-template-columns: auto 50%  auto;
 
   &_text {
     padding-left: 24px;
@@ -12,5 +12,6 @@
     // filter: sepia(30%) drop-shadow(8px 8px 10px (grey));
     width: auto;
     height: auto;
+    padding-right: -16px;
   }
 }
