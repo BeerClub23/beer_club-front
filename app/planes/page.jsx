@@ -13,6 +13,7 @@ import PlanDetail from "../components/plan/planDetail/PlanDetail";
 
 const PlansPage = () => {
   const { context, setContext } = useAppContext();
+  // eslint-disable-next-line no-unused-vars
   const { subscriptions, isLoading, isError } = useGetSubscriptions();
   const initialSelectedValue =
     context && context.subscription ? context.subscription.id : 1;
@@ -26,9 +27,9 @@ const PlansPage = () => {
 
   const submitSelection = () => {
     const selectedSubscription = subscriptions.find(
-      (subscription) => subscription.id === selectedValue
+      (subscription) => subscription.id === selectedValue,
     );
-    setContext({ subscription: selectedSubscription }); 
+    setContext({ subscription: selectedSubscription });
     router.push("/registro");
   };
   return (
@@ -51,7 +52,7 @@ const PlansPage = () => {
                   height: "10%",
                   fontWeight: "bold",
                   color: "black",
-                  backgroundColor: '#f5e1c1',
+                  backgroundColor: "#f5e1c1",
                 }}
                 onClick={submitSelection}
               >
@@ -64,6 +65,7 @@ const PlansPage = () => {
               </Typography>
               {subscriptions.map((plan) => (
                 <PlanCard
+                  key={plan.id}
                   id={plan.id}
                   title={plan.title}
                   price={plan.price}
@@ -83,7 +85,7 @@ const PlansPage = () => {
 };
 function findNextHigherPriceId(id, subscriptions) {
   const currentSubscription = subscriptions.find(
-    (subscription) => subscription.id === id
+    (subscription) => subscription.id === id,
   );
   const currentPrice = parseInt(currentSubscription.price.replace(/\D/g, ""));
   for (
