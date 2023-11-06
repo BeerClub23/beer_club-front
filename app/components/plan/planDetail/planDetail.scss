@@ -1,0 +1,25 @@
+.cardDetail{
+  width: 460px;
+  margin-bottom: 15px;
+}
+.detailPrice{
+
+      font-size: 30px;
+}
+hr{
+  border-color: rgb(174, 171, 171);
+}
+@media (max-width: 425px) {
+  .cardDetail{
+    width: 310px;
+  }
+  .listItem span{
+    font-size: 14px;
+  }
+
+}
+@media (max-width: 320px) {
+  .cardDetail {
+    width: 100%;
+  }
+}
