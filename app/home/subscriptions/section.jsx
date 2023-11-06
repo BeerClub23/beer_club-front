@@ -53,7 +53,7 @@ const SubscriptionsSection = () => {
   const goToRegister = (subscription) => {
     setContext({ ...context, subscription });
 
-    router.push(`/registro`);
+    router.push(`/planes`);
   };
 
   return (
