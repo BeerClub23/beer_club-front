@@ -71,9 +71,9 @@ export default function FormLogin() {
   React.useEffect(() => {
     setFocus("email");
   }, [setFocus]);
-  React.useEffect(() => {
-    console.log(isSubmitting);
-  }, [isSubmitting]);
+  // React.useEffect(() => {
+  //   console.log(isSubmitting);
+  // }, [isSubmitting]);
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} autoComplete="off">
