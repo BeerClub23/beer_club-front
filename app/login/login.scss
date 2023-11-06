@@ -4,11 +4,10 @@
 }
 
 .divLogin{
-  height: 100vh;
+  min-height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  padding-bottom: 40px;
 }
 
 .login {
@@ -28,6 +27,16 @@
     margin: auto;
     border-radius: 40px;
   }
+
+}
+
+@media (min-height: 800px) {
+  .divLogin{
+    padding-bottom: 40px;
+  }
+}
+
+@media (min-width: 600px) and (min-height: 800px) {
   .logo_age{
     width: 240px;
     height: 240px;

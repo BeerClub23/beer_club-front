@@ -44,7 +44,10 @@ export default function FormLogin() {
       Swal.fire({
         title: "Error!",
         text: "Usuario no registrado",
-        icon: "error",
+        imageUrl: "../../images/icons/no-beer.jpg",
+        imageWidth: 150,
+        imageHeight: 150,
+        imageAlt: "No puede ingresar",
         confirmButtonText: "OK",
         confirmButtonColor: "#ceb5a7",
         focusConfirm: false,
@@ -52,9 +55,12 @@ export default function FormLogin() {
       console.error(respuesta.response.data.message);
     } else if (respuesta.response.request.status == 500) {
       Swal.fire({
-        title: "Error!",
+        title: "Ups!",
         text: "No se pudo ingresar, intentelo mas tarde",
-        icon: "error",
+        imageUrl: "../../images/icons/no-beer.jpg",
+        imageWidth: 150,
+        imageHeight: 150,
+        imageAlt: "No puede ingresar",
         confirmButtonText: "OK",
         confirmButtonColor: "#ceb5a7",
         focusConfirm: false,
