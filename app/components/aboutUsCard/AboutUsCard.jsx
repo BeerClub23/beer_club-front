@@ -1,22 +1,9 @@
 import Image from "next/image";
-import React, { useEffect, useState } from "react";
 import styles from "../aboutUsCard/AboutUsCard.module.scss";
 import chop from "../../../public/images/aboutUs/black-chop.png";
 import lupulo from "../../../public/images/aboutUs/lupulo.png";
 
 export const AboutUsCard = () => {
-  const [imageWidth, setImageWidth] = useState("");
-  const [imageHeight, setImageHeight] = useState("");
-
-  useEffect(() => {
-    if (screen.width < 1200) {
-      setImageHeight(162.5);
-      setImageWidth(110);
-    } else {
-      setImageHeight(285);
-      setImageWidth(220);
-    }
-  }, []);
   return (
     <article className={styles.containerArticle}>
       <Image
