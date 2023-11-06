@@ -5,24 +5,36 @@ import Typography from "@mui/material/Typography";
 import PersonalData from "./PersonalData";
 import AddressData from "./AddressData";
 import PaymentData from "./PaymentData";
-import { FC, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useFormContext } from "react-hook-form";
 import { useRouter } from "next/navigation";
 import { theme } from "../../styles/materialThemeFormCheckout";
 import ThemeProvider from "@mui/material/styles/ThemeProvider";
 import logo from "../../../public/images/logo/Logo_sin_escudo_Negro.svg";
 import Image from "next/image";
+import ApiRegister from "@/app/services/register";
+import Swal from "sweetalert2";
 
 const steps = ["Datos Personales", "Dirección de entrega", "Datos del pago"];
 
 export const FormCheckout = ({ category }) => {
   const router = useRouter();
   const { handleSubmit, trigger } = useFormContext();
-  const [formData, setFormData] = useState({ category: category.title });
+  const [formData, setFormData] = useState({});
   const [step, setStep] = useState(1);
   const [status, setStatus] = useState("");
 
-  const onSubmit = (data) => {
+  useEffect(() => {
+    if (category) {
+      setFormData({ category: category.title });
+    }
+  }, []);
+
+  const handleClick = () => {
+    router.push("/bienvenido");
+  };
+
+  const onSubmit = async (data) => {
     if (step === 1) {
       setFormData({ ...formData, customer: data });
     }
@@ -32,10 +44,43 @@ export const FormCheckout = ({ category }) => {
     }
     if (step === 3) {
       console.log(JSON.stringify({ ...formData, ...data }));
-
-      router.push("/bienvenido");
-
-      // setFormData({...formData, card: data})
+      setFormData({ ...formData, ...data });
+      Swal.fire({
+        title: "Procesando el pago",
+        html: "Por favor, espere...",
+        allowOutsideClick: false,
+        showConfirmButton: false, // Ocultar el botón de confirmación
+        onBeforeOpen: () => {
+          Swal.showLoading();
+    },
+      });
+      await new Promise((resolve) => setTimeout(resolve, 3000));
+      let response = await ApiRegister(data);
+      console.log(response.status);
+      if (response.status === 200) {
+        console.log(response);
+        Swal.fire({
+          title: "Pago Aceptado!",
+          text: `${response.data.message}`,
+          icon: "success",
+          confirmButtonText: "Continuar",
+          confirmButtonColor: "#ceb5a7",
+          // onClick: handleClick(),
+          focusConfirm: false,
+        }).then(function () {
+          window.location = "/login";
+        });
+      } else if (response.status !== 200) {
+        console.log(response.response.data.message);
+        Swal.fire({
+          title: "Error!",
+          text: `${response.response.data.message}`,
+          icon: "error",
+          confirmButtonText: "Continuar",
+          confirmButtonColor: "#ceb5a7",
+          focusConfirm: false,
+        });
+      }
       // fetch('http://localhost:3000/api/checkout',
       // fetch('https://ctd-esp-fe3-final-claralisle.vercel.app/api/checkout',
       /*  { 

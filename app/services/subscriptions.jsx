@@ -3,7 +3,7 @@ import useSWR from "swr";
 const get = (url) => fetch(url).then((r) => r.json());
 
 const subscriptions = [
-  {
+  { id:1,
     title: "Novato",
     description: "",
     price: "$ 100",
@@ -15,6 +15,7 @@ const subscriptions = [
     isRecommended: false,
   },
   {
+    id:2,
     title: "Especialista",
     description: "",
     price: "$ 200",
@@ -25,7 +26,7 @@ const subscriptions = [
     ],
     isRecommended: true,
   },
-  {
+  { id:3,
     title: "Experto",
     description: "",
     price: "$ 300",

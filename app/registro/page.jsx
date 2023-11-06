@@ -29,7 +29,7 @@ const CheckoutPage = () => {
     if (!context?.subscription) {
       router.push("/home");
     }
-  }, [context, router]);
+  }, []);
 
   return (
     <>

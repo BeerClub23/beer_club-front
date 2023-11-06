@@ -51,12 +51,10 @@ export const schema = yup.object().shape({
       .matches(/^[^\s@]+@[^\s@]+\.[^\s@]+$/, "Debe ser un email valido"),
     password: yup
       .string()
-      .required(
-        "La contraseña debe tener 8-16 caracteres e incluir letras, números y al menos un carácter especial (#, $, @, !, %, & o ?).",
-      )
+      .required("Este campo es requerido")
       .matches(
         /^(?=.*[a-zA-z])(?=.*[0-9])(?=.*[#$@!%&*?])[A-Za-z\d#$@!%&*?]{8,16}$/,
-        "Contraseña invalida",
+        "Debe contener 8-16 caracteres: letras, números y al menos un caracter especial",
       ),
     passwordConfirm: yup
       .string()

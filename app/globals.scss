@@ -32,9 +32,9 @@ a {
   text-decoration: none;
 }
 
-.poppins {
-  font-family: var(--font-poppins);
-}
+
+$poppins-font:var(--font-poppins); // add as var 
+
 
 /* Age */
 

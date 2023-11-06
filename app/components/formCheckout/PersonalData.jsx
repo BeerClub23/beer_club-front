@@ -3,6 +3,14 @@ import { Box, Typography } from "@mui/material";
 import React from "react";
 import { CustomTextField } from "../inputs/CustomTextFields";
 import { useFormContext } from "react-hook-form";
+import { Controller } from "react-hook-form";
+import FormControl from "@mui/material/FormControl";
+import InputLabel from "@mui/material/InputLabel";
+import InputAdornment from "@mui/material/InputAdornment";
+import IconButton from "@mui/material/IconButton";
+import OutlinedInput from "@mui/material/OutlinedInput";
+import Visibility from "@mui/icons-material/Visibility";
+import VisibilityOff from "@mui/icons-material/VisibilityOff";
 
 const PersonalData = () => {
   const {
@@ -10,6 +18,16 @@ const PersonalData = () => {
     formState: { errors },
     trigger,
   } = useFormContext();
+  const [showPassword, setShowPassword] = React.useState(false);
+  const [showPasswordConf, setShowPasswordConf] = React.useState(false);
+
+  const handleClickShowPassword = () => setShowPassword((show) => !show);
+
+  const handleClickShowPasswordConf = () => setShowPasswordConf((show) => !show);
+
+  const handleMouseDownPassword = (event) => {
+    event.preventDefault();
+  };
 
   return (
     <>
@@ -20,7 +38,7 @@ const PersonalData = () => {
           type="text"
           control={control}
           defaultValue=""
-          autocomplete=""
+          autocomplete=""s
           onChange={() => {
             trigger("customer.name");
           }}
@@ -97,65 +115,77 @@ const PersonalData = () => {
           <ErrorMessage errors={errors} name="customer.email" />
         </Typography>
 
-        <CustomTextField
+        <Controller
           name="customer.password"
-          label="Contraseña"
-          type="password"
           control={control}
           defaultValue=""
-          autocomplete="new-password"
-          onBlur={() => {
-            trigger("customer.password");
-          }}
+          render={({ field }) => (
+            <FormControl sx={{ width: "100%", mt: "10px" }} variant="outlined">
+              <InputLabel htmlFor="outlined-adornment-password">
+                Contraseña
+              </InputLabel>
+              <OutlinedInput
+                {...field}
+                id="outlined-adornment-password"
+                type={showPassword ? "text" : "password"}
+                variant="outlined"
+                endAdornment={
+                  <InputAdornment position="end">
+                    <IconButton
+                      aria-label="toggle password visibility"
+                      onClick={handleClickShowPassword}
+                      onMouseDown={handleMouseDownPassword}
+                    >
+                      {showPassword ? <VisibilityOff /> : <Visibility />}
+                    </IconButton>
+                  </InputAdornment>
+                }
+              />
+            </FormControl>
+          )}
         />
         <Typography variant="caption" color="#d32f2fcf">
           <ErrorMessage errors={errors} name="customer.password" />
         </Typography>
 
-        {/* <CustomTextField sx={{ m: 1, width: '25ch' }} variant="outlined"
-            fullWidth       
-            sx={{ mb: 2, backgroundColor:'transparent' }}
-            name='customer.password'    
-            type='password'       
-            control={control}
-            onBlur={()=>{
-                trigger("customer.password")
-        }}                   
-       >
-        
-        <InputLabel htmlFor="filled-adornment-password">Contraseña</InputLabel>
-          <FilledInput
-          
-            id="filled-adornment-password"
-            type={showPassword ? 'text' : 'password'}
-            endAdornment={
-              <InputAdornment position="end">
-                <IconButton
-                  aria-label="toggle password visibility"
-                  onClick={handleClickShowPassword}
-                //   onMouseDown={handleMouseDownPassword}
-                  edge="end"
-                >
-                  {showPassword ? <VisibilityOff /> : <Visibility />}
-                </IconButton>
-              </InputAdornment>
-            }
-          />   
-              
-        </CustomTextField>
+        <Controller
+          name="customer.passwordConfirm"
+          control={control}
+          defaultValue=""
+          render={({ field }) => (
+            <FormControl sx={{ width: "100%", mt: "10px" }} variant="outlined">
+              <InputLabel htmlFor="outlined-adornment-password">
+                Confirmar contraseña
+              </InputLabel>
+              <OutlinedInput
+                {...field}
+                id="outlined-adornment-password"
+                type={showPasswordConf ? "text" : "password"}
+                variant="outlined"
+                endAdornment={
+                  <InputAdornment position="end">
+                    <IconButton
+                      aria-label="toggle password visibility"
+                      onClick={handleClickShowPasswordConf}
+                      onMouseDown={handleMouseDownPassword}
+                    >
+                      {showPasswordConf ? <VisibilityOff /> : <Visibility />}
+                    </IconButton>
+                  </InputAdornment>
+                }
+              />
+            </FormControl>
+          )}
+        />
 
-                <Typography variant='caption' color='#d32f2fcf'>
-                    <ErrorMessage errors={errors} name="customer.password" />
-                </Typography>
-      */}
-        <CustomTextField
+        {/* <CustomTextField
           name="customer.passwordConfirm"
           label="Confirmacion de contraseña"
           type="password"
           control={control}
           defaultValue=""
           autocomplete="new-password"
-        />
+        /> */}
 
         <Typography variant="caption" color="#d32f2fcf">
           <ErrorMessage errors={errors} name="customer.passwordConfirm" />
