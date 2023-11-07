@@ -1,0 +1,13 @@
+.cardContainer {
+  display: grid;
+  grid-template-columns: 70% auto;
+}
+.cardContainer_text {
+  padding-left: 24px;
+}
+.cardContainer_picMobile {
+  transform: rotate(45deg);
+  margin: 0 auto;
+  width: auto;
+  height: auto;
+}/*# sourceMappingURL=PlanCardForm.css.map */
