@@ -5,7 +5,7 @@ import Logo from 'public/images/logo/Logo_sin_escudo_Color_Original.svg';
 import { theme } from '../styles/materialThemeForm';
 import {  ThemeProvider } from '@mui/material';
 import Image from 'next/image';
-import styles from '../page.module.scss'
+import styles from '../page.scss'
 
 export default function MenorPage() { 
   return (
@@ -20,7 +20,7 @@ export default function MenorPage() {
       <Typography variant="h4">ACCESO DENEGADO </Typography> 
       <Typography variant="h5" sx={{ textAlign: "center" } }>Lo sentimos debes ser mayor de edad para acceder a esta pagina  </Typography> 
       <Button variant="contained" size="large" href="/informacion-legal" target={"_blank"} sx={{pt:'7px', mx:'auto', my: 5, fontWeight: 'bold' }}>
-        Información lega
+        Información legal
       </Button>
     </Box>
     </ThemeProvider>

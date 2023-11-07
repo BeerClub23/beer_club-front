@@ -13,10 +13,10 @@ import {
 
 
 const serverError = 'error'
-export const invalidAddress = 'invalid'
-export const validCard = '4242424242424242';
-export const withoutFundsCard = '4111 4111 4111 4111'.replaceAll(" ", "");
-export const withoutAuthorizationCard = '4000 4000 4000 4000'.replaceAll(" ", "");
+const invalidAddress = 'invalid'
+const validCard = '4242424242424242';
+const withoutFundsCard = '4111 4111 4111 4111'.replaceAll(" ", "");
+const withoutAuthorizationCard = '4000 4000 4000 4000'.replaceAll(" ", "");
 
 export async function POST(req, res) {         
         // const body = await req.json();       
@@ -38,7 +38,7 @@ export async function POST(req, res) {
               })
             // res.status(400).json(ERROR_INCORRECT_ADDRESS);
             return
-        }
+        } 
         if (body.card.number === withoutFundsCard) {
             // res.status(400).json(ERROR_CARD_WITHOUT_FUNDS);
             // return

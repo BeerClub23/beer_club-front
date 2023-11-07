@@ -30,7 +30,7 @@ const subscriptions = [
 ]
 
 export const useGetSubscriptions = () => {
-    const { data, error, isLoading } = useSWR(`/api/v1/subscriptions`, get, { fallbackData: subscriptions, shouldRetryOnError: false, errorRetryCount: 1 });
+    const { data, error, isLoading } = useSWR(`${process.env.NEXT_PUBLIC_API_URL}subscriptions`, get, { fallbackData: subscriptions, shouldRetryOnError: false, errorRetryCount: 1 });
 
     return {
         subscriptions: data,
