@@ -47,7 +47,7 @@ const PlanCard = ({
           className="planPrice"
           sx={{ fontWeight: "bold" }}
         >
-          {price}
+          $ {price}
         </Typography>
         <Typography className="benefitText" variant="caption">
           * {benefit}

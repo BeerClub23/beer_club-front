@@ -2,10 +2,10 @@
 // import {CheckoutInput} from "dh-marvel/features/checkout/checkout.types";
 import { NextResponse } from "next/server";
 // const serverError = "error";
-export const invalidAddress = "invalid";
-export const validCard = "4242424242424242";
-export const withoutFundsCard = "5454545454545454";
-export const withoutAuthorizationCard = "6161616161616161";
+const invalidAddress = "invalid";
+const validCard = "4242424242424242";
+const withoutFundsCard = "5454545454545454";
+const withoutAuthorizationCard = "6161616161616161";
 
 export async function POST(req, res) {
   if (req.method !== "POST") {

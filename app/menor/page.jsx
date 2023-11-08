@@ -29,7 +29,7 @@ export default function MenorPage() {
             target={"_blank"}
             sx={{ pt: "7px", mx: "auto", my: 5, fontWeight: "bold" }}
           >
-            Información lega
+            Información legal
           </Button>
         </Box>
       </ThemeProvider>
