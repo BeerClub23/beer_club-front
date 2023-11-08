@@ -16,13 +16,13 @@ export async function POST(req, res) {
   }
   try {
     const body = await req.json();
-    if (body.address.address1 === invalidAddress) {
+    if (body.street === invalidAddress) {
       return NextResponse.json(
         { message: "La dirección no es correcta" },
         { status: 400 },
       );
     }
-    if (body.card.number === withoutFundsCard) {
+    if (body.cardNumber === withoutFundsCard) {
       return NextResponse.json(
         {
           message:
@@ -31,7 +31,7 @@ export async function POST(req, res) {
         { status: 400 },
       );
     }
-    if (body.card.number == withoutAuthorizationCard) {
+    if (body.cardNumber == withoutAuthorizationCard) {
       return NextResponse.json(
         {
           message:
@@ -40,7 +40,7 @@ export async function POST(req, res) {
         { status: 400 },
       );
     }
-    if (body.card.number === validCard) {
+    if (body.cardNumber === validCard) {
       // res.setHeader("Set-Cookie", 'Access=true; path=/confirmacion-compra; samesite=lax; httponly; expires=0;')
       /*  res.status(200).json({data: body});
             return*/

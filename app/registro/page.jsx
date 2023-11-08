@@ -1,7 +1,6 @@
 "use client";
 
 import Box from "@mui/material/Box";
-import * as yup from "yup";
 import HeaderPublic from "../components/headerPublic/headerPublic";
 import Footer from "../components/footer/Footer";
 import { FormCheckout } from "../components/formCheckout/FormCheckout";
@@ -27,7 +26,7 @@ const CheckoutPage = () => {
 
   useEffect(() => {
     if (!context?.subscription) {
-      router.push("/home");
+      router.push("/planes");
     }
   }, []);
 

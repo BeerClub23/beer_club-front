@@ -5,16 +5,8 @@ import { CustomTextField } from "../inputs/CustomTextFields";
 import { ErrorMessage } from "@hookform/error-message";
 import { Box } from "@mui/material";
 import Cards from "react-credit-cards-2";
-import { useState, ChangeEvent, FocusEvent } from "react";
+import { useState } from "react";
 import "react-credit-cards-2/dist/es/styles-compiled.css";
-import { Controller } from "react-hook-form";
-import FormControl from "@mui/material/FormControl";
-import InputLabel from "@mui/material/InputLabel";
-import InputAdornment from "@mui/material/InputAdornment";
-import IconButton from "@mui/material/IconButton";
-import OutlinedInput from "@mui/material/OutlinedInput";
-import Visibility from "@mui/icons-material/Visibility";
-import VisibilityOff from "@mui/icons-material/VisibilityOff";
 
 const PaymentData = () => {
   const {
@@ -24,20 +16,12 @@ const PaymentData = () => {
   } = useFormContext();
 
   const [state, setState] = useState({
-    number: "",
+    cardNumber: "",
     expDate: "",
     cvc: "",
-    nameOnCard: "",
+    cardHolder: "",
     focus: "",
   });
-
-  const [showPassword, setShowPassword] = React.useState(false);
-
-  const handleClickShowPassword = () => setShowPassword((show) => !show);
-
-  const handleMouseDownPassword = (event) => {
-    event.preventDefault();
-  };
 
   const handleInputChange = (evt) => {
     const { name, value } = evt.target;
@@ -55,10 +39,10 @@ const PaymentData = () => {
   return (
     <>
       <Cards
-        number={state.number}
+        number={state.cardNumber}
         expiry={state.expDate}
         cvc={state.cvc}
-        name={state.nameOnCard}
+        name={state.cardHolder}
         focused={state.focus}
       />
 
@@ -73,7 +57,7 @@ const PaymentData = () => {
         }}
       ></Box>
       <CustomTextField
-        name="card.number"
+        name="card.cardNumber"
         label="Numero de Tarjeta"
         type="text"
         control={control}
@@ -82,17 +66,17 @@ const PaymentData = () => {
         // value={state.number}
         onChange={(e) => {
           handleInputChange(e);
-          trigger("card.number");
+          trigger("card.cardNumber");
         }}
         onFocus={handleInputFocus}
       />
 
       <Typography variant="caption" color="#d32f2fcf">
-        <ErrorMessage errors={errors} name="card.number" />
+        <ErrorMessage errors={errors} name="card.cardNumber" />
       </Typography>
 
       <CustomTextField
-        name="card.nameOnCard"
+        name="card.cardHolder"
         label="Nombre en la Tarjeta"
         type="text"
         control={control}
@@ -101,13 +85,13 @@ const PaymentData = () => {
         // value={state.name}
         onChange={(e) => {
           handleInputChange(e);
-          trigger("card.nameOnCard");
+          trigger("card.cardHolder");
         }}
         onFocus={handleInputFocus}
       />
 
       <Typography variant="caption" color="#d32f2fcf">
-        <ErrorMessage errors={errors} name="card.nameOnCard" />
+        <ErrorMessage errors={errors} name="card.cardHolder" />
       </Typography>
 
       <CustomTextField
@@ -129,40 +113,24 @@ const PaymentData = () => {
         <ErrorMessage errors={errors} name="card.expDate" />
       </Typography>
 
-      <Controller
+      <CustomTextField
         name="card.cvc"
+        label="Fecha de expiración"
+        type="text"
         control={control}
+        autocomplete=""
         defaultValue=""
-        render={({ field }) => (
-          <FormControl sx={{ width: "100%", mt: "10px" }} variant="outlined">
-            <InputLabel htmlFor="outlined-adornment-password">
-              Codigo de seguridad cvc
-            </InputLabel>
-            <OutlinedInput
-              {...field}
-              id="outlined-adornment-password"
-              type={showPassword ? "text" : "password"}
-              variant="outlined"
-              endAdornment={
-                <InputAdornment position="end">
-                  <IconButton
-                    aria-label="toggle password visibility"
-                    onClick={handleClickShowPassword}
-                    onMouseDown={handleMouseDownPassword}
-                  >
-                    {showPassword ? <VisibilityOff /> : <Visibility />}
-                  </IconButton>
-                </InputAdornment>
-              }
-              inputProps={{ maxLength: 3 }}
-            />
-          </FormControl>
-        )}
+        onChange={(e) => {
+          handleInputChange(e);
+          trigger("card.cvc");
+        }}
+        onFocus={handleInputFocus}
+        inputProps={{ maxLength: 3 }}
       />
       <Typography variant="caption" color="#d32f2fcf">
         <ErrorMessage errors={errors} name="card.cvc" />
       </Typography>
-    </>    
+    </>
   );
 };
 

@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import { Alert, Button, Step, StepLabel, Stepper } from "@mui/material";
 import Box from "@mui/material/Box";
 import Paper from "@mui/material/Paper";
@@ -7,7 +8,7 @@ import AddressData from "./AddressData";
 import PaymentData from "./PaymentData";
 import { useEffect, useState } from "react";
 import { useFormContext } from "react-hook-form";
-import { useRouter } from "next/navigation";
+// import { useRouter } from "next/navigation";
 import { theme } from "../../styles/materialThemeFormCheckout";
 import ThemeProvider from "@mui/material/styles/ThemeProvider";
 import logo from "../../../public/images/logo/Logo_sin_escudo_Negro.svg";
@@ -18,7 +19,7 @@ import Swal from "sweetalert2";
 const steps = ["Datos Personales", "Dirección de entrega", "Datos del pago"];
 
 export const FormCheckout = ({ category }) => {
-  const router = useRouter();
+  // const router = useRouter();
   const { handleSubmit, trigger } = useFormContext();
   const [formData, setFormData] = useState({});
   const [step, setStep] = useState(1);
@@ -26,13 +27,13 @@ export const FormCheckout = ({ category }) => {
 
   useEffect(() => {
     if (category) {
-      setFormData({ category: category.title });
+      setFormData({ category: category.id });
     }
   }, []);
 
-  const handleClick = () => {
-    router.push("/bienvenido");
-  };
+  // const handleClick = () => {
+  //   router.push("/bienvenido");
+  // };
 
   const onSubmit = async (data) => {
     if (step === 1) {
@@ -43,8 +44,12 @@ export const FormCheckout = ({ category }) => {
       setFormData({ ...formData, address: data });
     }
     if (step === 3) {
-      console.log(JSON.stringify({ ...formData, ...data }));
-      setFormData({ ...formData, ...data });
+        setFormData({ ...formData, card: {
+        cardNumber:data.card.cardNumber,
+        expDate: data.card.expDate,
+        cardHolder: data.card.cardHolder,
+        cvv: data.card.cvc
+      }, });
       Swal.fire({
         title: "Procesando el pago",
         html: "Por favor, espere...",
@@ -55,7 +60,17 @@ export const FormCheckout = ({ category }) => {
     },
       });
       await new Promise((resolve) => setTimeout(resolve, 3000));
-      let response = await ApiRegister(data);
+      const normalizedData = {   
+          subscriptionId:category.id,          
+          ...data.customer,
+          ...data.address,
+          cardNumber:data.card.cardNumber,
+          expDate: data.card.expDate,
+          cardHolder: data.card.cardHolder,
+          cvv: data.card.cvc       
+      };
+      console.log(JSON.stringify(normalizedData));
+      let response = await ApiRegister(normalizedData);
       console.log(response.status);
       if (response.status === 200) {
         console.log(response);
@@ -80,47 +95,7 @@ export const FormCheckout = ({ category }) => {
           confirmButtonColor: "#ceb5a7",
           focusConfirm: false,
         });
-      }
-      // fetch('http://localhost:3000/api/checkout',
-      // fetch('https://ctd-esp-fe3-final-claralisle.vercel.app/api/checkout',
-      /*  { 
-        method: "POST",
-        // body: JSON.stringify({...data, comic:1}),       
-        body: JSON.stringify({...data}),          
-        headers:{
-            'Content-Type': 'application/json'
-        }}
-        )
-        .then((response) => {
-            console.log(response);
-        if(response.status ===200){
-            
-            const nombre = JSON.stringify(data.customer.name);
-            const apellido = JSON.stringify(data.customer.lastName);
-            const direccion = JSON.stringify(data.address.address1);
-            const ciudad = JSON.stringify(data.address.city);
-            const provincia = JSON.stringify(data.address.state);
-            localStorage.setItem("nombre", nombre);
-            localStorage.setItem("apellido", apellido);
-            localStorage.setItem("direccion", direccion);
-            localStorage.setItem("ciudad", ciudad);
-            localStorage.setItem("provincia", provincia);
-            // router.push(`/confirmacion-compra/${id}`)
-            router.push(`/congratulations`)
-        }
-       
-        return response.json();
-        
-        })
-        
-        .then((data) => {  
-            setStatus(data.message)      
-      
-        })
-        .catch((error) => {           
-            console.log(error);         
-      
-        });*/
+      }     
     }
   };
 
@@ -128,8 +103,8 @@ export const FormCheckout = ({ category }) => {
     let isValidate = await trigger([
       "customer.name",
       "customer.lastName",
-      "customer.dateOfBirth",
-      "customer.phoneNumber",
+      "customer.birthdate",
+      "customer.telephone",
       "customer.email",
       "customer.password",
       "customer.passwordConfirm",
@@ -141,10 +116,11 @@ export const FormCheckout = ({ category }) => {
   };
   const handleNext2 = async () => {
     let isValidate = await trigger([
-      "address.address1",
-      "address.address2",
+      "address.street",
+      "address.number",
+      "address.country",
       "address.city",
-      "address.state",
+      "address.province",
       "address.zipCode",
     ]);
     if (step == 2 && isValidate) {
@@ -154,8 +130,8 @@ export const FormCheckout = ({ category }) => {
   };
   const handleNext3 = async () => {
     await trigger([
-      "card.number",
-      "card.nameOnCard",
+      "card.cardNumber",
+      "card.cardHolder",
       "card.expDate",
       "card.cvc",
     ]);
