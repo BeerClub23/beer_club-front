@@ -67,9 +67,9 @@ const PlansPage = () => {
                 <PlanCard
                   key={plan.id}
                   id={plan.id}
-                  title={plan.title}
+                  title={plan.name}
                   price={plan.price}
-                  benefit={plan.benefits[0]}
+                  benefit={plan.benefits[0].name}
                   isRecommended={recommendedPlan}
                   isChecked={selectedValue == plan.id}
                   event={handleCardSelect}
@@ -87,14 +87,14 @@ function findNextHigherPriceId(id, subscriptions) {
   const currentSubscription = subscriptions.find(
     (subscription) => subscription.id === id,
   );
-  const currentPrice = parseInt(currentSubscription.price.replace(/\D/g, ""));
+  const currentPrice = parseInt(currentSubscription.price);
   for (
     let i = subscriptions.indexOf(currentSubscription) + 1;
     i < subscriptions.length;
     i++
   ) {
     const subscription = subscriptions[i];
-    const subscriptionPrice = parseInt(subscription.price.replace(/\D/g, ""));
+    const subscriptionPrice = parseInt(subscription.price);
     if (subscriptionPrice > currentPrice) {
       return subscription.id;
     }
