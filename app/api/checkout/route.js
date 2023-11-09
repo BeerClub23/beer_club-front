@@ -47,7 +47,11 @@ export async function POST(req, res) {
       // redirect('http://localhost:3000/congratulations')
       return NextResponse.json(
         {
-          message: "Respuesta exitosa. Factura: 0001-00000001.",
+          message: "Respuesta exitosa.",
+          invoiceNumber: " 0001-00000001",
+          amount: "200",
+          cardNumber: "",
+          description: "",
         },
         {
           status: 200,
@@ -62,12 +66,10 @@ export async function POST(req, res) {
     );
   } catch (err) {
     return NextResponse.json(
-      JSON.stringify(
-        { message: "Error server, intente nuevamente en unos minutos..." },
-        {
-          status: 500,
-        },
-      ),
+      { message: "Error server, intente nuevamente en unos minutos..." },
+      {
+        status: 500,
+      },
     );
   }
 }

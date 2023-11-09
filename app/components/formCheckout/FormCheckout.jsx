@@ -20,7 +20,7 @@ const steps = ["Datos Personales", "Dirección de entrega", "Datos del pago"];
 
 export const FormCheckout = ({ category }) => {
   // const router = useRouter();
-  const { handleSubmit, trigger } = useFormContext();
+  const { handleSubmit, trigger , formState: { isSubmitting }} = useFormContext();
   const [formData, setFormData] = useState({});
   const [step, setStep] = useState(1);
   const [status, setStatus] = useState("");
@@ -31,11 +31,21 @@ export const FormCheckout = ({ category }) => {
     }
   }, []);
 
-  // const handleClick = () => {
-  //   router.push("/bienvenido");
-  // };
+  if(isSubmitting){
+    console.log(isSubmitting);
+    Swal.fire({
+      title: "Procesando el pago",
+      html: "Por favor, espere...",
+      allowOutsideClick: false,
+      showConfirmButton: false, // Ocultar el botón de confirmación
+      onBeforeOpen: () => {
+        Swal.showLoading();
+  },
+    });
+  }
 
-  const onSubmit = async (data) => {
+ const onSubmit = async (data) => { 
+
     if (step === 1) {
       setFormData({ ...formData, customer: data });
     }
@@ -50,7 +60,7 @@ export const FormCheckout = ({ category }) => {
         cardHolder: data.card.cardHolder,
         cvv: data.card.cvc
       }, });
-      Swal.fire({
+    /* Swal.fire({
         title: "Procesando el pago",
         html: "Por favor, espere...",
         allowOutsideClick: false,
@@ -59,7 +69,7 @@ export const FormCheckout = ({ category }) => {
           Swal.showLoading();
     },
       });
-      await new Promise((resolve) => setTimeout(resolve, 3000));
+      await new Promise((resolve) => setTimeout(resolve, 3000));*/
       const normalizedData = {   
           subscriptionId:category.id,          
           ...data.customer,
@@ -69,14 +79,16 @@ export const FormCheckout = ({ category }) => {
           cardHolder: data.card.cardHolder,
           cvv: data.card.cvc       
       };
-      console.log(JSON.stringify(normalizedData));
+      
       let response = await ApiRegister(normalizedData);
+      console.log(normalizedData);     
       console.log(response.status);
       if (response.status === 200) {
         console.log(response);
         Swal.fire({
           title: "Pago Aceptado!",
-          text: `${response.data.message}`,
+          html: `Factura: ${response.data.invoiceNumber} <br/> Importe: ${response.data.amount}`,
+          // text: `Factura: ${response.data.invoiceNumber}, Importe: ${response.data.invoiceNumber}`,
           icon: "success",
           confirmButtonText: "Continuar",
           confirmButtonColor: "#ceb5a7",
@@ -90,7 +102,11 @@ export const FormCheckout = ({ category }) => {
         Swal.fire({
           title: "Error!",
           text: `${response.response.data.message}`,
-          icon: "error",
+          imageUrl: "../../images/icons/no-beer.jpg",
+          imageWidth: 150,
+          imageHeight: 150,
+          imageAlt: "No puede ingresar",
+          // icon: "error",
           confirmButtonText: "Continuar",
           confirmButtonColor: "#ceb5a7",
           focusConfirm: false,

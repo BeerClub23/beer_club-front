@@ -27,14 +27,14 @@ const PlanCardForm = ({ category }) => {
             sx={{ fontSize: 16, fontWeight: "600" }}
             color="text.primary"
             gutterBottom
-            >
+          >
             Tu Plan: {category?.name}
           </Typography>
           <Typography variant="h5" component="div"></Typography>
           <Typography
             sx={{ mb: 1.5, fontSize: "1rem", fontWeight: "500" }}
             color="text.secondary"
-            >
+          >
             Valor mensual: $ {category?.price}.
           </Typography>
           <Typography variant="body2" color="text.secondary">

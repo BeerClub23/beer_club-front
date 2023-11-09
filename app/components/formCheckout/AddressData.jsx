@@ -4,7 +4,6 @@ import { useFormContext } from "react-hook-form";
 import { CustomTextField } from "../inputs/CustomTextFields";
 import { ErrorMessage } from "@hookform/error-message";
 import { Controller } from "react-hook-form";
-import OutlinedInput from "@mui/material/OutlinedInput";
 import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
