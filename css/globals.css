@@ -1,0 +1,41 @@
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html,
+body {
+  max-width: 100vw;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+}
+
+body {
+  color: #ffffff;
+  background: #101010;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.poppins {
+  font-family: var(--font-poppins);
+}
+
+/* Age */
+.recordar-datos {
+  text-align: center;
+}
+
+.recordar-datos .css-ahj2mt-MuiTypography-root {
+  font-size: 1.5rem;
+  font-family: var(--font-poppins);
+}
+
+.recordar-datos span {
+  display: block;
+  font-weight: 300;
+}/*# sourceMappingURL=globals.css.map */

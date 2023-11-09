@@ -1,0 +1,17 @@
+.cardContainer {
+  display: grid;
+  grid-template-columns: auto 50%  auto;
+
+  &_text {
+    padding-left: 24px;
+  }
+
+  &_picMobile {
+    transform: rotate(45deg);
+    margin: 0 auto;
+    // filter: sepia(30%) drop-shadow(8px 8px 10px (grey));
+    width: auto;
+    height: auto;
+    padding-right: -16px;
+  }
+}

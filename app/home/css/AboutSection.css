@@ -1,0 +1,58 @@
+.aboutSection {
+  padding-top: 30px;
+}
+.aboutSection_title {
+  font-size: 30px;
+  font-style: normal;
+  line-height: normal;
+  text-align: center;
+}
+.aboutSection_aboutArticle {
+  width: 80%;
+  margin: 0 auto;
+}
+.aboutSection .slick-prev:before,
+.aboutSection .slick-next:before {
+  color: aliceblue;
+  content: url("../../../public/images/icons/chevron-right-solid-black.svg");
+}
+.aboutSection .slick-prev {
+  transform: rotateY(180deg);
+}
+.aboutSection .slick-dots li button:before {
+  color: #fff;
+}
+.aboutSection .slick-dots li.slick-active button:before {
+  color: white;
+}
+.aboutSection .slick-dots {
+  position: static;
+  margin-bottom: 10px;
+}
+@media (min-width: 345px) {
+  .aboutSection_title {
+    letter-spacing: 4px;
+    font-size: 36px;
+  }
+}
+@media (min-width: 768px) {
+  .aboutSection_title {
+    font-size: 48px;
+    letter-spacing: 6px;
+  }
+}
+@media (min-width: 1200px) {
+  .aboutSection {
+    margin-top: 10px;
+    /* &_aboutArticle {
+            display: grid;
+            grid-template-columns: auto auto auto auto;
+            gap: 3%;
+            align-items: start;
+            padding: 30px;
+        }*/
+  }
+  .aboutSection_title {
+    font-size: 48px;
+  }
+}/*# sourceMappingURL=AboutSection.css.map */

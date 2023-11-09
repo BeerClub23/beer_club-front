@@ -1,0 +1,23 @@
+.containerBox {
+  background-image: linear-gradient(
+      rgba(0, 0, 0, 0.8),
+      rgba(231, 230, 230, 0.1)
+    ),
+    url("../../public/images/welcome/welcome.jpg");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 75vh;
+
+  &_title {
+    padding-top: 30px;
+    letter-spacing: 2px;
+    text-align: center;
+    font-size: 56px;
+
+    transform: translateX(20px) translateY(-30px);
+  }
+}

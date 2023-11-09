@@ -1,4 +1,4 @@
-'use client'
+"use client";
 import "./footer.scss";
 import { Box, Stack, Container, Grid, Typography } from "@mui/material";
 import Logo from "../../../public/images/logo/Logo_sin_escudo_Negro.svg";
@@ -8,25 +8,23 @@ import TwitterIcon from "@mui/icons-material/Twitter";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import Link from "next/link";
 import Image from "next/image";
-import WhatsAppIcon from '@mui/icons-material/WhatsApp';
-import { useEffect, useState } from 'react';
+import WhatsAppIcon from "@mui/icons-material/WhatsApp";
+import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 
-
 export default function Footer() {
-  const pathname = usePathname()  
-  const [whatsapp, setWhatsapp] = useState('')
- 
-  useEffect(()=>{
+  const pathname = usePathname();
+  const [whatsapp, setWhatsapp] = useState("");
 
+  useEffect(() => {
     if (screen.width < 768) {
-      setWhatsapp(`wa.me/${process.env.NEXT_PUBLIC_PHONE_NUMBER}?`)      
+      setWhatsapp(`wa.me/${process.env.NEXT_PUBLIC_PHONE_NUMBER}?`);
+    } else {
+      setWhatsapp(
+        `web.whatsapp.com/send?phone=${process.env.NEXT_PUBLIC_PHONE_NUMBER}&`,
+      );
     }
-    else{
-      setWhatsapp(`web.whatsapp.com/send?phone=${process.env.NEXT_PUBLIC_PHONE_NUMBER}&`)
-    } 
-
-  }, [])
+  }, []);
 
   return (
     <Box
@@ -61,34 +59,76 @@ export default function Footer() {
           </Grid>
           <Grid item xs={12} sm={4} className="linkContainer">
             <div>
-              <Typography variant="body1" component="div" className="linkItem" sx={{fontWeight:"bold",marginBottom:"2px"}}>
+              <Typography
+                variant="body1"
+                component="div"
+                className="linkItem"
+                sx={{ fontWeight: "bold", marginBottom: "2px" }}
+              >
                 <Link href="/faqs">Preguntas frecuentes</Link>
               </Typography>
-              <Typography variant="body1" component="div" className="linkItem" sx={{fontWeight:"bold",marginBottom:"2px"}}>
-                <Link href="/informacion-legal"  target={"_blank"}>Información legal</Link>
+              <Typography
+                variant="body1"
+                component="div"
+                className="linkItem"
+                sx={{ fontWeight: "bold", marginBottom: "2px" }}
+              >
+                <Link href="/informacion-legal" target={"_blank"}>
+                  Información legal
+                </Link>
               </Typography>
-              <Typography variant="body1" component="div" className="linkItem" sx={{fontWeight:"bold",marginBottom:"2px"}}>
-                <Link href={pathname === '/home' ? `#nosotros` : `/home/#nosotros`}>Acerca de nosotros</Link>
+              <Typography
+                variant="body1"
+                component="div"
+                className="linkItem"
+                sx={{ fontWeight: "bold", marginBottom: "2px" }}
+              >
+                <Link
+                  href={pathname === "/home" ? `#nosotros` : `/home/#nosotros`}
+                >
+                  Acerca de nosotros
+                </Link>
               </Typography>
-              <Typography variant="body1" component="div" className="linkItem" sx={{fontWeight:"bold",marginBottom:"2px", display:'flex', alignItems:'center'}}>
-                <WhatsAppIcon/>
-                <Link href={`https://${whatsapp}text=Hola,%20necesito%20hacerles%20una%20consulta...`} target="_blank">Contáctanos</Link>
+              <Typography
+                variant="body1"
+                component="div"
+                className="linkItem"
+                sx={{
+                  fontWeight: "bold",
+                  marginBottom: "2px",
+                  display: "flex",
+                  alignItems: "center",
+                }}
+              >
+                <WhatsAppIcon />
+                <Link
+                  href={`https://${whatsapp}text=Hola,%20necesito%20hacerles%20una%20consulta...`}
+                  target="_blank"
+                >
+                  Contáctanos
+                </Link>
               </Typography>
             </div>
           </Grid>
           <Grid item xs={12} sm={4}>
             <Stack direction="row" spacing={3} className="socialStack">
               <Link href="https://www.facebook.com">
-                <FacebookIcon className="socialIcon" sx={{fontSize:"30px"}} />
+                <FacebookIcon
+                  className="socialIcon"
+                  sx={{ fontSize: "30px" }}
+                />
               </Link>
               <Link href="https://www.youtube.com">
-                <YouTubeIcon className="socialIcon" sx={{fontSize:"30px"}} />
+                <YouTubeIcon className="socialIcon" sx={{ fontSize: "30px" }} />
               </Link>
               <Link href="https://www.twitter.com">
-                <TwitterIcon className="socialIcon" sx={{fontSize:"30px"}}/>
+                <TwitterIcon className="socialIcon" sx={{ fontSize: "30px" }} />
               </Link>
               <Link href="https://www.instagram.com">
-                <InstagramIcon className="socialIcon" sx={{fontSize:"30px"}}/>
+                <InstagramIcon
+                  className="socialIcon"
+                  sx={{ fontSize: "30px" }}
+                />
               </Link>
             </Stack>
           </Grid>
