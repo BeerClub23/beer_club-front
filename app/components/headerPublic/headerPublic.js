@@ -12,26 +12,35 @@ import Divider from "@mui/material/Divider";
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
-import ListItemText from "@mui/material/ListItemText";
 import Image from "next/image";
 import Logo from "public/images/logo/Logo_sin_escudo_Color_Original.svg";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import UserAvatar from "../../common/UserAvatar/UserAvatar";
 import "./headerPublic.scss";
 import Slide from "@mui/material/Slide";
 import useScrollTrigger from "@mui/material/useScrollTrigger";
-
+import DropDown from "../../common/dropdown/Dropdown";
 const drawerWidth = 240;
-const navItems = [
-  { name: "Nosotros", route: "#nosotros" },
-  { name: "Como funciona", route: "#como-funciona" },
-  { name: "Subscribite", route: "#suscribirse" },
-  { name: "Login", route: "/login" },
-];
+const auth = true;
+const navItems = !auth
+  ? [
+      { name: "Nosotros", route: "#nosotros" },
+      { name: "Como funciona", route: "#como-funciona" },
+      { name: "Subscribite", route: "#suscribirse" },
+      { name: "Login", route: "/login" },
+    ]
+  : [
+      { name: "Nosotros", route: "#nosotros" },
+      { name: "Me", route: "/user/adminplan" },
+    ];
+
+const userData = {
+  fullName: "Paddy Minchindon",
+};
 
 export default function HeaderGeneral(props) {
   const pathname = usePathname();
-
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
   const handleDrawerToggle = () => {
@@ -47,14 +56,12 @@ export default function HeaderGeneral(props) {
       <List>
         {navItems.map((item) => (
           <ListItem key={item.name} disablePadding>
-            <ListItemButton sx={{ textAlign: "center" }}>
+            <ListItemButton sx={{ textAlign: "center" }} id="sdsd">
               <Link
                 href={
                   pathname === "/home" ? `${item.route}` : `/home${item.route}`
                 }
-              >
-                <ListItemText primary={item.name} />
-              </Link>
+              ></Link>
             </ListItemButton>
           </ListItem>
         ))}
@@ -69,7 +76,12 @@ export default function HeaderGeneral(props) {
     window !== undefined ? () => window().document.body : undefined;
   return (
     <header>
-      <Slide appear={false} direction="down" in={!trigger}>
+      <Slide
+        id={pathname.includes("user") && "user-header"}
+        appear={false}
+        direction="down"
+        in={!trigger}
+      >
         <AppBar component="nav">
           <Container>
             <Toolbar sx={{ justifyContent: "space-between" }}>
@@ -85,7 +97,13 @@ export default function HeaderGeneral(props) {
               <Link href={"/home"} className={"nav_logo"}>
                 <Image src={Logo} width={90} height={90} alt="Beer Club Logo" />
               </Link>
-              <Box sx={{ display: { xs: "none", md: "flex" }, gap: 5 }}>
+              <Box
+                sx={{
+                  display: { xs: "none", md: "flex" },
+                  gap: 5,
+                  alignItems: "center",
+                }}
+              >
                 {navItems.map((item) => (
                   // <Link href={item.route} key={item.name} sx={{ color: '#fff'}} className='navItem'>{item.name}</Link>
                   <Link
@@ -99,7 +117,16 @@ export default function HeaderGeneral(props) {
                     className={"nav_navItem"}
                     style={{ scrollBehavior: "smooth" }}
                   >
-                    {item.name}{" "}
+                    {auth & (item.name == "Me") ? (
+                      <>
+                        <Box id="userHeader">
+                          <UserAvatar userName={userData.fullName} />
+                        </Box>
+                        <DropDown />
+                      </>
+                    ) : (
+                      item.name
+                    )}
                   </Link>
                 ))}
               </Box>

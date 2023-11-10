@@ -1,0 +1,30 @@
+table {
+    width: 100%;
+    border-collapse: collapse;
+    tr {
+        line-height: 30px;
+    }
+    tr.header_table 
+        th {
+            padding: 10px 10px 10px 30px;
+            text-align: end;
+        }
+        th.Producto {
+            text-align: start;
+        }
+    tr.row_results {
+        border-top: 1px solid #000000;
+        border-bottom: 1px solid #000000;
+        #cell_codigo {
+            padding-left: 10px;
+            & div {
+                display: flex;
+                justify-content: space-around;
+            }
+        }
+    }
+    td {
+        padding: 10px 10px 10px 30px;
+        text-align: end;
+    }
+}
