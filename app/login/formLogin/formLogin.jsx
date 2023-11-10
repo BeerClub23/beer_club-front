@@ -101,7 +101,7 @@ export default function FormLogin() {
           </Typography>
 
           <Controller
-            name="pass"
+            name="password"
             control={control}
             defaultValue=""
             render={({ field }) => (

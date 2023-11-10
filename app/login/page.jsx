@@ -11,6 +11,8 @@ import { loginSchema } from "./rules/index.js";
 import { FormProvider, useForm } from "react-hook-form";
 import "./login.scss";
 import AOS from "aos";
+import HeaderPublic from "../components/headerPublic/headerPublic";
+import Footer from "../components/footer/Footer";
 
 export default function LoginPage() {
   const method = useForm({

@@ -81,14 +81,14 @@ export const FormCheckout = ({ category }) => {
       };
       
       let response = await ApiRegister(normalizedData);
-      console.log(normalizedData);     
+      console.log(normalizedData);
+      console.log(response) 
       console.log(response.status);
-      if (response.status === 200) {
+      if (response.status === 201) {
         console.log(response);
         Swal.fire({
           title: "Pago Aceptado!",
-          html: `Factura: ${response.data.invoiceNumber} <br/> Importe: ${response.data.amount}`,
-          // text: `Factura: ${response.data.invoiceNumber}, Importe: ${response.data.invoiceNumber}`,
+          html: `Factura: ${response.data.invoiceNumber}  <br/> Tarjeta: ...${response.data.cardNumber} <br/> Subscripción: ${response.data.description} <br/> Descripción: ${response.data.subscription.description} <br/> Importe: ${response.data.amount}`,
           icon: "success",
           confirmButtonText: "Continuar",
           confirmButtonColor: "#ceb5a7",
@@ -98,10 +98,11 @@ export const FormCheckout = ({ category }) => {
           window.location = "/login";
         });
       } else if (response.status !== 200) {
-        console.log(response.response.data.message);
+        const error = Object.keys(response.response.data).reduce((acc, key) => `${acc}${response.response.data[key]}\n`, '')
+        console.log(response.response.data, error);
         Swal.fire({
           title: "Error!",
-          text: `${response.response.data.message}`,
+          text: error,
           imageUrl: "../../images/icons/no-beer.jpg",
           imageWidth: 150,
           imageHeight: 150,

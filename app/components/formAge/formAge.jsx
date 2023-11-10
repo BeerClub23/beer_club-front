@@ -34,7 +34,6 @@ export default function FormAge({saveAge}) {
     // console.log(userIP)
 
     const userDate = `${data.year}-${data.month}-${data.day}`;
-    console.log(data)
     try {
       const response = await fetch(
         `https://ipinfo.io?token=${process.env.NEXT_PUBLIC_IPINFO_TOKEN}`,
