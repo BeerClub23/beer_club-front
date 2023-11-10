@@ -1,5 +1,5 @@
 .bc-subscription-card {
-  border-radius: 20px;
+  border-radius: 7px;
   border: 2px solid #8d8d8d;
   background: #fff;
   color: #000;
@@ -46,41 +46,25 @@
   }
 
   &__action {
-    border-radius: 20px;
-    border: 1px solid transparent;
-    background: #f5e1c1;
-    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
-    font-size: 24px;
-    font-style: normal;
-    font-weight: 500;
-    line-height: normal;
-    letter-spacing: 2.2px;
-    padding: 12px 50px;
+    display:flex;
+    justify-content:center;
     width: 100%;
-    margin: 12px 0 0;
-
-    &:hover {
-      cursor: pointer;
-      background-color: #ceb5a7;
-    }
-
-    &:active,
-    &:focus {
-      background-color: #eee9e1;
-    }
+    padding: 0px 30px;
   }
 
   &__recommended {
     height: 75px;
-    width: 100%;
-    border-radius: 20px 20px 0 0;
+    // width: 100%;
+    border-radius: 8px 8px 0 0;
     padding: 15px 20px;
     position: relative;
     bottom: -27px;
+    margin: 0px 20px;
     z-index: 0;
 
     &.active {
-      background-color: #000;
+      background: rgb(16,16,16);
+      background: linear-gradient(180deg, rgba(16,16,16,1) 40%, rgba(103,103,103,1) 100%);
     }
   }
 
@@ -122,4 +106,9 @@
       margin: 0 auto;
     }
   }
+}
+
+
+button{
+  letter-spacing: 1.8px;
 }

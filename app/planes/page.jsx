@@ -10,6 +10,8 @@ import { useGetSubscriptions } from "../services/subscriptions";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import PlanDetail from "../components/plan/planDetail/PlanDetail";
+import { theme } from "@/app/styles/materialThemeForm";
+import { ThemeProvider } from "@mui/material";
 
 const PlansPage = () => {
   const { context, setContext } = useAppContext();
@@ -46,18 +48,29 @@ const PlansPage = () => {
           <Box mt={5} className="boxContainer" sx={{ display: "flex" }}>
             <Box flex={0.6} p={2} className="boxList">
               <PlanDetail subscription={subscriptions[selectedValue - 1]} />
-              <Button
+              {/* <Button
                 className="confirmBtn"
                 sx={{
                   height: "10%",
                   fontWeight: "bold",
                   color: "black",
-                  backgroundColor: "#f5e1c1",
+                  backgroundColor: "#ceb5a7",
                 }}
                 onClick={submitSelection}
               >
                 Confirmar
-              </Button>
+              </Button> */}
+              <ThemeProvider theme={theme}>
+                <Button
+                  variant="contained"
+                  size="large"
+                  fullWidth
+                  onClick={submitSelection}
+                  sx={{ pt: "7px", mx: "auto", mt: 1, mb: 4, fontWeight: "bold", width: "460px" }}
+                >
+                  Confirmar
+                </Button>
+              </ThemeProvider>
             </Box>
             <Box m={"auto"} flex={0.4} textAlign={"left"} className="boxPlan">
               <Typography className="subtitle" variant="h5" sx={{ mb: 2 }}>

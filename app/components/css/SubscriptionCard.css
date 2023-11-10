@@ -1,5 +1,5 @@
 .bc-subscription-card {
-  border-radius: 20px;
+  border-radius: 7px;
   border: 2px solid #8d8d8d;
   background: #fff;
   color: #000;
@@ -42,37 +42,23 @@
   line-height: normal;
 }
 .bc-subscription-card__action {
-  border-radius: 20px;
-  border: 1px solid transparent;
-  background: #f5e1c1;
-  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
-  font-size: 24px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: normal;
-  letter-spacing: 2.2px;
-  padding: 12px 50px;
+  display: flex;
+  justify-content: center;
   width: 100%;
-  margin: 12px 0 0;
-}
-.bc-subscription-card__action:hover {
-  cursor: pointer;
-  background-color: #ceb5a7;
-}
-.bc-subscription-card__action:active, .bc-subscription-card__action:focus {
-  background-color: #eee9e1;
+  padding: 0px 30px;
 }
 .bc-subscription-card__recommended {
   height: 75px;
-  width: 100%;
-  border-radius: 20px 20px 0 0;
+  border-radius: 8px 8px 0 0;
   padding: 15px 20px;
   position: relative;
   bottom: -27px;
+  margin: 0px 20px;
   z-index: 0;
 }
 .bc-subscription-card__recommended.active {
-  background-color: #000;
+  background: rgb(16, 16, 16);
+  background: linear-gradient(180deg, rgb(16, 16, 16) 40%, rgb(103, 103, 103) 100%);
 }
 .bc-subscription-card ul {
   margin-left: 20px;
@@ -106,4 +92,8 @@
   .bc-subscription-card-container {
     margin: 0 auto;
   }
+}
+
+button {
+  letter-spacing: 1.8px;
 }/*# sourceMappingURL=SubscriptionCard.css.map */
