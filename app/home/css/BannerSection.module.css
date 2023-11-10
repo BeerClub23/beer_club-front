@@ -30,6 +30,7 @@
   color: #fff;
   text-align: center;
   font-size: 18px;
+  padding: 0px 20px;
 }
 @media (min-width: 345px) {
   .bannerContainer_title {

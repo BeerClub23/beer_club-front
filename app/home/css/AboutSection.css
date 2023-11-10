@@ -1,5 +1,5 @@
 .aboutSection {
-  padding-top: 30px;
+  padding: 40px 0px;
 }
 .aboutSection_title {
   font-size: 30px;
@@ -10,6 +10,7 @@
 .aboutSection_aboutArticle {
   width: 80%;
   margin: 0 auto;
+  padding-top: 30px;
 }
 .aboutSection .slick-prev:before,
 .aboutSection .slick-next:before {
@@ -44,13 +45,16 @@
 @media (min-width: 1200px) {
   .aboutSection {
     margin-top: 10px;
-    /* &_aboutArticle {
-            display: grid;
-            grid-template-columns: auto auto auto auto;
-            gap: 3%;
-            align-items: start;
-            padding: 30px;
-        }*/
+  }
+  .aboutSection_aboutArticle {
+    width: 100%;
+    /* 
+          display: grid;
+          grid-template-columns: auto auto auto auto;
+          gap: 3%;
+          align-items: start;
+          padding: 30px;
+          */
   }
   .aboutSection_title {
     font-size: 48px;

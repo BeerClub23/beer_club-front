@@ -1,5 +1,5 @@
 .aboutSection {
-  padding-top: 30px;
+  padding: 40px 0px;
 
   &_title {
     font-size: 30px;
@@ -11,6 +11,7 @@
   &_aboutArticle {
     width: 80%;
     margin: 0 auto;
+    padding-top:30px;
   }
 
   .slick-prev:before,
@@ -53,13 +54,16 @@
   @media (min-width: 1200px) {
     margin-top: 10px;
 
-    /* &_aboutArticle {
+    &_aboutArticle {
+      width: 100%;
+      /* 
             display: grid;
             grid-template-columns: auto auto auto auto;
             gap: 3%;
             align-items: start;
             padding: 30px;
-        }*/
+            */
+    }
 
     &_title {
       font-size: 48px;
