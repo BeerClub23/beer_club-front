@@ -32,7 +32,7 @@ const faqs = [
 ];
 
 export const useGetFaqs = () => {
-  const { data, error, isLoading } = useSWR(`/api/v1/faqs`, get, {
+  const { data, error, isLoading } = useSWR(`${process.env.NEXT_PUBLIC_API_URL}faqs`, get, {
     fallbackData: faqs,
     shouldRetryOnError: false,
     errorRetryCount: 1,

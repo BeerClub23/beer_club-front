@@ -3,6 +3,12 @@ import Typography from "@mui/material/Typography";
 import { useFormContext } from "react-hook-form";
 import { CustomTextField } from "../inputs/CustomTextFields";
 import { ErrorMessage } from "@hookform/error-message";
+import { Controller } from "react-hook-form";
+import InputLabel from "@mui/material/InputLabel";
+import MenuItem from "@mui/material/MenuItem";
+import FormControl from "@mui/material/FormControl";
+import Select from "@mui/material/Select";
+import { Box } from "@mui/material";
 
 const AddressData = () => {
   const {
@@ -10,38 +16,75 @@ const AddressData = () => {
     formState: { errors },
     trigger,
   } = useFormContext();
+  const [country, setCountry] = React.useState([]);
+
+  const handleChange = (event) => {
+    setCountry(event.target.value);
+    // trigger("address.country");
+  };
 
   return (
     <>
       <CustomTextField
-        name="address.address1"
+        name="address.street"
         label="Direccion"
         type="text"
         control={control}
         defaultValue=""
         autocomplete=""
         onChange={() => {
-          trigger("address.address1");
+          trigger("address.street");
         }}
       />
 
       <Typography variant="caption" color="#d32f2fcf">
-        <ErrorMessage errors={errors} name="address.address1" />
+        <ErrorMessage errors={errors} name="address.street" />
       </Typography>
+      <Box sx={{ display: "flex", flexDirection: "row", gap: "3px" }}>
+        <CustomTextField
+          name="address.number"
+          label="Numero"
+          type="text"
+          control={control}
+          defaultValue=""
+          autocomplete=""
+          onChange={() => {
+            trigger("address.number");
+          }}
+        />
+        <Typography variant="caption" color="#d32f2fcf">
+          <ErrorMessage errors={errors} name="address.number" />
+        </Typography>
 
-      <CustomTextField
-        name="address.address2"
-        label="numero"
-        type="text"
-        control={control}
-        defaultValue=""
-        autocomplete=""
-        onChange={() => {
-          trigger("address.address2");
-        }}
-      />
+        <CustomTextField
+          name="address.floor"
+          label="Piso"
+          type="text"
+          control={control}
+          defaultValue=""
+          autocomplete=""
+          onChange={() => {
+            trigger("address.floor");
+          }}
+        />
+        <Typography variant="caption" color="#d32f2fcf">
+          <ErrorMessage errors={errors} name="address.floor" />
+        </Typography>
+
+        <CustomTextField
+          name="address.apartment"
+          label="Departamento"
+          type="text"
+          control={control}
+          defaultValue=""
+          autocomplete=""
+          onChange={() => {
+            trigger("address.apartment");
+          }}
+        />
+      </Box>
       <Typography variant="caption" color="#d32f2fcf">
-        <ErrorMessage errors={errors} name="address.address2" />
+        <ErrorMessage errors={errors} name="address.apartment" />
       </Typography>
 
       <CustomTextField
@@ -60,18 +103,45 @@ const AddressData = () => {
       </Typography>
 
       <CustomTextField
-        name="address.state"
+        name="address.province"
         label="Provincia"
         type="text"
         control={control}
         defaultValue=""
         autocomplete=""
         onChange={() => {
-          trigger("address.state");
+          trigger("address.province");
         }}
       />
+      <ErrorMessage errors={errors} name="address.stprovinceate" />
+      <Typography variant="caption" color="#d32f2fcf"></Typography>
+
+      <Controller
+        name="address.country"
+        control={control}
+        defaultValue=""
+        render={({ field }) => (
+          <FormControl fullWidth sx={{ mt: "10px" }}>
+            <InputLabel id="demo-simple-select-label">Pais</InputLabel>
+            <Select
+              labelId="demo-simple-select-label"
+              id="demo-simple-select"
+              value={country}
+              label="Pais"
+              onChange={handleChange}
+              onBlur={(e) => {
+                field.onChange(e);
+                trigger("address.country");
+              }}
+            >
+              <MenuItem value={"Argentina"}>Argentina</MenuItem>
+              <MenuItem value={"Colombia"}>Colombia</MenuItem>
+            </Select>
+          </FormControl>
+        )}
+      />
       <Typography variant="caption" color="#d32f2fcf">
-        <ErrorMessage errors={errors} name="address.state" />
+        <ErrorMessage errors={errors} name="address.country" />
       </Typography>
 
       <CustomTextField

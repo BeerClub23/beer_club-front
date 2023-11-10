@@ -26,7 +26,7 @@ export const schema = yup.object().shape({
       .matches(/^[a-zA-Z\s]+$/, "Solo se aceptan letras")
       .min(2, "Mínimo 2 caracteres")
       .max(10, "Máximo 10 caracteres"),
-    dateOfBirth: yup
+    birthdate: yup
       .string()
       .matches(
         /^(\d{4}-\d{2}-\d{2})$/,
@@ -37,7 +37,7 @@ export const schema = yup.object().shape({
         const age = calculateAge(value);
         return age >= 18;
       }),
-    phoneNumber: yup
+    telephone: yup
       .string()
       .required("Este campo es requerido")
       .matches(
@@ -53,7 +53,7 @@ export const schema = yup.object().shape({
       .string()
       .required("Este campo es requerido")
       .matches(
-        /^(?=.*[a-zA-z])(?=.*[0-9])(?=.*[#$@!%&*?])[A-Za-z\d#$@!%&*?]{8,16}$/,
+        /^(?=.*[a-zA-z])(?=.*[0-9])(?=.*[#$@!%&*?.])[A-Za-z\d#$@!%&*?.]{8,16}$/,
         "Debe contener 8-16 caracteres: letras, números y al menos un caracter especial",
       ),
     passwordConfirm: yup
@@ -62,27 +62,28 @@ export const schema = yup.object().shape({
       .oneOf([yup.ref("password"), null], "La contraseña no coincide"),
   }),
   address: yup.object().shape({
-    address1: yup
+    street: yup
       .string()
       .required("Este campo es requerido")
       .min(2, "Mínimo 2 caracteres"),
-    address2: yup.string(),
+    number: yup.string().required("*"),
     city: yup
       .string()
       .required("Este campo es requerido")
       .matches(/^[a-zA-Z\s]+$/, "Solo se aceptan letras")
       .min(2, "Mínimo 2 caracteres"),
-    state: yup
+    province: yup
       .string()
       .required("Este campo es requerido")
       .min(2, "Mínimo 2 caracteres"),
+    country: yup.string().required("Este campo es requerido").min(2),
     zipCode: yup
       .string()
       .required("Este campo es requerido")
       .min(2, "Mínimo 2 caracteres"),
   }),
   card: yup.object().shape({
-    number: yup
+    cardNumber: yup
       .string()
       .required("Este campo es requerido")
       .matches(/^[0-9]{16}$/, "Debe ser un número de 16 dígitos"),
@@ -94,7 +95,7 @@ export const schema = yup.object().shape({
       .string()
       .required("Este campo es requerido")
       .matches(/^[0-9]{4}$/, "Debe ser un número de 4 dígitos"),
-    nameOnCard: yup
+    cardHolder: yup
       .string()
       .required("Este campo es requerido")
       .matches(/^[a-zA-Z\s]+$/, "Solo se aceptan letras")

@@ -2,10 +2,10 @@
 // import {CheckoutInput} from "dh-marvel/features/checkout/checkout.types";
 import { NextResponse } from "next/server";
 // const serverError = "error";
-export const invalidAddress = "invalid";
-export const validCard = "4242424242424242";
-export const withoutFundsCard = "5454545454545454";
-export const withoutAuthorizationCard = "6161616161616161";
+const invalidAddress = "invalid";
+const validCard = "4242424242424242";
+const withoutFundsCard = "5454545454545454";
+const withoutAuthorizationCard = "6161616161616161";
 
 export async function POST(req, res) {
   if (req.method !== "POST") {
@@ -16,13 +16,13 @@ export async function POST(req, res) {
   }
   try {
     const body = await req.json();
-    if (body.address.address1 === invalidAddress) {
+    if (body.street === invalidAddress) {
       return NextResponse.json(
         { message: "La dirección no es correcta" },
         { status: 400 },
       );
     }
-    if (body.card.number === withoutFundsCard) {
+    if (body.cardNumber === withoutFundsCard) {
       return NextResponse.json(
         {
           message:
@@ -31,7 +31,7 @@ export async function POST(req, res) {
         { status: 400 },
       );
     }
-    if (body.card.number == withoutAuthorizationCard) {
+    if (body.cardNumber == withoutAuthorizationCard) {
       return NextResponse.json(
         {
           message:
@@ -40,14 +40,18 @@ export async function POST(req, res) {
         { status: 400 },
       );
     }
-    if (body.card.number === validCard) {
+    if (body.cardNumber === validCard) {
       // res.setHeader("Set-Cookie", 'Access=true; path=/confirmacion-compra; samesite=lax; httponly; expires=0;')
       /*  res.status(200).json({data: body});
             return*/
       // redirect('http://localhost:3000/congratulations')
       return NextResponse.json(
         {
-          message: "Respuesta exitosa. Factura: 0001-00000001.",
+          message: "Respuesta exitosa.",
+          invoiceNumber: " 0001-00000001",
+          amount: "200",
+          cardNumber: "",
+          description: "",
         },
         {
           status: 200,
@@ -62,12 +66,10 @@ export async function POST(req, res) {
     );
   } catch (err) {
     return NextResponse.json(
-      JSON.stringify(
-        { message: "Error server, intente nuevamente en unos minutos..." },
-        {
-          status: 500,
-        },
-      ),
+      { message: "Error server, intente nuevamente en unos minutos..." },
+      {
+        status: 500,
+      },
     );
   }
 }

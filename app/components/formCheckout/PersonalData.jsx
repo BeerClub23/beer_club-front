@@ -65,30 +65,30 @@ const PersonalData = () => {
         </Typography>
 
         <CustomTextField
-          name="customer.dateOfBirth"
+          name="customer.birthdate"
           label="DD/MM/AAAA"
           type="date"
           control={control}
           defaultValue="DD-MM-AAAA"
           // autocomplete=""
           onBlur={() => {
-            trigger("customer.dateOfBirth");
+            trigger("customer.birthdate");
           }}
         />
 
         <Typography variant="caption" color="#d32f2fcf">
-          <ErrorMessage errors={errors} name="customer.dateOfBirth" />
+          <ErrorMessage errors={errors} name="customer.birthdate" />
         </Typography>
 
         <CustomTextField
-          name="customer.phoneNumber"
+          name="customer.telephone"
           label="Teléfono"
           type="text"
           control={control}
           defaultValue=""
           autocomplete=""
           onBlur={() => {
-            trigger("customer.phoneNumber");
+            trigger("customer.telephone");
           }}
         />
 
@@ -97,7 +97,7 @@ const PersonalData = () => {
           color="#d32f2fcf"
           sx={{ marginBottom: "0px" }}
         >
-          <ErrorMessage errors={errors} name="customer.phoneNumber" />
+          <ErrorMessage errors={errors} name="customer.telephone" />
         </Typography>
 
         <CustomTextField
@@ -129,7 +129,8 @@ const PersonalData = () => {
                 {...field}
                 id="outlined-adornment-password"
                 type={showPassword ? "text" : "password"}
-                // variant="outlined"
+                variant="outlined"
+                label="Contraseña"
                 endAdornment={
                   <InputAdornment position="end">
                     <IconButton
@@ -160,9 +161,10 @@ const PersonalData = () => {
               </InputLabel>
               <OutlinedInput
                 {...field}
-                id="outlined-adornment-password2"
+                id="outlined-password"
                 type={showPasswordConf ? "text" : "password"}
-                // variant="outlined"
+                variant="outlined"
+                label="Confirmar Contraseña"
                 endAdornment={
                   <InputAdornment position="end">
                     <IconButton

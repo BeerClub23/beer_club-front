@@ -11,14 +11,14 @@ const PlanDetail = ({ subscription }) => {
     <Card className="cardDetail" sx={{ textAlign: "left" }}>
       <CardContent>
         <Typography variant="h4" sx={{ fontWeight: "bold", mb: 1 }}>
-          {subscription.title}
+          {subscription.name}
         </Typography>
         <Typography
           variant="h5"
           className="detailPrice"
           sx={{ fontWeight: "bold" }}
         >
-          {subscription.price}
+          $ {subscription.price}
         </Typography>
         <Chip
           label="Envio gratis"
@@ -27,7 +27,7 @@ const PlanDetail = ({ subscription }) => {
         <hr />
         <List>
           {subscription.benefits.map((item, index) => (
-            <PlanItem key={index} itemText={item} />
+            <PlanItem key={index} itemText={item.name} />
           ))}
         </List>
       </CardContent>

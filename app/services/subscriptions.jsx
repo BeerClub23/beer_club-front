@@ -4,43 +4,43 @@ const get = (url) => fetch(url).then((r) => r.json());
 
 const subscriptions = [
   { id:1,
-    title: "Novato",
+    name: "Novato",
     description: "",
-    price: "$ 100",
+    price: "100",
     benefits: [
-      "Descuentos en cervezas y locales asociados 5%",
-      "Descuentos en Eventos de Miembros",
-      "Recomendación Mensual para novatos (Six pack, snacks, aperitivos)",
+      { name: "Descuentos en cervezas y locales asociados 5%"},
+      { name: "Descuentos en Eventos de Miembros"},
+      { name: "Recomendación Mensual para novatos (Six pack, snacks, aperitivos)"},
     ],
     isRecommended: false,
   },
   {
     id:2,
-    title: "Especialista",
+    name: "Especialista",
     description: "",
-    price: "$ 200",
+    price: "200",
     benefits: [
-      "Descuentos en cervezas y locales asociados 8%",
-      "Descuentos en Eventos de Miembros",
-      "Recomendación Mensual para especialistas (Six pack, snacks, aperitivos)",
+      {name: "Descuentos en cervezas y locales asociados 8%"},
+      {name: "Descuentos en Eventos de Miembros"},
+      {name: "Recomendación Mensual para especialistas (Six pack, snacks, aperitivos)"},
     ],
     isRecommended: true,
   },
   { id:3,
-    title: "Experto",
+    name: "Experto",
     description: "",
-    price: "$ 300",
+    price: "300",
     benefits: [
-      "Descuentos en cervezas y locales asociados 10%",
-      "Descuentos en Eventos de Miembros",
-      "Recomendación Mensual para expertos (Six pack, snacks, aperitivos)",
+      {name: "Descuentos en cervezas y locales asociados 10%"},
+      {name: "Descuentos en Eventos de Miembros"},
+      {name: "Recomendación Mensual para expertos (Six pack, snacks, aperitivos)"},
     ],
     isRecommended: false,
   },
 ];
 
 export const useGetSubscriptions = () => {
-  const { data, error, isLoading } = useSWR(`/api/v1/subscriptions`, get, {
+  const { data, error, isLoading } = useSWR(`${process.env.NEXT_PUBLIC_API_URL}subscriptions`, get, {
     fallbackData: subscriptions,
     shouldRetryOnError: false,
     errorRetryCount: 1,

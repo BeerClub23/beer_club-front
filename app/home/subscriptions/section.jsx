@@ -66,9 +66,9 @@ const SubscriptionsSection = () => {
           <Slider {...settings}>
             {subscriptions.map((subscription) => (
               <SubscriptionCard
-                key={subscription.title}
+                key={subscription.name}
                 action={() => goToRegister(subscription)}
-                title={subscription.title}
+                title={subscription.name}
                 price={subscription.price}
                 benefits={subscription.benefits}
                 isRecommended={subscription.isRecommended}

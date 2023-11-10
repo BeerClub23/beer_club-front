@@ -11,7 +11,7 @@ import "aos/dist/aos.css";
 import AOS from "aos";
 import "./formAge.scss";
 
-const FormAge = () => {
+export default function FormAge({ saveAge }) {
   const router = useRouter();
 
   const {
@@ -22,58 +22,26 @@ const FormAge = () => {
   } = useForm();
 
   const onSubmit = async (data) => {
-    console.log(data);
-    const saveInfo = data.saveInfo;
-    //Fecha actual
-    const today = new Date();
-    const todayYear = today.getFullYear();
-    const todayMonth = today.getMonth();
-    const todayDay = today.getDate();
-
-    // Fecha ingresada
-    const date = new Date(`${data.month} ${data.day} ${data.year}`);
-    const dateYear = date.getFullYear();
-    const dateMonth = date.getMonth();
-    const dateDay = date.getDate();
-
+    // console.log(data);
     const userDate = `${data.year}-${data.month}-${data.day}`;
-
-    // Diferencia de fechas
-    const diffYear = todayYear - dateYear;
-    const diffMonth = todayMonth - dateMonth;
-    const diffDay = todayDay - dateDay;
-
     try {
+      console.log(process.env.NEXT_PUBLIC_IPINFO_TOKEN);
       const response = await fetch(
         `https://ipinfo.io?token=${process.env.NEXT_PUBLIC_IPINFO_TOKEN}`,
       );
       if (response.ok) {
-        const data = await response.json();
-        const userIP = data.ip;
-        const userCity = data.city;
+        const dateResponse = await response.json();
+        const userIP = dateResponse.ip;
+        const userCity = dateResponse.city;
         console.log(
           "IP: " + userIP + ", City: " + userCity + ", Date:  " + userDate,
         );
-        // código para verificar la edad
-        if (diffYear < 18) {
-          router.push(`/menor`);
-        } else if (
-          diffYear > 18 ||
-          (diffYear === 18 && diffMonth > 0) ||
-          (diffMonth >= 0 && diffDay >= 0)
-        ) {
-          if (saveInfo) {
-            localStorage.setItem("AgeCheck", true);
-            localStorage.setItem("Age", date);
-          } else {
-            sessionStorage.setItem("AgeCheck", true);
-          }
-          router.push(`/home`);
-        } else {
-          router.push(`/menor`);
-        }
-      } else {
-        console.error("Failed to get user IP");
+        saveAge({
+          ip: userIP,
+          city: userCity,
+          dateOfBirth: userDate,
+          saveInfo: data.saveInfo,
+        });
       }
     } catch (error) {
       console.error("Error:", error);
@@ -160,6 +128,7 @@ const FormAge = () => {
           {dirtyFields.day && dirtyFields.month && dirtyFields.year && (
             <div className="recordar-datos" data-aos="fade-up">
               <FormControlLabel
+                value="true"
                 control={
                   <Checkbox
                     color="secondary"
@@ -191,4 +160,4 @@ const FormAge = () => {
   );
 };
 
-export default FormAge;
+// export default FormAge;

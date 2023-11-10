@@ -1,5 +1,5 @@
 import { AppContext } from "./context/context";
-import "./globals.scss";
+import "../css/globals.css";
 import { Roboto } from "next/font/google";
 import { Poppins } from "next/font/google";
 // import { ThemeProvider } from '@mui/material';
