@@ -16,11 +16,11 @@ const UserLayout = ({ children }) => {
     >
       <HeaderPublic />
       <Box
-        sx={{ display: "grid", gridTemplateColumns: "1fr 4fr", height: "100%" }}
+        sx={{ display: "grid", gridTemplateColumns: "1fr 4fr", minHeight: "calc(100vh - 280px)" }}
         id="cont"
       >
         <UserSideBar />
-        <Box id="user_wrapper">{children}</Box>
+        <Box sx={{padding: '30px'}} id="user_wrapper">{children}</Box>
       </Box>
       <Footer />
     </div>
