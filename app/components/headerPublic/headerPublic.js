@@ -22,7 +22,7 @@ import Slide from "@mui/material/Slide";
 import useScrollTrigger from "@mui/material/useScrollTrigger";
 import DropDown from "../../common/dropdown/Dropdown";
 const drawerWidth = 240;
-const auth = true;
+const auth = false;
 const navItems = !auth
   ? [
       { name: "Nosotros", route: "#nosotros" },

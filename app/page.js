@@ -14,11 +14,6 @@ import { useRouter } from "next/navigation";
 import useSWR from "swr";
 import axios from "axios";
 
-const post = (url, body) =>
-  fetch(url, {
-    method: "POST",
-    body: JSON.stringify(body),
-  }).then((r) => r.json());
 
 const AgePage = () => {
   const router = useRouter();

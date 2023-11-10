@@ -38,8 +38,6 @@ export default function Footer() {
               paddingTop: "2rem",
               paddingBottom: "1rem",
               color: "#000000",
-              bottom: "0",
-              position: "absolute",
             }
           : {
               width: "100%",
