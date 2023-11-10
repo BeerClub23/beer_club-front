@@ -10,27 +10,18 @@ import { useForm } from "react-hook-form";
 import "aos/dist/aos.css";
 import AOS from "aos";
 import "./formAge.scss";
-// import myRoute from 'app/services/IpService/ipService.jsx';
-// import { format } from 'date-fns';
-// import moment from 'moment';
-// import { NextRequest } from "next/server";
 
-export default function FormAge() {
+const FormAge = () => {
   const router = useRouter();
 
   const {
     register,
     handleSubmit,
     setFocus,
-    formState: { errors, dirtyFields },
+    formState: { dirtyFields },
   } = useForm();
 
   const onSubmit = async (data) => {
-    // console.log(navigator.geolocation);
-    // console.log( myRoute())
-    // const userIP = NextRequest.headers['x-forwarded-for'] || NextRequest.socket.remoteAddress;
-    // console.log(userIP)
-
     //Fecha actual
     const today = new Date();
     const todayYear = today.getFullYear();
@@ -98,7 +89,7 @@ export default function FormAge() {
 
   React.useEffect(() => {
     AOS.init({
-      duration: 1200,
+      duration: 1000,
     });
   }, []);
 
@@ -113,7 +104,7 @@ export default function FormAge() {
           Ingresa tu fecha de nacimiento?
         </Typography>
 
-        <FormGroup aria-label="position">
+        <FormGroup aria-label="position" data-aos="fade-up">
           <Box sx={{ mb: 5, mt: 2, mx: "auto", textAlign: "center" }}>
             <FormControl sx={{ m: 1 }} variant="outlined">
               <FormHelperText id="outlined-day-helper-text">DÍA</FormHelperText>
@@ -198,4 +189,6 @@ export default function FormAge() {
       </FormControl>
     </form>
   );
-}
+};
+
+export default FormAge;

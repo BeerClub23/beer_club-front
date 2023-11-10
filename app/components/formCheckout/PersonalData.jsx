@@ -23,7 +23,8 @@ const PersonalData = () => {
 
   const handleClickShowPassword = () => setShowPassword((show) => !show);
 
-  const handleClickShowPasswordConf = () => setShowPasswordConf((show) => !show);
+  const handleClickShowPasswordConf = () =>
+    setShowPasswordConf((show) => !show);
 
   const handleMouseDownPassword = (event) => {
     event.preventDefault();
@@ -38,7 +39,7 @@ const PersonalData = () => {
           type="text"
           control={control}
           defaultValue=""
-          autocomplete=""s
+          autocomplete=""
           onChange={() => {
             trigger("customer.name");
           }}
@@ -128,7 +129,7 @@ const PersonalData = () => {
                 {...field}
                 id="outlined-adornment-password"
                 type={showPassword ? "text" : "password"}
-                variant="outlined"
+                // variant="outlined"
                 endAdornment={
                   <InputAdornment position="end">
                     <IconButton
@@ -154,14 +155,14 @@ const PersonalData = () => {
           defaultValue=""
           render={({ field }) => (
             <FormControl sx={{ width: "100%", mt: "10px" }} variant="outlined">
-              <InputLabel htmlFor="outlined-adornment-password">
+              <InputLabel htmlFor="outlined-adornment-password2">
                 Confirmar contraseña
               </InputLabel>
               <OutlinedInput
                 {...field}
-                id="outlined-adornment-password"
+                id="outlined-adornment-password2"
                 type={showPasswordConf ? "text" : "password"}
-                variant="outlined"
+                // variant="outlined"
                 endAdornment={
                   <InputAdornment position="end">
                     <IconButton

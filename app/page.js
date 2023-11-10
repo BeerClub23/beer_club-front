@@ -4,13 +4,11 @@ import * as React from "react";
 import { ThemeProvider } from "@mui/material";
 import Image from "next/image";
 import Logo from "public/images/logo/Logo_sin_escudo_Color_Original.svg";
-// import Logo1 from 'public/images/logo/Logo_sin_escudo_Blanco.svg';
-// import Logo2 from 'public/images/logo/Logo_sin_escudo_Negro.svg';
-// import Logo3 from 'public/images/logo/Logo_sin_escudo_Nuestra_paleta_de_colores.svg';
 import { theme } from "./styles/materialThemeForm";
 import FormAge from "./components/formAge/formAge";
+// import FormAgeHoc from "./components/formAge/formAgeHoc";
 
-export default function AgePage() {
+const AgePage = () => {
   return (
     <main className="mainAge">
       <ThemeProvider theme={theme}>
@@ -25,4 +23,7 @@ export default function AgePage() {
       </ThemeProvider>
     </main>
   );
-}
+};
+
+export default AgePage;
+// export default FormAgeHoc(AgePage);
