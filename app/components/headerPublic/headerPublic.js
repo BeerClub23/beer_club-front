@@ -12,18 +12,15 @@ import Divider from "@mui/material/Divider";
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
-import ListItemText from "@mui/material/ListItemText";
 import Image from "next/image";
 import Logo from "public/images/logo/Logo_sin_escudo_Color_Original.svg";
 import Link from "next/link";
-import { Content } from "next/font/google";
-import { usePathname, useSearchParams } from "next/navigation";
-import { useRouter } from "next/navigation";
+import { usePathname } from "next/navigation";
 import UserAvatar from "../../common/UserAvatar/UserAvatar";
 import "./headerPublic.scss";
 import Slide from "@mui/material/Slide";
 import useScrollTrigger from "@mui/material/useScrollTrigger";
-
+import DropDown from "../../common/dropdown/Dropdown";
 const drawerWidth = 240;
 const auth = true;
 const navItems = !auth
@@ -79,7 +76,12 @@ export default function HeaderGeneral(props) {
     window !== undefined ? () => window().document.body : undefined;
   return (
     <header>
-      <Slide appear={false} direction="down" in={!trigger}>
+      <Slide
+        id={pathname.includes("user") && "user-header"}
+        appear={false}
+        direction="down"
+        in={!trigger}
+      >
         <AppBar component="nav">
           <Container>
             <Toolbar sx={{ justifyContent: "space-between" }}>
@@ -117,7 +119,10 @@ export default function HeaderGeneral(props) {
                   >
                     {auth & (item.name == "Me") ? (
                       <>
-                        <UserAvatar userName={userData.fullName} />
+                        <Box id="userHeader">
+                          <UserAvatar userName={userData.fullName} />
+                        </Box>
+                        <DropDown />
                       </>
                     ) : (
                       item.name
