@@ -30,18 +30,7 @@ export default function Footer() {
     <Box
       component="footer"
       sx={
-        !pathname.includes("/user")
-          ? {
-              width: "100%",
-              height: "auto",
-              backgroundColor: "#EEE9E1",
-              paddingTop: "2rem",
-              paddingBottom: "1rem",
-              color: "#000000",
-              bottom: "0",
-              position: "absolute",
-            }
-          : {
+         {
               width: "100%",
               height: "auto",
               backgroundColor: "#EEE9E1",
