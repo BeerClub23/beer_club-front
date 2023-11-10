@@ -19,6 +19,7 @@
     "aos": "^2.3.4",
     "autoprefixer": "^10.4.16",
     "axios": "^1.6.0",
+    "cookie-cutter": "^0.2.0",
     "date-fns": "^2.30.0",
     "moment": "^2.29.4",
     "next": "^13.5.4",

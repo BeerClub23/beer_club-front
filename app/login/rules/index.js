@@ -6,7 +6,7 @@ export const loginSchema = yup.object({
     .string()
     .required("Este campo es obligatorio")
     .email("Ingrese un correo válido"),
-  pass: yup
+  password: yup
     .string()
     .required("Este campo es obligatorio")
     .min(2, "Mínimo 2 caracteres")

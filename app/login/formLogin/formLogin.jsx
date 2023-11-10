@@ -17,6 +17,7 @@ import { Controller } from "react-hook-form";
 import { CustomTextField } from "../../components/inputs/CustomTextFields";
 import Swal from "sweetalert2";
 import ApiFormLogin from "@/app/services/login";
+import cookie from 'cookie-cutter';
 
 
 export default function FormLogin() {
@@ -36,15 +37,15 @@ export default function FormLogin() {
   } = useFormContext();
 
   const onSubmit = async (data) => {
-    let respuesta = await ApiFormLogin(data);
-    if (respuesta.token) {
-      // sessionStorage.setItem("token", respuesta.token);
-      // console.log("aca esto");
-      router.push(`/home`);
-    } else if (respuesta.response.request.status == 401) {
+    let {token, response} = await ApiFormLogin(data);
+    if (token) {
+      const expirationDate = new Date();
+      cookie.set('jwt', token, {expires: expirationDate.setDate(expirationDate.getDate() + 1)})
+      router.push(`/user/adminplan`);
+    } else if (response.status == 401) {
       Swal.fire({
         title: "Error!",
-        text: "Usuario no registrado",
+        text: response.data,
         imageUrl: "../../images/icons/no-beer.jpg",
         imageWidth: 150,
         imageHeight: 150,
@@ -53,11 +54,11 @@ export default function FormLogin() {
         confirmButtonColor: "#ceb5a7",
         focusConfirm: false,
       });
-      console.error(respuesta.response.data.message);
-    } else if (respuesta.response.request.status == 500) {
+      console.error(response.data);
+    } else if (response.status == 500) {
       Swal.fire({
         title: "Ups!",
-        text: "No se pudo ingresar, intentelo mas tarde",
+        text: response.data,
         imageUrl: "../../images/icons/no-beer.jpg",
         imageWidth: 150,
         imageHeight: 150,
@@ -66,7 +67,7 @@ export default function FormLogin() {
         confirmButtonColor: "#ceb5a7",
         focusConfirm: false,
       });
-      console.error(respuesta.response.data.message);
+      console.error(response.data);
     }
   };
   React.useEffect(() => {
@@ -130,7 +131,7 @@ export default function FormLogin() {
             )}
           />
           <Typography variant="caption" color="red">
-            <ErrorMessage errors={errors} name="pass" />
+            <ErrorMessage errors={errors} name="password" />
           </Typography>
 
           {isSubmitting ? (
