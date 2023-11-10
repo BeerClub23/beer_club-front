@@ -16,9 +16,9 @@ body {
   background: #101010;
 }
 
-body > div {
+/* body > div {
   height: 100vh;
-}
+} */
 
 a {
   color: inherit;

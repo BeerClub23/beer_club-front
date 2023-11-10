@@ -156,7 +156,7 @@ const PersonalData = () => {
           defaultValue=""
           render={({ field }) => (
             <FormControl sx={{ width: "100%", mt: "10px" }} variant="outlined">
-              <InputLabel htmlFor="outlined-adornment-password">
+              <InputLabel htmlFor="outlined-adornment-password2">
                 Confirmar contraseña
               </InputLabel>
               <OutlinedInput

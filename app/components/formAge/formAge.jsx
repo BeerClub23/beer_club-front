@@ -10,29 +10,19 @@ import { useForm } from "react-hook-form";
 import "aos/dist/aos.css";
 import AOS from "aos";
 import "./formAge.scss";
-// import myRoute from 'app/services/IpService/ipService.jsx';
-// import { format } from 'date-fns';
-// import moment from 'moment';
-// import { NextRequest } from "next/server";
 
-
-
-export default function FormAge({saveAge}) {
+export default function FormAge({ saveAge }) {
   const router = useRouter();
 
   const {
     register,
     handleSubmit,
     setFocus,
-    formState: { errors, dirtyFields },
+    formState: { dirtyFields },
   } = useForm();
 
   const onSubmit = async (data) => {
-    // console.log(navigator.geolocation);
-    // console.log( myRoute())
-    // const userIP = NextRequest.headers['x-forwarded-for'] || NextRequest.socket.remoteAddress;
-    // console.log(userIP)
-
+    // console.log(data);
     const userDate = `${data.year}-${data.month}-${data.day}`;
     try {
       console.log(process.env.NEXT_PUBLIC_IPINFO_TOKEN);
@@ -46,7 +36,12 @@ export default function FormAge({saveAge}) {
         console.log(
           "IP: " + userIP + ", City: " + userCity + ", Date:  " + userDate,
         );
-        saveAge({ip: userIP, city: userCity, dateOfBirth: userDate, saveInfo: data.saveInfo})
+        saveAge({
+          ip: userIP,
+          city: userCity,
+          dateOfBirth: userDate,
+          saveInfo: data.saveInfo,
+        });
       }
     } catch (error) {
       console.error("Error:", error);
@@ -63,7 +58,7 @@ export default function FormAge({saveAge}) {
 
   React.useEffect(() => {
     AOS.init({
-      duration: 1200,
+      duration: 1000,
     });
   }, []);
 
@@ -78,7 +73,7 @@ export default function FormAge({saveAge}) {
           Ingresa tu fecha de nacimiento?
         </Typography>
 
-        <FormGroup aria-label="position">
+        <FormGroup aria-label="position" data-aos="fade-up">
           <Box sx={{ mb: 5, mt: 2, mx: "auto", textAlign: "center" }}>
             <FormControl sx={{ m: 1 }} variant="outlined">
               <FormHelperText id="outlined-day-helper-text">DÍA</FormHelperText>
@@ -163,4 +158,6 @@ export default function FormAge({saveAge}) {
       </FormControl>
     </form>
   );
-}
+};
+
+// export default FormAge;

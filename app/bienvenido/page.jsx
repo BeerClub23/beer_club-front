@@ -2,7 +2,7 @@
 
 import React from "react";
 import "./bienvenido.scss";
-import { Button, Typography } from "@mui/material";
+import { Typography } from "@mui/material";
 import HeaderPublic from "../components/headerPublic/headerPublic";
 import Footer from "../components/footer/Footer";
 import Box from "@mui/material/Box";
