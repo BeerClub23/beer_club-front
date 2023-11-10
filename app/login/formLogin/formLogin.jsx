@@ -2,7 +2,7 @@ import * as React from "react";
 import FormGroup from "@mui/material/FormGroup";
 import FormControl from "@mui/material/FormControl";
 import { Button, Typography } from "@mui/material";
-// import { useRouter } from "next/navigation";
+import { useRouter } from "next/navigation";
 import "aos/dist/aos.css";
 import "./formLogin.scss";
 import Visibility from "@mui/icons-material/Visibility";
@@ -18,8 +18,9 @@ import { CustomTextField } from "../../components/inputs/CustomTextFields";
 import Swal from "sweetalert2";
 import ApiFormLogin from "@/app/services/login";
 
+
 export default function FormLogin() {
-  // const router = useRouter();
+  const router = useRouter();
   const [showPassword, setShowPassword] = React.useState(false);
   const handleClickShowPassword = () => setShowPassword((show) => !show);
 
@@ -37,9 +38,9 @@ export default function FormLogin() {
   const onSubmit = async (data) => {
     let respuesta = await ApiFormLogin(data);
     if (respuesta.token) {
-      // router.push(`/home`)
-      console.log(respuesta.token);
-      console.log("Estas dentro");
+      // sessionStorage.setItem("token", respuesta.token);
+      // console.log("aca esto");
+      router.push(`/home`);
     } else if (respuesta.response.request.status == 401) {
       Swal.fire({
         title: "Error!",
@@ -71,9 +72,9 @@ export default function FormLogin() {
   React.useEffect(() => {
     setFocus("email");
   }, [setFocus]);
-  React.useEffect(() => {
-    console.log(isSubmitting);
-  }, [isSubmitting]);
+  // React.useEffect(() => {
+  //   console.log(isSubmitting);
+  // }, [isSubmitting]);
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} autoComplete="off">
