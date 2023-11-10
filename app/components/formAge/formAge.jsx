@@ -22,6 +22,8 @@ const FormAge = () => {
   } = useForm();
 
   const onSubmit = async (data) => {
+    console.log(data);
+    const saveInfo = data.saveInfo;
     //Fecha actual
     const today = new Date();
     const todayYear = today.getFullYear();
@@ -52,7 +54,6 @@ const FormAge = () => {
         console.log(
           "IP: " + userIP + ", City: " + userCity + ", Date:  " + userDate,
         );
-
         // código para verificar la edad
         if (diffYear < 18) {
           router.push(`/menor`);
@@ -61,7 +62,7 @@ const FormAge = () => {
           (diffYear === 18 && diffMonth > 0) ||
           (diffMonth >= 0 && diffDay >= 0)
         ) {
-          if (data.saveInfo) {
+          if (saveInfo) {
             localStorage.setItem("AgeCheck", true);
             localStorage.setItem("Age", date);
           } else {
@@ -159,7 +160,6 @@ const FormAge = () => {
           {dirtyFields.day && dirtyFields.month && dirtyFields.year && (
             <div className="recordar-datos" data-aos="fade-up">
               <FormControlLabel
-                value="end"
                 control={
                   <Checkbox
                     color="secondary"

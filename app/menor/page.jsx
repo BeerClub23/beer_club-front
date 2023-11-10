@@ -5,12 +5,13 @@ import Logo from "public/images/logo/Logo_sin_escudo_Color_Original.svg";
 import { theme } from "../styles/materialThemeForm";
 import { ThemeProvider } from "@mui/material";
 import Image from "next/image";
+import "../page.scss";
 
 export default function MenorPage() {
   return (
     <>
       <ThemeProvider theme={theme}>
-        <Box component="main" sx={{ pt: 13 }}>
+        <Box sx={{ pt: 13 }} className="mainAge">
           <Image
             src={Logo}
             width={300}
