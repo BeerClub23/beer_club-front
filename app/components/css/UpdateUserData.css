@@ -1,0 +1,47 @@
+.updater_form input {
+  height: 35px;
+  padding: 0;
+  padding-left: 10px;
+}
+
+.updater_form h4 {
+  color: black;
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+}
+
+#updater_form-container {
+  display: flex;
+  flex-direction: column;
+  align-items: end;
+}
+
+.updater_form-button {
+  background-color: #F5E1C1;
+  color: black;
+  font-weight: bold;
+  border-radius: 5px;
+  margin-top: 20px;
+  padding: 5px 40px;
+}
+
+.updater_form-address {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.updater_form-basicdata {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 20px;
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.input_box {
+  display: flex;
+  flex-direction: column;
+  justify-items: start;
+}/*# sourceMappingURL=UpdateUserData.css.map */

@@ -2,6 +2,9 @@
   min-height: 100vh;
 
 }
+h4{
+  padding-top:30px;
+}
 
 .divLogin{
   min-height: 100vh;
@@ -16,10 +19,16 @@
   justify-content: center;
   align-items: center;
 }
+.logo_age{
+  display: none;
+}
 
 @media (min-width: 600px) {
   .mainLogin{
     background-image:linear-gradient(rgb(16,16,16, 0.5), rgb(16,16,16, 0.5)), url('../../public/images/login/bg_login.png') ;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
   }
   .login{
     background-color: rgb(16,16,16, 0.87);
@@ -32,14 +41,14 @@
 
 @media (min-height: 800px) {
   .divLogin{
-    padding-bottom: 40px;
+    padding-top: 40px;
   }
 }
 
 @media (min-width: 600px) and (min-height: 800px) {
   .logo_age{
-    width: 240px;
-    height: 240px;
-    margin: 40px 20px 20px ;
+    display: block;
+    margin: 40px 20px 0px ;
   }
 }
+

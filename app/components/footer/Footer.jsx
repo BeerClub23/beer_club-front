@@ -29,16 +29,14 @@ export default function Footer() {
   return (
     <Box
       component="footer"
-      sx={
-         {
-              width: "100%",
-              height: "auto",
-              backgroundColor: "#EEE9E1",
-              paddingTop: "2rem",
-              paddingBottom: "1rem",
-              color: "#000000",
-            }
-      }
+      sx={{
+        width: "100%",
+        height: "auto",
+        backgroundColor: "#EEE9E1",
+        paddingTop: "2rem",
+        paddingBottom: "1rem",
+        color: "#000000",
+      }}
     >
       <Container maxWidth="lg">
         <Grid
