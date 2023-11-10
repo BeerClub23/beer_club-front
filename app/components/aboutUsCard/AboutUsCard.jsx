@@ -1,6 +1,6 @@
 import Image from "next/image";
 import styles from "../aboutUsCard/AboutUsCard.module.scss";
-import chop from "../../../public/images/aboutUs/black-chop.png";
+import chop from "../../../public/images/aboutUs/black-trigo.png";
 import lupulo from "../../../public/images/aboutUs/lupulo.png";
 
 export const AboutUsCard = () => {
@@ -8,15 +8,19 @@ export const AboutUsCard = () => {
     <article className={styles.containerArticle}>
       <Image
         src={chop}
-        width={100}
-        height={142}
+        width={113}
+        height={239}
+        // width={100}
+        // height={142}
         alt="logo"
         className={styles.containerArticle_logo1}
       />
       <Image
         src={chop}
-        width={100}
-        height={142}
+        width={113}
+        height={239}
+        // width={100}
+        // height={142}
         alt="logo"
         className={styles.containerArticle_logo2}
       />

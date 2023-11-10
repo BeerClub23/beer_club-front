@@ -11,6 +11,7 @@ import { loginSchema } from "./rules/index.js";
 import { FormProvider, useForm } from "react-hook-form";
 import "./login.scss";
 import AOS from "aos";
+import HeaderPublic from "@/app/components/headerPublic/headerPublic";
 
 export default function LoginPage() {
   const method = useForm({
@@ -25,13 +26,14 @@ export default function LoginPage() {
   }, []);
   return (
     <main className="mainLogin">
+      <HeaderPublic />
       <div className="divLogin">
         <Box className="login" data-aos="fade-up">
           <ThemeProvider theme={theme}>
             <Image
               src={Logo}
-              width={200}
-              height={200}
+              width={150}
+              height={150}
               alt="Beer Club Logo"
               className="logo_age"
             />
