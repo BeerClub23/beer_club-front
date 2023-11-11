@@ -32,7 +32,10 @@ const navItems = !auth
       { name: "Subscribite", route: "/home#suscribirse" },
       { name: "Login", route: "/login" },
     ]
-  : [{ name: "Me", route: "/user/adminplan" }];
+  : [
+      { name: "Me", route: "/user/adminplan" },
+      { name: "Recomendaciones", route: "/user/recomendaciones" },
+    ];
 
 const userData = {
   fullName: "Paddy Minchindon",
