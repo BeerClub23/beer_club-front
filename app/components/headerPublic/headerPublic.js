@@ -22,18 +22,15 @@ import Slide from "@mui/material/Slide";
 import useScrollTrigger from "@mui/material/useScrollTrigger";
 import DropDown from "../../common/dropdown/Dropdown";
 const drawerWidth = 240;
-const auth = true;
+const auth = false;
 const navItems = !auth
   ? [
-      { name: "Nosotros", route: "#nosotros" },
-      { name: "Como funciona", route: "#como-funciona" },
-      { name: "Subscribite", route: "#suscribirse" },
+      { name: "Nosotros", route: "/home#nosotros" },
+      { name: "Como funciona", route: "/home#como-funciona" },
+      { name: "Subscribite", route: "/home#suscribirse" },
       { name: "Login", route: "/login" },
     ]
-  : [
-      { name: "Nosotros", route: "#nosotros" },
-      { name: "Me", route: "/user/adminplan" },
-    ];
+  : [{ name: "Me", route: "/user/adminplan" }];
 
 const userData = {
   fullName: "Paddy Minchindon",
@@ -57,11 +54,7 @@ export default function HeaderGeneral(props) {
         {navItems.map((item) => (
           <ListItem key={item.name} disablePadding>
             <ListItemButton sx={{ textAlign: "center" }} id="sdsd">
-              <Link
-                href={
-                  pathname === "/home" ? `${item.route}` : `/home${item.route}`
-                }
-              ></Link>
+              <Link href={item.route}></Link>
             </ListItemButton>
           </ListItem>
         ))}
@@ -107,11 +100,7 @@ export default function HeaderGeneral(props) {
                 {navItems.map((item) => (
                   // <Link href={item.route} key={item.name} sx={{ color: '#fff'}} className='navItem'>{item.name}</Link>
                   <Link
-                    href={
-                      pathname === "/home"
-                        ? `${item.route}`
-                        : `/home${item.route}`
-                    }
+                    href={item.route}
                     key={item.name}
                     sx={{ color: "#fff" }}
                     className={"nav_navItem"}
