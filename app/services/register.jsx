@@ -3,7 +3,7 @@ const ApiRegister = async (req) => {
     const axios = require("axios");
     axios({
       method: "POST",
-      url: "/api/checkout",
+      url: `${process.env.NEXT_PUBLIC_API_URL}users/create`,
       headers: {
         Accept: "application/json",
         "Content-Type": "application/json",

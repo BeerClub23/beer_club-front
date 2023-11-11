@@ -1,7 +1,6 @@
 import { NextResponse } from "next/server";
 
-export async function POST(request) {
-  const token = "iagdhagdhgahjdghjagdshjgd";
+export async function POST(token) {
   const response = NextResponse.json({ token: token });
   response.cookies.set({
     name: "jwt",

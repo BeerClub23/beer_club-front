@@ -8,7 +8,7 @@ import { theme } from "./styles/materialThemeForm";
 import FormAge from "./components/formAge/formAge";
 // import FormAgeHoc from "./components/formAge/formAgeHoc";
 import { useRouter } from "next/navigation";
-import axios from "axios";
+import SaveAgeInfo from "@/app/services/saveAge";
 
 const AgePage = () => {
   const router = useRouter();
@@ -16,21 +16,7 @@ const AgePage = () => {
   const saveAge = async (ageInfo) => {
     const saveInfo = ageInfo.saveInfo;
     delete ageInfo.saveInfo;
-    const headers = new Headers();
-    headers.append("Access-Control-Allow-Credentials", "true");
-    headers.append("Access-Control-Allow-Origin", "*"); // replace this your actual origin
-    headers.append("Access-Control-Allow-Methods", "GET,DELETE,PATCH,POST,PUT");
-    headers.append(
-      "Access-Control-Allow-Headers",
-      "X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version",
-    );
-    const { data, status } = await axios.post(
-      `${process.env.NEXT_PUBLIC_API_URL}ageVerification`,
-      ageInfo,
-      {
-        headers: headers,
-      },
-    );
+    const { data, status } = await SaveAgeInfo(ageInfo);
 
     if (status < 400) {
       if (data.age >= 18) {

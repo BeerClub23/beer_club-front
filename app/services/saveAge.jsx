@@ -1,19 +1,18 @@
-import useSWR from "swr";
+const SaveAgeInfo = async (store) => {
+  return new Promise((resolve) => {
+    const axios = require("axios");
+    axios({
+      method: "POST",
+      url: `${process.env.NEXT_PUBLIC_API_URL}ageVerification`,
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      data: store,
+    })
+      .then((response) => resolve(response))
+      .catch((error) => resolve(error));
+  });
+};
 
-const post = (url, body) => fetch(url, {
-    method: 'POST',
-    body
-}).then((r) => r.json());
-
-export const useSaveAgeInfo = (ageInfo) => {
-    const { data, error, isLoading } = useSWR([`${process.env.NEXT_PUBLIC_API_URL}ageVerification`, ageInfo], post, {
-      shouldRetryOnError: false,
-      errorRetryCount: 1,
-    });
-  
-    return {
-      isOlder: data,
-      isLoading,
-      error: error,
-    };
-  };
+export default SaveAgeInfo;

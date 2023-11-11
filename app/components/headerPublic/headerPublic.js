@@ -21,8 +21,10 @@ import "./headerPublic.scss";
 import Slide from "@mui/material/Slide";
 import useScrollTrigger from "@mui/material/useScrollTrigger";
 import DropDown from "../../common/dropdown/Dropdown";
+import cookie from "cookie-cutter";
+
 const drawerWidth = 240;
-const auth = false;
+const auth = Boolean(cookie.get("jwt"));
 const navItems = !auth
   ? [
       { name: "Nosotros", route: "/home#nosotros" },
