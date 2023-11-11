@@ -21,18 +21,20 @@ import "./headerPublic.scss";
 import Slide from "@mui/material/Slide";
 import useScrollTrigger from "@mui/material/useScrollTrigger";
 import DropDown from "../../common/dropdown/Dropdown";
-import cookie from 'cookie-cutter';
+import cookie from "cookie-cutter";
+
 const drawerWidth = 240;
-const auth = Boolean(cookie.get('jwt'));
+const auth = true;
+// const auth = Boolean(cookie.get("jwt"));
 const navItems = !auth
   ? [
-      { name: "Nosotros", route: "#nosotros" },
-      { name: "Como funciona", route: "#como-funciona" },
-      { name: "Subscribite", route: "#suscribirse" },
+      { name: "Nosotros", route: "/home#nosotros" },
+      { name: "Como funciona", route: "/home#como-funciona" },
+      { name: "Subscribite", route: "/home#suscribirse" },
       { name: "Login", route: "/login" },
     ]
   : [
-      { name: "Nosotros", route: "#nosotros" },
+      { name: "Recomendaciones", route: "/user/recomendaciones" },
       { name: "Me", route: "/user/adminplan" },
     ];
 
@@ -49,7 +51,11 @@ export default function HeaderGeneral(props) {
   };
 
   const drawer = (
-    <Box onClick={handleDrawerToggle} sx={{ textAlign: "center" }}>
+    <Box
+      onClick={handleDrawerToggle}
+      sx={{ textAlign: "center" }}
+      className="mobileBox"
+    >
       <Typography variant="h6" sx={{ my: 2 }}>
         Beer Club
       </Typography>
@@ -57,12 +63,17 @@ export default function HeaderGeneral(props) {
       <List>
         {navItems.map((item) => (
           <ListItem key={item.name} disablePadding>
-            <ListItemButton sx={{ textAlign: "center" }} id="sdsd">
-              <Link
-                href={
-                  pathname === "/home" ? `${item.route}` : `/home${item.route}`
-                }
-              ></Link>
+            <ListItemButton>
+              <Link href={item.route}>
+                {auth & (item.name == "Me") ? (
+                  <>
+                    {userData.fullName}
+                    <DropDown />
+                  </>
+                ) : (
+                  item.name
+                )}
+              </Link>
             </ListItemButton>
           </ListItem>
         ))}
@@ -108,11 +119,7 @@ export default function HeaderGeneral(props) {
                 {navItems.map((item) => (
                   // <Link href={item.route} key={item.name} sx={{ color: '#fff'}} className='navItem'>{item.name}</Link>
                   <Link
-                    href={
-                      pathname === "/home"
-                        ? `${item.route}`
-                        : `/home${item.route}`
-                    }
+                    href={item.route}
                     key={item.name}
                     sx={{ color: "#fff" }}
                     className={"nav_navItem"}

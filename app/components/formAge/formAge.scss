@@ -1,5 +1,23 @@
+@import "@/app/globals.scss";
+
+.recordar-datos {
+  text-align: center;
+}
+.recordar-datos button {
+  font-size: 1rem;
+  font-family: var(--font-poppins);
+}
+
+.recordar-datos span {
+  display: block;
+  font-weight: 300;
+}
+
+
+
 .mainAge h4 {
   font-size: 2rem;
+  font-family: $poppins-font;
 }
 
 .css-1r61a7i-MuiInputBase-input-MuiOutlinedInput-input {
@@ -26,6 +44,9 @@ input[type="number"]::-webkit-outer-spin-button {
 }
 
 @media (min-width: 600px) {
+  .recordar-datos button {
+    font-size: 1.5rem;
+  }
   .mainAge h4 {
     font-size: 3rem;
   }

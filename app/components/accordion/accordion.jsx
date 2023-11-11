@@ -14,7 +14,7 @@ const AccordionWrapper = ({ title, content, isActive, setQuestion }) => {
         aria-controls="panel1bh-content"
         id={title}
       >
-        <Typography sx={{ flexShrink: 0 }}>{title}</Typography>
+        <Typography sx={{ flexShrink: 0, fontWeight: 700 }}>{title}</Typography>
       </AccordionSummary>
       <AccordionDetails>
         <Typography>{content}</Typography>
