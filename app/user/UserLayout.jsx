@@ -3,7 +3,7 @@ import HeaderPublic from "../components/headerPublic/headerPublic";
 import Footer from "../components/footer/Footer";
 import UserSideBar from "../components/userSideBar/UserSideBar";
 import { Box } from "@mui/material";
-import "../../css/globals.css";
+import "@/app/globals.scss";
 
 const UserLayout = ({ children }) => {
   return (

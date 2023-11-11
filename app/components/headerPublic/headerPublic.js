@@ -24,7 +24,8 @@ import DropDown from "../../common/dropdown/Dropdown";
 import cookie from "cookie-cutter";
 
 const drawerWidth = 240;
-const auth = Boolean(cookie.get("jwt"));
+const auth = true;
+// const auth = Boolean(cookie.get("jwt"));
 const navItems = !auth
   ? [
       { name: "Nosotros", route: "/home#nosotros" },
@@ -33,8 +34,8 @@ const navItems = !auth
       { name: "Login", route: "/login" },
     ]
   : [
-      { name: "Me", route: "/user/adminplan" },
       { name: "Recomendaciones", route: "/user/recomendaciones" },
+      { name: "Me", route: "/user/adminplan" },
     ];
 
 const userData = {
@@ -50,7 +51,11 @@ export default function HeaderGeneral(props) {
   };
 
   const drawer = (
-    <Box onClick={handleDrawerToggle} sx={{ textAlign: "center" }}>
+    <Box
+      onClick={handleDrawerToggle}
+      sx={{ textAlign: "center" }}
+      className="mobileBox"
+    >
       <Typography variant="h6" sx={{ my: 2 }}>
         Beer Club
       </Typography>
@@ -58,8 +63,17 @@ export default function HeaderGeneral(props) {
       <List>
         {navItems.map((item) => (
           <ListItem key={item.name} disablePadding>
-            <ListItemButton sx={{ textAlign: "center" }} id="sdsd">
-              <Link href={item.route}></Link>
+            <ListItemButton>
+              <Link href={item.route}>
+                {auth & (item.name == "Me") ? (
+                  <>
+                    {userData.fullName}
+                    <DropDown />
+                  </>
+                ) : (
+                  item.name
+                )}
+              </Link>
             </ListItemButton>
           </ListItem>
         ))}
