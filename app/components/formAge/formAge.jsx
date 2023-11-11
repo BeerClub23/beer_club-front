@@ -138,7 +138,7 @@ export default function FormAge({ saveAge }) {
                 labelPlacement="end"
               />
               <Typography variant="p">
-                *BEER CLUB ES SOLO PARA MAYORES DE 18 AÑOS, <br /> NO
+                * BEER CLUB ES SOLO PARA MAYORES DE 18 AÑOS, <br /> NO
                 SELECCIONES ESTA OPCIÓN SI COMPARTES ESTE COMPUTADOR CON MENORES
                 DE EDAD.
               </Typography>

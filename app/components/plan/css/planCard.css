@@ -21,21 +21,6 @@ a {
   text-decoration: none;
 }
 
-/* Age */
-.recordar-datos {
-  text-align: center;
-}
-
-.recordar-datos .css-ahj2mt-MuiTypography-root {
-  font-size: 1.5rem;
-  font-family: var(--font-poppins);
-}
-
-.recordar-datos span {
-  display: block;
-  font-weight: 300;
-}
-
 .card {
   width: 470px;
   height: 130px;
