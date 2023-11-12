@@ -118,7 +118,7 @@ const PaymentData = () => {
 
       <CustomTextField
         name="card.cvc"
-        label="Fecha de expiración"
+        label="CVV"
         type="text"
         control={control}
         autocomplete=""

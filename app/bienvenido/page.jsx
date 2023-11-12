@@ -9,12 +9,13 @@ import Box from "@mui/material/Box";
 import Logo from "public/images/logo/Logo_sin_escudo_Color_Original.svg";
 import { theme } from "../styles/materialThemeForm";
 import { ThemeProvider } from "@mui/material";
+import { homeItems} from "@/app/common/constants/NavBarItems";
 import Image from "next/image";
 
 const ConfirmPage = () => {
   return (
     <ThemeProvider theme={theme}>
-      <HeaderPublic />
+      <HeaderPublic items={homeItems} />
       <Box component="main" sx={{ pt: 13 }} className="containerBox">
         <Typography variant="h4" className="containerBox_title">
           Ya sos parte de Beer Club!!!{" "}

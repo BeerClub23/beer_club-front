@@ -13,6 +13,8 @@ import PlanCardFrom from "../components/planCardForm/PlanCardForm";
 import { useAppContext } from "../context/context";
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
+import { homeItems} from "@/app/common/constants/NavBarItems";
+
 
 const CheckoutPage = () => {
   const router = useRouter();
@@ -32,7 +34,7 @@ const CheckoutPage = () => {
 
   return (
     <>
-      <HeaderPublic />
+      <HeaderPublic items={homeItems} />
 
       <Box
         sx={{

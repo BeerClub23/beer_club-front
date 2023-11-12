@@ -16,14 +16,15 @@ import { usePathname } from "next/navigation";
 import "./UserSideBar.scss";
 import Link from "next/link";
 
-const UserSideBar = () => {
+const UserSideBar = (props) => {
+  const { window } = props;
   const [mobile, setMobile] = useState(false);
-  const [width, setWidth] = useState(window.innerWidth);
+  const [width, setWidth] = useState();
   const [show, setSHow] = useState(false);
 
-  const handleResize = () => setWidth(window.innerWidth);
+  const handleResize = () => setWidth();
   useEffect(() => {
-    window.addEventListener("resize", handleResize);
+    document.addEventListener("resize", handleResize);
     width < 480 ? setMobile(true) : setMobile(false);
     const container = document.getElementById("cont");
     if ((width < 480) & !show) {
@@ -66,10 +67,10 @@ const UserSideBar = () => {
           style={mobile & !show ? { display: "none" } : {}}
         >
           <List>
-            <Link href="/user/adminplan">
+            <Link href="/user/account/subscription">
               <ListItem
                 className={
-                  pathname.includes("/user/adminplan") && "active_nav_user"
+                  pathname.includes("/user/account/subscription") && "active_nav_user"
                 }
               >
                 <ListItemButton>
@@ -82,10 +83,10 @@ const UserSideBar = () => {
                 </ListItemButton>
               </ListItem>
             </Link>
-            <Link href="/user/datos-personales">
+            <Link href="/user/account/datos-personales">
               <ListItem
                 className={
-                  pathname.includes("/user/datos-personales") &&
+                  pathname.includes("/user/account/datos-personales") &&
                   "active_nav_user"
                 }
               >
@@ -97,10 +98,10 @@ const UserSideBar = () => {
                 </ListItemButton>
               </ListItem>
             </Link>
-            <Link href="/user/historial">
+            <Link href="/user/account/historial">
               <ListItem
                 className={
-                  pathname.includes("/user/historial") && "active_nav_user"
+                  pathname.includes("/user/account/historial") && "active_nav_user"
                 }
               >
                 <ListItemButton>
@@ -111,10 +112,10 @@ const UserSideBar = () => {
                 </ListItemButton>
               </ListItem>
             </Link>
-            <Link href="/user/estadisticas">
+            <Link href="/user/account/estadisticas">
               <ListItem
                 className={
-                  pathname.includes("/user/estadisticas") && "active_nav_user"
+                  pathname.includes("/user/account/estadisticas") && "active_nav_user"
                 }
               >
                 <ListItemButton>
