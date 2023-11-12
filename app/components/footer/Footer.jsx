@@ -90,21 +90,21 @@ export default function Footer() {
               <Typography
                 variant="body1"
                 component="div"
-                className="linkItem"
+                className="linkItem linkWapp"
                 sx={{
                   fontWeight: "bold",
                   marginBottom: "2px",
                   display: "flex",
-                  alignItems: "center",
+                  gap: 1,
                 }}
               >
-                <WhatsAppIcon />
                 <Link
                   href={`https://${whatsapp}text=Hola,%20necesito%20hacerles%20una%20consulta...`}
                   target="_blank"
                 >
                   Contáctanos
                 </Link>
+                <WhatsAppIcon />
               </Typography>
             </div>
           </Grid>

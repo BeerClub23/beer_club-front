@@ -1,6 +1,5 @@
 .bc-subscription-card {
   border-radius: 7px;
-  border: 2px solid #8d8d8d;
   background: #fff;
   color: #000;
   font-size: 24px;
@@ -8,7 +7,7 @@
   font-weight: 400;
   line-height: normal;
   padding: 30px 20px;
-  box-shadow: 0px 5px 5px 0px rgba(0, 0, 0, 0.5);
+  box-shadow: 0px 5px 6px 3px rgba(0, 0, 0, 0.25);
   margin: auto;
   z-index: 1;
   position: relative;
@@ -16,6 +15,7 @@
 }
 .bc-subscription-card-container {
   max-width: 350px;
+  margin: auto;
 }
 .bc-subscription-card__header {
   display: flex;
@@ -50,17 +50,25 @@
 .bc-subscription-card__recommended {
   height: 50px;
   border-radius: 7px;
-  padding: 10px 20px;
+  padding: 15px 25px;
   position: relative;
   bottom: -17px;
-  margin: 0px 20px;
+  margin: 0px auto;
   z-index: 3;
   width: -moz-fit-content;
   width: fit-content;
 }
 .bc-subscription-card__recommended.active {
   background: rgb(16, 16, 16);
-  background: linear-gradient(180deg, rgb(16, 16, 16) 60%, rgb(103, 103, 103) 100%);
+  box-shadow: 0px 5px 6px 3px rgba(0, 0, 0, 0.25);
+}
+.bc-subscription-card__recommended.otro {
+  animation: 2s otro infinite;
+}
+@keyframes otro {
+  20% {
+    transform: perspective(300px) translateZ(20px);
+  }
 }
 .bc-subscription-card ul {
   margin-left: 20px;

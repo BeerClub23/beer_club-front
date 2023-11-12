@@ -17,7 +17,10 @@ export async function middleware(request) {
       url.pathname = "/login";
       return NextResponse.redirect(url);
     } 
-  } else if (request.nextUrl.pathname.includes("user") || request.nextUrl.pathname.includes("admin")) {
+  } else if (
+    request.nextUrl.pathname.includes("user") ||
+    request.nextUrl.pathname.includes("admin")
+  ) {
     url = request.nextUrl.clone();
     url.pathname = "/home";
     return NextResponse.redirect(url);
@@ -35,7 +38,7 @@ export async function middleware(request) {
       url.pathname = "/home";
       return NextResponse.redirect(url);
     default:
-      return NextResponse.next();  
+      return NextResponse.next();
   }
   // let cookieJwt = await request.cookies.get("jwt");
   // let cookieAgeCheck = await request.cookies.get("AgeCheck");

@@ -12,8 +12,7 @@ import { useRouter } from "next/navigation";
 import PlanDetail from "../components/plan/planDetail/PlanDetail";
 import { theme } from "@/app/styles/materialThemeForm";
 import { ThemeProvider } from "@mui/material";
-import { homeItems} from "@/app/common/constants/NavBarItems";
-
+import { homeItems } from "@/app/common/constants/NavBarItems";
 
 const PlansPage = () => {
   const { context, setContext } = useAppContext();
@@ -68,7 +67,14 @@ const PlansPage = () => {
                   size="large"
                   fullWidth
                   onClick={submitSelection}
-                  sx={{ pt: "7px", mx: "auto", mt: 1, mb: 4, fontWeight: "bold", width: "460px" }}
+                  sx={{
+                    pt: "7px",
+                    mx: "auto",
+                    mt: 1,
+                    mb: 4,
+                    fontWeight: "bold",
+                    width: "460px",
+                  }}
                 >
                   Confirmar
                 </Button>
