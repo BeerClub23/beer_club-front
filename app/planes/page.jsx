@@ -12,6 +12,8 @@ import { useRouter } from "next/navigation";
 import PlanDetail from "../components/plan/planDetail/PlanDetail";
 import { theme } from "@/app/styles/materialThemeForm";
 import { ThemeProvider } from "@mui/material";
+import { homeItems} from "@/app/common/constants/NavBarItems";
+
 
 const PlansPage = () => {
   const { context, setContext } = useAppContext();
@@ -36,7 +38,7 @@ const PlansPage = () => {
   };
   return (
     <>
-      <HeaderPublic />
+      <HeaderPublic items={homeItems} />
       <Box
         className="mainBox"
         sx={{ pt: 15, pb: 10, backgroundColor: "#ffffff", color: "black" }}

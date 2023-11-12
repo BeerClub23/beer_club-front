@@ -7,6 +7,7 @@ import { useGetFaqs } from "../services/faqs";
 import "./faqs.scss";
 import { useState } from "react";
 import AccordionWrapper from "../components/accordion/accordion";
+import { homeItems} from "@/app/common/constants/NavBarItems";
 
 const FaqsPage = () => {
   const { faqs, isLoading, isError } = useGetFaqs();
@@ -22,7 +23,7 @@ const FaqsPage = () => {
 
   return (
     <>
-      <HeaderPublic />
+      <HeaderPublic items={homeItems} />
       <div className="bc-faqs-container">
         <Container>
           <h1 className="bc-faqs-container_title">Resuelve tus dudas</h1>

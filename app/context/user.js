@@ -1,26 +1,18 @@
 "use client"
-import { useJwt } from "react-jwt";
 import { createContext, useContext, useState } from "react";
-import cookie from 'cookie-cutter';
-export const UserBeerContext = createContext({});
+export const UserBeerClubContext = createContext({});
 
 
-export const UserContext = () => {
+export const UserBeerContext = ({children}) => {
     const [ user, setUser ] = useState();
-    const token = cookie.get("jwt");
-
-    if (token) {
-        const { decodedToken, isExpired } = useJwt(token);
-    } else {
-        setUser(null);
-    }
+    
 
     return (
-        <UserBeerContext.Provider value={ user }>
-          {children}
-        </UserBeerContext.Provider>
+        <UserBeerClubContext.Provider value={{user, setUser}}>
+            {children}
+        </UserBeerClubContext.Provider>
       );
 }
 
-export const useUserContext = () => useContext(UserBeerContext);
+export const useUserBeerContext = () => useContext(UserBeerClubContext);
 

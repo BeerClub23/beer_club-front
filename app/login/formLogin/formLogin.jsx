@@ -17,7 +17,7 @@ import { Controller } from "react-hook-form";
 import { CustomTextField } from "../../components/inputs/CustomTextFields";
 import Swal from "sweetalert2";
 import ApiFormLogin from "@/app/services/login";
-import cookie from "cookie-cutter";
+import Cookies from "js-cookie";
 
 export default function FormLogin() {
   const router = useRouter();
@@ -39,10 +39,10 @@ export default function FormLogin() {
     let { token, response } = await ApiFormLogin(data);
     if (token) {
       const expirationDate = new Date();
-      cookie.set("jwt", token, {
+      Cookies.set("jwt", token, {
         expires: expirationDate.setDate(expirationDate.getDate() + 1),
       });
-      router.push(`/user/adminplan`);
+      router.push(`/user`);
     } else if (response.status == 401) {
       Swal.fire({
         title: "Error!",

@@ -7,6 +7,7 @@ import FormHelperText from "@mui/material/FormHelperText";
 import { Box, Button, Checkbox, Typography } from "@mui/material";
 import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
+
 import "aos/dist/aos.css";
 import AOS from "aos";
 import "./formAge.scss";
@@ -46,11 +47,6 @@ export default function FormAge({ saveAge }) {
     }
   };
   React.useEffect(() => {
-    const ageCheckLocal = localStorage.getItem("AgeCheck");
-    const ageCheckSession = sessionStorage.getItem("AgeCheck");
-    if (ageCheckLocal || ageCheckSession) {
-      router.push(`/home`);
-    }
     setFocus("day");
   }, [setFocus, router]);
 
