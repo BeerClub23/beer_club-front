@@ -53,18 +53,19 @@
   }
 
   &__recommended {
-    height: 75px;
+    height: 50px;
     // width: 100%;
-    border-radius: 8px 8px 0 0;
-    padding: 15px 20px;
+    border-radius: 7px;
+    padding: 10px 20px;
     position: relative;
-    bottom: -27px;
+    bottom: -17px;
     margin: 0px 20px;
-    z-index: 0;
+    z-index: 3;
+    width: fit-content;
 
     &.active {
       background: rgb(16,16,16);
-      background: linear-gradient(180deg, rgba(16,16,16,1) 40%, rgba(103,103,103,1) 100%);
+      background: linear-gradient(180deg, rgba(16,16,16,1) 60%, rgba(103,103,103,1) 100%);
     }
   }
 

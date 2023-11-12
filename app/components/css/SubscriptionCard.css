@@ -48,17 +48,19 @@
   padding: 0px 30px;
 }
 .bc-subscription-card__recommended {
-  height: 75px;
-  border-radius: 8px 8px 0 0;
-  padding: 15px 20px;
+  height: 50px;
+  border-radius: 7px;
+  padding: 10px 20px;
   position: relative;
-  bottom: -27px;
+  bottom: -17px;
   margin: 0px 20px;
-  z-index: 0;
+  z-index: 3;
+  width: -moz-fit-content;
+  width: fit-content;
 }
 .bc-subscription-card__recommended.active {
   background: rgb(16, 16, 16);
-  background: linear-gradient(180deg, rgb(16, 16, 16) 40%, rgb(103, 103, 103) 100%);
+  background: linear-gradient(180deg, rgb(16, 16, 16) 60%, rgb(103, 103, 103) 100%);
 }
 .bc-subscription-card ul {
   margin-left: 20px;

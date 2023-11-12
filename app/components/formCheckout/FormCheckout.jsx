@@ -2,7 +2,7 @@
 import { Alert, Button, Step, StepLabel, Stepper } from "@mui/material";
 import Box from "@mui/material/Box";
 import Paper from "@mui/material/Paper";
-import Typography from "@mui/material/Typography";
+// import Typography from "@mui/material/Typography";
 import PersonalData from "./PersonalData";
 import AddressData from "./AddressData";
 import PaymentData from "./PaymentData";
@@ -11,8 +11,8 @@ import { useFormContext } from "react-hook-form";
 // import { useRouter } from "next/navigation";
 import { theme } from "../../styles/materialThemeFormCheckout";
 import ThemeProvider from "@mui/material/styles/ThemeProvider";
-import logo from "../../../public/images/logo/Logo_sin_escudo_Negro.svg";
-import Image from "next/image";
+// import logo from "../../../public/images/logo/Logo_sin_escudo_Negro.svg";
+// import Image from "next/image";
 import ApiRegister from "@/app/services/register";
 import Swal from "sweetalert2";
 
@@ -82,7 +82,7 @@ export const FormCheckout = ({ category }) => {
       
       let response = await ApiRegister(normalizedData);
       console.log(normalizedData);
-      console.log(response) 
+      console.log(response); 
       console.log(response.status);
       if (response.status === 201) {
         console.log(response);
@@ -163,13 +163,13 @@ export const FormCheckout = ({ category }) => {
       <ThemeProvider theme={theme}>
         <Box>
           <Stepper
-            sx={{ margin: "20px" }}
+            sx={{ mx: "auto", my: 4, maxWidth:"600px" }}
             activeStep={step - 1}
             alternativeLabel
           >
             {steps.map((label) => (
               <Step key={label}>
-                <StepLabel>{label}</StepLabel>
+                <StepLabel sx={{ fontWeight:"bold" }}>{label}</StepLabel>
               </Step>
             ))}
           </Stepper>
@@ -185,7 +185,7 @@ export const FormCheckout = ({ category }) => {
               marginBottom: "20px",
             }}
           >
-            <Typography variant="p" align="center" sx={{ padding: "-32px" }}>
+            {/* <Typography variant="p" align="center" sx={{ padding: "-32px" }}>
               <Image
                 src={logo}
                 width={80}
@@ -193,8 +193,8 @@ export const FormCheckout = ({ category }) => {
                 alt="imagen"
                 sx={{ margin: "0 auto" }}
               ></Image>
-            </Typography>
-            {step == 1 && (
+            </Typography> */}
+            {/* {step == 1 && (
               <Typography variant="h4" align="center" sx={{ margin: "0" }}>
                 Datos personales
               </Typography>
@@ -209,15 +209,15 @@ export const FormCheckout = ({ category }) => {
               <Typography variant="h4" align="center">
                 Pago
               </Typography>
-            )}
+            )} */}
 
             <form onSubmit={handleSubmit(onSubmit)}>
               {step == 1 && <PersonalData />}
               {step == 2 && <AddressData />}
-              {status && <Alert severity="error">{status}</Alert>}
               {step == 3 && <PaymentData />}
+              {status && <Alert severity="error">{status}</Alert>}
 
-              <Box>
+              <Box sx={{ display: "flex", justifyContent: "space-between", mt:3 }}>
                 <Button
                   variant="contained"
                   color="primary"
