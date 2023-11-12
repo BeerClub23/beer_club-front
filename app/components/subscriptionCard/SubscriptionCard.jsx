@@ -14,7 +14,7 @@ const SubscriptionCard = ({
   return (
     <article className="bc-subscription-card-container">
       <div
-        className={`bc-subscription-card__recommended ${
+        className={`bc-subscription-card__recommended otro ${
           isRecommended ? "active" : ""
         }`}
       >

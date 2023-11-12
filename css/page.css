@@ -13,6 +13,7 @@
 @media (min-width: 450px) {
   .mainAge {
     padding: 2rem;
+    font-family: var(--poppins-font) !important;
   }
   .logo_age {
     margin-bottom: 40px;

@@ -38,6 +38,9 @@ const PaymentData = () => {
 
   return (
     <>
+      <Typography variant="h4" align="center" sx={{ mb: 1 }}>
+        Pago
+      </Typography>
       <Cards
         number={state.cardNumber}
         expiry={state.expDate}

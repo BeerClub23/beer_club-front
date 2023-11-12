@@ -27,8 +27,8 @@ import { useRouter } from "next/navigation";
 
 const drawerWidth = 240;
 
-export default function HeaderGeneral({window, items}) {
-  const [ navItems, setNavItems ] = useState([]);
+export default function HeaderGeneral({ window, items }) {
+  const [navItems, setNavItems] = useState([]);
   const pathname = usePathname();
   const { user, setUser } = useUserBeerContext();
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -38,14 +38,14 @@ export default function HeaderGeneral({window, items}) {
   };
 
   const handleLogout = () => {
-    Cookies.remove('jwt');
-    setUser(null)
+    Cookies.remove("jwt");
+    setUser(null);
     router.push("/home");
-  }
+  };
 
   useEffect(() => {
-    setNavItems(items)
-  }, [items] )
+    setNavItems(items);
+  }, [items]);
 
   const drawer = (
     <Box
@@ -61,18 +61,14 @@ export default function HeaderGeneral({window, items}) {
         {navItems.map((item) => (
           <ListItem key={item.name} disablePadding>
             <ListItemButton>
-              
-                {user && (item.name == "Me") ? (
-                  <>
-                    {`${user.firstName} ${user.lastName}`}
-                    <DropDown />
-                  </>
-                ) : (
-                  <Link href={item.route}>
-                    item.name
-                  </Link>
-                )}
-              
+              {user && item.name == "Me" ? (
+                <>
+                  {`${user.firstName} ${user.lastName}`}
+                  <DropDown />
+                </>
+              ) : (
+                <Link href={item.route}>{item.name}</Link>
+              )}
             </ListItemButton>
           </ListItem>
         ))}
@@ -115,28 +111,30 @@ export default function HeaderGeneral({window, items}) {
                   alignItems: "center",
                 }}
               >
-                {navItems.map((item) => 
+                {navItems.map((item) =>
                   // <Link href={item.route} key={item.name} sx={{ color: '#fff'}} className='navItem'>{item.name}</Link>
-                  
-                    user && (item.name == "Me") ? (
-                      <>
-                        <Box id="userHeader">
-                          <UserAvatar userName={`${user.firstName} ${user.lastName}`}/>
-                        </Box>
-                        <DropDown profile={item.route} logOut={handleLogout}/>
-                      </>
-                    ) : (
-                      <Link
-                        href={item.route}
-                        key={item.name}
-                        sx={{ color: "#fff" }}
-                        className={"nav_navItem"}
-                        style={{ scrollBehavior: "smooth" }}
-                      >
-                        {item.name}
-                      </Link>
-                    )
-                  
+
+                  user && item.name == "Me" ? (
+                    <>
+                      <Box id="userHeader">
+                        <UserAvatar
+                          userName={`${user.firstName}
+                          ${user.lastName}`}
+                        />
+                      </Box>
+                      <DropDown profile={item.route} logOut={handleLogout} />
+                    </>
+                  ) : (
+                    <Link
+                      href={item.route}
+                      key={item.name}
+                      sx={{ color: "#fff" }}
+                      className={"nav_navItem"}
+                      style={{ scrollBehavior: "smooth" }}
+                    >
+                      {item.name}
+                    </Link>
+                  ),
                 )}
               </Box>
             </Toolbar>

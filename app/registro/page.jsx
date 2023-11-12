@@ -8,7 +8,7 @@ import { schema } from "../components/formCheckout/rules/index";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { FormProvider, useForm } from "react-hook-form";
 // import { useRouter } from 'next/navigation';
-import { Typography } from "@mui/material";
+// import { Typography } from "@mui/material";
 import PlanCardFrom from "../components/planCardForm/PlanCardForm";
 import { useAppContext } from "../context/context";
 import { useRouter } from "next/navigation";
@@ -43,12 +43,9 @@ const CheckoutPage = () => {
           flexDirection: "column",
           justifyContent: "space-evenly",
           backgroundColor: "#fafafa",
+          pt: 13,
         }}
       >
-        <Box component="main" sx={{ pt: 13 }}>
-          {/* <Box sx={{ m: "20px" }}> */}
-          <PlanCardFrom category={category?.subscription} />
-        </Box>
         {/* {comic.stock !==0 ? */}
 
         <FormProvider {...methods}>
@@ -63,6 +60,11 @@ const CheckoutPage = () => {
                 </Typography>
               </Box>
             </>                      */}
+
+        <Box component="main" sx={{ pt: 3, pb: 6 }}>
+          {/* <Box sx={{ m: "20px" }}> */}
+          <PlanCardFrom category={category?.subscription} />
+        </Box>
       </Box>
 
       <Footer />
