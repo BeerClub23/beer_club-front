@@ -43,4 +43,9 @@
 }
 .bc-accordion:hover .bc-accordion-arrow {
   color: #ceb5a7;
+}
+
+.accordionSummary div {
+  overflow-wrap: break-word;
+  display: inline-block;
 }/*# sourceMappingURL=accordion.css.map */
