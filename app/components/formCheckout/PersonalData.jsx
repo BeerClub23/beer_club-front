@@ -32,6 +32,9 @@ const PersonalData = () => {
 
   return (
     <>
+      <Typography variant="h4" align="center" sx={{ mb: 1 }}>
+        Datos personales
+      </Typography>
       <Box key={"personal"}>
         <CustomTextField
           name="customer.name"

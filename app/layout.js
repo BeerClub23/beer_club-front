@@ -1,5 +1,6 @@
 import { AppContext } from "./context/context";
-import "../css/globals.css";
+import { UserBeerContext } from "./context/user";
+import "./globals.scss";
 import { Roboto } from "next/font/google";
 import { Poppins } from "next/font/google";
 // import { ThemeProvider } from '@mui/material';
@@ -25,11 +26,17 @@ export const metadata = {
 };
 
 export default function RootLayout({ children }) {
+
   return (
     <html lang="es" className={`${roboto.className} ${poppins.className}`}>
       {/* <ThemeProvider theme={theme}> */}
       <body>
-        <AppContext>{children}</AppContext>
+        <UserBeerContext>
+          <AppContext>
+            {children}
+          </AppContext>
+        </UserBeerContext>
+        
       </body>
       {/* </ThemeProvider> */}
     </html>

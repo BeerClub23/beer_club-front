@@ -15,6 +15,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    
   }
 
   &-content {
@@ -51,5 +52,12 @@
     .bc-accordion-arrow {
       color: #ceb5a7;
     }
+  }
+}
+
+.accordionSummary{
+  div{
+    overflow-wrap: break-word;
+    display: inline-block
   }
 }

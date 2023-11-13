@@ -1,6 +1,6 @@
 "use client";
 
-import * as React from "react";
+import React, { useEffect, useState } from "react";
 import { Container, Typography } from "@mui/material";
 import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
@@ -21,35 +21,38 @@ import "./headerPublic.scss";
 import Slide from "@mui/material/Slide";
 import useScrollTrigger from "@mui/material/useScrollTrigger";
 import DropDown from "../../common/dropdown/Dropdown";
-import cookie from 'cookie-cutter';
+import { useUserBeerContext } from "@/app/context/user";
+import Cookies from "js-cookie";
+import { useRouter } from "next/navigation";
+
 const drawerWidth = 240;
-const auth = Boolean(cookie.get('jwt'));
-const navItems = !auth
-  ? [
-      { name: "Nosotros", route: "#nosotros" },
-      { name: "Como funciona", route: "#como-funciona" },
-      { name: "Subscribite", route: "#suscribirse" },
-      { name: "Login", route: "/login" },
-    ]
-  : [
-      { name: "Nosotros", route: "#nosotros" },
-      { name: "Me", route: "/user/adminplan" },
-    ];
 
-const userData = {
-  fullName: "Paddy Minchindon",
-};
-
-export default function HeaderGeneral(props) {
+export default function HeaderGeneral({ window, items }) {
+  const [navItems, setNavItems] = useState([]);
   const pathname = usePathname();
-  const { window } = props;
-  const [mobileOpen, setMobileOpen] = React.useState(false);
+  const { user, setUser } = useUserBeerContext();
+  const [mobileOpen, setMobileOpen] = useState(false);
+  const router = useRouter();
   const handleDrawerToggle = () => {
     setMobileOpen((prevState) => !prevState);
   };
 
+  const handleLogout = () => {
+    Cookies.remove("jwt");
+    setUser(null);
+    router.push("/home");
+  };
+
+  useEffect(() => {
+    setNavItems(items);
+  }, [items]);
+
   const drawer = (
-    <Box onClick={handleDrawerToggle} sx={{ textAlign: "center" }}>
+    <Box
+      onClick={handleDrawerToggle}
+      sx={{ textAlign: "center" }}
+      className="mobileBox"
+    >
       <Typography variant="h6" sx={{ my: 2 }}>
         Beer Club
       </Typography>
@@ -57,12 +60,15 @@ export default function HeaderGeneral(props) {
       <List>
         {navItems.map((item) => (
           <ListItem key={item.name} disablePadding>
-            <ListItemButton sx={{ textAlign: "center" }} id="sdsd">
-              <Link
-                href={
-                  pathname === "/home" ? `${item.route}` : `/home${item.route}`
-                }
-              ></Link>
+            <ListItemButton>
+              {user && item.name == "Me" ? (
+                <>
+                  {`${user.firstName} ${user.lastName}`}
+                  <DropDown />
+                </>
+              ) : (
+                <Link href={item.route}>{item.name}</Link>
+              )}
             </ListItemButton>
           </ListItem>
         ))}
@@ -95,7 +101,7 @@ export default function HeaderGeneral(props) {
               >
                 <MenuIcon />
               </IconButton>
-              <Link href={"/home"} className={"nav_logo"}>
+              <Link href={!user ? "/home" : "/user"} className={"nav_logo"}>
                 <Image src={Logo} width={90} height={90} alt="Beer Club Logo" />
               </Link>
               <Box
@@ -105,31 +111,31 @@ export default function HeaderGeneral(props) {
                   alignItems: "center",
                 }}
               >
-                {navItems.map((item) => (
+                {navItems.map((item) =>
                   // <Link href={item.route} key={item.name} sx={{ color: '#fff'}} className='navItem'>{item.name}</Link>
-                  <Link
-                    href={
-                      pathname === "/home"
-                        ? `${item.route}`
-                        : `/home${item.route}`
-                    }
-                    key={item.name}
-                    sx={{ color: "#fff" }}
-                    className={"nav_navItem"}
-                    style={{ scrollBehavior: "smooth" }}
-                  >
-                    {auth & (item.name == "Me") ? (
-                      <>
-                        <Box id="userHeader">
-                          <UserAvatar userName={userData.fullName} />
-                        </Box>
-                        <DropDown />
-                      </>
-                    ) : (
-                      item.name
-                    )}
-                  </Link>
-                ))}
+
+                  user && item.name == "Me" ? (
+                    <>
+                      <Box id="userHeader">
+                        <UserAvatar
+                          userName={`${user.firstName}
+                          ${user.lastName}`}
+                        />
+                      </Box>
+                      <DropDown profile={item.route} logOut={handleLogout} />
+                    </>
+                  ) : (
+                    <Link
+                      href={item.route}
+                      key={item.name}
+                      sx={{ color: "#fff" }}
+                      className={"nav_navItem"}
+                      style={{ scrollBehavior: "smooth" }}
+                    >
+                      {item.name}
+                    </Link>
+                  ),
+                )}
               </Box>
             </Toolbar>
           </Container>

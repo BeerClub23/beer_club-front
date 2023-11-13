@@ -38,6 +38,9 @@ const PaymentData = () => {
 
   return (
     <>
+      <Typography variant="h4" align="center" sx={{ mb: 1 }}>
+        Pago
+      </Typography>
       <Cards
         number={state.cardNumber}
         expiry={state.expDate}
@@ -115,7 +118,7 @@ const PaymentData = () => {
 
       <CustomTextField
         name="card.cvc"
-        label="Fecha de expiración"
+        label="CVV"
         type="text"
         control={control}
         autocomplete=""

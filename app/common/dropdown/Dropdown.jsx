@@ -4,9 +4,7 @@ import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import { Box, Link } from "@mui/material";
 
-const DropDown = () => {
-  const handleLogout = () => {
-  };
+const DropDown = ({profile, logOut}) => {
 
   return (
     <>
@@ -15,10 +13,14 @@ const DropDown = () => {
           {/* <Typography variant="span" class="material-icons">
             account_circle
           </Typography> */}
-          <ListItemText primary="My Profile" />
+          <Link
+            href={profile}
+            key={'profile'} shallow={true}>
+            Mi cuenta
+          </Link>
         </ListItem>
         <Box className="Line"></Box>
-        <ListItem id="option" className="logout" onClick={handleLogout}>
+        <ListItem id="option" className="logout" onClick={logOut}>
           {/* <Typography variant="span" class="material-icons">
             logout
           </Typography> */}

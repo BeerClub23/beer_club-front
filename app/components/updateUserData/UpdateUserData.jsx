@@ -5,7 +5,7 @@ import Button from "@mui/material/Button";
 import { Box, FormControl, FormLabel, Typography } from "@mui/material";
 import UserData from "../../../public/MockDta";
 
-const UpdateUserData = () => {
+const UpdateUserData = ({user}) => {
   return (
     <Box className="updater_form">
       <FormControl sx={{ width: "100%" }} id="updater_form-container">
@@ -22,15 +22,15 @@ const UpdateUserData = () => {
           <Box className="updater_form-basicdata">
             <Box className="input_box">
               <FormLabel>Nombre</FormLabel>
-              <TextField placeholder={UserData.BasicData.name}></TextField>
+              <TextField placeholder={user.firstName}></TextField>
             </Box>
             <Box className="input_box">
               <FormLabel>Apellido</FormLabel>
-              <TextField placeholder={UserData.BasicData.lastname}></TextField>
+              <TextField placeholder={user.lastName}></TextField>
             </Box>
             <Box className="input_box">
               <FormLabel>Email</FormLabel>
-              <TextField placeholder={UserData.BasicData.email}></TextField>
+              <TextField placeholder={user.email}></TextField>
             </Box>
           </Box>
         </Box>
@@ -41,12 +41,12 @@ const UpdateUserData = () => {
           <Box className="updater_form-address">
             <Box className="input_box">
               <FormLabel>Direccion</FormLabel>
-              <TextField placeholder={UserData.BasicData.address_1}></TextField>
+              <TextField placeholder={user.address.street}></TextField>
             </Box>
             <Box className="input_box">
               <FormLabel>Numero</FormLabel>
               <TextField
-                placeholder={UserData.BasicData.address_number}
+                placeholder={user.address.number}
               ></TextField>
             </Box>
           </Box>

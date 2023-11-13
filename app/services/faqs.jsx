@@ -35,6 +35,7 @@ export const useGetFaqs = () => {
   const { data, error, isLoading } = useSWR(`${process.env.NEXT_PUBLIC_API_URL}faqs`, get, {
     fallbackData: faqs,
     shouldRetryOnError: false,
+    revalidateOnFocus: false,
     errorRetryCount: 1,
   });
 

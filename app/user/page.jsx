@@ -1,13 +1,15 @@
 "use client";
-
 import React, { useEffect } from "react";
-import { redirect } from "next/navigation";
 
-const User = () => {
-  useEffect(() => {
-    redirect("/user/adminplan", "push");
-  }, []);
-  return <div></div>;
+const UserPage = () => {
+
+  return (
+    <>
+      <div style={{minHeight: "100vh"}} >
+        Aqui home de usuario
+      </div>
+    </>
+  );
 };
 
-export default User;
+export default UserPage;

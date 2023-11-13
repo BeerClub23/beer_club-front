@@ -12,6 +12,7 @@ import { FormProvider, useForm } from "react-hook-form";
 import "./login.scss";
 import AOS from "aos";
 import HeaderPublic from "@/app/components/headerPublic/headerPublic";
+import { homeItems} from "@/app/common/constants/NavBarItems";
 
 export default function LoginPage() {
   const method = useForm({
@@ -26,7 +27,7 @@ export default function LoginPage() {
   }, []);
   return (
     <main className="mainLogin">
-      <HeaderPublic />
+      <HeaderPublic items={homeItems} />
       <div className="divLogin">
         <Box className="login" data-aos="fade-up">
           <ThemeProvider theme={theme}>
