@@ -113,8 +113,9 @@ const AddressData = () => {
           trigger("address.province");
         }}
       />
-      <ErrorMessage errors={errors} name="address.stprovinceate" />
-      <Typography variant="caption" color="#d32f2fcf"></Typography>
+      <Typography variant="caption" color="#d32f2fcf">
+        <ErrorMessage errors={errors} name="address.province" />
+      </Typography>
 
       <Controller
         name="address.country"
