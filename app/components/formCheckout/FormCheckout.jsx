@@ -1,29 +1,23 @@
 /* eslint-disable prettier/prettier */
-import { Alert, Button, Step, StepLabel, Stepper } from "@mui/material";
+import { Button, Step, StepLabel, Stepper } from "@mui/material";
 import Box from "@mui/material/Box";
 import Paper from "@mui/material/Paper";
-// import Typography from "@mui/material/Typography";
 import PersonalData from "./PersonalData";
 import AddressData from "./AddressData";
 import PaymentData from "./PaymentData";
 import { useEffect, useState } from "react";
 import { useFormContext } from "react-hook-form";
-// import { useRouter } from "next/navigation";
 import { theme } from "../../styles/materialThemeFormCheckout";
 import ThemeProvider from "@mui/material/styles/ThemeProvider";
-// import logo from "../../../public/images/logo/Logo_sin_escudo_Negro.svg";
-// import Image from "next/image";
 import ApiRegister from "@/app/services/register";
 import Swal from "sweetalert2";
 
 const steps = ["Datos Personales", "Dirección de entrega", "Datos del pago"];
 
 export const FormCheckout = ({ category }) => {
-  // const router = useRouter();
   const { handleSubmit, trigger , formState: { isSubmitting }} = useFormContext();
   const [formData, setFormData] = useState({});
   const [step, setStep] = useState(1);
-  const [status, setStatus] = useState("");
 
   useEffect(() => {
     if (category) {
@@ -32,7 +26,6 @@ export const FormCheckout = ({ category }) => {
   }, []);
 
   if(isSubmitting){
-    console.log(isSubmitting);
     Swal.fire({
       title: "Procesando el pago",
       html: "Por favor, espere...",
@@ -44,7 +37,7 @@ export const FormCheckout = ({ category }) => {
     });
   }
 
- const onSubmit = async (data) => { 
+  const onSubmit = async (data) => { 
 
     if (step === 1) {
       setFormData({ ...formData, customer: data });
@@ -60,32 +53,18 @@ export const FormCheckout = ({ category }) => {
         cardHolder: data.card.cardHolder,
         cvv: data.card.cvc
       }, });
-    /* Swal.fire({
-        title: "Procesando el pago",
-        html: "Por favor, espere...",
-        allowOutsideClick: false,
-        showConfirmButton: false, // Ocultar el botón de confirmación
-        onBeforeOpen: () => {
-          Swal.showLoading();
-    },
-      });
-      await new Promise((resolve) => setTimeout(resolve, 3000));*/
       const normalizedData = {   
           subscriptionId:category.id,          
           ...data.customer,
           ...data.address,
           cardNumber:data.card.cardNumber,
           expDate: data.card.expDate,
-          cardHolder: data.card.cardHolder,
+          cardHolder: data.card.cardHolder.toUpperCase(),
           cvv: data.card.cvc       
       };
       
       let response = await ApiRegister(normalizedData);
-      console.log(normalizedData);
-      console.log(response); 
-      console.log(response.status);
       if (response.status === 201) {
-        console.log(response);
         Swal.fire({
           title: "Pago Aceptado!",
           html: `Factura: ${response.data.invoiceNumber}  <br/> Tarjeta: ...${response.data.cardNumber} <br/> Subscripción: ${response.data.description} <br/> Descripción: ${response.data.subscription.description} <br/> Importe: ${response.data.amount}`,
@@ -98,8 +77,7 @@ export const FormCheckout = ({ category }) => {
           window.location = "/login";
         });
       } else if (response.status !== 200) {
-        const error = Object.keys(response.response.data).reduce((acc, key) => `${acc}${response.response.data[key]}\n`, '')
-        console.log(response.response.data, error);
+        const error = Object.keys(response.response.data).reduce((acc, key) => `${acc}${response.response.data[key]}\n`, '');
         Swal.fire({
           title: "Error!",
           text: error,
@@ -107,7 +85,6 @@ export const FormCheckout = ({ category }) => {
           imageWidth: 150,
           imageHeight: 150,
           imageAlt: "No puede ingresar",
-          // icon: "error",
           confirmButtonText: "Continuar",
           confirmButtonColor: "#ceb5a7",
           focusConfirm: false,
@@ -127,7 +104,6 @@ export const FormCheckout = ({ category }) => {
       "customer.passwordConfirm",
     ]);
     if (step == 1 && isValidate) {
-      // setFormData({...formData, customer: data})
       setStep((prevStep) => prevStep + 1);
     }
   };
@@ -141,7 +117,6 @@ export const FormCheckout = ({ category }) => {
       "address.zipCode",
     ]);
     if (step == 2 && isValidate) {
-      // setFormData({...formData, address: data})
       setStep((prevStep) => prevStep + 1);
     }
   };
@@ -185,37 +160,11 @@ export const FormCheckout = ({ category }) => {
               marginBottom: "20px",
             }}
           >
-            {/* <Typography variant="p" align="center" sx={{ padding: "-32px" }}>
-              <Image
-                src={logo}
-                width={80}
-                heigth={80}
-                alt="imagen"
-                sx={{ margin: "0 auto" }}
-              ></Image>
-            </Typography> */}
-            {/* {step == 1 && (
-              <Typography variant="h4" align="center" sx={{ margin: "0" }}>
-                Datos personales
-              </Typography>
-            )}
-
-            {step == 2 && (
-              <Typography variant="h4" align="center">
-                Dirección de envio
-              </Typography>
-            )}
-            {step == 3 && (
-              <Typography variant="h4" align="center">
-                Pago
-              </Typography>
-            )} */}
 
             <form onSubmit={handleSubmit(onSubmit)}>
               {step == 1 && <PersonalData />}
               {step == 2 && <AddressData />}
               {step == 3 && <PaymentData />}
-              {status && <Alert severity="error">{status}</Alert>}
 
               <Box sx={{ display: "flex", justifyContent: "space-between", mt:3 }}>
                 <Button
@@ -224,7 +173,6 @@ export const FormCheckout = ({ category }) => {
                   disabled={step === 1}
                   sx={{ margin: 2 }}
                   onClick={handleBack}
-                  // sx={{ mr: 1 }}
                 >
                   Volver
                 </Button>

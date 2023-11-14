@@ -16,7 +16,7 @@ const AddressData = () => {
     formState: { errors },
     trigger,
   } = useFormContext();
-  const [country, setCountry] = React.useState([]);
+  const [country, setCountry] = React.useState("");
 
   const handleChange = (event) => {
     setCountry(event.target.value);
@@ -55,9 +55,9 @@ const AddressData = () => {
             trigger("address.number");
           }}
         />
-        <Typography variant="caption" color="#d32f2fcf">
+        {/* <Typography variant="caption" color="#d32f2fcf">
           <ErrorMessage errors={errors} name="address.number" />
-        </Typography>
+        </Typography> */}
 
         <CustomTextField
           name="address.floor"
@@ -70,9 +70,9 @@ const AddressData = () => {
             trigger("address.floor");
           }}
         />
-        <Typography variant="caption" color="#d32f2fcf">
+        {/* <Typography variant="caption" color="#d32f2fcf">
           <ErrorMessage errors={errors} name="address.floor" />
-        </Typography>
+        </Typography> */}
 
         <CustomTextField
           name="address.apartment"
@@ -87,7 +87,7 @@ const AddressData = () => {
         />
       </Box>
       <Typography variant="caption" color="#d32f2fcf">
-        <ErrorMessage errors={errors} name="address.apartment" />
+        <ErrorMessage errors={errors} name="address.number" />
       </Typography>
 
       <CustomTextField
@@ -116,8 +116,9 @@ const AddressData = () => {
           trigger("address.province");
         }}
       />
-      <ErrorMessage errors={errors} name="address.stprovinceate" />
-      <Typography variant="caption" color="#d32f2fcf"></Typography>
+      <Typography variant="caption" color="#d32f2fcf">
+        <ErrorMessage errors={errors} name="address.province" />
+      </Typography>
 
       <Controller
         name="address.country"
