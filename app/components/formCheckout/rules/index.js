@@ -49,18 +49,11 @@ export const schema = yup.object().shape({
       .required("Este campo es requerido")
       .email("El correo no es válido")
       .matches(/^[^\s@]+@[^\s@]+\.[^\s@]+$/, "Debe ser un email valido"),
-    // password: yup
-    //   .string()
-    //   .required("Este campo es requerido")
-    //   .matches(
-    //     /^(?=.*[a-zA-z])(?=.*[0-9])(?=.*[#$@!%&*?.])[A-Za-z\d#$@!%&*?.]{8,16}$/,
-    //     "Debe contener 8-16 caracteres: letras, números y al menos un caracter especial",
-    //   ),
     password: yup
       .string()
       .required("Este campo es requerido")
       .matches(
-        /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[#$@!%&?.])[A-Za-z\d#$@!%&*?.]{8,16}$/,
+        /^(?=.[a-z])(?=.[A-Z])(?=.[0-9])(?=.[#$@!%&?.])[A-Za-z\d#$@^!%+=&*?.]{8,16}$/,
         "Debe contener 8-16 caracteres: letras, números y al menos un caracter especial",
       ),
     passwordConfirm: yup
@@ -78,7 +71,7 @@ export const schema = yup.object().shape({
       .string()
       .required("Este campo es requerido")
       .matches(/^[a-zA-Z\s]+$/, "Solo se aceptan letras")
-      .min(2, "Mínimo 2 caracteres"),
+      .min(4, "Mínimo 2 caracteres"),
     province: yup
       .string()
       .required("Este campo es requerido")
