@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import { Button, Step, StepLabel, Stepper } from "@mui/material";
 import Box from "@mui/material/Box";
 import Paper from "@mui/material/Paper";
@@ -14,12 +15,7 @@ import Swal from "sweetalert2";
 const steps = ["Datos Personales", "Dirección de entrega", "Datos del pago"];
 
 export const FormCheckout = ({ category }) => {
-  // const router = useRouter();
-  const {
-    handleSubmit,
-    trigger,
-    formState: { isSubmitting },
-  } = useFormContext();
+  const { handleSubmit, trigger , formState: { isSubmitting }} = useFormContext();
   const [formData, setFormData] = useState({});
   const [step, setStep] = useState(1);
 
@@ -29,8 +25,7 @@ export const FormCheckout = ({ category }) => {
     }
   }, []);
 
-  if (isSubmitting) {
-    console.log(isSubmitting);
+  if(isSubmitting){
     Swal.fire({
       title: "Procesando el pago",
       html: "Por favor, espere...",
@@ -42,7 +37,8 @@ export const FormCheckout = ({ category }) => {
     });
   }
 
-  const onSubmit = async (data) => {
+  const onSubmit = async (data) => { 
+
     if (step === 1) {
       setFormData({ ...formData, customer: data });
     }
@@ -51,32 +47,24 @@ export const FormCheckout = ({ category }) => {
       setFormData({ ...formData, address: data });
     }
     if (step === 3) {
-      setFormData({
-        ...formData,
-        card: {
-          cardNumber: data.card.cardNumber,
-          expDate: data.card.expDate,
-          cardHolder: data.card.cardHolder,
-          cvv: data.card.cvc,
-        },
-      });
-
-      const normalizedData = {
-        subscriptionId: category.id,
-        ...data.customer,
-        ...data.address,
-        cardNumber: data.card.cardNumber,
+        setFormData({ ...formData, card: {
+        cardNumber:data.card.cardNumber,
         expDate: data.card.expDate,
         cardHolder: data.card.cardHolder,
-        cvv: data.card.cvc,
+        cvv: data.card.cvc
+      }, });
+      const normalizedData = {   
+          subscriptionId:category.id,          
+          ...data.customer,
+          ...data.address,
+          cardNumber:data.card.cardNumber,
+          expDate: data.card.expDate,
+          cardHolder: data.card.cardHolder.toUpperCase(),
+          cvv: data.card.cvc       
       };
 
       let response = await ApiRegister(normalizedData);
-      console.log(normalizedData);
-      console.log(response);
-      console.log(response.status);
       if (response.status === 201) {
-        console.log(response);
         Swal.fire({
           title: "Pago Aceptado!",
           html: `Factura: ${response.data.invoiceNumber}  <br/> Tarjeta: ...${response.data.cardNumber} <br/> Subscripción: ${response.data.description} <br/> Descripción: ${response.data.subscription.description} <br/> Importe: ${response.data.amount}`,
@@ -89,11 +77,7 @@ export const FormCheckout = ({ category }) => {
           window.location = "/login";
         });
       } else if (response.status !== 200) {
-        const error = Object.keys(response.response.data).reduce(
-          (acc, key) => `${acc}${response.response.data[key]}\n`,
-          "",
-        );
-        console.log(response.response.data, error);
+        const error = Object.keys(response.response.data).reduce((acc, key) => `${acc}${response.response.data[key]}\n`, '');
         Swal.fire({
           title: "Error!",
           text: error,
@@ -180,7 +164,6 @@ export const FormCheckout = ({ category }) => {
               {step == 1 && <PersonalData />}
               {step == 2 && <AddressData />}
               {step == 3 && <PaymentData />}
-              {/* {status && <Alert severity="error">{status}</Alert>} */}
 
               <Box
                 sx={{ display: "flex", justifyContent: "space-between", mt: 3 }}
@@ -191,7 +174,6 @@ export const FormCheckout = ({ category }) => {
                   disabled={step === 1}
                   sx={{ margin: 2 }}
                   onClick={handleBack}
-                  // sx={{ mr: 1 }}
                 >
                   Volver
                 </Button>

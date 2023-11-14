@@ -25,7 +25,7 @@ export const schema = yup.object().shape({
       .required("Este campo es requerido")
       .matches(/^[a-zA-Z\s]+$/, "Solo se aceptan letras")
       .min(2, "Mínimo 2 caracteres")
-      .max(10, "Máximo 10 caracteres"),
+      .max(20, "Máximo 20 caracteres"),
     birthdate: yup
       .string()
       .matches(
@@ -53,8 +53,8 @@ export const schema = yup.object().shape({
       .string()
       .required("Este campo es requerido")
       .matches(
-        /^(?=.[a-z])(?=.[A-Z])(?=.[0-9])(?=.[#$@!%&?.])[A-Za-z\d#$@^!%+=&*?.]{8,16}$/,
-        "Debe contener 8-16 caracteres: letras, números y al menos un caracter especial",
+        /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[#$@!%&?.])[A-Za-z\d#$@^!%+=&*?.]{8,16}$/,
+        "Debe contener 8-16 caracteres: letras, números y al menos un caracter especial #$@^!%+=&*?.",
       ),
     passwordConfirm: yup
       .string()
@@ -66,12 +66,12 @@ export const schema = yup.object().shape({
       .string()
       .required("Este campo es requerido")
       .min(2, "Mínimo 2 caracteres"),
-    number: yup.string().required("*"),
+    number: yup.string().required("El numero es requerido"),
     city: yup
       .string()
       .required("Este campo es requerido")
       .matches(/^[a-zA-Z\s]+$/, "Solo se aceptan letras")
-      .min(4, "Mínimo 2 caracteres"),
+      .min(4, "Mínimo 4 caracteres"),
     province: yup
       .string()
       .required("Este campo es requerido")
