@@ -1,31 +1,29 @@
 import React from "react";
-import DataUser from "../../../public/MockDta";
 import { Box, Typography } from "@mui/material";
 import PersonIcon from "@mui/icons-material/Person";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
 import "./UserBasicData.scss";
 
-const UserData = ({user}) => {
-
+const UserData = ({ user }) => {
   return (
     <Box className="userdata_box">
       <Box id="userdata_box-basicData">
         <Typography variant="h4">
-          <b>{ `Hola, ${user.firstName} ${user.lastName}`}</b>
+          <b>{`Hola, ${user.firstName} ${user.lastName}`}</b>
         </Typography>
         <ul>
           <li>
             <>
               <PersonIcon />
               <Typography variant="p">
-                Miembro desde:  {user.subscriptionDate}
+                Miembro desde: {user.subscriptionDate}
               </Typography>
             </>
           </li>
           <li>
             <>
               <LocationOnIcon />
-              <Typography variant="p" sx={{textTransform: "uppercase"}}>
+              <Typography variant="p" sx={{ textTransform: "uppercase" }}>
                 {`${user.address.city}, ${user.address.province}, ${user.address.country}`}
               </Typography>
             </>

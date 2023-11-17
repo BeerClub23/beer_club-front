@@ -3,9 +3,8 @@ import "./UpdateUserData.scss";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import { Box, FormControl, FormLabel, Typography } from "@mui/material";
-import UserData from "../../../public/MockDta";
 
-const UpdateUserData = ({user}) => {
+const UpdateUserData = ({ user, updateData }) => {
   return (
     <Box className="updater_form">
       <FormControl sx={{ width: "100%" }} id="updater_form-container">
@@ -45,13 +44,13 @@ const UpdateUserData = ({user}) => {
             </Box>
             <Box className="input_box">
               <FormLabel>Numero</FormLabel>
-              <TextField
-                placeholder={user.address.number}
-              ></TextField>
+              <TextField placeholder={user.address.number}></TextField>
             </Box>
           </Box>
         </Box>
-        <Button className="updater_form-button">Guardar</Button>
+        <Button className="updater_form-button" onClick={updateData}>
+          Guardar
+        </Button>
       </FormControl>
     </Box>
   );

@@ -6,7 +6,6 @@ import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
-import QueryStatsIcon from "@mui/icons-material/QueryStats";
 import CloseIcon from "@mui/icons-material/Close";
 import HistoryIcon from "@mui/icons-material/History";
 import EditNoteIcon from "@mui/icons-material/EditNote";
@@ -16,8 +15,7 @@ import { usePathname } from "next/navigation";
 import "./UserSideBar.scss";
 import Link from "next/link";
 
-const UserSideBar = (props) => {
-  const { window } = props;
+const UserSideBar = () => {
   const [mobile, setMobile] = useState(false);
   const [width, setWidth] = useState();
   const [show, setSHow] = useState(false);
@@ -33,15 +31,15 @@ const UserSideBar = (props) => {
       container.style.gridTemplateColumns = "1fr 4fr";
     }
     if (width) return () => window.removeEventListener("resize", handleResize);
-  }, [width]);
+  }, [width, show]);
 
   const pathname = usePathname();
   return (
     <>
       <Box
         sx={{ backgroundColor: "white", boxShadow: "2px 0px 1px #8D8D8D" }}
-        className={mobile && "mobile_version-container"}
-        id={mobile & !show && "mobile_version-container_showed"}
+        className={mobile ? "mobile_version-container" : ""}
+        id={mobile && !show ? "mobile_version-container_showed" : ""}
       >
         {mobile && (
           <Box id="menu_drawer">
@@ -63,14 +61,16 @@ const UserSideBar = (props) => {
         <nav
           aria-label="main mailbox folders"
           id="nav_user"
-          className={mobile && "mobile_version"}
+          className={mobile ? "mobile_version" : ""}
           style={mobile & !show ? { display: "none" } : {}}
         >
           <List>
             <Link href="/user/account/subscription">
               <ListItem
                 className={
-                  pathname.includes("/user/account/subscription") && "active_nav_user"
+                  pathname.includes("/user/account/subscription")
+                    ? "active_nav_user"
+                    : ""
                 }
               >
                 <ListItemButton>
@@ -86,8 +86,9 @@ const UserSideBar = (props) => {
             <Link href="/user/account/datos-personales">
               <ListItem
                 className={
-                  pathname.includes("/user/account/datos-personales") &&
-                  "active_nav_user"
+                  pathname.includes("/user/account/datos-personales")
+                    ? "active_nav_user"
+                    : ""
                 }
               >
                 <ListItemButton>
@@ -101,7 +102,9 @@ const UserSideBar = (props) => {
             <Link href="/user/account/historial">
               <ListItem
                 className={
-                  pathname.includes("/user/account/historial") && "active_nav_user"
+                  pathname.includes("/user/account/historial")
+                    ? "active_nav_user"
+                    : ""
                 }
               >
                 <ListItemButton>
@@ -112,7 +115,7 @@ const UserSideBar = (props) => {
                 </ListItemButton>
               </ListItem>
             </Link>
-            <Link href="/user/account/estadisticas">
+            {/*  <Link href="/user/account/estadisticas">
               <ListItem
                 className={
                   pathname.includes("/user/account/estadisticas") && "active_nav_user"
@@ -125,7 +128,7 @@ const UserSideBar = (props) => {
                   <ListItemText primary="Estadisticas" />
                 </ListItemButton>
               </ListItem>
-            </Link>
+            </Link> */}
           </List>
         </nav>
       </Box>

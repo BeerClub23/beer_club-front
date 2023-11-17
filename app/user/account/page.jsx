@@ -1,9 +1,7 @@
-"use client"
-import React, { useEffect } from "react";
+"use client";
 
 const AccountPage = () => {
-
-  return (<></>);
+  return <></>;
 };
 
 export default AccountPage;

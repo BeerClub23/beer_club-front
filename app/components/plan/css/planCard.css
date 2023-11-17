@@ -34,7 +34,9 @@ a {
 }
 .card:hover {
   transform: translateY(-2px);
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.11), 0 1px 8px #ceb5a7;
+  box-shadow:
+    0 1px 4px rgba(0, 0, 0, 0.11),
+    0 1px 8px #ceb5a7;
 }
 .card:hover .triangle {
   border-right-color: #c8a089;
@@ -69,4 +71,4 @@ a {
   .card {
     width: 100%;
   }
-}/*# sourceMappingURL=planCard.css.map */
+} /*# sourceMappingURL=planCard.css.map */

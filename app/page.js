@@ -9,8 +9,7 @@ import FormAge from "./components/formAge/formAge";
 // import FormAgeHoc from "./components/formAge/formAgeHoc";
 import { useRouter } from "next/navigation";
 import SaveAgeInfo from "@/app/services/saveAge";
-import Cookies from 'js-cookie';
-
+import Cookies from "js-cookie";
 
 const AgePage = () => {
   const router = useRouter();
@@ -23,8 +22,8 @@ const AgePage = () => {
     if (status < 400) {
       if (data.age >= 18) {
         if (saveInfo) {
-          Cookies.set("AgeCheck", true, {expires: 30});
-          Cookies.set("Age", data.dateOfBirth, {expires: 30});
+          Cookies.set("AgeCheck", true, { expires: 30 });
+          Cookies.set("Age", data.dateOfBirth, { expires: 30 });
         } else {
           Cookies.set("AgeCheck", true);
         }

@@ -49,7 +49,8 @@ a {
     flex-direction: column;
     align-items: center;
   }
-  .boxList, .boxPlan {
+  .boxList,
+  .boxPlan {
     margin: auto;
   }
 }
@@ -72,4 +73,4 @@ a {
   .confirmBtn {
     width: 280px;
   }
-}/*# sourceMappingURL=planes.css.map */
+} /*# sourceMappingURL=planes.css.map */

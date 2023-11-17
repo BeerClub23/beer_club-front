@@ -32,6 +32,7 @@ export default function HeaderGeneral({ window, items }) {
   const pathname = usePathname();
   const { user, setUser } = useUserBeerContext();
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [currentWindow, setWindow] = useState(window);
   const router = useRouter();
   const handleDrawerToggle = () => {
     setMobileOpen((prevState) => !prevState);
@@ -45,7 +46,16 @@ export default function HeaderGeneral({ window, items }) {
 
   useEffect(() => {
     setNavItems(items);
-  }, [items]);
+    setWindow(window);
+  }, [items, window]);
+
+  const trigger = useScrollTrigger({
+    target: currentWindow ? currentWindow() : undefined,
+  });
+  const container =
+    currentWindow !== undefined
+      ? () => currentWindow().document.body
+      : undefined;
 
   const drawer = (
     <Box
@@ -76,11 +86,6 @@ export default function HeaderGeneral({ window, items }) {
     </Box>
   );
 
-  const trigger = useScrollTrigger({
-    target: window ? window() : undefined,
-  });
-  const container =
-    window !== undefined ? () => window().document.body : undefined;
   return (
     <header>
       <Slide

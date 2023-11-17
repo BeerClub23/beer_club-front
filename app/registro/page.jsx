@@ -13,12 +13,11 @@ import PlanCardFrom from "../components/planCardForm/PlanCardForm";
 import { useAppContext } from "../context/context";
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
-import { homeItems} from "@/app/common/constants/NavBarItems";
-
+import { homeItems } from "@/app/common/constants/NavBarItems";
 
 const CheckoutPage = () => {
   const router = useRouter();
-  const { context, setContext } = useAppContext();
+  const { context } = useAppContext();
   const category = context;
 
   const methods = useForm({
@@ -30,7 +29,7 @@ const CheckoutPage = () => {
     if (!context?.subscription) {
       router.push("/planes");
     }
-  }, []);
+  }, [context, router]);
 
   return (
     <>

@@ -1,4 +1,3 @@
-
 $dark: #101010;
 $white: #ffffff;
 $primary: #ceb5a7;
@@ -7,9 +6,8 @@ $rgb-dark: rgb(16, 16, 16);
 $rgb-white: rgb(255, 255, 255);
 $rgb-primary: rgb(206, 181, 167);
 $rgb-secondary: rgb(245, 225, 193);
-$poppins-font:var(--font-poppins); // add as var 
-$roboto-font:var(--font-roboto); // add as var 
-
+$poppins-font: var(--font-poppins); // add as var
+$roboto-font: var(--font-roboto); // add as var
 
 * {
   box-sizing: border-box;
@@ -33,8 +31,3 @@ a {
   color: inherit;
   text-decoration: none;
 }
-
-
-
-
-

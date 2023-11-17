@@ -7,7 +7,7 @@ const validCard = "4242424242424242";
 const withoutFundsCard = "5454545454545454";
 const withoutAuthorizationCard = "6161616161616161";
 
-export async function POST(req, res) {
+export async function POST(req) {
   if (req.method !== "POST") {
     return NextResponse.json(
       { message: "Metodo no permitido" },

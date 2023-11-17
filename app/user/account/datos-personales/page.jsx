@@ -1,22 +1,30 @@
-"use client"
+"use client";
 import React from "react";
 import { Box } from "@mui/material";
 import UpdateUserData from "../../../components/updateUserData/UpdateUserData";
 import { useUserBeerContext } from "@/app/context/user";
+import Cookies from "js-cookie";
+import { updateUserPersonalData } from "@/app/services/user";
 
 const DatosPersonales = () => {
-  const { user, setUser } = useUserBeerContext();
+  const { user } = useUserBeerContext();
+  const token = Cookies.get("jwt");
+
+  const updateUserInfo = async (userData) => {
+    const response = await updateUserPersonalData(userData, user.id, token);
+    console.log(response);
+  };
 
   return (
     <Box
-        sx={{
-          backgroundColor: "white",
-          padding: "30px",
-          borderRadius: "20px",
-          boxShadow: "2px 0px 1px #8D8D8D",
+      sx={{
+        backgroundColor: "white",
+        padding: "30px",
+        borderRadius: "20px",
+        boxShadow: "2px 0px 1px #8D8D8D",
       }}
     >
-      <UpdateUserData user={user} />
+      <UpdateUserData user={user} updateData={updateUserInfo} />
     </Box>
   );
 };

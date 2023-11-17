@@ -4,8 +4,7 @@ import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import { Box, Link } from "@mui/material";
 
-const DropDown = ({profile, logOut}) => {
-
+const DropDown = ({ profile, logOut }) => {
   return (
     <>
       <List className="dropDown__menu">
@@ -13,9 +12,7 @@ const DropDown = ({profile, logOut}) => {
           {/* <Typography variant="span" class="material-icons">
             account_circle
           </Typography> */}
-          <Link
-            href={profile}
-            key={'profile'} shallow={true}>
+          <Link href={profile} key={"profile"}>
             Mi cuenta
           </Link>
         </ListItem>

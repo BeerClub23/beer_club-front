@@ -11,21 +11,27 @@ import { theme } from "../../styles/materialThemeFormCheckout";
 import ThemeProvider from "@mui/material/styles/ThemeProvider";
 import ApiRegister from "@/app/services/register";
 import Swal from "sweetalert2";
+import { useRouter } from "next/navigation";
 
 const steps = ["Datos Personales", "Dirección de entrega", "Datos del pago"];
 
 export const FormCheckout = ({ category }) => {
-  const { handleSubmit, trigger , formState: { isSubmitting }} = useFormContext();
+  const {
+    handleSubmit,
+    trigger,
+    formState: { isSubmitting },
+  } = useFormContext();
   const [formData, setFormData] = useState({});
   const [step, setStep] = useState(1);
+  const router = useRouter();
 
   useEffect(() => {
     if (category) {
       setFormData({ category: category.id });
     }
-  }, []);
+  }, [category]);
 
-  if(isSubmitting){
+  if (isSubmitting) {
     Swal.fire({
       title: "Procesando el pago",
       html: "Por favor, espere...",
@@ -33,12 +39,11 @@ export const FormCheckout = ({ category }) => {
       showConfirmButton: false, // Ocultar el botón de confirmación
       onBeforeOpen: () => {
         Swal.showLoading();
-  },
+      },
     });
   }
 
-  const onSubmit = async (data) => { 
-
+  const onSubmit = async (data) => {
     if (step === 1) {
       setFormData({ ...formData, customer: data });
     }
@@ -47,22 +52,25 @@ export const FormCheckout = ({ category }) => {
       setFormData({ ...formData, address: data });
     }
     if (step === 3) {
-        setFormData({ ...formData, card: {
-        cardNumber:data.card.cardNumber,
-        expDate: data.card.expDate,
-        cardHolder: data.card.cardHolder,
-        cvv: data.card.cvc
-      }, });
-      const normalizedData = {   
-          subscriptionId:category.id,          
-          ...data.customer,
-          ...data.address,
-          cardNumber:data.card.cardNumber,
+      setFormData({
+        ...formData,
+        card: {
+          cardNumber: data.card.cardNumber,
           expDate: data.card.expDate,
-          cardHolder: data.card.cardHolder.toUpperCase(),
-          cvv: data.card.cvc       
+          cardHolder: data.card.cardHolder,
+          cvv: data.card.cvc,
+        },
+      });
+      const normalizedData = {
+        subscriptionId: category.id,
+        ...data.customer,
+        ...data.address,
+        cardNumber: data.card.cardNumber,
+        expDate: data.card.expDate,
+        cardHolder: data.card.cardHolder.toUpperCase(),
+        cvv: data.card.cvc,
       };
-      
+
       let response = await ApiRegister(normalizedData);
       if (response.status === 201) {
         Swal.fire({
@@ -74,10 +82,13 @@ export const FormCheckout = ({ category }) => {
           // onClick: handleClick(),
           focusConfirm: false,
         }).then(function () {
-          window.location = "/login";
+          router.push("/login");
         });
       } else if (response.status !== 200) {
-        const error = Object.keys(response.response.data).reduce((acc, key) => `${acc}${response.response.data[key]}\n`, '');
+        const error = Object.keys(response.response.data).reduce(
+          (acc, key) => `${acc}${response.response.data[key]}\n`,
+          "",
+        );
         Swal.fire({
           title: "Error!",
           text: error,
@@ -89,7 +100,7 @@ export const FormCheckout = ({ category }) => {
           confirmButtonColor: "#ceb5a7",
           focusConfirm: false,
         });
-      }     
+      }
     }
   };
 
@@ -138,13 +149,13 @@ export const FormCheckout = ({ category }) => {
       <ThemeProvider theme={theme}>
         <Box>
           <Stepper
-            sx={{ mx: "auto", my: 4, maxWidth:"600px" }}
+            sx={{ mx: "auto", my: 4, maxWidth: "600px" }}
             activeStep={step - 1}
             alternativeLabel
           >
             {steps.map((label) => (
               <Step key={label}>
-                <StepLabel sx={{ fontWeight:"bold" }}>{label}</StepLabel>
+                <StepLabel sx={{ fontWeight: "bold" }}>{label}</StepLabel>
               </Step>
             ))}
           </Stepper>
@@ -160,13 +171,14 @@ export const FormCheckout = ({ category }) => {
               marginBottom: "20px",
             }}
           >
-
             <form onSubmit={handleSubmit(onSubmit)}>
               {step == 1 && <PersonalData />}
               {step == 2 && <AddressData />}
               {step == 3 && <PaymentData />}
 
-              <Box sx={{ display: "flex", justifyContent: "space-between", mt:3 }}>
+              <Box
+                sx={{ display: "flex", justifyContent: "space-between", mt: 3 }}
+              >
                 <Button
                   variant="contained"
                   color="primary"
