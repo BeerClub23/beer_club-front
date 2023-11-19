@@ -1,33 +1,40 @@
+"use client";
 import { React } from "react";
-import ListItemText from "@mui/material/ListItemText";
-import List from "@mui/material/List";
-import ListItem from "@mui/material/ListItem";
-import { Box, Link } from "@mui/material";
+import Menu from "@mui/material/Menu";
+import MenuItem from "@mui/material/MenuItem";
+import ListItemIcon from "@mui/material/ListItemIcon";
+import Settings from "@mui/icons-material/Settings";
+import Logout from "@mui/icons-material/Logout";
+import { useRouter } from "next/navigation";
+const DropDown = ({ profile, logOut, open = false, handleClose, anchorEl }) => {
+  const router = useRouter();
 
-const DropDown = ({profile, logOut}) => {
-
+  const handleLink = () => {
+    handleClose();
+    router.push(`${profile}`);
+  };
   return (
-    <>
-      <List className="dropDown__menu">
-        <ListItem id="option">
-          {/* <Typography variant="span" class="material-icons">
-            account_circle
-          </Typography> */}
-          <Link
-            href={profile}
-            key={'profile'} shallow={true}>
-            Mi cuenta
-          </Link>
-        </ListItem>
-        <Box className="Line"></Box>
-        <ListItem id="option" className="logout" onClick={logOut}>
-          {/* <Typography variant="span" class="material-icons">
-            logout
-          </Typography> */}
-          <ListItemText primary="Logout" />
-        </ListItem>
-      </List>
-    </>
+    <Menu
+      id="basic-menu"
+      anchorEl={anchorEl}
+      open={open}
+      onClose={handleClose}
+      disableScrollLock={true}
+      anchorOrigin={{ horizontal: "left", vertical: "bottom" }}
+    >
+      <MenuItem onClick={handleLink}>
+        <ListItemIcon>
+          <Settings fontSize="small" />
+        </ListItemIcon>
+        Mi cuenta
+      </MenuItem>
+      <MenuItem onClick={logOut}>
+        <ListItemIcon>
+          <Logout fontSize="small" />
+        </ListItemIcon>
+        Logout
+      </MenuItem>
+    </Menu>
   );
 };
 

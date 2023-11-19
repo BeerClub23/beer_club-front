@@ -47,6 +47,15 @@ export default function HeaderGeneral({ window, items }) {
     setNavItems(items);
   }, [items]);
 
+  const [anchorEl, setAnchorEl] = React.useState(null);
+  const open = Boolean(anchorEl);
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+
   const drawer = (
     <Box
       onClick={handleDrawerToggle}
@@ -102,7 +111,13 @@ export default function HeaderGeneral({ window, items }) {
                 <MenuIcon />
               </IconButton>
               <Link href={!user ? "/home" : "/user"} className={"nav_logo"}>
-                <Image src={Logo} width={90} height={90} alt="Beer Club Logo" />
+                <Image
+                  src={Logo}
+                  width={90}
+                  height={90}
+                  alt="Beer Club Logo"
+                  priority
+                />
               </Link>
               <Box
                 sx={{
@@ -115,15 +130,21 @@ export default function HeaderGeneral({ window, items }) {
                   // <Link href={item.route} key={item.name} sx={{ color: '#fff'}} className='navItem'>{item.name}</Link>
 
                   user && item.name == "Me" ? (
-                    <>
-                      <Box id="userHeader">
+                    <div key={item.name}>
+                      <Box id="userHeader" onClick={handleClick}>
                         <UserAvatar
                           userName={`${user.firstName}
                           ${user.lastName}`}
                         />
                       </Box>
-                      <DropDown profile={item.route} logOut={handleLogout} />
-                    </>
+                      <DropDown
+                        profile={item.route}
+                        logOut={handleLogout}
+                        open={open}
+                        handleClose={handleClose}
+                        anchorEl={anchorEl}
+                      />
+                    </div>
                   ) : (
                     <Link
                       href={item.route}
@@ -134,7 +155,7 @@ export default function HeaderGeneral({ window, items }) {
                     >
                       {item.name}
                     </Link>
-                  ),
+                  )
                 )}
               </Box>
             </Toolbar>

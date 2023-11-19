@@ -10,12 +10,30 @@ export async function middleware(request) {
   if (isAuthorized) {
     const token = request.cookies.get("jwt");
     const decodeToken = jwtDecode(token.value.toString());
+
     console.log(decodeToken);
 
-    if (new Date().getTime() > decodeToken.expires) {
-      request.cookies.delete("jwt");
+    if (new Date().getTime() > decodeToken.exp * 1000) {
+      console.log("delete cookie");
+      request.cookies.delete("jwt"); // No funciona
       url = request.nextUrl.clone();
       url.pathname = "/login";
+      return NextResponse.redirect(url);
+    }
+    if (
+      request.nextUrl.pathname.includes("admin") &&
+      decodeToken.role != "ROLE_ADMIN"
+    ) {
+      url = request.nextUrl.clone();
+      url.pathname = "/user";
+      return NextResponse.redirect(url);
+    }
+    if (
+      request.nextUrl.pathname.includes("user") &&
+      decodeToken.role == "ROLE_ADMIN"
+    ) {
+      url = request.nextUrl.clone();
+      url.pathname = "/admin";
       return NextResponse.redirect(url);
     }
   } else if (
@@ -44,5 +62,13 @@ export async function middleware(request) {
 }
 
 export const config = {
-  matcher: ["/", "/home", "/login", "/registro", "/planes", "/user/(.*)"],
+  matcher: [
+    "/",
+    "/home",
+    "/login",
+    "/registro",
+    "/planes",
+    "/user/(.*)",
+    "/admin/(.*)",
+  ],
 };
