@@ -26,7 +26,12 @@
   bottom: -50px;
   margin-bottom: 10px;
 }
-  
+
+.slick-dots li button:before{
+  color: $rgb-white;
+}
+
+
 }
 
 .benefitTitle{
@@ -136,12 +141,17 @@
       .sectionBenefit{
         background-color:$rgb-white;
         // background-color: $background;
+
+        .slick-dots li button:before{
+          color: $rgb-dark;
+        }
       }
 
       .benefitTitle{
        
           color: $rgb-dark;
       }
+      
       
     }
     
