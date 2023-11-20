@@ -5,13 +5,53 @@ import Button from "@mui/material/Button";
 import { Box, FormControl, FormLabel, Typography } from "@mui/material";
 import { putUserInfo } from "@/app/services/user";
 import Modal from "../../common/Modal/Modal";
-import { Router } from "next/navigation";
 
 const UpdateUserData = ({ user }) => {
-  const [form, setForm] = useState();
+  const [userUpdated, setUserUpdated] = useState(user);
+  const [formUpdateUser, setFormUpdateUser] = useState({
+    firstName: "",
+    lastName: "",
+    email: "",
+  });
+  const [formUpdateUserAddress, setFormUpdateUserAddress] = useState({
+    city: "",
+    street: "",
+    number: "",
+    floor: "",
+    apartment: "",
+    zipCode: "",
+  });
+
+  const handleUpdateFormBasicData = (e) => {
+    setFormUpdateUser({
+      ...formUpdateUser,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  const handleUpdateFormAddress = (e) => {
+    setFormUpdateUserAddress({
+      ...formUpdateUserAddress,
+      [e.target.name]: e.target.value,
+    });
+  };
+
   const [showModal, setShowModal] = useState(false);
   const onSubmit = () => {
-    // putUserInfo(form);
+    for (let key in formUpdateUser) {
+      if (formUpdateUser[key] === "") {
+        formUpdateUser[key] = user[key];
+      }
+      userUpdated[key] = formUpdateUser[key];
+    }
+    for (let key in formUpdateUserAddress) {
+      if (formUpdateUserAddress[key] === "") {
+        formUpdateUserAddress[key] = user.address[key];
+      }
+      userUpdated.address[key] = formUpdateUserAddress[key];
+    }
+    setUserUpdated(userUpdated);
+    putUserInfo(userUpdated);
   };
 
   return (
@@ -31,15 +71,30 @@ const UpdateUserData = ({ user }) => {
             <Box className="updater_form-basicdata">
               <Box className="input_box">
                 <FormLabel>Nombre</FormLabel>
-                <TextField placeholder={user.firstName}></TextField>
+                <TextField
+                  placeholder={user.firstName}
+                  name="firstName"
+                  onChange={handleUpdateFormBasicData}
+                  value={formUpdateUser.firstName}
+                ></TextField>
               </Box>
               <Box className="input_box">
                 <FormLabel>Apellido</FormLabel>
-                <TextField placeholder={user.lastName}></TextField>
+                <TextField
+                  value={formUpdateUser.lastName}
+                  name="lastName"
+                  onChnage={handleUpdateFormBasicData}
+                  placeholder={user.lastName}
+                ></TextField>
               </Box>
               <Box className="input_box">
                 <FormLabel>Email</FormLabel>
-                <TextField placeholder={user.email}></TextField>
+                <TextField
+                  value={formUpdateUser.email}
+                  name="email"
+                  onChange={handleUpdateFormBasicData}
+                  placeholder={user.email}
+                ></TextField>
               </Box>
             </Box>
           </Box>
@@ -50,27 +105,59 @@ const UpdateUserData = ({ user }) => {
             <Box className="updater_form-address">
               <Box className="input_box">
                 <FormLabel>Direccion</FormLabel>
-                <TextField placeholder={user.address.street}></TextField>
+                <TextField
+                  name="street"
+                  value={formUpdateUserAddress.street}
+                  onChange={handleUpdateFormAddress}
+                  placeholder={user.address.street}
+                ></TextField>
               </Box>
               <Box className="input_box">
                 <FormLabel>Numero</FormLabel>
-                <TextField placeholder={user.address.number}></TextField>
+                <TextField
+                  name="number"
+                  onChange={handleUpdateFormAddress}
+                  placeholder={user.address.number}
+                  value={formUpdateUserAddress.number}
+                  type="number"
+                ></TextField>
               </Box>
               <Box className="input_box">
                 <FormLabel>Ciudad</FormLabel>
-                <TextField placeholder={user.address.city}></TextField>
+                <TextField
+                  name="city"
+                  onChange={handleUpdateFormAddress}
+                  value={formUpdateUserAddress.city}
+                  placeholder={user.address.city}
+                ></TextField>
               </Box>
               <Box className="input_box">
                 <FormLabel>Zip Code</FormLabel>
-                <TextField placeholder={user.address.zipCode}></TextField>
+                <TextField
+                  name="zipCode"
+                  value={formUpdateUserAddress.zipCode}
+                  onChange={handleUpdateFormAddress}
+                  placeholder={user.address.zipCode}
+                ></TextField>
               </Box>
               <Box className="input_box">
                 <FormLabel>Interior</FormLabel>
-                <TextField placeholder={user.address.apartment}></TextField>
+                <TextField
+                  name="apartment"
+                  onChange={handleUpdateFormAddress}
+                  value={formUpdateUserAddress.apartment}
+                  placeholder={user.address.apartment}
+                ></TextField>
               </Box>
               <Box className="input_box">
                 <FormLabel>Numero Piso</FormLabel>
-                <TextField placeholder={user.address.floor}></TextField>
+                <TextField
+                  name="floor"
+                  onChange={handleUpdateFormAddress}
+                  value={formUpdateUserAddress.floor}
+                  placeholder={user.address.floor}
+                  type="number"
+                ></TextField>
               </Box>
             </Box>
           </Box>
