@@ -1,7 +1,7 @@
 "use client";
 import { Button, Typography } from "@mui/material";
 import Box from "@mui/material/Box";
-import Logo from "public/images/logo/Logo_sin_escudo_Color_Original.svg";
+import Logo from "../../public/images/logo/Logo_sin_escudo_Color_Original.svg";
 import { theme } from "../styles/materialThemeForm";
 import { ThemeProvider } from "@mui/material";
 import Image from "next/image";

@@ -16,7 +16,7 @@ import { useFormContext } from "react-hook-form";
 import { Controller } from "react-hook-form";
 import { CustomTextField } from "../../components/inputs/CustomTextFields";
 import Swal from "sweetalert2";
-import ApiFormLogin from "@/app/services/login";
+import ApiFormLogin from "../../services/login";
 import Cookies from "js-cookie";
 
 export default function FormLogin() {

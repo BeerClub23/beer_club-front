@@ -1,8 +1,8 @@
 "use client";
 import { useEffect, useState } from "react";
-import { getRecommendationBySubscriptionIdAndDate } from "@/app/services/recommendation";
+import { getRecommendationBySubscriptionIdAndDate } from "../../services/recommendation";
 import Cookies from "js-cookie";
-import { useUserBeerContext } from "@/app/context/user";
+import { useUserBeerContext } from "../../context/user";
 
 const RecommendationPage = () => {
   const token = Cookies.get("jwt");

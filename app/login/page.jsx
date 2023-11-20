@@ -2,7 +2,7 @@
 import * as React from "react";
 import { ThemeProvider } from "@mui/material";
 import Image from "next/image";
-import Logo from "public/images/logo/Logo_sin_escudo_Color_Original.svg";
+import Logo from "../../public/images/logo/Logo_sin_escudo_Color_Original.svg";
 import Box from "@mui/material/Box";
 import { theme } from "../styles/materialThemeForm";
 import FormLogin from "./formLogin/formLogin";
@@ -11,8 +11,9 @@ import { loginSchema } from "./rules/index.js";
 import { FormProvider, useForm } from "react-hook-form";
 import "./login.scss";
 import AOS from "aos";
-import HeaderPublic from "@/app/components/headerPublic/headerPublic";
-import { homeItems } from "@/app/common/constants/NavBarItems";
+import HeaderPublic from "../components/headerPublic/headerPublic";
+import { homeItems } from "../common/constants/NavBarItems";
+
 
 export default function LoginPage() {
   const method = useForm({

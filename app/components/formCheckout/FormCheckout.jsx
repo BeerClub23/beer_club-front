@@ -9,7 +9,7 @@ import { useEffect, useState } from "react";
 import { useFormContext } from "react-hook-form";
 import { theme } from "../../styles/materialThemeFormCheckout";
 import ThemeProvider from "@mui/material/styles/ThemeProvider";
-import ApiRegister from "@/app/services/register";
+import ApiRegister from "../../services/register";
 import Swal from "sweetalert2";
 import { useRouter } from "next/navigation";
 

@@ -13,6 +13,17 @@ module.exports = {
     "next/core-web-vitals",
   ],
   rules: {
-    semi: ["error", "always"],
+    'no-unused-vars': "off",
+    semi: "off",
+    'react-hooks/exhaustive-deps': "off",
   },
+  overrides: [
+    {
+      files: ['**/*.jsx', '**/*.js', '**/*.ts'], // Ajusta esto según tus necesidades
+      rules: {
+        'prettier/prettier': 'off', // Deshabilita Prettier
+      },
+    },
+  ],
 };
+

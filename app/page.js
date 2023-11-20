@@ -3,12 +3,12 @@ import "./page.scss";
 import * as React from "react";
 import { ThemeProvider } from "@mui/material";
 import Image from "next/image";
-import Logo from "public/images/logo/Logo_sin_escudo_Color_Original.svg";
+import Logo from "../public/images/logo/Logo_sin_escudo_Color_Original.svg";
 import { theme } from "./styles/materialThemeForm";
 import FormAge from "./components/formAge/formAge";
 // import FormAgeHoc from "./components/formAge/formAgeHoc";
 import { useRouter } from "next/navigation";
-import SaveAgeInfo from "@/app/services/saveAge";
+import SaveAgeInfo from "./services/saveAge";
 import Cookies from "js-cookie";
 
 const AgePage = () => {

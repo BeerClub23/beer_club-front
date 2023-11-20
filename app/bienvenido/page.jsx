@@ -6,10 +6,10 @@ import { Typography } from "@mui/material";
 import HeaderPublic from "../components/headerPublic/headerPublic";
 import Footer from "../components/footer/Footer";
 import Box from "@mui/material/Box";
-import Logo from "public/images/logo/Logo_sin_escudo_Color_Original.svg";
+import Logo from "../../public/images/logo/Logo_sin_escudo_Color_Original.svg";
 import { theme } from "../styles/materialThemeForm";
 import { ThemeProvider } from "@mui/material";
-import { homeItems } from "@/app/common/constants/NavBarItems";
+import { homeItems } from "../common/constants/NavBarItems";
 import Image from "next/image";
 
 const ConfirmPage = () => {

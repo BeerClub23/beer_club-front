@@ -10,9 +10,10 @@ import { useGetSubscriptions } from "../services/subscriptions";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import PlanDetail from "../components/plan/planDetail/PlanDetail";
-import { theme } from "@/app/styles/materialThemeForm";
+import { theme } from "../styles/materialThemeForm";
 import { ThemeProvider } from "@mui/material";
-import { homeItems } from "@/app/common/constants/NavBarItems";
+import { homeItems } from "../common/constants/NavBarItems";
+
 
 const PlansPage = () => {
   const { context, setContext } = useAppContext();

@@ -13,7 +13,7 @@ import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
 import Image from "next/image";
-import Logo from "public/images/logo/Logo_sin_escudo_Color_Original.svg";
+import Logo from "../../../public/images/logo/Logo_sin_escudo_Color_Original.svg";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import UserAvatar from "../../common/UserAvatar/UserAvatar";
@@ -21,7 +21,7 @@ import "./headerPublic.scss";
 import Slide from "@mui/material/Slide";
 import useScrollTrigger from "@mui/material/useScrollTrigger";
 import DropDown from "../../common/dropdown/Dropdown";
-import { useUserBeerContext } from "@/app/context/user";
+import { useUserBeerContext } from "../../context/user";
 import Cookies from "js-cookie";
 import { useRouter } from "next/navigation";
 
