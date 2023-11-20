@@ -28,6 +28,7 @@
     "react": "^18",
     "react-credit-cards-2": "^1.0.1",
     "react-dom": "^18",
+    "react-grid-gallery": "^1.0.1-alpha.0",
     "react-hook-form": "^7.47.0",
     "react-input-mask": "^2.0.4",
     "react-material-ui-carousel": "^3.4.2",

@@ -15,6 +15,7 @@ const beerImage2= "https://images.unsplash.com/photo-1603644197087-dbeeba73e106?
 const UserPage = () => {
   const { user, setUser } = useUserBeerContext();
   const benefits = user?.subscription?.benefits;
+  console.log(user);
  
 
   useEffect(() => {
@@ -29,14 +30,11 @@ const UserPage = () => {
 
   return (
     <>
-     <Box component="usermain" sx={{  minHeight:"100vh" }}>
-      {/* <div style={{ minHeight: "100vh"}}>      */}
-        <ProductSection images={images}/>
-        <RecommendationSection recommendation={recommendation}/>
-        <BenefitSection benefits={benefits}/>     
-          
-      {/* </div> */}
-      </Box>
+     <Box component="usermain" sx={{  minHeight:"100vh", backgroundColor:"#fafafa" }}>     
+        {/* <ProductSection images={images}/> */}
+        <RecommendationSection recommendations={recommendation} id={1}/>
+        <BenefitSection benefits={benefits}/>           
+    </Box>
     
     </>
   );

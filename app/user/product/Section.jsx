@@ -5,24 +5,23 @@ import Image from "next/image";
 import { Container } from "@mui/material";
 import "./ProductSection.scss";
 import  ProductImage  from "../../components/productImage/ProductImage";
-import { StyledEngineProvider } from "@mui/material/styles";
-import Stars from "../../components/rating/Rating";
+
 import Carousel from "react-material-ui-carousel";
 
 const ProductSection = ({ images }) => {
   return (
     <section className="productSection">
       <Container className="container">
-        <Typography variant="h3" className="title">
-          Expriencia del mes:
+         <Typography sx={{marginTop:"50px"} }variant="h3" className="title">
+          ¡Bienvenido!
         </Typography>
-        <Box className="articleProduct">
+        {/* <Box className="articleProduct"> 
           <Typography data-aos="fade-down" variant="h6" className="textProduct">
             Este mes, estamos entusiasmados por presentarte una selección
             exquisita de cervezas artesanales. En esta entrega, hemos preparado
             un six pack especial que captura la esencia y la riqueza de la
             cerveza negra.
-          </Typography>
+          </Typography> */}
 
           <Box className="imageContainer">
             {/* <Image
@@ -34,7 +33,7 @@ const ProductSection = ({ images }) => {
               className="productImage"
             /> */}
 
-            <Carousel
+            {/* <Carousel
               autoPlay={true}
               indicators={false}
               stopAutoPlayOnHover={true}
@@ -57,7 +56,7 @@ const ProductSection = ({ images }) => {
                 // />
               ))}
             </Carousel>
-          </Box>
+          </Box> */}
           {/* <Box className="stars">
             <StyledEngineProvider injectFirst>
               <Stars />

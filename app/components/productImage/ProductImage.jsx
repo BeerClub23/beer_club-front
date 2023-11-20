@@ -4,7 +4,7 @@ import Image from "next/image";
 import { Box } from "@mui/material";
 
 const ProductImage = ({ image }) => {
-  console.log(image);
+
   return (
     <Box className="productImageContainer">
       <Image

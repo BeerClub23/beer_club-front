@@ -1,17 +1,45 @@
 @import "../../globals.scss";
 
 .sectionBenefit{
-    background-color: $primary;
-    padding: 30px;
+    background-color:$rgb-white;
     font-family: $poppins-font !important;
-    
-    
+    margin-bottom: 30px;
+    padding: 40px;
+
+    .slick-prev:before,
+    .slick-next:before {
+     color: black;
+    content: url("../../../public/images/icons/chevron-right-solid-black.svg");
+    // opacity: 1;
   }
+
+  .slick-prev {
+    transform: rotateY(180deg);
+  }
+
+.slick-dots {
+  margin-bottom: 10px;
+}
+    
+}
+
+.benefitTitle{
+  font-family: $poppins-font !important;
+    color: $rgb-dark;
+    font-style: normal;
+    line-height: normal;
+    text-align: left;
+    padding-bottom: 30px;
+    font-size: 30px;
+    font-weight: 800;
+}
   
   .benefitContainer{
-    position: relative!important;
-    z-index: 1;
-    
+    // display: flex;
+    // flex-direction: row;
+    gap: 1%;
+    // justify-content: center;
+    margin: auto;
     
 }
 
@@ -33,10 +61,10 @@
     position: relative;
     z-index: 3;
     
-  
-    
 } 
   
+
+
     .titleBenefit {
       font-family: $poppins-font !important;
       color: $rgb-dark;
@@ -55,26 +83,29 @@
     .logo2 {
       display: none;
     }
+
+   
+
   
  @media (min-width: 345px) {
       .titleBenefit {
         letter-spacing: 4px;
-        font-size: 36px;
+        font-size: 30px;
+        
       }
     }
   
     @media (min-width: 768px) {
-     
-    }
-    @media (min-width: 1200px) {
-    
+      .infoBenefit {
+        width: 90%;
+      }
       .logo1 {
         display: flex;
         position: absolute;
         z-index: 2;
         opacity: 0.8;      
         // left: -70px;    
-        left: -60px;    
+        left: 1px;    
         // transform: rotate(-50deg);
         transform: rotate(-30deg);
         transform: scale();
@@ -86,11 +117,17 @@
         position: absolute;
         z-index: 2;
         // right: -70px;      
-        right: -60px;      
+        right: -1px;      
         // transform: rotate(50deg) scaleX(-1);
         transform: rotate(30deg) scaleX(-1);
        
       }
+
+     
+    }
+    @media (min-width: 1200px) {
+    
+      
     }
     
   

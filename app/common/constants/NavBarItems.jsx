@@ -6,6 +6,6 @@ export const homeItems = [
   ];
 
 export const memberItems = [
-    { name: "Recomendaciones", route: "/user/recomendaciones" },
+    // { name: "Recomendaciones", route: "/user/recomendaciones" },
     { name: "Me", route: "/user/account" },
   ];
