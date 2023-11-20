@@ -6,7 +6,6 @@ import { useUserBeerContext } from "@/app/context/user";
 
 const DatosPersonales = () => {
   const { user, setUser } = useUserBeerContext();
-
   return (
     <Box
         sx={{
