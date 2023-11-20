@@ -4,6 +4,7 @@ import "./RecommendationSection.scss";
 import { Typography, Box, Container } from "@mui/material";
 import { useGetRecommendation } from "../../services/recommendation";
 import { useGetTopProducts } from "../../services/topProducts";
+import { useGetPersonalTopProducts } from "../../services/personalTopProducts";
 import ImageGallery from "../../components/imageGallery/ImageGallery";
 import ArrowRightIcon from "@mui/icons-material/ArrowRight";
 import Carousel from "react-material-ui-carousel";
@@ -13,6 +14,8 @@ import RateCard from "../../components/rateCard/RateCard";
 const RecommendationSection = ({ id }) => {
   const { recommendation, isLoading, isError } = useGetRecommendation(id);
   const { topProducts, isLoadingTop, isErrorTop } = useGetTopProducts();
+  const { personalTopProducts, isLoadingPersonalTop, isErrorPersonalTop } =
+    useGetPersonalTopProducts(id);
 
   const recommendationsSplit =
     recommendation.description.match(/[^\.]+(\.|\b)/g);
@@ -38,9 +41,16 @@ const RecommendationSection = ({ id }) => {
   }
 
   return (
-    <section className="recommendationSection">
-      {/* <Container className="container"> */}
-      <Container className="recommContainer">
+    <>
+      <Typography
+        sx={{ marginTop: "50px", color: "white" }}
+        variant="h3"
+        className="recommSectionTitle"
+      >
+        ¡Bienvenido!
+      </Typography>
+      <section className="recommendationSection">
+        {/* <Container className="recommContainer"> */}
         <article className="recommArticle">
           <Box className="topContainer">
             <Box className="imagesGrid">
@@ -48,17 +58,19 @@ const RecommendationSection = ({ id }) => {
                 images={recommendation.product.image_url.slice(0, 6)}
               ></ImageGallery>
             </Box>
-            <Box className="titleContainer">
-              <Typography variant="h3" className="recommTitle">
-                {" "}
-                Producto{" "}
-                <span variant="body1" className="recommSpan">
-                  del mes
-                </span>{" "}
-              </Typography>
-              <Typography variant="h5" className="recommSubtitle">
-                {recommendation.title}
-              </Typography>
+            <Box>
+              <Box className="titleContainer">
+                <Typography variant="h3" className="recommTitle">
+                  {" "}
+                  Producto{" "}
+                  <span variant="body1" className="recommSpan">
+                    del mes
+                  </span>{" "}
+                </Typography>
+                <Typography variant="h5" className="recommSubtitle">
+                  {recommendation.title}
+                </Typography>
+              </Box>
             </Box>
           </Box>
           <Box className="recommTextContainer">
@@ -77,11 +89,12 @@ const RecommendationSection = ({ id }) => {
           </Box>
           <RateCard />
         </article>
+        {/* </Container> */}
         <aside className="recommAside">
           <Typography className="recommAsideTitle">Los más votados</Typography>
           <Carousel
             autoPlay={true}
-            indicators={false}
+            indicators={true}
             stopAutoPlayOnHover={true}
             interval={3000}
             duration={1000}
@@ -94,10 +107,27 @@ const RecommendationSection = ({ id }) => {
               <TopProductsCard key={index} product={product} />
             ))}
           </Carousel>
+          <Typography className="recommAsideTitle">Tus Favoritos</Typography>
+          <Carousel
+            autoPlay={true}
+            indicators={true}
+            stopAutoPlayOnHover={true}
+            interval={3000}
+            duration={500}
+            animation="slide"
+            className="home__carousel"
+            navButtonsAlwaysVisible={false}
+            navButtonsAlwaysInvisible={false}
+          >
+            {personalTopProducts.map((product, index) => (
+              <TopProductsCard key={index} product={product} />
+            ))}
+          </Carousel>
         </aside>
-      </Container>
-      {/* </Container> */}
-    </section>
+
+        {/* </Container> */}
+      </section>
+    </>
   );
 };
 

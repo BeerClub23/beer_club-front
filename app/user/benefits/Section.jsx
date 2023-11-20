@@ -69,7 +69,7 @@ const BenefitSection = ({ benefits }) => {
         </Typography>
         <Box className="benefitContainer">
         <Slider {...settings}>
-          {uniqueBenefits?.map((benefit, index) => (
+          {benefits?.map((benefit, index) => (
             <BenefitCard
               key={index}
               description={benefit.name}

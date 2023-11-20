@@ -1,7 +1,7 @@
 @import "../../globals.scss";
 .productSection{     
     background-color: $rgb-dark;
-    min-height: 50vh;
+    min-height: 60vh;
      background:
       linear-gradient(rgba(0, 0, 0, 0.8), rgba(231, 230, 230, 0.1)),
     //   url("https://images.unsplash.com/photo-1594842059196-5b6b8fa73187?q=80&w=1374&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D") no-repeat center;
@@ -24,7 +24,7 @@
     display: flex;
     align-items: center;    
     flex-direction: column-reverse;   
-    border-radius: 8px;   
+    // border-radius: 8px;   
     margin-bottom: 20px;
     min-height: 360px;
     min-width: 300px;
@@ -69,7 +69,7 @@
 
 .home__carousel{
   margin-top: 10px;
-  border-radius: 8px;
+  // border-radius: 8px;
   width: 80%;
   align-items: center;
 }
@@ -78,7 +78,7 @@
 .home__image {
   width: 100%;
   z-index: -1;
-  border-radius: 8px;   
+  // border-radius: 8px;   
   align-items: center;   
   opacity: 1;
   height: auto;

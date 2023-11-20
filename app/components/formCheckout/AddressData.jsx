@@ -30,7 +30,7 @@ const AddressData = () => {
       </Typography>
       <CustomTextField
         name="address.street"
-        label="Direccion"
+        label="Dirección"
         type="text"
         control={control}
         defaultValue=""
@@ -46,7 +46,7 @@ const AddressData = () => {
       <Box sx={{ display: "flex", flexDirection: "row", gap: "3px" }}>
         <CustomTextField
           name="address.number"
-          label="Numero"
+          label="Número"
           type="text"
           control={control}
           defaultValue=""
@@ -131,7 +131,7 @@ const AddressData = () => {
               labelId="demo-simple-select-label"
               id="demo-simple-select"
               value={country}
-              label="Pais"
+              label="País"
               onChange={handleChange}
               onBlur={(e) => {
                 field.onChange(e);
@@ -150,7 +150,7 @@ const AddressData = () => {
 
       <CustomTextField
         name="address.zipCode"
-        label="Codigo Postal"
+        label="Código Postal"
         type="text"
         control={control}
         defaultValue=""
