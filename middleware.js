@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import { jwtDecode } from "jwt-decode";
 
-export async function middleware(request) {
+export async function middleware(request, response) {
   let url;
   const ageCheckLocal = request.cookies.has("AgeCheck");
   const ageCheckSession = request.cookies.has("AgeCheck");
@@ -15,7 +15,8 @@ export async function middleware(request) {
 
     if (new Date().getTime() > decodeToken.exp * 1000) {
       console.log("delete cookie");
-      request.cookies.delete("jwt"); // No funciona
+      console.log(response._headers);
+      response.cookies.delete("jwt"); // No funciona
       url = request.nextUrl.clone();
       url.pathname = "/login";
       return NextResponse.redirect(url);
@@ -28,6 +29,7 @@ export async function middleware(request) {
       url.pathname = "/user";
       return NextResponse.redirect(url);
     }
+    // cuando pongo en la url user me deja entrar aunque tenga role admin.
     if (
       request.nextUrl.pathname.includes("user") &&
       decodeToken.role == "ROLE_ADMIN"

@@ -22,12 +22,14 @@ const DropDown = ({ profile, logOut, open = false, handleClose, anchorEl }) => {
       disableScrollLock={true}
       anchorOrigin={{ horizontal: "left", vertical: "bottom" }}
     >
-      <MenuItem onClick={handleLink}>
-        <ListItemIcon>
-          <Settings fontSize="small" />
-        </ListItemIcon>
-        Mi cuenta
-      </MenuItem>
+      {profile !== "/admin" && (
+        <MenuItem onClick={handleLink}>
+          <ListItemIcon>
+            <Settings fontSize="small" />
+          </ListItemIcon>
+          Mi cuenta
+        </MenuItem>
+      )}
       <MenuItem onClick={logOut}>
         <ListItemIcon>
           <Logout fontSize="small" />
