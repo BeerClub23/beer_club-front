@@ -23,6 +23,7 @@ import useScrollTrigger from "@mui/material/useScrollTrigger";
 import DropDown from "../../common/dropdown/Dropdown";
 import { useUserBeerContext } from "@/app/context/user";
 import Cookies from "js-cookie";
+import { jwtDecode } from "jwt-decode";
 import { useRouter } from "next/navigation";
 
 const drawerWidth = 240;
@@ -33,10 +34,12 @@ export default function HeaderGeneral({ window, items }) {
   const { user, setUser } = useUserBeerContext();
   const [mobileOpen, setMobileOpen] = useState(false);
   const [currentWindow, setWindow] = useState(window);
+  const [urlLogo, seturlLogo] = useState("/home");
   const router = useRouter();
   const handleDrawerToggle = () => {
     setMobileOpen((prevState) => !prevState);
   };
+  const token = Cookies.get("jwt");
 
   const handleLogout = () => {
     Cookies.remove("jwt");
@@ -56,6 +59,25 @@ export default function HeaderGeneral({ window, items }) {
     currentWindow !== undefined
       ? () => currentWindow().document.body
       : undefined;
+      
+  if (token) {
+    const decodeToken = jwtDecode(token);
+    if (decodeToken.role === "ROLE_ADMIN") {
+      seturlLogo("/admin");
+    }
+    if (decodeToken.role === "ROLE_USER") {
+      seturlLogo("/user");
+    }
+  }
+
+  const [anchorEl, setAnchorEl] = React.useState(null);
+  const open = Boolean(anchorEl);
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
 
   const drawer = (
     <Box
@@ -89,7 +111,7 @@ export default function HeaderGeneral({ window, items }) {
   return (
     <header>
       <Slide
-        id={pathname.includes("user") && "user-header"}
+        id={pathname.includes("user") ? "user-header" : ""}
         appear={false}
         direction="down"
         in={!trigger}
@@ -106,8 +128,14 @@ export default function HeaderGeneral({ window, items }) {
               >
                 <MenuIcon />
               </IconButton>
-              <Link href={!user ? "/home" : "/user"} className={"nav_logo"}>
-                <Image src={Logo} width={90} height={90} alt="Beer Club Logo" />
+              <Link href={urlLogo} className={"nav_logo"}>
+                <Image
+                  src={Logo}
+                  width={90}
+                  height={90}
+                  alt="Beer Club Logo"
+                  priority
+                />
               </Link>
               <Box
                 sx={{
@@ -117,18 +145,24 @@ export default function HeaderGeneral({ window, items }) {
                 }}
               >
                 {navItems.map((item) =>
-                  // <Link href={item.route} key={item.name} sx={{ color: '#fff'}} className='navItem'>{item.name}</Link>
+                  // <Link href={item.route} key={item.name} sx={{ color: "#fff"}} className="navItem">{item.name}</Link>
 
                   user && item.name == "Me" ? (
-                    <>
-                      <Box id="userHeader">
+                    <div key={item.name}>
+                      <Box id="userHeader" onClick={handleClick}>
                         <UserAvatar
                           userName={`${user.firstName}
                           ${user.lastName}`}
                         />
                       </Box>
-                      <DropDown profile={item.route} logOut={handleLogout} />
-                    </>
+                      <DropDown
+                        profile={item.route}
+                        logOut={handleLogout}
+                        open={open}
+                        handleClose={handleClose}
+                        anchorEl={anchorEl}
+                      />
+                    </div>
                   ) : (
                     <Link
                       href={item.route}

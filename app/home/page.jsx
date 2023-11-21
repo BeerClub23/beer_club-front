@@ -21,7 +21,7 @@ export default function HomePage() {
   return (
     <>
       <HeaderPublic items={homeItems} />
-      <Box component="main" sx={{ pt: 13 }}>
+      <Box component="main">
         <BannerSection />
         <AboutUsSection />
         <AboutSection />
