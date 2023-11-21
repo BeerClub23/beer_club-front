@@ -38,6 +38,7 @@ export default function FormLogin() {
   const onSubmit = async (data) => {
     let { token, response } = await ApiFormLogin(data);
     if (token) {
+      console.log(response);
       const expirationDate = new Date();
       Cookies.set("jwt", token, {
         expires: expirationDate.setDate(expirationDate.getDate() + 1),

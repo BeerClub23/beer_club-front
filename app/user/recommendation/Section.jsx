@@ -70,17 +70,16 @@ const RecommendationSection = ({ id }) => {
                 />
               </Box>
               <Box>
-              <Typography variant="h3" className="recommTitle">
-                {" "}
-                Producto{" "}
-                <span variant="body1" className="recommSpan">
-                  del mes
-                </span>{" "}
-              </Typography>
-              <Typography variant="h5" className="recommSubtitle">
-                {recommendation.title}
-              </Typography>
-
+                <Typography variant="h3" className="recommTitle">
+                  {" "}
+                  Producto{" "}
+                  <span variant="body1" className="recommSpan">
+                    del mes
+                  </span>{" "}
+                </Typography>
+                <Typography variant="h5" className="recommSubtitle">
+                  {recommendation.title}
+                </Typography>
               </Box>
             </Box>
           </Box>
