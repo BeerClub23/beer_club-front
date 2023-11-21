@@ -4,10 +4,10 @@
     // background-color: #fafafa;
     color: $rgb-white;
     margin-bottom: 30px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     
 }
 
@@ -26,5 +26,27 @@
 
     
 }
+.commentForm{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 
-   
+}
+
+.css-8qqwlv-JoyTextarea-root:not([data-inverted-colors="false"]) {
+    --Textarea-focusedHighlight: var(--_Textarea-focusedHighlight, var(--joy-palette-focusVisible, var(--joy-palette-primary-500, $primary))); 
+    /* Otras propiedades aquí */
+}
+
+
+
+.commentText{
+   min-width: 300px;
+   min-height: 60px;
+}
+
+.commentButton{
+    margin: 0 auto !important;
+}
+

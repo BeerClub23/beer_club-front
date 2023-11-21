@@ -5,11 +5,12 @@ import { Typography, Box, Container } from "@mui/material";
 import { useGetRecommendation } from "../../services/recommendation";
 import { useGetTopProducts } from "../../services/topProducts";
 import { useGetPersonalTopProducts } from "../../services/personalTopProducts";
-import ImageGallery from "../../components/imageGallery/ImageGallery";
+import ImagesGallery from "../../components/imagesGallery/ImagesGallery";
 import ArrowRightIcon from "@mui/icons-material/ArrowRight";
 import Carousel from "react-material-ui-carousel";
 import TopProductsCard from "../../components/topProductsCard/TopProductsCard";
 import RateCard from "../../components/rateCard/RateCard";
+import Rating from "@mui/material/Rating";
 
 const RecommendationSection = ({ id }) => {
   const { recommendation, isLoading, isError } = useGetRecommendation(id);
@@ -50,26 +51,36 @@ const RecommendationSection = ({ id }) => {
         ¡Bienvenido!
       </Typography>
       <section className="recommendationSection">
-        {/* <Container className="recommContainer"> */}
         <article className="recommArticle">
           <Box className="topContainer">
             <Box className="imagesGrid">
-              <ImageGallery
+              <ImagesGallery
                 images={recommendation.product.image_url.slice(0, 6)}
-              ></ImageGallery>
+              ></ImagesGallery>
             </Box>
-            <Box>
-              <Box className="titleContainer">
-                <Typography variant="h3" className="recommTitle">
-                  {" "}
-                  Producto{" "}
-                  <span variant="body1" className="recommSpan">
-                    del mes
-                  </span>{" "}
-                </Typography>
-                <Typography variant="h5" className="recommSubtitle">
-                  {recommendation.title}
-                </Typography>
+
+            <Box className="titleContainer">
+              <Box className="recommRate">
+                <Rating
+                  sx={{ color: "#ceb5a7" }}
+                  name="half-rating-read"
+                  defaultValue={recommendation.product.rating * 0.5}
+                  precision={0.5}
+                  readOnly
+                />
+              </Box>
+              <Box>
+              <Typography variant="h3" className="recommTitle">
+                {" "}
+                Producto{" "}
+                <span variant="body1" className="recommSpan">
+                  del mes
+                </span>{" "}
+              </Typography>
+              <Typography variant="h5" className="recommSubtitle">
+                {recommendation.title}
+              </Typography>
+
               </Box>
             </Box>
           </Box>
@@ -89,7 +100,7 @@ const RecommendationSection = ({ id }) => {
           </Box>
           <RateCard />
         </article>
-        {/* </Container> */}
+
         <aside className="recommAside">
           <Typography className="recommAsideTitle">Los más votados</Typography>
           <Carousel

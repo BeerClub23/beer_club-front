@@ -45,6 +45,7 @@ const recommendation = {
         // height: 212,
       },
     ],
+    rating:5
   },
   subscription_id: 0,
   image_url:

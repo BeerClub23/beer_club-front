@@ -1,0 +1,57 @@
+
+@import "~react-image-gallery/styles/scss/image-gallery.scss";
+
+
+/*.ReactGridGallery{
+    max-width: 230px;
+}
+
+.ReactGridGallery_tile{
+    // max-height: 120px;
+    // transform: scale(0.5)
+    
+
+}
+
+.ReactGridGallery_tile-viewport{
+    max-height: 130px;
+    max-width: 70px;
+    // display: block
+    // transform: scale(0.5)
+}
+   
+
+.ReactGridGallery_tile-viewport img{
+    
+    object-fit: contain;
+   
+    object-position: bottom;
+}*/
+
+.image-gallery-fullscreen-button .image-gallery-svg, .image-gallery-play-button .image-gallery-svg {
+    height: 12px;
+    width: 12px;
+}
+
+.imagesGalleryContainer {
+
+   
+    max-height: 200px !important;
+    max-width: 100%; /* Establece un ancho máximo para el contenedor principal */
+    overflow: hidden; /* Oculta el desbordamiento si la galería es más grande que el contenedor */
+  }
+  
+  .imagesGallery {
+    max-width: 100%; /* Asegura que la galería no sea más ancha que el contenedor */
+    width: 100%; /* Ajusta el ancho al 100% del contenedor */
+    height: auto; /* Permite que la altura se ajuste automáticamente para mantener la relación de aspecto */
+  }
+
+  .image-gallery-left-nav .image-gallery-svg, .image-gallery-right-nav .image-gallery-svg {
+    height: 50px;
+    width: 50px;
+  }
+
+  .image-gallery-icon:hover {
+    color: #000;
+}

@@ -6,7 +6,7 @@
   min-height: 70vh;
   // margin-top: 40px;
    display: flex;
-  flex-direction: row;
+  // flex-direction: row;
   flex-direction: column;
 }
 .recommSectionTitle{
@@ -43,7 +43,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  align-items: end;
+  // align-items: end;
 }
 
 .imagesGrid{
@@ -63,7 +63,17 @@
 
 
 .titleContainer{
-  margin-bottom: 20px;
+  // margin-bottom: 20px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  justify-content: space-evenly;
+  
+}
+
+.recommRate{
+  text-align: center;
 }
 .recommTitle{
   font-family: $poppins-font !important;
@@ -184,19 +194,20 @@
   .recommContainer{
     flex-direction: row;
   }
-
+  
   .recommTextContainer{
     padding: 50px;
   }
 }
 
+
 @media (min-width: 1200px) {
+  
   .recommendationSection{
     flex-direction: row;
     justify-content: space-between;
     margin: auto;
   }
- 
   .recommArticle{
     width: 70%;
     padding-left: 50px;
