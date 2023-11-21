@@ -1,6 +1,10 @@
 "use client";
 import "@/app/globals.scss";
+<<<<<<< HEAD
 import React, { useEffect } from "react";
+=======
+import React, {  useEffect } from "react";
+>>>>>>> develop
 import Footer from "@/app/components/footer/Footer";
 import HeaderPublic from "@/app/components/headerPublic/headerPublic";
 import { getUserInfo } from "@/app/services/user";

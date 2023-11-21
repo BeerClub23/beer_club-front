@@ -115,20 +115,6 @@ const UserSideBar = () => {
                 </ListItemButton>
               </ListItem>
             </Link>
-            {/*  <Link href="/user/account/estadisticas">
-              <ListItem
-                className={
-                  pathname.includes("/user/account/estadisticas") && "active_nav_user"
-                }
-              >
-                <ListItemButton>
-                  <ListItemIcon>
-                    <QueryStatsIcon />
-                  </ListItemIcon>
-                  <ListItemText primary="Estadisticas" />
-                </ListItemButton>
-              </ListItem>
-            </Link> */}
           </List>
         </nav>
       </Box>

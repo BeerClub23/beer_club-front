@@ -61,7 +61,7 @@ const PaymentData = () => {
       ></Box>
       <CustomTextField
         name="card.cardNumber"
-        label="Numero de Tarjeta"
+        label="Número de Tarjeta"
         type="text"
         control={control}
         defaultValue=""

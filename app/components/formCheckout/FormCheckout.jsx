@@ -36,7 +36,7 @@ export const FormCheckout = ({ category }) => {
       title: "Procesando el pago",
       html: "Por favor, espere...",
       allowOutsideClick: false,
-      showConfirmButton: false, // Ocultar el botón de confirmación
+      showConfirmButton: false,
       onBeforeOpen: () => {
         Swal.showLoading();
       },
