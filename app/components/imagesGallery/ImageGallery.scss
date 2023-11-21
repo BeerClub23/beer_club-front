@@ -50,8 +50,12 @@
   .image-gallery-left-nav .image-gallery-svg, .image-gallery-right-nav .image-gallery-svg {
     height: 50px;
     width: 50px;
-  }
+}
 
-  .image-gallery-icon:hover {
+.image-gallery-icon:hover {
     color: #000;
+}
+
+.image-gallery-left-nav, .image-gallery-right-nav {
+    padding: 0px;
 }

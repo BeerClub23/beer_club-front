@@ -38,7 +38,6 @@ const RateCard = () => {
     if (textValue.length && voted) {
       setComment(true);
       setTextValue("");
-
       postRating(value, textValue);
     }
   };
