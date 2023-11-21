@@ -41,7 +41,7 @@ const UserSideBar = (props) => {
       <Box
         sx={{ backgroundColor: "white", boxShadow: "2px 0px 1px #8D8D8D" }}
         className={mobile && "mobile_version-container"}
-        id={mobile & !show && "mobile_version-container_showed"}
+        id={mobile & !show ? "mobile_version-container_showed" : ""}
       >
         {mobile && (
           <Box id="menu_drawer">

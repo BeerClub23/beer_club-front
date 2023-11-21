@@ -105,7 +105,7 @@ export default function HeaderGeneral({ window, items }) {
   return (
     <header>
       <Slide
-        id={pathname.includes("user") && "user-header"}
+        id={pathname.includes("user") ? "user-header" : ""}
         appear={false}
         direction="down"
         in={!trigger}

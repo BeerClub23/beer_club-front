@@ -11,6 +11,8 @@ export async function middleware(request) {
     const token = request.cookies.get("jwt");
     const decodeToken = jwtDecode(token.value.toString());
 
+    // console.log(decodeToken)
+    // console.log(token.value)
     if (
       (new Date().getTime() > decodeToken.exp * 1000) &
       !request.nextUrl.pathname.includes("login")
