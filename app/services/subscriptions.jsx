@@ -53,3 +53,54 @@ export const useGetSubscriptions = () => {
     isError: error,
   };
 };
+
+// CRUD METHODS
+export const SaveSubscription = async (store) => {
+  return new Promise((resolve) => {
+    const axios = require("axios");
+    axios({
+      method: "POST",
+      url: `${process.env.NEXT_PUBLIC_API_URL}subscriptions`,
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      data: store,
+    })
+      .then((response) => resolve(response))
+      .catch((error) => resolve(error));
+  });
+};
+
+export const UpdateSubscription = async (store, id) => {
+  return new Promise((resolve) => {
+    const axios = require("axios");
+    axios({
+      method: "PUT",
+      url: `${process.env.NEXT_PUBLIC_API_URL}subscriptions/${id}`,
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      data: store,
+    })
+      .then((response) => resolve(response))
+      .catch((error) => resolve(error));
+  });
+};
+// url: `${process.env.NEXT_PUBLIC_API_URL}`,
+export const getAllSubscriptions = async () => {
+  return new Promise((resolve) => {
+    const axios = require("axios");
+    axios({
+      method: "GET",
+      url: `${process.env.NEXT_PUBLIC_API_URL}subscriptions?filterByStatus=false`,
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+    })
+      .then((response) => resolve(response.data))
+      .catch((error) => resolve(error));
+  });
+};
