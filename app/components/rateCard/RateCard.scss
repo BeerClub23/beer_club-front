@@ -1,0 +1,30 @@
+@import "../../globals.scss";
+
+.rateContainer{
+    // background-color: #fafafa;
+    color: $rgb-white;
+    margin-bottom: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+    
+}
+
+.rateText{
+    font-family: $poppins-font !important;   
+    padding: 18px;
+    text-align: center;
+    font-weight: 300;
+    letter-spacing: normal;
+    color: $rgb-white;
+}
+
+.rateItem{
+    color: $primary;
+    -webkit-tap-highlight-color:#fafafa;
+
+    
+}
+
+   

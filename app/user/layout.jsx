@@ -1,9 +1,9 @@
 "use client";
 import "@/app/globals.scss";
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import Footer from "@/app/components/footer/Footer";
 import HeaderPublic from "@/app/components/headerPublic/headerPublic";
-import getUserInfo from "@/app/services/user";
+import { getUserInfo } from "@/app/services/user";
 import Cookies from "js-cookie";
 import UserSideBar from "@/app/components/userSideBar/UserSideBar";
 import UserData from "@/app/components/userBasicData/UserBasicData";
@@ -36,7 +36,9 @@ const UserLayout = ({ children }) => {
         justifyContent: "space-between",
       }}
     >
-      <HeaderPublic items={user ? memberItems : []} />
+      {!pathname.includes("account/subscription") && (
+        <HeaderPublic items={user ? memberItems : []} />
+      )}
       {!pathname.includes("account") ? (
         <> {children} </>
       ) : (

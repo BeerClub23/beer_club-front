@@ -30,10 +30,10 @@ export const FormCheckout = ({ category }) => {
       title: "Procesando el pago",
       html: "Por favor, espere...",
       allowOutsideClick: false,
-      showConfirmButton: false, // Ocultar el botón de confirmación
+      showConfirmButton: false,
       onBeforeOpen: () => {
         Swal.showLoading();
-  },
+      },
     });
   }
 
@@ -62,7 +62,7 @@ export const FormCheckout = ({ category }) => {
           cardHolder: data.card.cardHolder.toUpperCase(),
           cvv: data.card.cvc       
       };
-      
+
       let response = await ApiRegister(normalizedData);
       if (response.status === 201) {
         Swal.fire({
@@ -89,7 +89,7 @@ export const FormCheckout = ({ category }) => {
           confirmButtonColor: "#ceb5a7",
           focusConfirm: false,
         });
-      }     
+      }
     }
   };
 
@@ -138,13 +138,13 @@ export const FormCheckout = ({ category }) => {
       <ThemeProvider theme={theme}>
         <Box>
           <Stepper
-            sx={{ mx: "auto", my: 4, maxWidth:"600px" }}
+            sx={{ mx: "auto", my: 4, maxWidth: "600px" }}
             activeStep={step - 1}
             alternativeLabel
           >
             {steps.map((label) => (
               <Step key={label}>
-                <StepLabel sx={{ fontWeight:"bold" }}>{label}</StepLabel>
+                <StepLabel sx={{ fontWeight: "bold" }}>{label}</StepLabel>
               </Step>
             ))}
           </Stepper>
@@ -160,13 +160,14 @@ export const FormCheckout = ({ category }) => {
               marginBottom: "20px",
             }}
           >
-
             <form onSubmit={handleSubmit(onSubmit)}>
               {step == 1 && <PersonalData />}
               {step == 2 && <AddressData />}
               {step == 3 && <PaymentData />}
 
-              <Box sx={{ display: "flex", justifyContent: "space-between", mt:3 }}>
+              <Box
+                sx={{ display: "flex", justifyContent: "space-between", mt: 3 }}
+              >
                 <Button
                   variant="contained"
                   color="primary"
