@@ -82,7 +82,7 @@ const UpdateUserData = ({ user, updateData }) => {
                 <TextField
                   value={formUpdateUser.lastName}
                   name="lastName"
-                  onChnage={handleUpdateFormBasicData}
+                  onChange={handleUpdateFormBasicData}
                   placeholder={user.lastName}
                 ></TextField>
               </Box>

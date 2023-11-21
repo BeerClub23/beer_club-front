@@ -1,5 +1,3 @@
-import useSWR from "swr";
-
 const MONTHS = [
   "01",
   "02",
@@ -15,7 +13,6 @@ const MONTHS = [
   "12",
 ];
 
-const get = (url) => fetch(url).then((r) => r.json());
 
 const recommendation = {
   id: 0,
@@ -60,6 +57,7 @@ const recommendation = {
         // height: 212,
       },
     ],
+    rating:5
   },
   subscription_id: 0,
   image_url:
@@ -87,8 +85,8 @@ export const getRecommendationBySubscriptionIdAndDate = async (
         Authorization: "Bearer " + token,
       },
     })
-      .then((response) => resolve(response.data))
-      .catch((error) => resolve(error));
+      .then((response) => resolve(recommendation))
+      .catch((error) => resolve(recommendation));
   });
 }
 
