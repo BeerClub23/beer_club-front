@@ -26,7 +26,7 @@ const UserLayout = ({ children }) => {
     userInfo().then((response) => {
       setUser(response);
     });
-  }, [decodeToken, user, token, setUser]);
+  }, []);
 
   return (
     <div
