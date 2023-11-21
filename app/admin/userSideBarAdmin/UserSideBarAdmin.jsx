@@ -69,8 +69,9 @@ const UserSideBarAdmin = (props) => {
             <Link href="/admin/subscripciones">
               <ListItem
                 className={
-                  pathname.includes("/admin/subscripciones") &&
-                  "active_nav_user"
+                  pathname.includes("/admin/subscripciones")
+                    ? "active_nav_user"
+                    : ""
                 }
                 sx={{ p: 0 }}
               >
@@ -85,8 +86,9 @@ const UserSideBarAdmin = (props) => {
             <Link href="/admin/recomendaciones">
               <ListItem
                 className={
-                  pathname.includes("/admin/recomendaciones") &&
-                  "active_nav_user"
+                  pathname.includes("/admin/recomendaciones")
+                    ? "active_nav_user"
+                    : ""
                 }
                 sx={{ p: 0 }}
               >
@@ -101,7 +103,9 @@ const UserSideBarAdmin = (props) => {
             <Link href="/admin/estadistica">
               <ListItem
                 className={
-                  pathname.includes("/admin/estadistica") && "active_nav_user"
+                  pathname.includes("/admin/estadistica")
+                    ? "active_nav_user"
+                    : ""
                 }
                 sx={{ p: 0 }}
               >

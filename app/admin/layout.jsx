@@ -2,7 +2,7 @@
 import "@/app/globals.scss";
 import React, { useEffect } from "react";
 import HeaderPublic from "@/app/components/headerPublic/headerPublic";
-import getUserInfo from "@/app/services/user";
+import { getUserInfo } from "@/app/services/user";
 import Cookies from "js-cookie";
 import UserSideBarAdmin from "@/app/admin/userSideBarAdmin/UserSideBarAdmin";
 import { Box } from "@mui/material";
