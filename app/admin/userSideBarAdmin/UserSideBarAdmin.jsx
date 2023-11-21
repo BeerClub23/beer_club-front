@@ -8,15 +8,14 @@ import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 import QueryStatsIcon from "@mui/icons-material/QueryStats";
 import CloseIcon from "@mui/icons-material/Close";
-import HistoryIcon from "@mui/icons-material/History";
+import StarBorderIcon from "@mui/icons-material/StarBorder";
 import EditNoteIcon from "@mui/icons-material/EditNote";
-import DriveFileRenameOutlineIcon from "@mui/icons-material/DriveFileRenameOutline";
 import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
 import { usePathname } from "next/navigation";
-import "./UserSideBar.scss";
+import "./UserSideBarAdmin.scss";
 import Link from "next/link";
 
-const UserSideBar = (props) => {
+const UserSideBarAdmin = (props) => {
   const { window } = props;
   const [mobile, setMobile] = useState(false);
   const [width, setWidth] = useState();
@@ -67,61 +66,46 @@ const UserSideBar = (props) => {
           style={mobile & !show ? { display: "none" } : {}}
         >
           <List>
-            <Link href="/user/account/subscription">
+            <Link href="/admin/subscripciones">
               <ListItem
                 className={
-                  pathname.includes("/user/account/subscription") &&
+                  pathname.includes("/admin/subscripciones") &&
                   "active_nav_user"
                 }
+                sx={{ p: 0 }}
               >
-                <ListItemButton>
+                <ListItemButton sx={{ py: 2 }}>
                   <ListItemIcon>
-                    <DriveFileRenameOutlineIcon
-                      sx={{ color: "black !important" }}
-                    />
+                    <EditNoteIcon sx={{ color: "black !important" }} />
                   </ListItemIcon>
-                  <ListItemText primary="Administracion plan" />
+                  <ListItemText primary="Subscripciones" />
                 </ListItemButton>
               </ListItem>
             </Link>
-            <Link href="/user/account/datos-personales">
+            <Link href="/admin/recomendaciones">
               <ListItem
                 className={
-                  pathname.includes("/user/account/datos-personales") &&
+                  pathname.includes("/admin/recomendaciones") &&
                   "active_nav_user"
                 }
+                sx={{ p: 0 }}
               >
-                <ListItemButton>
+                <ListItemButton sx={{ py: 2 }}>
                   <ListItemIcon>
-                    <EditNoteIcon />
+                    <StarBorderIcon />
                   </ListItemIcon>
-                  <ListItemText primary="Datos personales" />
+                  <ListItemText primary="Recomendaciones" />
                 </ListItemButton>
               </ListItem>
             </Link>
-            <Link href="/user/account/historial">
+            <Link href="/admin/estadistica">
               <ListItem
                 className={
-                  pathname.includes("/user/account/historial") &&
-                  "active_nav_user"
+                  pathname.includes("/admin/estadistica") && "active_nav_user"
                 }
+                sx={{ p: 0 }}
               >
-                <ListItemButton>
-                  <ListItemIcon>
-                    <HistoryIcon />
-                  </ListItemIcon>
-                  <ListItemText primary="Historial" />
-                </ListItemButton>
-              </ListItem>
-            </Link>
-            <Link href="/user/account/estadisticas">
-              <ListItem
-                className={
-                  pathname.includes("/user/account/estadisticas") &&
-                  "active_nav_user"
-                }
-              >
-                <ListItemButton>
+                <ListItemButton sx={{ py: 2 }}>
                   <ListItemIcon>
                     <QueryStatsIcon />
                   </ListItemIcon>
@@ -136,4 +120,4 @@ const UserSideBar = (props) => {
   );
 };
 
-export default UserSideBar;
+export default UserSideBarAdmin;

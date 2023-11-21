@@ -13,6 +13,7 @@ import "./login.scss";
 import AOS from "aos";
 import HeaderPublic from "@/app/components/headerPublic/headerPublic";
 import { homeItems } from "@/app/common/constants/NavBarItems";
+import Cookies from "js-cookie";
 
 export default function LoginPage() {
   const method = useForm({
@@ -21,6 +22,7 @@ export default function LoginPage() {
   });
 
   React.useEffect(() => {
+    Cookies.remove("jwt");
     AOS.init({
       duration: 900,
     });

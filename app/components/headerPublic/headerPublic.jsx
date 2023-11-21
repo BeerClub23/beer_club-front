@@ -23,6 +23,7 @@ import useScrollTrigger from "@mui/material/useScrollTrigger";
 import DropDown from "../../common/dropdown/Dropdown";
 import { useUserBeerContext } from "@/app/context/user";
 import Cookies from "js-cookie";
+import { jwtDecode } from "jwt-decode";
 import { useRouter } from "next/navigation";
 
 const drawerWidth = 240;
@@ -32,10 +33,12 @@ export default function HeaderGeneral({ window, items }) {
   const pathname = usePathname();
   const { user, setUser } = useUserBeerContext();
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [urlLogo, seturlLogo] = useState("/home");
   const router = useRouter();
   const handleDrawerToggle = () => {
     setMobileOpen((prevState) => !prevState);
   };
+  const token = Cookies.get("jwt");
 
   const handleLogout = () => {
     Cookies.remove("jwt");
@@ -45,6 +48,15 @@ export default function HeaderGeneral({ window, items }) {
 
   useEffect(() => {
     setNavItems(items);
+    if (token) {
+      const decodeToken = jwtDecode(token);
+      if (decodeToken.role === "ROLE_ADMIN") {
+        seturlLogo("/admin");
+      }
+      if (decodeToken.role === "ROLE_USER") {
+        seturlLogo("/user");
+      }
+    }
   }, [items]);
 
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -110,7 +122,7 @@ export default function HeaderGeneral({ window, items }) {
               >
                 <MenuIcon />
               </IconButton>
-              <Link href={!user ? "/home" : "/user"} className={"nav_logo"}>
+              <Link href={urlLogo} className={"nav_logo"}>
                 <Image
                   src={Logo}
                   width={90}
@@ -127,7 +139,7 @@ export default function HeaderGeneral({ window, items }) {
                 }}
               >
                 {navItems.map((item) =>
-                  // <Link href={item.route} key={item.name} sx={{ color: '#fff'}} className='navItem'>{item.name}</Link>
+                  // <Link href={item.route} key={item.name} sx={{ color: "#fff"}} className="navItem">{item.name}</Link>
 
                   user && item.name == "Me" ? (
                     <div key={item.name}>
@@ -155,7 +167,7 @@ export default function HeaderGeneral({ window, items }) {
                     >
                       {item.name}
                     </Link>
-                  )
+                  ),
                 )}
               </Box>
             </Toolbar>
