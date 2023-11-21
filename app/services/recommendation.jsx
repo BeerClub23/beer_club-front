@@ -92,21 +92,3 @@ export const getRecommendationBySubscriptionIdAndDate = async (
   });
 }
 
-export const useGetRecommendation = (id) => {
-  const { data, error, isLoading } = useSWR(
-    `${process.env.NEXT_PUBLIC_API_URL}recommendations/${id}`,
-    get,
-    {
-      fallbackData: recommendation,
-      shouldRetryOnError: false,
-      revalidateOnFocus: false,
-      errorRetryCount: 1,
-    },
-  );
-
-  return {
-    recommendation: data,
-    isLoading,
-    isError: error,
-  };
-};

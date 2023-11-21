@@ -7,12 +7,13 @@ import Cookies from "js-cookie";
 import { updateUserPersonalData } from "@/app/services/user";
 
 const DatosPersonales = () => {
-  const { user } = useUserBeerContext();
+  const { user, setUser } = useUserBeerContext();
   const token = Cookies.get("jwt");
 
   const updateUserInfo = async (userData) => {
     const response = await updateUserPersonalData(userData, user.id, token);
     console.log(response);
+    setUser(response)
   };
 
   return (

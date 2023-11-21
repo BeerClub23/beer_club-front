@@ -16,7 +16,6 @@ const beerImage2= "https://images.unsplash.com/photo-1603644197087-dbeeba73e106?
 const UserPage = () => {
   const { user, setUser } = useUserBeerContext();
   const benefits = user?.subscription?.benefits;
-  console.log(user);
  
 
   useEffect(() => {

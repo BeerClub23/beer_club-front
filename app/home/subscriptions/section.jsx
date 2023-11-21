@@ -74,6 +74,7 @@ const SubscriptionsSection = () => {
                 isRecommended={subscription.isRecommended}
               ></SubscriptionCard>
             ))}
+            
           </Slider>
         </section>
       </Container>
