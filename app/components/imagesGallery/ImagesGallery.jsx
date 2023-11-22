@@ -22,11 +22,11 @@ const ImagesGallery = ({ images }) => {
     return urlObj.toString(); // Devolver la nueva URL con las dimensiones ajustadas
   }
 
-  const anchoDeseado = 400;
-  const altoDeseado = 400;
+  const anchoDeseado = 350;
+  const altoDeseado = 350;
 
-  const anchoMiniatura = 100;
-  const altoMiniatura = 100;
+  const anchoMiniatura = 200;
+  const altoMiniatura = 200;
 
   const imagesConDimensionesAjustadas = imagesWithSrc.map((image) => ({
     original: ajustarDimensionesImagen(

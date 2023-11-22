@@ -1,11 +1,12 @@
 "use client";
 import React from "react";
 import "./RecommendationSection.scss";
-import { Typography, Box, Container } from "@mui/material";
+import { Typography, Box } from "@mui/material";
 import { useGetRecommendation } from "../../services/recommendation";
 import { useGetTopProducts } from "../../services/topProducts";
 import { useGetPersonalTopProducts } from "../../services/personalTopProducts";
 import ImagesGallery from "../../components/imagesGallery/ImagesGallery";
+import RateReadOnlyCard from "../../components/rateReadOnlyCard/RateReadOnlyCard";
 import ArrowRightIcon from "@mui/icons-material/ArrowRight";
 import Carousel from "react-material-ui-carousel";
 import TopProductsCard from "../../components/topProductsCard/TopProductsCard";
@@ -43,13 +44,13 @@ const RecommendationSection = ({ id }) => {
 
   return (
     <>
-      <Typography
+      {/* <Typography
         sx={{ marginTop: "50px", color: "white" }}
         variant="h3"
         className="recommSectionTitle"
       >
         ¡Bienvenido!
-      </Typography>
+      </Typography> */}
       <section className="recommendationSection">
         <article className="recommArticle">
           <Box className="topContainer">
@@ -61,13 +62,7 @@ const RecommendationSection = ({ id }) => {
 
             <Box className="titleContainer">
               <Box className="recommRate">
-                <Rating
-                  sx={{ color: "#ceb5a7" }}
-                  name="half-rating-read"
-                  defaultValue={recommendation.product.rating * 0.5}
-                  precision={0.5}
-                  readOnly
-                />
+                <RateReadOnlyCard rate = {recommendation.product.rating * 0.5}/>
               </Box>
               <Box>
                 <Typography variant="h3" className="recommTitle">

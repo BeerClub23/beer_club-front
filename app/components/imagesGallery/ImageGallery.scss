@@ -36,7 +36,7 @@
 .imagesGalleryContainer {
 
    
-    max-height: 200px !important;
+    // max-height: 200px !important;
     max-width: 100%; /* Establece un ancho máximo para el contenedor principal */
     overflow: hidden; /* Oculta el desbordamiento si la galería es más grande que el contenedor */
   }
@@ -58,4 +58,8 @@
 
 .image-gallery-left-nav, .image-gallery-right-nav {
     padding: 0px;
+}
+
+.ReactGridGallery{
+    display: none;
 }

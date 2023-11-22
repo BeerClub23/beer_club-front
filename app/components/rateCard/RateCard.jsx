@@ -35,7 +35,7 @@ const RateCard = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    if (textValue.length && voted) {
+    if (voted) {
       setComment(true);
       setTextValue("");
       postRating(value, textValue);
@@ -94,7 +94,7 @@ const RateCard = () => {
       <form className="commentForm" onSubmit={handleSubmit}>
         <Textarea
           placeholder="Envianos tu comentario"
-          required
+          // required
           sx={{ m: 3 }}
           value={textValue}
           onChange={handleTextChange}
