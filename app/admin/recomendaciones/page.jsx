@@ -9,70 +9,70 @@ import Swal from "sweetalert2";
 //Delete when the real data is available
 const dataDummy = [
   {
-    id: 123,
-    title: "Sample Title",
-    description: "Sample Description",
-    createDate: "2023-11-19",
+    id: 1,
+    title: "Tiulo de recomendaación para producto 1",
+    description: "descripción de la recomendación,",
+    createDate: "20-11-2023",
     product: {
-      id: 456,
-      name: "Sample Product 1",
-      description: "Sample Product Description 1",
+      id: 2,
+      name: "nombre de product",
+      description: "descripción del producto",
+      productScore: 0,
       image_url: [
         {
-          url: "https://example.com/image1_1.jpg",
+          url: "https://unadireccion-com/image/0xqwe1",
         },
         {
-          url: "https://example.com/image1_2.jpg",
+          url: "https://unadireccion-com/image/0xqwe2",
         },
       ],
     },
     subscription_id: 1,
-    image_url:
-      "https://media.istockphoto.com/id/1040303026/es/foto/cerveza-en-vasos.jpg?s=612x612&w=0&k=20&c=1u_gezlA_8jqCxtMjMJSc1Q07wDvUyMvbXgp4NDeeqQ=",
+    image_url: "https://unadireccion-com/image/0xqwe",
   },
   {
-    id: 124,
-    title: "Sample Title 2",
-    description: "Sample Description 2",
-    createDate: "2023-11-20",
+    id: 2,
+    title: "Tiulo de recomendaación para producto 2",
+    description: "descripción de la recomendación,",
+    createDate: "20-11-2023",
     product: {
-      id: 457,
-      name: "Sample Product 2",
-      description: "Sample Product Description 2",
+      id: 3,
+      name: "nombre de product",
+      description: "descripción del producto",
+      productScore: 0,
       image_url: [
         {
-          url: "https://example.com/image2_1.jpg",
+          url: "https://unadireccion-com/image/0xqwe1",
         },
         {
-          url: "https://example.com/image2_2.jpg",
+          url: "https://unadireccion-com/image/0xqwe2",
         },
       ],
     },
     subscription_id: 2,
-    image_url:
-      "https://media.istockphoto.com/id/1040303026/es/foto/cerveza-en-vasos.jpg?s=612x612&w=0&k=20&c=1u_gezlA_8jqCxtMjMJSc1Q07wDvUyMvbXgp4NDeeqQ=",
+    image_url: "https://unadireccion-com/image/0xqwe",
   },
   {
-    id: 125,
-    title: "Sample Title 3",
-    description: "Sample Description 3",
-    createDate: "2023-11-21",
+    id: 3,
+    title: "Tiulo de recomendaación para producto 3",
+    description: "descripción de la recomendación,",
+    createDate: "20-11-2023",
     product: {
-      id: 458,
-      name: "Sample Product 3",
-      description: "Sample Product Description 3",
+      id: 4,
+      name: "nombre de product",
+      description: "descripción del producto",
+      productScore: 0,
       image_url: [
         {
-          url: "https://example.com/image3_1.jpg",
+          url: "https://unadireccion-com/image/0xqwe1",
         },
         {
-          url: "https://example.com/image3_2.jpg",
+          url: "https://unadireccion-com/image/0xqwe2",
         },
       ],
     },
     subscription_id: 3,
-    image_url:
-      "https://media.istockphoto.com/id/1040303026/es/foto/cerveza-en-vasos.jpg?s=612x612&w=0&k=20&c=1u_gezlA_8jqCxtMjMJSc1Q07wDvUyMvbXgp4NDeeqQ=",
+    image_url: "https://unadireccion-com/image/0xqwe",
   },
 ];
 
@@ -201,7 +201,7 @@ const RecomendacionesPage = () => {
       }}
     >
       {/**TODO check if this is necessary*/}
-{/*       <h2>Recomendaciones del mes</h2>
+      {/*       <h2>Recomendaciones del mes</h2>
       <Box
         margin={"auto"}
         width={1000}

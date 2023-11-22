@@ -20,14 +20,18 @@ import { ThemeProvider } from "@mui/material";
 import "./recommendationAdmin.scss";
 
 const EditRecommendationForm = ({ initialData, onClose, onSave }) => {
-  console.log("onSave in RecommendationForm: ", onSave);
+  console.log(initialData);
   const [formData, setFormData] = useState(initialData || {});
   const { subscriptions, isLoading, isError } = useGetSubscriptions();
+  const [isEditing, setIsEditing] = useState(false);
   const dropRef = useRef();
 
   useEffect(() => {
+    console.log("Initial data:", initialData);
     setFormData(initialData || {});
+    setIsEditing(!!initialData); // Set to true if initialData is provided
   }, [initialData]);
+
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -115,15 +119,20 @@ const EditRecommendationForm = ({ initialData, onClose, onSave }) => {
 
   const handleSubmit = async (event, formData) => {
     try {
-      event.preventDefault();
+      event.preventDefault(); // Prevent default form submission behavior
+
+      // Check if editingRowData is defined
       if (formData) {
+        // Perform the update logic with editingRowData.id
         await onSave(formData, formData.id);
       } else {
+        // Perform the create logic if editingRowData is not defined
         await onSave(formData);
       }
       onClose();
     } catch (error) {
-      console.error("Error in submit:", error);
+      console.error("Error in handleSubmit:", error);
+      // Handle the error as needed
     }
   };
 
@@ -163,7 +172,11 @@ const EditRecommendationForm = ({ initialData, onClose, onSave }) => {
                 label="Suscripción"
                 fullWidth
                 name="subscription_id"
-                value={formData.subscription_id}
+                value={
+                  formData.subscription_id !== undefined
+                    ? formData.subscription_id
+                    : ""
+                }
                 onChange={handleChange}
               >
                 {subscriptions.map((s) => (
@@ -176,12 +189,38 @@ const EditRecommendationForm = ({ initialData, onClose, onSave }) => {
           </Grid>
           <Grid item xs={12}>
             <Typography>Imagen recomendación</Typography>
-            <InputFileUpload
-              onFileChange={(file) => handleRecommendationImageUpload(file)}
-              onCancel={() =>
-                setFormData((prevData) => ({ ...prevData, image_url: null }))
-              }
-            />
+            {isEditing && formData.image_url && (
+              <Box
+                className="image-name-box"
+                p={1}
+                sx={{
+                  display: "flex",
+                  alignItems: "center",
+                  backgroundColor: "lightgray",
+                }}
+              >
+                <Typography variant="body1">{formData.image_url}</Typography>
+                <IconButton
+                  component="span"
+                  onClick={() =>
+                    setFormData((prevData) => ({
+                      ...prevData,
+                      image_url: null,
+                    }))
+                  }
+                >
+                  <CloseIcon />
+                </IconButton>
+              </Box>
+            )}
+            {(!isEditing || (isEditing && !formData.image_url)) && (
+              <InputFileUpload
+                onFileChange={(file) => handleRecommendationImageUpload(file)}
+                onCancel={() =>
+                  setFormData((prevData) => ({ ...prevData, image_url: null }))
+                }
+              />
+            )}
           </Grid>
           <Divider />
           {/* Product Name */}
@@ -205,6 +244,7 @@ const EditRecommendationForm = ({ initialData, onClose, onSave }) => {
               onChange={(e) => handleProductChange(e)}
             />
           </Grid>
+          {/* Product Image Upload */}
           {/* Product Image Upload */}
           <Grid item xs={12}>
             <label>Subir nuevas imágenes:</label>
@@ -243,9 +283,9 @@ const EditRecommendationForm = ({ initialData, onClose, onSave }) => {
                         backgroundColor: "lightgray",
                       }}
                     >
-                      {image && image.name ? (
+                      {image && image.url ? (
                         <>
-                          <Typography variant="body1">{image.name}</Typography>
+                          <Typography variant="body1">{image.url}</Typography>
                           <IconButton
                             component="span"
                             onClick={() => handleRemoveImage(index)}
@@ -259,6 +299,7 @@ const EditRecommendationForm = ({ initialData, onClose, onSave }) => {
                 ))}
             </Grid>
           </Grid>
+
           {/* Submit Button */}
           <Grid item xs={12}>
             <Box className="btn-container">

@@ -16,7 +16,7 @@ const RecommendationModal = ({
     <Dialog
       fullWidth
       maxWidth="sm"
-      minWidth={300}
+      className="modal-form-container"
       open={isModalOpen}
       onClose={onClose}
     >
