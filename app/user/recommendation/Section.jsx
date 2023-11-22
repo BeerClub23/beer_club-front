@@ -1,12 +1,7 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import "./RecommendationSection.scss";
-<<<<<<< HEAD
 import { Typography, Box, Container } from "@mui/material";
-=======
-import { Typography, Box } from "@mui/material";
-import { useGetRecommendation } from "../../services/recommendation";
->>>>>>> origin/feature/BCA-216
 import { useGetTopProducts } from "../../services/topProducts";
 import { useUserBeerContext } from "@/app/context/user";
 import { useGetPersonalTopProducts } from "../../services/personalTopProducts";
@@ -83,7 +78,7 @@ const RecommendationSection = ({ id }) => {
 
             <Box className="titleContainer">
               <Box className="recommRate">
-                <RateReadOnlyCard rate={recommendation.product.rating * 0.5} />
+                <RateReadOnlyCard rate={recommendation.product.productScore * 0.5} />
               </Box>
               <Box>
                 <Typography variant="h3" className="recommTitle">
@@ -113,7 +108,7 @@ const RecommendationSection = ({ id }) => {
               </Typography>
             ))}
           </Box>
-            <RateCard />
+          <RateCard />
         </article>
 
         <aside className="recommAside" >
