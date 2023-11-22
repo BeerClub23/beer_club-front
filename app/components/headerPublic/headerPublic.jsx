@@ -50,7 +50,16 @@ export default function HeaderGeneral({ window, items }) {
   useEffect(() => {
     setNavItems(items);
     setWindow(window);
-  }, [items, window]);
+    if (token) {
+      const decodeToken = jwtDecode(token);
+      if (decodeToken.role === "ROLE_ADMIN") {
+        seturlLogo("/admin");
+      }
+      if (decodeToken.role === "ROLE_USER") {
+        seturlLogo("/user");
+      }
+    }
+  }, [items, window, token]);
 
   const trigger = useScrollTrigger({
     target: currentWindow ? currentWindow() : undefined,
@@ -59,16 +68,8 @@ export default function HeaderGeneral({ window, items }) {
     currentWindow !== undefined
       ? () => currentWindow().document.body
       : undefined;
-      
-  if (token) {
-    const decodeToken = jwtDecode(token);
-    if (decodeToken.role === "ROLE_ADMIN") {
-      seturlLogo("/admin");
-    }
-    if (decodeToken.role === "ROLE_USER") {
-      seturlLogo("/user");
-    }
-  }
+
+  
 
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
