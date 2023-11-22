@@ -1,12 +1,12 @@
 @import "../../globals.scss";
 
 .recommendationSection{
-  background-color: $rgb-dark;
+  background-color: $rgb-white;
   // padding: 30px;
   min-height: 70vh;
   // margin-top: 40px;
-   display: flex;
-  flex-direction: row;
+  display: flex;
+  // flex-direction: row;
   flex-direction: column;
 }
 .recommSectionTitle{
@@ -21,21 +21,23 @@
   font-weight: 800;
   width: 100%;
   background-color: $rgb-white;
-
+  
 }
 
 // .css-1oqqzyl-MuiContainer-root{
-.recommContainer{
-  display: flex !important;
-  display: none;
-}
-
-.recommArticle{
+  .recommContainer{
+    display: flex !important;
+    display: none;
+  }
+  
+  .recommArticle{
+  background-color: $rgb-dark ;
   width: 100%;
   position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding: 50px 20px;
   // justify-content: space-between;
   
 }
@@ -43,11 +45,14 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  align-items: end;
+  width: 100%;
+  justify-content: space-around;
+  // align-items: end;
 }
 
 .imagesGrid{
   margin-top: 20px  ;
+  
   // width: 100%;
 }
 
@@ -63,8 +68,20 @@
 
 
 .titleContainer{
-  margin-bottom: 20px;
+  // margin-bottom: 20px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  justify-content: space-evenly;
+  
 }
+
+.recommRate{
+  text-align: center;
+  padding-top: 20px;
+}
+
 .recommTitle{
   font-family: $poppins-font !important;
     color: $rgb-white;
@@ -118,7 +135,8 @@
   display: flex;
   align-items: center;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-around;
+  padding-top: 40px;
 }
 
 .recommAsideTitle{
@@ -146,16 +164,24 @@
 }
 
 @media (min-width: 450px) {
-  .topContainer{
-    flex-direction: row;
-  }
+  
   
 }
 
 
 @media (min-width: 768px) {
   
+  .topContainer{
+    flex-direction: row;
+    width: 100%;
+    align-items: center;
+    justify-content: space-evenly;
+  }
 
+  .titleContainer{
+    display: flex;
+    justify-content: space-around;
+  }
   .recommTitle {
     font-size: 32px;
     letter-spacing: 4px;
@@ -164,8 +190,8 @@
  
 
   .imagesGrid{
-    margin-top: 20px  ;
-    width: 300px;
+    // margin-top: 20px  ;
+    // width: 400px;
   }
 
   .recommSubtitle{
@@ -174,7 +200,7 @@
   }
 
   .recommTextContainer{
-    padding: 40px;
+    // padding: 40px;
   }
  
 }
@@ -184,31 +210,32 @@
   .recommContainer{
     flex-direction: row;
   }
-
+  
   .recommTextContainer{
-    padding: 50px;
+    padding: 30px;
   }
 }
 
+
 @media (min-width: 1200px) {
+  
   .recommendationSection{
     flex-direction: row;
     justify-content: space-between;
     margin: auto;
   }
- 
   .recommArticle{
     width: 70%;
-    padding-left: 50px;
+    padding-left: 20px;
   }
   
   .recommAside{  
     width: 30%;
-    padding-right: 50px;
+    // padding-right: 50px;
   }
   
   .recommTextContainer{
-    padding-left: 80px;
+    // padding-left: 80px;
   }
   
 }

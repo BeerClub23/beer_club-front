@@ -11,21 +11,27 @@ import { theme } from "../../styles/materialThemeFormCheckout";
 import ThemeProvider from "@mui/material/styles/ThemeProvider";
 import ApiRegister from "@/app/services/register";
 import Swal from "sweetalert2";
+import { useRouter } from "next/navigation";
 
 const steps = ["Datos Personales", "Dirección de entrega", "Datos del pago"];
 
 export const FormCheckout = ({ category }) => {
-  const { handleSubmit, trigger , formState: { isSubmitting }} = useFormContext();
+  const {
+    handleSubmit,
+    trigger,
+    formState: { isSubmitting },
+  } = useFormContext();
   const [formData, setFormData] = useState({});
   const [step, setStep] = useState(1);
+  const router = useRouter();
 
   useEffect(() => {
     if (category) {
       setFormData({ category: category.id });
     }
-  }, []);
+  }, [category]);
 
-  if(isSubmitting){
+  if (isSubmitting) {
     Swal.fire({
       title: "Procesando el pago",
       html: "Por favor, espere...",
@@ -37,8 +43,7 @@ export const FormCheckout = ({ category }) => {
     });
   }
 
-  const onSubmit = async (data) => { 
-
+  const onSubmit = async (data) => {
     if (step === 1) {
       setFormData({ ...formData, customer: data });
     }
@@ -47,20 +52,23 @@ export const FormCheckout = ({ category }) => {
       setFormData({ ...formData, address: data });
     }
     if (step === 3) {
-        setFormData({ ...formData, card: {
-        cardNumber:data.card.cardNumber,
-        expDate: data.card.expDate,
-        cardHolder: data.card.cardHolder,
-        cvv: data.card.cvc
-      }, });
-      const normalizedData = {   
-          subscriptionId:category.id,          
-          ...data.customer,
-          ...data.address,
-          cardNumber:data.card.cardNumber,
+      setFormData({
+        ...formData,
+        card: {
+          cardNumber: data.card.cardNumber,
           expDate: data.card.expDate,
-          cardHolder: data.card.cardHolder.toUpperCase(),
-          cvv: data.card.cvc       
+          cardHolder: data.card.cardHolder,
+          cvv: data.card.cvc,
+        },
+      });
+      const normalizedData = {
+        subscriptionId: category.id,
+        ...data.customer,
+        ...data.address,
+        cardNumber: data.card.cardNumber,
+        expDate: data.card.expDate,
+        cardHolder: data.card.cardHolder.toUpperCase(),
+        cvv: data.card.cvc,
       };
 
       let response = await ApiRegister(normalizedData);
@@ -74,10 +82,13 @@ export const FormCheckout = ({ category }) => {
           // onClick: handleClick(),
           focusConfirm: false,
         }).then(function () {
-          window.location = "/login";
+          router.push("/login");
         });
       } else if (response.status !== 200) {
-        const error = Object.keys(response.response.data).reduce((acc, key) => `${acc}${response.response.data[key]}\n`, '');
+        const error = Object.keys(response.response.data).reduce(
+          (acc, key) => `${acc}${response.response.data[key]}\n`,
+          "",
+        );
         Swal.fire({
           title: "Error!",
           text: error,

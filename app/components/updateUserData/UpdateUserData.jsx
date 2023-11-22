@@ -3,10 +3,9 @@ import "./UpdateUserData.scss";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import { Box, FormControl, FormLabel, Typography } from "@mui/material";
-import { putUserInfo } from "@/app/services/user";
 import Modal from "../../common/Modal/Modal";
 
-const UpdateUserData = ({ user }) => {
+const UpdateUserData = ({ user, updateData }) => {
   const [userUpdated, setUserUpdated] = useState(user);
   const [formUpdateUser, setFormUpdateUser] = useState({
     firstName: "",
@@ -51,7 +50,7 @@ const UpdateUserData = ({ user }) => {
       userUpdated.address[key] = formUpdateUserAddress[key];
     }
     setUserUpdated(userUpdated);
-    putUserInfo(userUpdated);
+    updateData(userUpdated)
   };
 
   return (
@@ -83,7 +82,7 @@ const UpdateUserData = ({ user }) => {
                 <TextField
                   value={formUpdateUser.lastName}
                   name="lastName"
-                  onChnage={handleUpdateFormBasicData}
+                  onChange={handleUpdateFormBasicData}
                   placeholder={user.lastName}
                 ></TextField>
               </Box>

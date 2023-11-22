@@ -34,8 +34,8 @@ const UserHistory = () => {
         return (
           <>
             <tr key={idx} className="row_results">
-              <td style={{ textAlign: "start" , padding: "10px 10px 10px 0px"}}>
-                <span style={{marginRight: "30px"}}>{row.quantity}</span>
+              <td style={{ textAlign: "start", padding: "10px 10px 10px 0px" }}>
+                <span style={{ marginRight: "30px" }}>{row.quantity}</span>
                 <span>{row.productName}</span>
               </td>
               <td>

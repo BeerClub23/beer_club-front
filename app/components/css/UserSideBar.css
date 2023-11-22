@@ -3,7 +3,7 @@
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  background-color: #FFFFFF !important;
+  background-color: #ffffff !important;
   color: black;
 }
 
@@ -21,7 +21,7 @@
 #menu_drawer {
   margin: 10px;
   color: black;
-  background-color: #F5E1C1;
+  background-color: #f5e1c1;
   border-radius: 50%;
   padding: 10px;
   position: absolute;
@@ -46,11 +46,11 @@
 }
 
 .active_nav_user {
-  background-color: #F5E1C1;
+  background-color: #f5e1c1;
 }
 
 #nav_user li:hover {
-  background-color: #F5E1C1;
+  background-color: #f5e1c1;
 }
 
 #nav_user li div {
@@ -61,4 +61,4 @@
 #nav_user li div span {
   color: black !important;
   font-weight: bold !important;
-}/*# sourceMappingURL=UserSideBar.css.map */
+} /*# sourceMappingURL=UserSideBar.css.map */

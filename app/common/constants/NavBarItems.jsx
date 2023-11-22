@@ -5,7 +5,6 @@ export const homeItems = [
   { name: "Login", route: "/login" },
 ];
 
-export const memberItems = [
-    // { name: "Recomendaciones", route: "/user/recomendaciones" },
-    { name: "Me", route: "/user/account" },
-  ];
+export const memberItems = [{ name: "Me", route: "/user/account" }];
+
+export const adminItems = [{ name: "Me", route: "/admin" }];

@@ -1,7 +1,3 @@
-import useSWR from "swr";
-
-const get = (url) => fetch(url).then((r) => r.json());
-
 export const aboutSteps = [
   {
     icon: "LoyaltyIcon",

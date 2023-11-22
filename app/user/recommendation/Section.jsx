@@ -1,65 +1,86 @@
 "use client";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./RecommendationSection.scss";
 import { Typography, Box, Container } from "@mui/material";
-import { useGetRecommendation } from "../../services/recommendation";
 import { useGetTopProducts } from "../../services/topProducts";
+import { useUserBeerContext } from "@/app/context/user";
 import { useGetPersonalTopProducts } from "../../services/personalTopProducts";
-import ImageGallery from "../../components/imageGallery/ImageGallery";
+import ImagesGallery from "../../components/imagesGallery/ImagesGallery";
+import RateReadOnlyCard from "../../components/rateReadOnlyCard/RateReadOnlyCard";
 import ArrowRightIcon from "@mui/icons-material/ArrowRight";
 import Carousel from "react-material-ui-carousel";
 import TopProductsCard from "../../components/topProductsCard/TopProductsCard";
 import RateCard from "../../components/rateCard/RateCard";
+import Cookies from "js-cookie";
+import { getRecommendationBySubscriptionIdAndDate } from "../../services/recommendation";
+import Rating from "@mui/material/Rating";
 
 const RecommendationSection = ({ id }) => {
-  const { recommendation, isLoading, isError } = useGetRecommendation(id);
+  const token = Cookies.get("jwt");
+  const { user } = useUserBeerContext();
+  const [recommendation, setRecommendation] = useState();
+  const [recommendationsSplit, setRecommendationsSplit] = useState([]);
+
+
+  useEffect(() => {
+    if (user && user.subscriptionId && !recommendation) {
+      const getCurrentRecommendation = async () =>
+        await getRecommendationBySubscriptionIdAndDate(
+          user.subscription.id,
+          token,
+        );
+      getCurrentRecommendation().then((response) =>
+        setRecommendation(response),
+      );      
+    } 
+    if (recommendation) {
+      if (recommendation.description) {
+
+        setRecommendationsSplit(recommendation.description.match(/[^\.]+(\.|\b)/g));
+      }
+
+      function isImageURLPresent(imagesArray, imageUrl) {
+        return imagesArray.some((image) => image.url === imageUrl);
+      }
+      if (recommendation.product && recommendation.image_url) {
+        recommendation.product.image_url = recommendation.product.image_url || [];
+
+        if (
+          !isImageURLPresent(
+            recommendation.product.image_url,
+            recommendation.image_url,
+          )
+        ) {
+          recommendation.product.image_url.push({
+            url: recommendation.image_url,
+            rows: 2,
+            cols: 2,
+          });
+        }
+      }
+    }
+  }, [user, recommendation, token]);
+
   const { topProducts, isLoadingTop, isErrorTop } = useGetTopProducts();
   const { personalTopProducts, isLoadingPersonalTop, isErrorPersonalTop } =
     useGetPersonalTopProducts(id);
-
-  const recommendationsSplit =
-    recommendation.description.match(/[^\.]+(\.|\b)/g);
-
-  function isImageURLPresent(imagesArray, imageUrl) {
-    return imagesArray.some((image) => image.url === imageUrl);
-  }
-  if (recommendation.product && recommendation.image_url) {
-    recommendation.product.image_url = recommendation.product.image_url || [];
-
-    if (
-      !isImageURLPresent(
-        recommendation.product.image_url,
-        recommendation.image_url,
-      )
-    ) {
-      recommendation.product.image_url.push({
-        url: recommendation.image_url,
-        rows: 2,
-        cols: 2,
-      });
-    }
-  }
-
   return (
     <>
-      <Typography
-        sx={{ marginTop: "50px", color: "white" }}
-        variant="h3"
-        className="recommSectionTitle"
-      >
-        ¡Bienvenido!
-      </Typography>
+      { recommendation ?
       <section className="recommendationSection">
-        {/* <Container className="recommContainer"> */}
         <article className="recommArticle">
           <Box className="topContainer">
             <Box className="imagesGrid">
-              <ImageGallery
+              <ImagesGallery
                 images={recommendation.product.image_url.slice(0, 6)}
-              ></ImageGallery>
+              ></ImagesGallery>
             </Box>
-            <Box>
-              <Box className="titleContainer">
+
+            <Box className="titleContainer">
+              <Box className="recommRate">
+                <RateReadOnlyCard rate={recommendation.product.productScore * 0.5} />
+              </Box>
+              <Box>
                 <Typography variant="h3" className="recommTitle">
                   {" "}
                   Producto{" "}
@@ -76,7 +97,7 @@ const RecommendationSection = ({ id }) => {
           <Box className="recommTextContainer">
             <Typography
               className="recommText"
-              sx={{ fontSize: "24px", padding: "30px" }}
+              sx={{ fontSize: "24px", padding: "30px 0px" }}
             >
               Recomendaciones del sommelier:
             </Typography>
@@ -89,8 +110,8 @@ const RecommendationSection = ({ id }) => {
           </Box>
           <RateCard />
         </article>
-        {/* </Container> */}
-        <aside className="recommAside">
+
+        <aside className="recommAside" >
           <Typography className="recommAsideTitle">Los más votados</Typography>
           <Carousel
             autoPlay={true}
@@ -124,9 +145,8 @@ const RecommendationSection = ({ id }) => {
             ))}
           </Carousel>
         </aside>
-
-        {/* </Container> */}
-      </section>
+      </section> : <></>
+      }
     </>
   );
 };

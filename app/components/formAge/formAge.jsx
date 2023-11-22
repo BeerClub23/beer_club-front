@@ -152,6 +152,6 @@ export default function FormAge({ saveAge }) {
       </FormControl>
     </form>
   );
-};
+}
 
 // export default FormAge;

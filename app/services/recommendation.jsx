@@ -1,6 +1,18 @@
-import useSWR from "swr";
+const MONTHS = [
+  "01",
+  "02",
+  "03",
+  "04",
+  "05",
+  "06",
+  "07",
+  "08",
+  "09",
+  "10",
+  "11",
+  "12",
+];
 
-const get = (url) => fetch(url).then((r) => r.json());
 
 const recommendation = {
   id: 0,
@@ -45,27 +57,36 @@ const recommendation = {
         // height: 212,
       },
     ],
+    productScore:5
   },
   subscription_id: 0,
   image_url:
   "https://images.unsplash.com/photo-1605001677958-88a2ae045e26?q=80&w=1558&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
 };
 
-export const useGetRecommendation = (id) => {
-  const { data, error, isLoading } = useSWR(
-    `${process.env.NEXT_PUBLIC_API_URL}recommendations/${id}`,
-    get,
-    {
-      fallbackData: recommendation,
-      shouldRetryOnError: false,
-      revalidateOnFocus: false,
-      errorRetryCount: 1,
-    },
-  );
 
-  return {
-    recommendation: data,
-    isLoading,
-    isError: error,
-  };
-};
+export const getRecommendationBySubscriptionIdAndDate = async (
+  subscriptionId,
+  token,
+) => {
+  const currentDate = new Date();
+  return new Promise((resolve) => {
+    const axios = require("axios");
+    axios({
+      method: "GET",
+      url: `${
+        process.env.NEXT_PUBLIC_API_URL
+      }recommendations/${subscriptionId}/${currentDate.getDate()}-${
+        MONTHS[currentDate.getMonth()]
+      }-${currentDate.getFullYear()}`,
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + token,
+      },
+    })
+      .then((response) => resolve(recommendation))
+      .catch((error) => resolve(recommendation));
+  });
+}
+

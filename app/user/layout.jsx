@@ -1,6 +1,6 @@
 "use client";
 import "@/app/globals.scss";
-import React, {  useEffect } from "react";
+import React, { useEffect } from "react";
 import Footer from "@/app/components/footer/Footer";
 import HeaderPublic from "@/app/components/headerPublic/headerPublic";
 import { getUserInfo } from "@/app/services/user";
@@ -12,10 +12,13 @@ import { useUserBeerContext } from "@/app/context/user";
 import { jwtDecode } from "jwt-decode";
 import { usePathname } from "next/navigation";
 import { memberItems } from "../common/constants/NavBarItems";
+import { useGetSubscriptions } from "../services/subscriptions";
 
 const UserLayout = ({ children }) => {
   const pathname = usePathname();
   const { user, setUser } = useUserBeerContext();
+  const { subscriptions, isLoading, isError } = useGetSubscriptions();
+
   const token = Cookies.get("jwt");
   const decodeToken = token ? jwtDecode(token.toString()) : null;
 
@@ -23,10 +26,14 @@ const UserLayout = ({ children }) => {
     const userInfo = async () => {
       return decodeToken ? await getUserInfo(decodeToken.email, token) : {};
     };
-    userInfo().then((response) => {
-      setUser(response);
-    });
-  }, []);
+    if (subscriptions) {
+      userInfo().then((response) => {
+        const currentSubscription = subscriptions.find((subscription) => subscription.id === response.subscriptionId);
+        setUser({...response, subscription: currentSubscription});
+      });
+    }
+
+  }, [subscriptions]);
 
   return (
     <div
@@ -36,9 +43,7 @@ const UserLayout = ({ children }) => {
         justifyContent: "space-between",
       }}
     >
-      {!pathname.includes("account/subscription") && (
-        <HeaderPublic items={user ? memberItems : []} />
-      )}
+      <HeaderPublic items={user ? memberItems : []} />
       {!pathname.includes("account") ? (
         <> {children} </>
       ) : (

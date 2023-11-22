@@ -26,17 +26,13 @@ export const metadata = {
 };
 
 export default function RootLayout({ children }) {
-
   return (
     <html lang="es" className={`${roboto.className} ${poppins.className}`}>
       {/* <ThemeProvider theme={theme}> */}
       <body>
         <UserBeerContext>
-          <AppContext>
-            {children}
-          </AppContext>
+          <AppContext>{children}</AppContext>
         </UserBeerContext>
-        
       </body>
       {/* </ThemeProvider> */}
     </html>
