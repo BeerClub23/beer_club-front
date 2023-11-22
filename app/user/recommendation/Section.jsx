@@ -1,11 +1,17 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import "./RecommendationSection.scss";
+<<<<<<< HEAD
 import { Typography, Box, Container } from "@mui/material";
+=======
+import { Typography, Box } from "@mui/material";
+import { useGetRecommendation } from "../../services/recommendation";
+>>>>>>> origin/feature/BCA-216
 import { useGetTopProducts } from "../../services/topProducts";
 import { useUserBeerContext } from "@/app/context/user";
 import { useGetPersonalTopProducts } from "../../services/personalTopProducts";
 import ImagesGallery from "../../components/imagesGallery/ImagesGallery";
+import RateReadOnlyCard from "../../components/rateReadOnlyCard/RateReadOnlyCard";
 import ArrowRightIcon from "@mui/icons-material/ArrowRight";
 import Carousel from "react-material-ui-carousel";
 import TopProductsCard from "../../components/topProductsCard/TopProductsCard";
@@ -33,7 +39,6 @@ const RecommendationSection = ({ id }) => {
       );      
     } 
     if (recommendation) {
-      console.log(recommendation)
       if (recommendation.description) {
 
         setRecommendationsSplit(recommendation.description.match(/[^\.]+(\.|\b)/g));
@@ -78,13 +83,7 @@ const RecommendationSection = ({ id }) => {
 
             <Box className="titleContainer">
               <Box className="recommRate">
-                <Rating
-                  sx={{ color: "#ceb5a7" }}
-                  name="half-rating-read"
-                  defaultValue={recommendation.product.rating * 0.5}
-                  precision={0.5}
-                  readOnly
-                />
+                <RateReadOnlyCard rate={recommendation.product.rating * 0.5} />
               </Box>
               <Box>
                 <Typography variant="h3" className="recommTitle">
@@ -97,7 +96,6 @@ const RecommendationSection = ({ id }) => {
                 <Typography variant="h5" className="recommSubtitle">
                   {recommendation.title}
                 </Typography>
-
               </Box>
             </Box>
           </Box>
