@@ -22,7 +22,7 @@ const RecommendationSection = ({ id }) => {
 
 
   useEffect(() => {
-    if (user && user.subscription && !recommendation) {
+    if (user && user.subscriptionId && !recommendation) {
       const getCurrentRecommendation = async () =>
         await getRecommendationBySubscriptionIdAndDate(
           user.subscription.id,
@@ -33,6 +33,7 @@ const RecommendationSection = ({ id }) => {
       );      
     } 
     if (recommendation) {
+      console.log(recommendation)
       if (recommendation.description) {
 
         setRecommendationsSplit(recommendation.description.match(/[^\.]+(\.|\b)/g));
@@ -65,13 +66,6 @@ const RecommendationSection = ({ id }) => {
     useGetPersonalTopProducts(id);
   return (
     <>
-      {/* <Typography
-        sx={{ marginTop: "50px", color: "white" }}
-        variant="h3"
-        className="recommSectionTitle"
-      >
-        ¡Bienvenido!
-      </Typography> */}
       { recommendation ?
       <section className="recommendationSection">
         <article className="recommArticle">

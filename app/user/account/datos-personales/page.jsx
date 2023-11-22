@@ -12,7 +12,6 @@ const DatosPersonales = () => {
 
   const updateUserInfo = async (userData) => {
     const response = await updateUserPersonalData(userData, user.id, token);
-    console.log(response);
     setUser(response)
   };
 
