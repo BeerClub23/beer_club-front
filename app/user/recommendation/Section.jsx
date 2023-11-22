@@ -11,7 +11,6 @@ import ArrowRightIcon from "@mui/icons-material/ArrowRight";
 import Carousel from "react-material-ui-carousel";
 import TopProductsCard from "../../components/topProductsCard/TopProductsCard";
 import RateCard from "../../components/rateCard/RateCard";
-import Rating from "@mui/material/Rating";
 
 const RecommendationSection = ({ id }) => {
   const { recommendation, isLoading, isError } = useGetRecommendation(id);
@@ -62,7 +61,7 @@ const RecommendationSection = ({ id }) => {
 
             <Box className="titleContainer">
               <Box className="recommRate">
-                <RateReadOnlyCard rate = {recommendation.product.rating * 0.5}/>
+                <RateReadOnlyCard rate={recommendation.product.rating * 0.5} />
               </Box>
               <Box>
                 <Typography variant="h3" className="recommTitle">
