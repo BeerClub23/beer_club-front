@@ -198,7 +198,8 @@ const RecomendacionesPage = () => {
         color: "black",
       }}
     >
-      <h2>Recomendaciones del mes</h2>
+      {/**TODO check if this is necessary*/}
+{/*       <h2>Recomendaciones del mes</h2>
       <Box
         margin={"auto"}
         width={1000}
@@ -215,7 +216,7 @@ const RecomendacionesPage = () => {
             subscriptionId={r.subscription_id}
           />
         ))}
-      </Box>
+      </Box> */}
       <Box>
         <Box mb={5} display={"flex"}>
           <Chip
