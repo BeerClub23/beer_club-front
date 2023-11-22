@@ -104,7 +104,8 @@ const RecomendacionesPage = () => {
         confirmButtonColor: "#ceb5a7",
         focusConfirm: false,
       });
-      /*     //const response = await SaveSubscription(JSON.stringify(dataWithoutId));
+      /*     
+      const response = recommendationPostMethod
 
       //if (response.status === 201) {
         Swal.fire({
@@ -151,12 +152,13 @@ const RecomendacionesPage = () => {
         confirmButtonColor: "#ceb5a7",
         focusConfirm: false,
       });
-      /*     //const response = await SaveSubscription(JSON.stringify(dataWithoutId));
+      /*  
+      //const response = put recommendation method
 
       //if (response.status === 201) {
         Swal.fire({
-          title: "Recomendación creada",
-          text: "Nueva recomendación creada exitosamente",
+          title: "Recomendación actualizad",
+          text: "Nueva recomendación actualizada exitosamente",
           icon: "success",
           confirmButtonText: "Continuar",
           confirmButtonColor: "#ceb5a7",
@@ -183,7 +185,7 @@ const RecomendacionesPage = () => {
         });
       } */
     } catch (error) {
-      console.error("Error creating recomendation:", error);
+      console.error("Error editing recomendation:", error);
     }
   };
 
