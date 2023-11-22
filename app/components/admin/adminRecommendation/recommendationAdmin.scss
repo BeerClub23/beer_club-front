@@ -1,0 +1,40 @@
+@import "../../../globals.scss";
+.form-container-r{
+  width: 90%;
+  margin-top: 10px;
+}
+//Input upload styles
+.image-name-box{
+background-color: rgba(201, 201, 201, 0.269);
+margin-left: 10px;
+height:40px ;
+}
+.upload-button{
+  background-color: black;
+    color: white;
+    border: none;
+  
+    &:hover {
+      background-color: $primary;
+      border: none;
+    }
+}
+
+//Form buttons
+.cancel-btn {
+  font-weight: 600;
+  border: none;
+  color: darkgray;
+
+  &:hover {
+    color: black;
+    background-color: rgba(0, 0, 0, 0.123);
+  }
+}
+.btn-container{
+  display: flex;
+  width: 50%;
+    margin: auto;
+    align-items: center;
+    justify-content: space-evenly;
+}
