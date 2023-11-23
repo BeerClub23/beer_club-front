@@ -32,7 +32,9 @@ const FileUploadItem = ({ file, onDelete }) => (
       alignItems: "center",
     }}
   >
-    <Typography variant="body1">{file.name}</Typography>
+    <Typography variant="body1">
+      {file.name > 30 ? `${file.name.substring(0, 30)}...` : file.name}
+    </Typography>
     {file.loading ? (
       <CircularProgress size={20} sx={{ marginLeft: 1 }} />
     ) : (
@@ -97,7 +99,7 @@ const InputFileUpload = ({ onFileChange, onCancel }) => {
         startIcon={<CloudUploadIcon />}
       >
         Subir imagen
-        <VisuallyHiddenInput type="file" onChange={handleFileChange} />
+        <VisuallyHiddenInput type="file" accept="image/" onChange={handleFileChange} />
       </Button>
       {files.map((file) => (
         <FileUploadItem

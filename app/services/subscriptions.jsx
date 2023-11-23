@@ -1,4 +1,5 @@
 import useSWR from "swr";
+import Cookies from "js-cookie";
 
 const get = (url) => fetch(url).then((r) => r.json());
 
@@ -68,6 +69,7 @@ export const useGetSubscriptions = () => {
 
 // CRUD METHODS
 export const SaveSubscription = async (store) => {
+  const token = Cookies.get("jwt");
   return new Promise((resolve) => {
     const axios = require("axios");
     axios({
@@ -76,6 +78,7 @@ export const SaveSubscription = async (store) => {
       headers: {
         Accept: "application/json",
         "Content-Type": "application/json",
+        Authorization: "Bearer " + token,
       },
       data: store,
     })
@@ -85,6 +88,7 @@ export const SaveSubscription = async (store) => {
 };
 
 export const UpdateSubscription = async (store, id) => {
+  const token = Cookies.get("jwt");
   return new Promise((resolve) => {
     const axios = require("axios");
     axios({
@@ -93,6 +97,7 @@ export const UpdateSubscription = async (store, id) => {
       headers: {
         Accept: "application/json",
         "Content-Type": "application/json",
+        Authorization: "Bearer " + token,
       },
       data: store,
     })
@@ -100,7 +105,7 @@ export const UpdateSubscription = async (store, id) => {
       .catch((error) => resolve(error));
   });
 };
-// url: `${process.env.NEXT_PUBLIC_API_URL}`,
+
 export const getAllSubscriptions = async () => {
   return new Promise((resolve) => {
     const axios = require("axios");

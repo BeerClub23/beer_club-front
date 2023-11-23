@@ -93,7 +93,7 @@ const CreateRecommendationForm = ({ onClose, onCreate }) => {
         size: file.size,
         lastModified: file.lastModified,
         lastModifiedDate: file.lastModifiedDate,
-      }))
+      })),
     );
 
     setFormData((prevData) => ({
@@ -278,7 +278,11 @@ const CreateRecommendationForm = ({ onClose, onCreate }) => {
                       backgroundColor: "lightgray",
                     }}
                   >
-                    <Typography variant="body1">{image.name}</Typography>
+                    <Typography variant="body1">
+                      {image.name > 30
+                        ? `${image.name.substring(0, 30)}...`
+                        : image.name}
+                    </Typography>
                     <IconButton
                       component="span"
                       onClick={() => handleRemoveImage(index)}

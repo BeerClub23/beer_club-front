@@ -1,12 +1,12 @@
 "use client";
-import "@/app/globals.scss";
+import "../globals.scss";
 import React, { useEffect } from "react";
-import HeaderPublic from "@/app/components/headerPublic/headerPublic";
-import { getUserInfo } from "@/app/services/user";
+import HeaderPublic from "../components/headerPublic/headerPublic";
+import { getUserInfo } from "../services/user";
 import Cookies from "js-cookie";
-import UserSideBarAdmin from "@/app/admin/userSideBarAdmin/UserSideBarAdmin";
+import UserSideBarAdmin from "./userSideBarAdmin/UserSideBarAdmin";
 import { Box } from "@mui/material";
-import { useUserBeerContext } from "@/app/context/user";
+import { useUserBeerContext } from "../context/user";
 import { jwtDecode } from "jwt-decode";
 import { adminItems } from "../common/constants/NavBarItems";
 

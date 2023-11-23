@@ -263,7 +263,12 @@ const RecommendationTable = ({ data, onSave }) => {
                     </TableCell>
 
                     <TableCell align="right">{row.title}</TableCell>
-                    <TableCell align="right">{row.description}</TableCell>
+                    <TableCell align="right">
+                      {" "}
+                      {row.description.length > 50
+                        ? `${row.description.substring(0, 50)}...`
+                        : row.description}
+                    </TableCell>
                     <TableCell align="right">{row.createDate}</TableCell>
                     <TableCell align="right">{row.product.name}</TableCell>
                     <TableCell align="right">

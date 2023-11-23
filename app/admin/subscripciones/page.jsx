@@ -31,7 +31,6 @@ const SubscripcionesPage = () => {
   return (
     <Box
       sx={{
-        mt: 10,
         backgroundColor: "white",
         padding: "30px",
         borderRadius: "20px",

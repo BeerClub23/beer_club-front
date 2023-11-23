@@ -8,6 +8,7 @@
 background-color: rgba(201, 201, 201, 0.269);
 margin-left: 10px;
 height:40px ;
+width: 300px;
 }
 .upload-button{
   background-color: black;
@@ -42,4 +43,21 @@ height:40px ;
 //modal
 .modal-form-container{
   min-width: 300px;
+}
+
+//input styles
+.MuiInputBase-root:hover,
+.MuiInputBase-root.Mui-focused {
+  border-color: $primary;
+}
+
+
+/* Change the label color on focus */
+.MuiInputLabel-root.Mui-focused {
+  color: $primary;
+}
+
+.MuiInputBase-root:hover .MuiOutlinedInput-notchedOutline,
+.MuiInputBase-root.Mui-focused .MuiOutlinedInput-notchedOutline {
+  border-color: $primary;
 }
