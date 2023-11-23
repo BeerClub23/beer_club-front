@@ -13,7 +13,6 @@ import TopProductsCard from "../../components/topProductsCard/TopProductsCard";
 import RateCard from "../../components/rateCard/RateCard";
 import Cookies from "js-cookie";
 import { getRecommendationBySubscriptionIdAndDate } from "../../services/recommendation";
-import Rating from "@mui/material/Rating";
 
 const RecommendationSection = ({ id }) => {
   const token = Cookies.get("jwt");

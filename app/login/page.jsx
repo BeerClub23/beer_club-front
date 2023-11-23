@@ -1,5 +1,5 @@
 "use client";
-import * as React from "react";
+import React, { useEffect } from "react";
 import { ThemeProvider } from "@mui/material";
 import Image from "next/image";
 import Logo from "public/images/logo/Logo_sin_escudo_Color_Original.svg";
@@ -21,12 +21,14 @@ export default function LoginPage() {
     defaultValues: {},
   });
 
-  React.useEffect(() => {
-    Cookies.remove("jwt");
+  useEffect(() => {
     AOS.init({
       duration: 900,
     });
+    Cookies.remove("jwt");
   }, []);
+
+
   return (
     <main className="mainLogin">
       <HeaderPublic items={homeItems} />
