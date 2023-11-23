@@ -20,7 +20,6 @@ import { ThemeProvider } from "@mui/material";
 import "./recommendationAdmin.scss";
 
 const EditRecommendationForm = ({ initialData, onClose, onSave }) => {
-  console.log(initialData);
   const [formData, setFormData] = useState(initialData || {});
   const { subscriptions, isLoading, isError } = useGetSubscriptions();
   const [isEditing, setIsEditing] = useState(false);
@@ -114,25 +113,19 @@ const EditRecommendationForm = ({ initialData, onClose, onSave }) => {
 
   const handleSubmit = async (event, formData) => {
     try {
-      event.preventDefault(); // Prevent default form submission behavior
-
-      // Check if editingRowData is defined
+      event.preventDefault();
       if (formData) {
-        // Perform the update logic with editingRowData.id
         await onSave(formData, formData.id);
       } else {
-        // Perform the create logic if editingRowData is not defined
         await onSave(formData);
       }
       onClose();
     } catch (error) {
       console.error("Error in handleSubmit:", error);
-      // Handle the error as needed
     }
   };
 
   const handleCancel = () => {
-    console.log("Cancel button clicked");
     onClose();
   };
 
@@ -239,7 +232,6 @@ const EditRecommendationForm = ({ initialData, onClose, onSave }) => {
               onChange={(e) => handleProductChange(e)}
             />
           </Grid>
-          {/* Product Image Upload */}
           {/* Product Image Upload */}
           <Grid item xs={12}>
             <label>Subir nuevas imágenes:</label>

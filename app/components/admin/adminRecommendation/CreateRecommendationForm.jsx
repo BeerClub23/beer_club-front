@@ -159,7 +159,6 @@ const CreateRecommendationForm = ({ onClose, onCreate }) => {
   };
 
   const handleCancel = () => {
-    console.log("Cancel button clicked");
     setFormData((prevData) => ({
       ...prevData,
       image_url: null,
