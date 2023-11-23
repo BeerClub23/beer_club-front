@@ -145,6 +145,8 @@ const EditRecommendationForm = ({ initialData, onClose, onSave }) => {
               label="Descripción"
               fullWidth
               name="description"
+              multiline
+              maxRows={4}
               value={formData.description}
               onChange={handleChange}
             />
@@ -230,6 +232,8 @@ const EditRecommendationForm = ({ initialData, onClose, onSave }) => {
               label="Descripción producto"
               fullWidth
               name="description"
+              multiline
+              maxRows={4}
               value={formData.product?.description || ""}
               onChange={(e) => handleProductChange(e)}
             />

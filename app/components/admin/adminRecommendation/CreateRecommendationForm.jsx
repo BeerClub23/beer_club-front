@@ -36,6 +36,7 @@ const initialState = {
   product: {
     name: "",
     description: "",
+    productScore: 0,
     image_url: [],
   },
   subscription_id: "",
@@ -186,6 +187,8 @@ const CreateRecommendationForm = ({ onClose, onCreate }) => {
               label="Descripción"
               fullWidth
               name="description"
+              multiline
+              maxRows={4}
               value={formData.description}
               onChange={handleChange}
             />
@@ -237,6 +240,8 @@ const CreateRecommendationForm = ({ onClose, onCreate }) => {
               label="Descripción producto"
               fullWidth
               name="description"
+              multiline
+              maxRows={4}
               value={formData.product.description}
               onChange={(e) => handleProductChange(e)}
             />
@@ -279,7 +284,7 @@ const CreateRecommendationForm = ({ onClose, onCreate }) => {
                     }}
                   >
                     <Typography variant="body1">
-                      {image.name > 30
+                      {image.name.length > 30
                         ? `${image.name.substring(0, 30)}...`
                         : image.name}
                     </Typography>

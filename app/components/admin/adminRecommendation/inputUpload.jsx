@@ -33,7 +33,7 @@ const FileUploadItem = ({ file, onDelete }) => (
     }}
   >
     <Typography variant="body1">
-      {file.name > 30 ? `${file.name.substring(0, 30)}...` : file.name}
+      {file.name.length > 25 ? `${file.name.substring(0, )}...` : file.name}
     </Typography>
     {file.loading ? (
       <CircularProgress size={20} sx={{ marginLeft: 1 }} />
@@ -92,15 +92,17 @@ const InputFileUpload = ({ onFileChange, onCancel }) => {
 
   return (
     <Box display="flex" alignItems="center">
-      <Button
-        className="upload-button"
-        component="label"
-        variant="contained"
-        startIcon={<CloudUploadIcon />}
-      >
-        Subir imagen
-        <VisuallyHiddenInput type="file" accept="image/" onChange={handleFileChange} />
-      </Button>
+      {files.length === 0 && ( // Only show the file input if no files are uploaded
+        <Button
+          className="upload-button"
+          component="label"
+          variant="contained"
+          startIcon={<CloudUploadIcon />}
+        >
+          Subir imagen
+          <VisuallyHiddenInput type="file" accept="image/" onChange={handleFileChange} />
+        </Button>
+      )}
       {files.map((file) => (
         <FileUploadItem
           key={file.name}
