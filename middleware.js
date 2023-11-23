@@ -10,29 +10,33 @@ export async function middleware(request) {
   if (isAuthorized) {
     const token = request.cookies.get("jwt");
     const decodeToken = jwtDecode(token.value.toString());
+    const isExpired = new Date().getTime() > decodeToken.exp * 1000;
 
-    // console.log(decodeToken)
-    // console.log(token.value)
-    if (
-      (new Date().getTime() > decodeToken.exp * 1000) &
-      !request.nextUrl.pathname.includes("login")
-    ) {
+    console.log(decodeToken);
+    console.log(token.value);
+    console.log(token);
+    console.log(new Date().getTime() > decodeToken.exp * 1000);
+    console.log(!request.nextUrl.pathname.includes("login"));
+    console.log("----------");
+
+    if (isExpired & !request.nextUrl.pathname.includes("login")) {
       url = request.nextUrl.clone();
       url.pathname = "/login";
       return NextResponse.redirect(url);
     }
     if (
-      !request.nextUrl.pathname.includes("user") &&
-      decodeToken.role == "ROLE_USER"
+      !isExpired &
+      !request.nextUrl.pathname.includes("user") &
+      (decodeToken.role == "ROLE_USER")
     ) {
       url = request.nextUrl.clone();
       url.pathname = "/user";
       return NextResponse.redirect(url);
     }
-    // cuando pongo en la url user me deja entrar aunque tenga role admin.
     if (
-      !request.nextUrl.pathname.includes("admin") &&
-      decodeToken.role == "ROLE_ADMIN"
+      !isExpired &
+      !request.nextUrl.pathname.includes("admin") &
+      (decodeToken.role == "ROLE_ADMIN")
     ) {
       url = request.nextUrl.clone();
       url.pathname = "/admin";
