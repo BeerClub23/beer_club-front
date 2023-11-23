@@ -6,7 +6,6 @@ const RecommendationModal = ({
   isModalOpen,
   onSave,
 }) => {
-  console.log("onSave in RecommendationModal: ", onSave);
   const handleSave = (formData) => {
     // Call the onSave function passed from props
     onSave(formData, editingRowData?.id);

@@ -5,6 +5,7 @@ import RecommendationTable from "../../components/admin/adminRecommendation/Reco
 import CreateRecommendationForm from "../../components/admin/adminRecommendation/CreateRecommendationForm";
 import { useState } from "react";
 import Swal from "sweetalert2";
+import "./recommendation.scss";
 
 //Delete when the real data is available
 const dataDummy = [
@@ -220,12 +221,14 @@ const RecomendacionesPage = () => {
         ))}
       </Box> */}
       <Box>
-        <Box mb={5} display={"flex"}>
+        <Box className="display-container-btn" mb={5}>
           <Chip
+            className={`chip-element ${showModal ? "chip-active" : ""}`}
             onClick={handleCreateRecommendation}
             label={"Crear recomendación"}
           ></Chip>
           <Chip
+            className={`chip-element ${!showModal ? "chip-active" : ""}`}
             onClick={handleShowRecommendation}
             label={"Ver recomendaciones"}
           ></Chip>

@@ -93,7 +93,7 @@ const CreateRecommendationForm = ({ onClose, onCreate }) => {
         size: file.size,
         lastModified: file.lastModified,
         lastModifiedDate: file.lastModifiedDate,
-      })),
+      }))
     );
 
     setFormData((prevData) => ({
@@ -132,15 +132,29 @@ const CreateRecommendationForm = ({ onClose, onCreate }) => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    //console.log("Form submitted with data:", formData);
-    onCreate(formData);
-    // Reset the recommendation image
+
+    const imageUrls = formData.product.image_url.map((image) => ({
+      url: image.name,
+    }));
+
+    const formDataToSend = {
+      ...formData,
+      product: {
+        ...formData.product,
+        image_url: imageUrls,
+      },
+    };
+
+    onCreate(formDataToSend);
+
     setFormData((prevData) => ({
       ...prevData,
       image_url: null,
     }));
 
+    // Reset the form to its initial state
     setFormData(initialState);
+
     onClose();
   };
 

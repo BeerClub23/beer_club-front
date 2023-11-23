@@ -160,9 +160,9 @@ const EnhancedTableToolbar = ({ onSearch, onAdd, onFilterChange }) => {
           displayEmpty
           inputProps={{ "aria-label": "Without label" }}
         >
-          <MenuItem value="">All</MenuItem>
-          <MenuItem value="true">Active</MenuItem>
-          <MenuItem value="false">Inactive</MenuItem>
+          <MenuItem value="">Todos</MenuItem>
+          <MenuItem value="true">Activo</MenuItem>
+          <MenuItem value="false">Inactivo</MenuItem>
         </Select>
       </Box>
       {!showSearch ? (
@@ -260,7 +260,7 @@ const SubscriptionTable = (props) => {
       } else if (response.status !== 200) {
         const error = Object.keys(response.response.data).reduce(
           (acc, key) => `${acc}${response.response.data[key]}\n`,
-          ""
+          "",
         );
         Swal.fire({
           title: "Error!",
@@ -298,12 +298,12 @@ const SubscriptionTable = (props) => {
         focusConfirm: false,
       });
       setSubscriptions((prevSubscriptions) =>
-        prevSubscriptions.map((s) => (s.id === id ? editedData : s))
+        prevSubscriptions.map((s) => (s.id === id ? editedData : s)),
       );
     } else if (response.status !== 200) {
       const error = Object.keys(response.response.data).reduce(
         (acc, key) => `${acc}${response.response.data[key]}\n`,
-        ""
+        "",
       );
       Swal.fire({
         title: "Error!",
@@ -343,7 +343,7 @@ const SubscriptionTable = (props) => {
         // Update local state directly
         setSubscriptions((prevSubscriptions) => {
           return prevSubscriptions.map((s) =>
-            s.id === row.id ? updatedRow : s
+            s.id === row.id ? updatedRow : s,
           );
         });
 
@@ -366,7 +366,7 @@ const SubscriptionTable = (props) => {
       if (response.status === 200) {
         setSubscriptions((prevSubscriptions) => {
           return prevSubscriptions.map((s) =>
-            s.id === row.id ? updatedRow : s
+            s.id === row.id ? updatedRow : s,
           );
         });
         console.log("Successful update");
@@ -398,9 +398,9 @@ const SubscriptionTable = (props) => {
     () =>
       stableSort(filteredRows, getComparator(order, orderBy)).slice(
         page * rowsPerPage,
-        page * rowsPerPage + rowsPerPage
+        page * rowsPerPage + rowsPerPage,
       ),
-    [filteredRows, order, orderBy, page, rowsPerPage]
+    [filteredRows, order, orderBy, page, rowsPerPage],
   );
   const emptyRows = useMemo(() => {
     // Calculate the number of empty rows based on the filtered data
