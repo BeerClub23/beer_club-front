@@ -8,12 +8,11 @@ import {
 import { useState, useEffect } from "react";
 
 const SubscripcionesPage = () => {
-  //const [subscriptions, setSubscriptions] = useState([]); //  use this when the back is update
-  const { subscriptions, isLoading, isError } = useGetSubscriptions();
+  const [subscriptions, setSubscriptions] = useState([]); //  use this when the back is update
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  /*   useEffect(() => {
+  useEffect(() => {
     const fetchData = async () => {
       try {
         const data = await getAllSubscriptions();
@@ -26,7 +25,7 @@ const SubscripcionesPage = () => {
     };
 
     fetchData();
-  }, []); */
+  }, []);
 
   return (
     <Box

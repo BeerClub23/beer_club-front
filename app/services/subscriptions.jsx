@@ -121,3 +121,21 @@ export const getAllSubscriptions = async () => {
       .catch((error) => resolve(error));
   });
 };
+
+export const recommendSubscription = async (id) => {
+  const token = Cookies.get("jwt");
+  return new Promise((resolve, reject) => {
+    const axios = require("axios");
+    axios({
+      method: "PATCH",
+      url: `${process.env.NEXT_PUBLIC_API_URL}subscriptions/isRecommended/${id}`,
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + token,
+      },
+    })
+      .then((response) => resolve(response.data))
+      .catch((error) => reject(error));
+  });
+};
