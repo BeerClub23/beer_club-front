@@ -121,7 +121,7 @@ const SubscriptionModal = ({ open, onClose, onSave, rowData }) => {
     <Dialog
       fullWidth
       maxWidth="sm"
-      minWidth={300}
+      className="modal-form-container"
       open={open}
       onClose={onClose}
     >

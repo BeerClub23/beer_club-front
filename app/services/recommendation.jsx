@@ -109,3 +109,60 @@ export const rateRecommendation = async (vote) => {
       .catch((error) => reject(error));
   });
 };
+
+// CRUD METHODS
+export const getAllRecommendations = async () => {
+  const token = Cookies.get("jwt");
+  return new Promise((resolve) => {
+    const axios = require("axios");
+    axios({
+      method: "GET",
+      url: `${process.env.NEXT_PUBLIC_API_URL}recommendations`,
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + token,
+      },
+    })
+      .then((response) => resolve(response.data))
+      .catch((error) => resolve(error));
+  });
+};
+
+export const SaveRecommendation = async (store) => {
+  const token = Cookies.get("jwt");
+  return new Promise((resolve) => {
+    const axios = require("axios");
+    axios({
+      method: "POST",
+      url: `${process.env.NEXT_PUBLIC_API_URL}recommendations`,
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + token,
+      },
+      data: store,
+    })
+      .then((response) => resolve(response))
+      .catch((error) => resolve(error));
+  });
+};
+
+export const UpdateRecommendation = async (store, id) => {
+  const token = Cookies.get("jwt");
+  return new Promise((resolve) => {
+    const axios = require("axios");
+    axios({
+      method: "PUT",
+      url: `${process.env.NEXT_PUBLIC_API_URL}recommendations/${id}`,
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + token,
+      },
+      data: store,
+    })
+      .then((response) => resolve(response))
+      .catch((error) => resolve(error));
+  });
+};
