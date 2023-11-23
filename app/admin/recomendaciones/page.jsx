@@ -42,7 +42,8 @@ const RecomendacionesPage = () => {
 
   // CRUD methods
   const handleCreate = async (formData) => {
-    try {
+    console.log("Data send: " + formData)
+     try {
       console.log(formData);
       const response = await SaveRecommendation(JSON.stringify(formData));
 
@@ -76,7 +77,7 @@ const RecomendacionesPage = () => {
       }
     } catch (error) {
       console.error("Error creating recommendation:", error);
-    }
+    } 
   };
 
   const handleSave = async (formData, id) => {
