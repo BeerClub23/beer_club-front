@@ -18,7 +18,6 @@ import CloseIcon from "@mui/icons-material/Close";
 import { theme } from "@/app/styles/materialThemeForm";
 import { ThemeProvider } from "@mui/material";
 import "./recommendationAdmin.scss";
-import * as yup from "yup";
 
 // SET THE CURRENT DATE FOR THE ELEMENT CREATION
 const getCurrentDate = () => {
@@ -37,6 +36,7 @@ const initialState = {
   product: {
     name: "",
     description: "",
+    productScore: 0,
     image_url: [],
   },
   subscription_id: "",
