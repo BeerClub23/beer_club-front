@@ -16,7 +16,6 @@ import "./UserSideBarAdmin.scss";
 import Link from "next/link";
 
 const UserSideBarAdmin = (props) => {
-  const { window } = props;
   const [mobile, setMobile] = useState(false);
   const [width, setWidth] = useState();
   const [show, setSHow] = useState(false);
