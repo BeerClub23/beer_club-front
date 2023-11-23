@@ -61,7 +61,7 @@ export const getUserHistory = async (token) => {
         Accept: "application/json",
         "Content-Type": "application/json",
         Authorization: "Bearer " + token,
-      }
+      },
     })
       .then((response) => resolve(response.data))
       .catch((error) => reject(error));

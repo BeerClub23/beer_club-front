@@ -15,7 +15,6 @@ const MONTHS = [
   "12",
 ];
 
-
 const recommendation = {
   id: 0,
   title: "Cerveza Roja Afrutada",
@@ -32,8 +31,8 @@ const recommendation = {
         url: "https://images.unsplash.com/photo-1559180786-c6f26acc1111?q=80&w=1480&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
         // width: 320,
         // height: 212,
-    },
-    {
+      },
+      {
         url: "https://images.unsplash.com/photo-1546339166-72eaf6a67c3c?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
         // width: 320,
         // height: 212,
@@ -59,13 +58,12 @@ const recommendation = {
         // height: 212,
       },
     ],
-    productScore:5
+    productScore: 5,
   },
   subscription_id: 0,
   image_url:
-  "https://images.unsplash.com/photo-1605001677958-88a2ae045e26?q=80&w=1558&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+    "https://images.unsplash.com/photo-1605001677958-88a2ae045e26?q=80&w=1558&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
 };
-
 
 export const getRecommendationBySubscriptionIdAndDate = async (
   subscriptionId,
@@ -90,8 +88,7 @@ export const getRecommendationBySubscriptionIdAndDate = async (
       .then((response) => resolve(response.data))
       .catch((error) => reject(error));
   });
-}
-
+};
 
 export const rateRecommendation = async (vote) => {
   const token = Cookies.get("jwt");
@@ -100,18 +97,15 @@ export const rateRecommendation = async (vote) => {
     const axios = require("axios");
     axios({
       method: "POST",
-      url: `${
-        process.env.NEXT_PUBLIC_API_URL
-      }reviews`,
+      url: `${process.env.NEXT_PUBLIC_API_URL}reviews`,
       headers: {
         Accept: "application/json",
         "Content-Type": "application/json",
         Authorization: "Bearer " + token,
       },
-      data: vote
+      data: vote,
     })
       .then((response) => resolve(response.data))
       .catch((error) => reject(error));
   });
-}
-
+};

@@ -28,11 +28,12 @@ const UserLayout = ({ children }) => {
     };
     if (subscriptions) {
       userInfo().then((response) => {
-        const currentSubscription = subscriptions.find((subscription) => subscription.id === response.subscriptionId);
-        setUser({...response, subscription: currentSubscription});
+        const currentSubscription = subscriptions.find(
+          (subscription) => subscription.id === response.subscriptionId,
+        );
+        setUser({ ...response, subscription: currentSubscription });
       });
     }
-
   }, [subscriptions]);
 
   return (

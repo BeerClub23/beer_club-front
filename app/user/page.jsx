@@ -11,33 +11,31 @@ import { useGetSubscriptions } from "../services/subscriptions";
 
 const UserPage = () => {
   const { user, setUser } = useUserBeerContext();
-  const [benefits, setBenefits ] = useState([]);
- 
+  const [benefits, setBenefits] = useState([]);
 
   useEffect(() => {
     if (user) {
       setBenefits(user.subscription.benefits);
     }
     AOS.init({
-      easing: 'ease-out-quad',
+      easing: "ease-out-quad",
       duration: 1000,
     });
-  }, [user])
-  
+  }, [user]);
+
   return (
     <>
-     <Box  sx={{  minHeight:"100vh", backgroundColor:"white" }}>     
-        
+      <Box sx={{ minHeight: "100vh", backgroundColor: "white" }}>
         {/* <ProductSection images={images}/> */}
-        {user ? 
-        <>
-          <RecommendationSection id={user.id}/>
-          <BenefitSection benefits={benefits}/>
-        </>
-          : <></>
-        }           
-    </Box>
-    
+        {user ? (
+          <>
+            <RecommendationSection id={user.id} />
+            <BenefitSection benefits={benefits} />
+          </>
+        ) : (
+          <></>
+        )}
+      </Box>
     </>
   );
 };

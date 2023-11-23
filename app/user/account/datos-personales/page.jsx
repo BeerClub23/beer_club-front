@@ -12,7 +12,7 @@ const DatosPersonales = () => {
 
   const updateUserInfo = async (userData) => {
     const response = await updateUserPersonalData(userData, user.id, token);
-    setUser(response)
+    setUser(response);
   };
 
   return (

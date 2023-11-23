@@ -10,7 +10,7 @@ const SubscriptionCard = ({
   price,
   isRecommended,
   action,
-  buttonText
+  buttonText,
 }) => {
   return (
     <article className="bc-subscription-card-container">

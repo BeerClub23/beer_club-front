@@ -69,8 +69,6 @@ export default function HeaderGeneral({ window, items }) {
       ? () => currentWindow().document.body
       : undefined;
 
-  
-
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
   const handleClick = (event) => {

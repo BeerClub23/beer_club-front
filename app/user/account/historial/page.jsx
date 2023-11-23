@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import React, { useEffect, useState } from "react";
 import { Box, Typography } from "@mui/material";
 import UserHistory from "../../../components/userHistory/UserHistory";
@@ -12,28 +12,34 @@ const Historial = () => {
   const [userPaymentHistory, setUserPaymentHistory] = useState();
 
   useEffect(() => {
-    getUserHistory(token).then((response) => {
-      setUserPaymentHistory(response);
-    }).catch((error) => {
-      Swal.fire({
-        title: "Error!",
-        text: error,
-        imageAlt: "Hubo un error al consultar el historico. Intenta nuevamente!",
-        confirmButtonText: "Continuar",
-        confirmButtonColor: "#ceb5a7",
-        icon: "error",
-        focusConfirm: false,
+    getUserHistory(token)
+      .then((response) => {
+        setUserPaymentHistory(response);
+      })
+      .catch((error) => {
+        Swal.fire({
+          title: "Error!",
+          text: error,
+          imageAlt:
+            "Hubo un error al consultar el historico. Intenta nuevamente!",
+          confirmButtonText: "Continuar",
+          confirmButtonColor: "#ceb5a7",
+          icon: "error",
+          focusConfirm: false,
+        });
       });
-    })
-  }, [token])
-
+  }, [token]);
 
   return (
     <Box className="user-historycontainer">
       <Typography variant="h5">
         <b>Historial</b>
       </Typography>
-      {userPaymentHistory ? <UserHistory userData={userPaymentHistory}/> : <></> }
+      {userPaymentHistory ? (
+        <UserHistory userData={userPaymentHistory} />
+      ) : (
+        <></>
+      )}
     </Box>
   );
 };

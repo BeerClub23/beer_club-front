@@ -50,7 +50,7 @@ const UpdateUserData = ({ user, updateData }) => {
       userUpdated.address[key] = formUpdateUserAddress[key];
     }
     setUserUpdated(userUpdated);
-    updateData(userUpdated)
+    updateData(userUpdated);
   };
 
   return (

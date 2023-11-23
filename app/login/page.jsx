@@ -28,7 +28,6 @@ export default function LoginPage() {
     Cookies.remove("jwt");
   }, []);
 
-
   return (
     <main className="mainLogin">
       <HeaderPublic items={homeItems} />

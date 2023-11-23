@@ -58,4 +58,3 @@ const ImagesGallery = ({ images }) => {
 };
 
 export default ImagesGallery;
-
