@@ -4,7 +4,6 @@ import Image from "next/image";
 import { Box } from "@mui/material";
 
 const ProductImage = ({ image }) => {
-
   return (
     <Box className="productImageContainer">
       <Image
@@ -15,7 +14,6 @@ const ProductImage = ({ image }) => {
         height={300}
         className="productImg"
       />
-
     </Box>
   );
 };

@@ -14,5 +14,7 @@ module.exports = {
   ],
   rules: {
     semi: ["error", "always"],
+    "no-unused-vars": "off",
+    "no-useless-escape": "off"
   },
 };

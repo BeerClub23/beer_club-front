@@ -15,7 +15,6 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    
   }
 
   &-content {
@@ -55,9 +54,9 @@
   }
 }
 
-.accordionSummary{
-  div{
+.accordionSummary {
+  div {
     overflow-wrap: break-word;
-    display: inline-block
+    display: inline-block;
   }
 }

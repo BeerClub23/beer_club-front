@@ -1,6 +1,4 @@
-
 @import "~react-image-gallery/styles/scss/image-gallery.scss";
-
 
 /*.ReactGridGallery{
     max-width: 230px;
@@ -28,38 +26,39 @@
     object-position: bottom;
 }*/
 
-.image-gallery-fullscreen-button .image-gallery-svg, .image-gallery-play-button .image-gallery-svg {
-    height: 12px;
-    width: 12px;
+.image-gallery-fullscreen-button .image-gallery-svg,
+.image-gallery-play-button .image-gallery-svg {
+  height: 12px;
+  width: 12px;
 }
 
 .imagesGalleryContainer {
+  // max-height: 200px !important;
+  max-width: 100%; /* Establece un ancho máximo para el contenedor principal */
+  overflow: hidden; /* Oculta el desbordamiento si la galería es más grande que el contenedor */
+}
 
-   
-    // max-height: 200px !important;
-    max-width: 100%; /* Establece un ancho máximo para el contenedor principal */
-    overflow: hidden; /* Oculta el desbordamiento si la galería es más grande que el contenedor */
-  }
-  
-  .imagesGallery {
-    max-width: 100%; /* Asegura que la galería no sea más ancha que el contenedor */
-    width: 100%; /* Ajusta el ancho al 100% del contenedor */
-    height: auto; /* Permite que la altura se ajuste automáticamente para mantener la relación de aspecto */
-  }
+.imagesGallery {
+  max-width: 100%; /* Asegura que la galería no sea más ancha que el contenedor */
+  width: 100%; /* Ajusta el ancho al 100% del contenedor */
+  height: auto; /* Permite que la altura se ajuste automáticamente para mantener la relación de aspecto */
+}
 
-  .image-gallery-left-nav .image-gallery-svg, .image-gallery-right-nav .image-gallery-svg {
-    height: 50px;
-    width: 50px;
+.image-gallery-left-nav .image-gallery-svg,
+.image-gallery-right-nav .image-gallery-svg {
+  height: 50px;
+  width: 50px;
 }
 
 .image-gallery-icon:hover {
-    color: #000;
+  color: #000;
 }
 
-.image-gallery-left-nav, .image-gallery-right-nav {
-    padding: 0px;
+.image-gallery-left-nav,
+.image-gallery-right-nav {
+  padding: 0px;
 }
 
-.ReactGridGallery{
-    display: none;
+.ReactGridGallery {
+  display: none;
 }

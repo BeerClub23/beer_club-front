@@ -16,8 +16,9 @@ import { useFormContext } from "react-hook-form";
 import { Controller } from "react-hook-form";
 import { CustomTextField } from "../../components/inputs/CustomTextFields";
 import Swal from "sweetalert2";
-import ApiFormLogin from "@/app/services/login";
+import ApiFormLogin from "../../services/login";
 import Cookies from "js-cookie";
+import { jwtDecode } from "jwt-decode";
 
 export default function FormLogin() {
   const router = useRouter();
@@ -43,7 +44,12 @@ export default function FormLogin() {
       Cookies.set("jwt", token, {
         expires: expirationDate.setDate(expirationDate.getDate() + 1),
       });
-      router.push(`/user`);
+      const decodeToken = jwtDecode(token);
+      if (decodeToken.role === "ROLE_ADMIN") {
+        router.push(`/admin`);
+      } else {
+        router.push(`/user`);
+      }
     } else if (response.status == 401) {
       Swal.fire({
         title: "Error!",

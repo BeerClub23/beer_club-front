@@ -1,99 +1,66 @@
 "use client";
 
-import { Box, Button, Typography } from "@mui/material";
-import subscriptionImage from "../../../../public/images/user/subscription.png";
+import { Box } from "@mui/material";
 import "./Subscriptions.scss";
-import { useUserBeerContext } from "@/app/context/user";
-import StarIcon from "@mui/icons-material/Star";
+import { useUserBeerContext } from "../../../context/user";
+import { useGetSubscriptions } from "../../../services/subscriptions";
+import SubscriptionCard from "../../../components/subscriptionCard/SubscriptionCard";
+import { updateUserSubscription } from "../../../services/user";
+import Swal from "sweetalert2";
+import Cookies from "js-cookie";
 
 const AccountPage = () => {
   const { user } = useUserBeerContext();
+  const { subscriptions } = useGetSubscriptions();
+  const token = Cookies.get("jwt");
 
-  const subscriptionsData = [
-    {
-      title: "Novato",
-      description:
-        "Disfrutas de la cerveza y quieres conocer más acerca de ella, con esta membresía disfrutarás de:",
-      beneficios: [
-        "Descuentos en cervezas y locales asociados 5%",
-        "Descuentos en Eventos de Miembros",
-        "Recomendación Novato Mensual (Six pack, snacks, aperitivos)",
-        "Envío gratis.",
-      ],
-    },
-    {
-      title: "Especialista",
-      description:
-        "Sabes reconocer algunas cerveza y quieres perfeccionar tú conocimiento, con esta membresía disfrutarás de:",
-      beneficios: [
-        "Descuentos en cervezas y locales asociados 8%",
-        "Descuentos en Eventos de Miembros",
-        "Recomendación Especialista Mensual (Six pack, snacks, aperitivos)",
-        "Envío gratis.",
-      ],
-    },
-    {
-      title: "Experto",
-      description:
-        "Prueba nuevas cervezas y comparte tu conocimiento con todos los miembros del club, con esta membresía optendrás:",
-      beneficios: [
-        "Descuentos en cervezas y locales asociados 10%",
-        "Descuentos en Eventos de Miembros",
-        "Recomendación Experto Mensual (Six pack, snacks, aperitivos)",
-        "Envío gratis.",
-      ],
-    },
-  ];
+  const updateSubscription = (subscription) => {
+    updateUserSubscription(
+      { user_id: user.id, new_subscription_id: subscription.id },
+      token,
+    )
+      .then((response) => {
+        console.log(response);
+        Swal.fire({
+          title: "Subscripción actualizada!",
+          text: "Recuerda que el cambio de subscripción se verá reflejado en la siguiente factura. Asi mismo en la visualización del contenido.",
+          icon: "success",
+          confirmButtonText: "Continuar",
+          confirmButtonColor: "#ceb5a7",
+          // onClick: handleClick(),
+          focusConfirm: false,
+        });
+      })
+      .catch((error) => {
+        Swal.fire({
+          title: "Error!",
+          text: error,
+          imageAlt: "No pudo actualizar tu subscripción. Intenta más tarde!",
+          confirmButtonText: "Continuar",
+          confirmButtonColor: "#ceb5a7",
+          icon: "error",
+          focusConfirm: false,
+        });
+      });
+  };
+
   return (
     <Box className="subscriptionContainer">
-      {subscriptionsData.map((subscription, idx) => {
-        return (
-          <Box
-            key={idx}
-            className="cardContainer"
-            id={subscription.title}
-            style={{
-              backgroundImage: `url(${subscriptionImage.src})`,
-              width: "400px",
-              height: "460px",
-            }}
-            sx={
-              subscription.title === user.subscription.name && {
-                border: "2px solid black",
-              }
-            }
-          >
-            {subscription.title === user.subscription.name && (
-              <StarIcon sx={{ color: "goldenrod" }} />
-            )}
-            <Typography
-              className="cardContainer-title"
-              sx={{ fontSize: "28px" }}
-            >
-              {subscription.title}
-            </Typography>
-            <Typography className="cardContainer-description">
-              {subscription.description}
-            </Typography>
-            <Box className="cardContainer-beneficios">
-              <ul>
-                {subscription.beneficios.map((beneficio, idx) => {
-                  return (
-                    <li key={idx}>
-                      <Typography>{beneficio}</Typography>
-                    </li>
-                  );
-                })}
-              </ul>
-              <Button disabled={subscription.title === user.subscription.name}>
-                {subscription.title === user.subscription.name
-                  ? "Suscrito"
-                  : "Suscribirme"}
-              </Button>
-            </Box>
-          </Box>
-        );
-      })}
+      {subscriptions.map((subscription) =>
+        subscription.id !== user.subscription.id ? (
+          <SubscriptionCard
+            key={subscription.name}
+            action={() => updateSubscription(subscription)}
+            title={subscription.name}
+            price={subscription.price}
+            benefits={subscription.benefits}
+            isRecommended={subscription.isRecommended}
+            buttonText={"Cambiar"}
+          ></SubscriptionCard>
+        ) : (
+          <></>
+        ),
+      )}
     </Box>
   );
 };

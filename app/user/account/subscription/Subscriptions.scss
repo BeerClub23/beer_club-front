@@ -1,96 +1,104 @@
 .cardContainer {
-    display: flex;
-    flex-direction: column;
-    padding: 15px;
-    border-radius: 15px;
-    align-items: center;
-    background-size: 313px 80%;
-    background-repeat: no-repeat;
-    background-position-y: bottom;
-    ul {
-        list-style: none;
-    }
+  display: flex;
+  flex-direction: column;
+  padding: 15px;
+  border-radius: 15px;
+  align-items: center;
+  background-size: 313px 80%;
+  background-repeat: no-repeat;
+  background-position-y: bottom;
+  ul {
+    list-style: none;
+  }
 }
 
 .cardContainer:hover {
-    transform: scale(1.03);
-    transition: cubic-bezier(0.075, 0.82, 0.165, 1);
-    transition-duration: 1000ms;
+  transform: scale(1.03);
+  transition: cubic-bezier(0.075, 0.82, 0.165, 1);
+  transition-duration: 1000ms;
 }
 
 .subscriptionContainer {
-    background-color: white;
-    padding: 30px;
-    border-radius: 20px;
-    box-shadow: 2px 0px 1px #8D8D8D;
-    display: grid;
-    grid-template-columns: repeat(3,1fr);
-    gap:30px;
+  background-color: white;
+  border-radius: 20px;
+  box-shadow: 2px 0px 1px #8d8d8d;
+  display: flex;
+  align-items: center;
+  gap: 50px;
 }
 
-.cardContainer-title{
-    font-weight: bold;
+.cardContainer-title {
+  font-weight: bold;
 }
 
 .cardContainer-beneficios {
-    text-align: end;
-    line-height: 10px;
-    margin-top: 40px;
-    padding-left: 30%;
+  text-align: end;
+  line-height: 10px;
+  margin-top: 40px;
+  padding-left: 30%;
 }
 
 #Novato {
-    background-color: #F5E1C1;
-    span,p,h1,h3 {
-        color: black
-    }
-    button {
-        background-color: #2F2B2B;
-        color: white;
-        font-size: 13px;
-        padding: 8px;
-        font-weight: 700;
-        border-radius: 10px;
-        margin-top: 10px;
-    }
+  background-color: #f5e1c1;
+  span,
+  p,
+  h1,
+  h3 {
+    color: black;
+  }
+  button {
+    background-color: #2f2b2b;
+    color: white;
+    font-size: 13px;
+    padding: 8px;
+    font-weight: 700;
+    border-radius: 10px;
+    margin-top: 10px;
+  }
 }
 #Especialista {
-    background-color: #2F2B2B;
-    span,p,h1,h3 {
-        color: #F5E1C1
-    }
-    button {
-        background-color: #F5E1C1;
-        color: black;
-        font-size: 13px;
-        padding: 8px;
-        font-weight: 700;
-        border-radius: 10px;
-        margin-top: 10px;
-    }
+  background-color: #2f2b2b;
+  span,
+  p,
+  h1,
+  h3 {
+    color: #f5e1c1;
+  }
+  button {
+    background-color: #f5e1c1;
+    color: black;
+    font-size: 13px;
+    padding: 8px;
+    font-weight: 700;
+    border-radius: 10px;
+    margin-top: 10px;
+  }
 }
 #Experto {
-    background-color: #CEB5A7;
-    span,p,h1,h3 {
-        color: black
-    }
-    button {
-        background-color: #2F2B2B;
-        color: #CEB5A7;
-        font-size: 13px;
-        padding: 8px;
-        font-weight: 700;
-        border-radius: 10px;
-        margin-top: 10px;
-    }
+  background-color: #ceb5a7;
+  span,
+  p,
+  h1,
+  h3 {
+    color: black;
+  }
+  button {
+    background-color: #2f2b2b;
+    color: #ceb5a7;
+    font-size: 13px;
+    padding: 8px;
+    font-weight: 700;
+    border-radius: 10px;
+    margin-top: 10px;
+  }
 }
 
-@media (max-width: 900px ) {
-    .subscriptionContainer {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        overflow: scroll;
-        max-height: 560px;
-    }
+@media (max-width: 900px) {
+  .subscriptionContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow: scroll;
+    max-height: 560px;
+  }
 }

@@ -12,7 +12,7 @@ import "slick-carousel/slick/slick-theme.css";
 
 const SubscriptionsSection = () => {
   const { context, setContext } = useAppContext();
-  const { subscriptions, isLoading, isError } = useGetSubscriptions();
+  const { subscriptions } = useGetSubscriptions();
   const router = useRouter();
   const settings = {
     dots: true,

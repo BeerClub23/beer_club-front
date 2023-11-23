@@ -7,7 +7,7 @@ import AboutSection from "./about/Section";
 import AboutUsSection from "./aboutUs/Section";
 import Box from "@mui/material/Box";
 import AOS from "aos";
-import { homeItems} from "@/app/common/constants/NavBarItems";
+import { homeItems } from "../common/constants/NavBarItems";
 import "aos/dist/aos.css";
 import { useEffect } from "react";
 
@@ -21,7 +21,7 @@ export default function HomePage() {
   return (
     <>
       <HeaderPublic items={homeItems} />
-      <Box component="main" sx={{ pt: 13 }}>
+      <Box component="main">
         <BannerSection />
         <AboutUsSection />
         <AboutSection />

@@ -26,7 +26,11 @@ h4 {
 
 @media (min-width: 600px) {
   .mainLogin {
-    background-image: linear-gradient(rgba(16, 16, 16, 0.5), rgba(16, 16, 16, 0.5)), url("../../public/images/login/bg_login.png");
+    background-image: linear-gradient(
+        rgba(16, 16, 16, 0.5),
+        rgba(16, 16, 16, 0.5)
+      ),
+      url("../../public/images/login/bg_login.png");
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
@@ -48,4 +52,4 @@ h4 {
     display: block;
     margin: 40px 20px 0px;
   }
-}/*# sourceMappingURL=login.css.map */
+} /*# sourceMappingURL=login.css.map */

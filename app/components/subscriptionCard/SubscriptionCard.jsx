@@ -1,7 +1,7 @@
 import React from "react";
 import "./SubscriptionCard.scss";
 import { Button } from "@mui/material";
-import { theme } from "@/app/styles/materialThemeForm";
+import { theme } from "../../styles/materialThemeForm";
 import { ThemeProvider } from "@mui/material";
 
 const SubscriptionCard = ({
@@ -10,6 +10,7 @@ const SubscriptionCard = ({
   price,
   isRecommended,
   action,
+  buttonText,
 }) => {
   return (
     <article className="bc-subscription-card-container">
@@ -42,7 +43,7 @@ const SubscriptionCard = ({
               fullWidth
               sx={{ pt: "7px", mx: "auto", mt: 5, mb: 4, fontWeight: "bold" }}
             >
-              Comprar
+              {buttonText ? buttonText : "Comprar"}
             </Button>
           </ThemeProvider>
         </div>
