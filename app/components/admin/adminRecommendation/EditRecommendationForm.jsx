@@ -74,12 +74,7 @@ const EditRecommendationForm = ({ initialData, onClose, onSave }) => {
 
     const newImages = await Promise.all(
       filesArray.map(async (file) => ({
-        url: URL.createObjectURL(file),
-        name: file.name,
-        type: file.type,
-        size: file.size,
-        lastModified: file.lastModified,
-        lastModifiedDate: file.lastModifiedDate,
+        url: file.name,
       })),
     );
 
