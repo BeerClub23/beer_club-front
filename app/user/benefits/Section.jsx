@@ -68,18 +68,18 @@ const BenefitSection = ({ benefits }) => {
           Aprovechá los beneficios
         </Typography>
         <Box className="benefitContainer">
-        <Slider {...settings}>
-          {benefits?.map((benefit, index) => (
-            <BenefitCard
-              key={index}
-              description={benefit.name}
-              background={
-                index < 10
-                  ? benefitBackgrounds[index]
-                  : benefitBackgrounds[index - 9]
-              }
-            />
-          ))}
+          <Slider {...settings}>
+            {benefits?.map((benefit, index) => (
+              <BenefitCard
+                key={index}
+                description={benefit.name}
+                background={
+                  index < 10
+                    ? benefitBackgrounds[index]
+                    : benefitBackgrounds[index - 9]
+                }
+              />
+            ))}
           </Slider>
         </Box>
       </Container>

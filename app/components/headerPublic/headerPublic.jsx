@@ -21,7 +21,7 @@ import "./headerPublic.scss";
 import Slide from "@mui/material/Slide";
 import useScrollTrigger from "@mui/material/useScrollTrigger";
 import DropDown from "../../common/dropdown/Dropdown";
-import { useUserBeerContext } from "@/app/context/user";
+import { useUserBeerContext } from "../../context/user";
 import Cookies from "js-cookie";
 import { jwtDecode } from "jwt-decode";
 import { useRouter } from "next/navigation";
@@ -68,8 +68,6 @@ export default function HeaderGeneral({ window, items }) {
     currentWindow !== undefined
       ? () => currentWindow().document.body
       : undefined;
-
-  
 
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);

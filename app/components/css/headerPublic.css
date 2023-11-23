@@ -32,7 +32,8 @@ nav {
 .navItem {
   transition: all 0.3s;
 }
-.navItem:hover, .navItem:focus {
+.navItem:hover,
+.navItem:focus {
   transform: scale(1.1);
   color: #f5e1c1;
 }
@@ -65,7 +66,7 @@ nav {
   display: none;
   position: absolute !important;
   top: 60px;
-  border: 1px solid #E0E0E0;
+  border: 1px solid #e0e0e0;
   padding: 20px;
   border-radius: 17px;
   right: 20px;
@@ -82,7 +83,7 @@ nav {
   height: 0px;
   left: 1187.96px;
   top: 193.31px;
-  border: 1px solid #E0E0E0;
+  border: 1px solid #e0e0e0;
   transform: rotate(0deg);
 }
 
@@ -99,7 +100,7 @@ nav {
 }
 
 #option:hover {
-  background-color: #F2F2F2;
+  background-color: #f2f2f2;
   cursor: pointer;
 }
 
@@ -119,4 +120,4 @@ nav {
   100% {
     opacity: 1;
   }
-}/*# sourceMappingURL=headerPublic.css.map */
+} /*# sourceMappingURL=headerPublic.css.map */

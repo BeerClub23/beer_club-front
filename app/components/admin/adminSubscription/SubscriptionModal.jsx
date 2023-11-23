@@ -4,7 +4,7 @@ import DialogContent from "@mui/material/DialogContent";
 import DialogTitle from "@mui/material/DialogTitle";
 import Button from "@mui/material/Button";
 import { Box, IconButton, TextField } from "@mui/material";
-import { theme } from "@/app/styles/materialThemeForm";
+import { theme } from "../../../styles/materialThemeForm";
 import { ThemeProvider } from "@mui/material";
 import { DeleteOutline } from "@mui/icons-material";
 import AddIcon from "@mui/icons-material/Add";

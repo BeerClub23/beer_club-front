@@ -11,7 +11,7 @@ import Textarea from "@mui/joy/Textarea";
 import { theme } from "../../styles/materialThemeForm";
 import { ThemeProvider } from "@mui/material";
 
-const RateCard = () => {
+const RateCard = ({ rate }) => {
   const [value, setValue] = React.useState(0);
   const [voted, setVoted] = React.useState(false);
   const [comment, setComment] = React.useState(false);
@@ -38,7 +38,7 @@ const RateCard = () => {
     if (voted) {
       setComment(true);
       setTextValue("");
-      postRating(value, textValue);
+      rate({ rating: value, comments: textValue });
     }
   };
 

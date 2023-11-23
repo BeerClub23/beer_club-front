@@ -16,7 +16,6 @@ import "./UserSideBarAdmin.scss";
 import Link from "next/link";
 
 const UserSideBarAdmin = (props) => {
-  const { window } = props;
   const [mobile, setMobile] = useState(false);
   const [width, setWidth] = useState();
   const [show, setSHow] = useState(false);
@@ -40,7 +39,7 @@ const UserSideBarAdmin = (props) => {
       <Box
         sx={{ backgroundColor: "white", boxShadow: "2px 0px 1px #8D8D8D" }}
         className={mobile && "mobile_version-container"}
-        id={( mobile & !show ) ? "mobile_version-container_showed" : ""}
+        id={mobile & !show ? "mobile_version-container_showed" : ""}
       >
         {mobile && (
           <Box id="menu_drawer">

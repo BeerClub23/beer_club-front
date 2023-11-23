@@ -6,7 +6,7 @@ import { useGetFaqs } from "../services/faqs";
 import "./faqs.scss";
 import { useState } from "react";
 import AccordionWrapper from "../components/accordion/accordion";
-import { homeItems } from "@/app/common/constants/NavBarItems";
+import { homeItems } from "../common/constants/NavBarItems";
 
 const FaqsPage = () => {
   const { faqs } = useGetFaqs();

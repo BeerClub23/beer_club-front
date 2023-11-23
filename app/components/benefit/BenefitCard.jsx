@@ -11,7 +11,7 @@ const Benefit = ({ description, background }) => {
       <Image
         src={background}
         fill={true}
-        objectFit="cover"        
+        objectFit="cover"
         // height={300}
         // width={300}
         alt="imagen"

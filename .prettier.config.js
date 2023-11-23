@@ -5,4 +5,5 @@ module.exports = {
   tabWidth: 2,
   trailingComma: 'es5',
   bracketSpacing: true,
+  "no-unused-vars": "off" 
 };

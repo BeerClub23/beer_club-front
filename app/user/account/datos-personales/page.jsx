@@ -2,9 +2,9 @@
 import React from "react";
 import { Box } from "@mui/material";
 import UpdateUserData from "../../../components/updateUserData/UpdateUserData";
-import { useUserBeerContext } from "@/app/context/user";
+import { useUserBeerContext } from "../../../context/user";
 import Cookies from "js-cookie";
-import { updateUserPersonalData } from "@/app/services/user";
+import { updateUserPersonalData } from "../../../services/user";
 
 const DatosPersonales = () => {
   const { user, setUser } = useUserBeerContext();
@@ -12,7 +12,7 @@ const DatosPersonales = () => {
 
   const updateUserInfo = async (userData) => {
     const response = await updateUserPersonalData(userData, user.id, token);
-    setUser(response)
+    setUser(response);
   };
 
   return (

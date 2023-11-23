@@ -1,14 +1,14 @@
 "use client";
-import "@/app/globals.scss";
+import "../globals.scss";
 import React, { useEffect } from "react";
-import Footer from "@/app/components/footer/Footer";
-import HeaderPublic from "@/app/components/headerPublic/headerPublic";
-import { getUserInfo } from "@/app/services/user";
+import Footer from "../components/footer/Footer";
+import HeaderPublic from "../components/headerPublic/headerPublic";
+import { getUserInfo } from "../services/user";
 import Cookies from "js-cookie";
-import UserSideBar from "@/app/components/userSideBar/UserSideBar";
-import UserData from "@/app/components/userBasicData/UserBasicData";
+import UserSideBar from "../components/userSideBar/UserSideBar";
+import UserData from "../components/userBasicData/UserBasicData";
 import { Box } from "@mui/material";
-import { useUserBeerContext } from "@/app/context/user";
+import { useUserBeerContext } from "../context/user";
 import { jwtDecode } from "jwt-decode";
 import { usePathname } from "next/navigation";
 import { memberItems } from "../common/constants/NavBarItems";
@@ -28,11 +28,12 @@ const UserLayout = ({ children }) => {
     };
     if (subscriptions) {
       userInfo().then((response) => {
-        const currentSubscription = subscriptions.find((subscription) => subscription.id === response.subscriptionId);
-        setUser({...response, subscription: currentSubscription});
+        const currentSubscription = subscriptions.find(
+          (subscription) => subscription.id === response.subscriptionId,
+        );
+        setUser({ ...response, subscription: currentSubscription });
       });
     }
-
   }, [subscriptions]);
 
   return (
