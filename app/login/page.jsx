@@ -11,8 +11,8 @@ import { loginSchema } from "./rules/index.js";
 import { FormProvider, useForm } from "react-hook-form";
 import "./login.scss";
 import AOS from "aos";
-import HeaderPublic from "@/app/components/headerPublic/headerPublic";
-import { homeItems } from "@/app/common/constants/NavBarItems";
+import HeaderPublic from "../components/headerPublic/headerPublic";
+import { homeItems } from "../common/constants/NavBarItems";
 import Cookies from "js-cookie";
 
 export default function LoginPage() {

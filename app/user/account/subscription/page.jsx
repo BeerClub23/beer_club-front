@@ -2,7 +2,7 @@
 
 import { Box } from "@mui/material";
 import "./Subscriptions.scss";
-import { useUserBeerContext } from "@/app/context/user";
+import { useUserBeerContext } from "../../../context/user";
 import { useGetSubscriptions } from "../../../services/subscriptions";
 import SubscriptionCard from "../../../components/subscriptionCard/SubscriptionCard";
 import { updateUserSubscription } from "../../../services/user";

@@ -1,9 +1,9 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import "./RecommendationSection.scss";
-import { Typography, Box, Container } from "@mui/material";
+import { Typography, Box } from "@mui/material";
 import { useGetTopProducts } from "../../services/topProducts";
-import { useUserBeerContext } from "@/app/context/user";
+import { useUserBeerContext } from "../../context/user";
 import { useGetPersonalTopProducts } from "../../services/personalTopProducts";
 import ImagesGallery from "../../components/imagesGallery/ImagesGallery";
 import RateReadOnlyCard from "../../components/rateReadOnlyCard/RateReadOnlyCard";
@@ -23,8 +23,6 @@ const RecommendationSection = ({ id }) => {
   const { user } = useUserBeerContext();
   const [recommendation, setRecommendation] = useState();
   const [recommendationsSplit, setRecommendationsSplit] = useState([]);
-  const [userTopProducts, setUserTopProducts] = useState([]);
-  const [isVoting, setIsVoting] = useState(false);
 
   const rateProduct = (vote) => {
     const voting = {
@@ -33,7 +31,7 @@ const RecommendationSection = ({ id }) => {
       userId: user.id,
     };
     rateRecommendation(voting)
-      .then((response) => {
+      .then(() => {
         Swal.fire({
           title: "Votación realizada con éxito!",
           text: "Gracias por dejar a otros saber que te pareció este producto",
@@ -57,6 +55,10 @@ const RecommendationSection = ({ id }) => {
       });
   };
 
+  const isImageURLPresent = (imagesArray, imageUrl) => {
+    return imagesArray.some((image) => image.url === imageUrl);
+  };
+
   useEffect(() => {
     if (user && user.subscriptionId && !recommendation) {
       const getCurrentRecommendation = async () =>
@@ -75,9 +77,6 @@ const RecommendationSection = ({ id }) => {
         );
       }
 
-      function isImageURLPresent(imagesArray, imageUrl) {
-        return imagesArray.some((image) => image.url === imageUrl);
-      }
       if (recommendation.product && recommendation.image_url) {
         recommendation.product.image_url =
           recommendation.product.image_url || [];
@@ -96,11 +95,10 @@ const RecommendationSection = ({ id }) => {
         }
       }
     }
-  }, [user, recommendation, token, isVoting]);
+  }, [user, recommendation, token]);
 
-  const { topProducts, isLoadingTop, isErrorTop } = useGetTopProducts();
-  const { personalTopProducts, isLoadingPersonalTop, isErrorPersonalTop } =
-    useGetPersonalTopProducts(id);
+  const { topProducts } = useGetTopProducts();
+  const { personalTopProducts } = useGetPersonalTopProducts(id);
   return (
     <>
       {recommendation ? (

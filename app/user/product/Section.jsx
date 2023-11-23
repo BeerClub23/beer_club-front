@@ -1,14 +1,10 @@
 "use client";
 import React from "react";
 import { Box, Typography } from "@mui/material";
-import Image from "next/image";
 import { Container } from "@mui/material";
 import "./ProductSection.scss";
-import ProductImage from "../../components/productImage/ProductImage";
 
-import Carousel from "react-material-ui-carousel";
-
-const ProductSection = ({ images }) => {
+const ProductSection = () => {
   return (
     <section className="productSection">
       <Container className="container">
