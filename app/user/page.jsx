@@ -29,8 +29,13 @@ const UserPage = () => {
      <Box  sx={{  minHeight:"100vh", backgroundColor:"white" }}>     
         
         {/* <ProductSection images={images}/> */}
-        <RecommendationSection  id={1}/>
-        <BenefitSection benefits={benefits}/>           
+        {user ? 
+        <>
+          <RecommendationSection id={user.id}/>
+          <BenefitSection benefits={benefits}/>
+        </>
+          : <></>
+        }           
     </Box>
     
     </>

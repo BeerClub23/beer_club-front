@@ -12,14 +12,41 @@ import Carousel from "react-material-ui-carousel";
 import TopProductsCard from "../../components/topProductsCard/TopProductsCard";
 import RateCard from "../../components/rateCard/RateCard";
 import Cookies from "js-cookie";
-import { getRecommendationBySubscriptionIdAndDate } from "../../services/recommendation";
+import { getRecommendationBySubscriptionIdAndDate, rateRecommendation } from "../../services/recommendation";
+import Swal from "sweetalert2";
 
 const RecommendationSection = ({ id }) => {
   const token = Cookies.get("jwt");
   const { user } = useUserBeerContext();
   const [recommendation, setRecommendation] = useState();
   const [recommendationsSplit, setRecommendationsSplit] = useState([]);
+  const [userTopProducts, setUserTopProducts] = useState([]);
+  const [isVoting, setIsVoting] = useState(false);
 
+  const rateProduct = (vote) => {
+    const voting = {...vote, productId: recommendation.product.id, userId: user.id};
+    rateRecommendation(voting).then((response) => {
+      Swal.fire({
+        title: "Votación realizada con éxito!",
+        text: "Gracias por dejar a otros saber que te pareció este producto",      
+        icon: "success",
+        confirmButtonText: "Continuar",
+        confirmButtonColor: "#ceb5a7",
+        // onClick: handleClick(),
+        focusConfirm: false,
+      }).then(() => window.location.reload())
+    }).catch((error) => {
+      Swal.fire({
+        title: "Error!",
+        text: error,
+        imageAlt: "No se pudo realizar la votación. Intenta Nuevamente!",
+        confirmButtonText: "Continuar",
+        confirmButtonColor: "#ceb5a7",
+        icon: "error",
+        focusConfirm: false,
+      });
+    });
+  }
 
   useEffect(() => {
     if (user && user.subscriptionId && !recommendation) {
@@ -34,7 +61,6 @@ const RecommendationSection = ({ id }) => {
     } 
     if (recommendation) {
       if (recommendation.description) {
-
         setRecommendationsSplit(recommendation.description.match(/[^\.]+(\.|\b)/g));
       }
 
@@ -58,7 +84,7 @@ const RecommendationSection = ({ id }) => {
         }
       }
     }
-  }, [user, recommendation, token]);
+  }, [user, recommendation, token, isVoting]);
 
   const { topProducts, isLoadingTop, isErrorTop } = useGetTopProducts();
   const { personalTopProducts, isLoadingPersonalTop, isErrorPersonalTop } =
@@ -107,7 +133,7 @@ const RecommendationSection = ({ id }) => {
               </Typography>
             ))}
           </Box>
-          <RateCard />
+          <RateCard rate={rateProduct} />
         </article>
 
         <aside className="recommAside" >
@@ -124,7 +150,7 @@ const RecommendationSection = ({ id }) => {
             // navButtonsAlwaysInvisible={false}
           >
             {topProducts.map((product, index) => (
-              <TopProductsCard key={index} product={product} />
+              <TopProductsCard key={index} {...product} />
             ))}
           </Carousel>
           <Typography className="recommAsideTitle">Tus Favoritos</Typography>
@@ -140,7 +166,7 @@ const RecommendationSection = ({ id }) => {
             navButtonsAlwaysInvisible={false}
           >
             {personalTopProducts.map((product, index) => (
-              <TopProductsCard key={index} product={product} />
+              <TopProductsCard key={index} {...product} />
             ))}
           </Carousel>
         </aside>

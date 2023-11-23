@@ -1,3 +1,5 @@
+import Cookies from "js-cookie";
+
 const MONTHS = [
   "01",
   "02",
@@ -70,7 +72,7 @@ export const getRecommendationBySubscriptionIdAndDate = async (
   token,
 ) => {
   const currentDate = new Date();
-  return new Promise((resolve) => {
+  return new Promise((resolve, reject) => {
     const axios = require("axios");
     axios({
       method: "GET",
@@ -85,8 +87,31 @@ export const getRecommendationBySubscriptionIdAndDate = async (
         Authorization: "Bearer " + token,
       },
     })
-      .then((response) => resolve(recommendation))
-      .catch((error) => resolve(recommendation));
+      .then((response) => resolve(response.data))
+      .catch((error) => reject(error));
+  });
+}
+
+
+export const rateRecommendation = async (vote) => {
+  const token = Cookies.get("jwt");
+  const currentDate = new Date();
+  return new Promise((resolve, reject) => {
+    const axios = require("axios");
+    axios({
+      method: "POST",
+      url: `${
+        process.env.NEXT_PUBLIC_API_URL
+      }reviews`,
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + token,
+      },
+      data: vote
+    })
+      .then((response) => resolve(response.data))
+      .catch((error) => reject(error));
   });
 }
 

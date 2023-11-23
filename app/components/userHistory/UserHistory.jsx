@@ -1,17 +1,22 @@
 import React from "react";
-import UserData from "../../../public/MockDta";
 import "./UserHistory.scss";
 
-const UserHistory = () => {
+const UserHistory = ({userData}) => {
   const columns = [
     {
-      name: "Producto",
+      name: "Subscripción",
+    },
+    {
+      name: "N° Factura",
     },
     {
       name: "Valor",
     },
     {
-      name: "Fecha",
+      name: "Fecha de creación",
+    },
+    {
+      name: "Status",
     },
   ];
 
@@ -23,26 +28,32 @@ const UserHistory = () => {
             <th
               id="header_table"
               key={idx}
-              style={column.name == "Producto" ? { textAlign: "start" } : {}}
+              style={{ textAlign: "center" }}
             >
               {column.name}
             </th>
           );
         })}
       </tr>
-      {UserData?.historial?.map((row, idx) => {
+      {userData?.map((row, idx) => {
         return (
           <>
             <tr key={idx} className="row_results">
-              <td style={{ textAlign: "start", padding: "10px 10px 10px 0px" }}>
+              <td style={{ textAlign: "center", padding: "10px 10px 10px 0px" }}>
                 <span style={{ marginRight: "30px" }}>{row.quantity}</span>
-                <span>{row.productName}</span>
+                <span>{row.description}</span>
               </td>
-              <td>
-                <span>{row.price}</span>
+              <td style={{ textAlign: "center"}}>
+                <span>{row.invoiceNumber}</span>
               </td>
-              <td>
+              <td style={{ textAlign: "center"}}>
+                <span>$ {row.amount}</span>
+              </td>
+              <td style={{ textAlign: "center"}}>
                 <span>{row.date}</span>
+              </td>
+              <td style={{ textAlign: "center"}}>
+                <span>{row.paymentStatus}</span>
               </td>
             </tr>
           </>

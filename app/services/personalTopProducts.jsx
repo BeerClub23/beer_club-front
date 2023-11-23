@@ -1,6 +1,14 @@
+import Cookies from "js-cookie";
 import useSWR from "swr";
 
-const get = (url) => fetch(url).then((r) => r.json());
+const get = (url, token) => fetch(url, {
+  method: 'GET',
+  headers: {
+    Accept: "application/json",
+    "Content-Type": "application/json",
+    Authorization: "Bearer " + token,
+  }
+}).then((r) => r.json());
 
 const personalTopProducts = [
   {
@@ -124,9 +132,9 @@ const personalTopProducts = [
 ];
 
 export const useGetPersonalTopProducts = (id) => {
+  const token = Cookies.get("jwt");
   const { data, error, isLoading } = useSWR(
-    `${process.env.NEXT_PUBLIC_API_URL}top/${id}`,
-    get,
+    `${process.env.NEXT_PUBLIC_API_URL}users/top/${id}`, (url) => get(url, token),
     {
       fallbackData: personalTopProducts,
       shouldRetryOnError: false,
