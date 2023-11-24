@@ -44,10 +44,8 @@ const RecomendacionesPage = () => {
   const handleCreate = async (formData) => {
     console.log("Data send: " + formData);
     try {
-      console.log(formData);
       const response = await SaveRecommendation(JSON.stringify(formData));
-
-      if (response.status === 200) {
+      if (response.status === 201) {
         Swal.fire({
           title: "Recomendación creada",
           text: "Nueva recomendación creada exitosamente",

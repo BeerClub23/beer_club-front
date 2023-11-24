@@ -1,6 +1,6 @@
 @import "../../../globals.scss";
 .form-container-r {
-  width: 90%;
+  width: 80%;
   margin-top: 10px;
 }
 //Input upload styles
@@ -40,12 +40,26 @@
   justify-content: space-evenly;
 }
 
+.add-element-btn {
+  margin-top: 7px;
+  background-color: black;
+  color: white;
+  border: none;
+
+  &:hover {
+    background-color: $primary;
+    border: none;
+  }
+}
 //modal
 .modal-form-container {
   min-width: 300px;
 }
 
 //input styles
+.input-modal {
+  margin-bottom: 10px;
+}
 .MuiInputBase-root:hover,
 .MuiInputBase-root.Mui-focused {
   border-color: $primary;

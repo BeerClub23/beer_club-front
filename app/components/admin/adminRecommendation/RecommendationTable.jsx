@@ -208,10 +208,15 @@ const RecommendationTable = ({ data, onSave }) => {
   }, [rows, searchTerm]);
 
   const emptyRows = useMemo(() => {
-    return (
-      rowsPerPage -
-      Math.min(rowsPerPage, visibleRows.length - page * rowsPerPage)
-    );
+    const totalRows = visibleRows.length;
+    const lastPageRows = totalRows % rowsPerPage;
+    const emptyRowsOnLastPage = rowsPerPage - lastPageRows;
+
+    // If on the last page and there are empty rows, return them; otherwise, return 0.
+    return page === Math.floor(totalRows / rowsPerPage) &&
+      emptyRowsOnLastPage > 0
+      ? emptyRowsOnLastPage
+      : 0;
   }, [visibleRows, rowsPerPage, page]);
 
   return (
@@ -226,62 +231,63 @@ const RecommendationTable = ({ data, onSave }) => {
               onRequestSort={handleRequestSort}
             />
             <TableBody>
-              {stableSort(visibleRows, getComparator(order, orderBy)).map(
-                (row, index) => (
-                  <TableRow
-                    key={row.id}
-                    sx={{
-                      borderBottom: "2px solid #e0e0e0",
-                      cursor: "default",
-                    }}
+              {stableSort(
+                visibleRows.slice(page * rowsPerPage, (page + 1) * rowsPerPage),
+                getComparator(order, orderBy)
+              ).map((row, index) => (
+                <TableRow
+                  key={row.id}
+                  sx={{
+                    borderBottom: "2px solid #e0e0e0",
+                    cursor: "default",
+                  }}
+                >
+                  <TableCell padding="checkbox">
+                    <Checkbox
+                      style={{ visibility: "hidden" }}
+                      inputProps={{ "aria-label": "spacer" }}
+                      sx={{ padding: "8px" }}
+                    />
+                  </TableCell>
+                  <TableCell
+                    component="th"
+                    scope="row"
+                    padding="normal"
+                    align="right"
                   >
-                    <TableCell padding="checkbox">
-                      <Checkbox
-                        style={{ visibility: "hidden" }}
-                        inputProps={{ "aria-label": "spacer" }}
-                        sx={{ padding: "8px" }}
-                      />
-                    </TableCell>
-                    <TableCell
-                      component="th"
-                      scope="row"
-                      padding="normal"
-                      align="right"
+                    {row.id}
+                  </TableCell>
+                  <TableCell sx={{ textAlign: "right" }}>
+                    <div
+                      style={{
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "flex-end",
+                      }}
                     >
-                      {row.id}
-                    </TableCell>
-                    <TableCell sx={{ textAlign: "right" }}>
-                      <div
-                        style={{
-                          display: "flex",
-                          alignItems: "center",
-                          justifyContent: "flex-end",
-                        }}
-                      >
-                        <Avatar alt={row.title} src={row.image_url} />
-                      </div>
-                    </TableCell>
+                      <Avatar alt={row.title} src={row.image_url} />
+                    </div>
+                  </TableCell>
 
-                    <TableCell align="right">{row.title}</TableCell>
-                    <TableCell align="right">
-                      {" "}
-                      {row.description.length > 50
-                        ? `${row.description.substring(0, 50)}...`
-                        : row.description}
-                    </TableCell>
-                    <TableCell align="right">{row.createDate}</TableCell>
-                    <TableCell align="right">{row.product.name}</TableCell>
-                    <TableCell align="right">
-                      {subscription(row.subscription_id).name}
-                    </TableCell>
-                    <TableCell align="right">
-                      <IconButton onClick={() => handleEditClick(row)}>
-                        <EditIcon />
-                      </IconButton>
-                    </TableCell>
-                  </TableRow>
-                ),
-              )}
+                  <TableCell align="right">{row.title}</TableCell>
+                  <TableCell align="right">
+                    {" "}
+                    {row.description.length > 50
+                      ? `${row.description.substring(0, 50)}...`
+                      : row.description}
+                  </TableCell>
+                  <TableCell align="right">{row.createDate}</TableCell>
+                  <TableCell align="right">{row.product.name}</TableCell>
+                  <TableCell align="right">
+                    {subscription(row.subscription_id).name}
+                  </TableCell>
+                  <TableCell align="right">
+                    <IconButton onClick={() => handleEditClick(row)}>
+                      <EditIcon />
+                    </IconButton>
+                  </TableCell>
+                </TableRow>
+              ))}
               {emptyRows > 0 && (
                 <TableRow
                   style={{
