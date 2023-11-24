@@ -1,0 +1,96 @@
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html,
+body {
+  max-width: 100vw;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+}
+
+body {
+  color: #ffffff;
+  background: #101010;
+  min-height: 100vh;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.recordar-datos {
+  text-align: center;
+}
+
+.recordar-datos button {
+  font-size: 1rem;
+  font-family: var(--font-poppins);
+}
+
+.recordar-datos span {
+  display: block;
+  font-weight: 300;
+}
+
+.mainAge h4 {
+  font-size: 2rem;
+  font-family: var(--font-poppins);
+}
+
+.inputAge {
+  max-width: 60px;
+}
+
+.inputAgeYear {
+  max-width: 85px !important;
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+@media (min-width: 450px) {
+  .inputAge {
+    max-width: 70px;
+  }
+  .inputAge div {
+    font-size: 1.5rem;
+  }
+  .inputAgeYear {
+    max-width: 105px !important;
+  }
+}
+@media (min-width: 600px) {
+  .recordar-datos button {
+    font-size: 1.5rem;
+  }
+  .mainAge h4 {
+    font-size: 3rem;
+  }
+  .inputAge {
+    max-width: 90px;
+  }
+  .inputAge div {
+    font-size: 2rem;
+  }
+  .inputAgeYear {
+    max-width: 130px !important;
+  }
+}
+@media (min-width: 900px) {
+  .inputAge {
+    max-width: 120px;
+  }
+  .inputAge div {
+    font-size: 2.5rem;
+  }
+  .inputAgeYear {
+    max-width: 160px !important;
+  }
+}/*# sourceMappingURL=formAge.css.map */

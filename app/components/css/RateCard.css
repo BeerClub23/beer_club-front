@@ -1,0 +1,66 @@
+@charset "UTF-8";
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html,
+body {
+  max-width: 100vw;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+}
+
+body {
+  color: #ffffff;
+  background: #101010;
+  min-height: 100vh;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.rateContainer {
+  color: rgb(255, 255, 255);
+  margin-bottom: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.rateText {
+  font-family: var(--font-poppins) !important;
+  padding: 18px;
+  text-align: center;
+  font-weight: 300;
+  letter-spacing: normal;
+  color: rgb(255, 255, 255);
+}
+
+.rateItem {
+  color: #ceb5a7;
+  -webkit-tap-highlight-color: #fafafa;
+}
+
+.commentForm {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.css-8qqwlv-JoyTextarea-root:not([data-inverted-colors=false]) {
+  --Textarea-focusedHighlight: var(
+    --_Textarea-focusedHighlight,
+    var(--joy-palette-focusVisible, var(--joy-palette-primary-500, $primary))
+  );
+  /* Otras propiedades aquí */
+}
+
+.commentButton {
+  margin: 0 auto !important;
+}/*# sourceMappingURL=RateCard.css.map */
