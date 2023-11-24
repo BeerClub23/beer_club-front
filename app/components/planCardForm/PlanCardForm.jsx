@@ -44,8 +44,8 @@ const PlanCardForm = ({ category }) => {
         <CardContent>
           <Image
             src={chop}
-            width={50}
-            height={71}
+            width={64}
+            height={83}
             alt="logo"
             priority
             className="cardContainer_picMobile"
