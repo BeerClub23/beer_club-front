@@ -1,58 +1,177 @@
-import React from "react";
+import React, { useState } from "react";
 import "./UpdateUserData.scss";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import { Box, FormControl, FormLabel, Typography } from "@mui/material";
+import Modal from "../../common/Modal/Modal";
 
 const UpdateUserData = ({ user, updateData }) => {
+  const [userUpdated, setUserUpdated] = useState(user);
+  const [formUpdateUser, setFormUpdateUser] = useState({
+    firstName: "",
+    lastName: "",
+    email: "",
+  });
+  const [formUpdateUserAddress, setFormUpdateUserAddress] = useState({
+    city: "",
+    street: "",
+    number: "",
+    floor: "",
+    apartment: "",
+    zipCode: "",
+  });
+
+  const handleUpdateFormBasicData = (e) => {
+    setFormUpdateUser({
+      ...formUpdateUser,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  const handleUpdateFormAddress = (e) => {
+    setFormUpdateUserAddress({
+      ...formUpdateUserAddress,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  const [showModal, setShowModal] = useState(false);
+  const onSubmit = () => {
+    for (let key in formUpdateUser) {
+      if (formUpdateUser[key] === "") {
+        formUpdateUser[key] = user[key];
+      }
+      userUpdated[key] = formUpdateUser[key];
+    }
+    for (let key in formUpdateUserAddress) {
+      if (formUpdateUserAddress[key] === "") {
+        formUpdateUserAddress[key] = user.address[key];
+      }
+      userUpdated.address[key] = formUpdateUserAddress[key];
+    }
+    setUserUpdated(userUpdated);
+    updateData(userUpdated);
+  };
+
   return (
-    <Box className="updater_form">
-      <FormControl sx={{ width: "100%" }} id="updater_form-container">
-        <Box
-          sx={{
-            width: "100%",
-            borderBottom: "1px solid black",
-            marginBottom: "20px",
-          }}
-        >
-          <Typography variant="h4">
-            <b>Datos pesonales</b>
-          </Typography>
-          <Box className="updater_form-basicdata">
-            <Box className="input_box">
-              <FormLabel>Nombre</FormLabel>
-              <TextField placeholder={user.firstName}></TextField>
-            </Box>
-            <Box className="input_box">
-              <FormLabel>Apellido</FormLabel>
-              <TextField placeholder={user.lastName}></TextField>
-            </Box>
-            <Box className="input_box">
-              <FormLabel>Email</FormLabel>
-              <TextField placeholder={user.email}></TextField>
+    <>
+      <Box className="updater_form">
+        <FormControl sx={{ width: "100%" }} id="updater_form-container">
+          <Box
+            sx={{
+              width: "100%",
+              borderBottom: "1px solid black",
+              marginBottom: "20px",
+            }}
+          >
+            <Typography variant="h4">
+              <b>Datos pesonales</b>
+            </Typography>
+            <Box className="updater_form-basicdata">
+              <Box className="input_box">
+                <FormLabel>Nombre</FormLabel>
+                <TextField
+                  placeholder={user.firstName}
+                  name="firstName"
+                  onChange={handleUpdateFormBasicData}
+                  value={formUpdateUser.firstName}
+                ></TextField>
+              </Box>
+              <Box className="input_box">
+                <FormLabel>Apellido</FormLabel>
+                <TextField
+                  value={formUpdateUser.lastName}
+                  name="lastName"
+                  onChange={handleUpdateFormBasicData}
+                  placeholder={user.lastName}
+                ></TextField>
+              </Box>
+              <Box className="input_box">
+                <FormLabel>Email</FormLabel>
+                <TextField
+                  value={formUpdateUser.email}
+                  name="email"
+                  onChange={handleUpdateFormBasicData}
+                  placeholder={user.email}
+                ></TextField>
+              </Box>
             </Box>
           </Box>
-        </Box>
-        <Box sx={{ width: "100%" }}>
-          <Typography variant="h4">
-            <b> Datos de envio</b>
-          </Typography>
-          <Box className="updater_form-address">
-            <Box className="input_box">
-              <FormLabel>Direccion</FormLabel>
-              <TextField placeholder={user.address.street}></TextField>
-            </Box>
-            <Box className="input_box">
-              <FormLabel>Numero</FormLabel>
-              <TextField placeholder={user.address.number}></TextField>
+          <Box sx={{ width: "100%" }}>
+            <Typography variant="h4">
+              <b> Datos de envio</b>
+            </Typography>
+            <Box className="updater_form-address">
+              <Box className="input_box">
+                <FormLabel>Direccion</FormLabel>
+                <TextField
+                  name="street"
+                  value={formUpdateUserAddress.street}
+                  onChange={handleUpdateFormAddress}
+                  placeholder={user.address.street}
+                ></TextField>
+              </Box>
+              <Box className="input_box">
+                <FormLabel>Numero</FormLabel>
+                <TextField
+                  name="number"
+                  onChange={handleUpdateFormAddress}
+                  placeholder={user.address.number}
+                  value={formUpdateUserAddress.number}
+                  type="number"
+                ></TextField>
+              </Box>
+              <Box className="input_box">
+                <FormLabel>Ciudad</FormLabel>
+                <TextField
+                  name="city"
+                  onChange={handleUpdateFormAddress}
+                  value={formUpdateUserAddress.city}
+                  placeholder={user.address.city}
+                ></TextField>
+              </Box>
+              <Box className="input_box">
+                <FormLabel>Zip Code</FormLabel>
+                <TextField
+                  name="zipCode"
+                  value={formUpdateUserAddress.zipCode}
+                  onChange={handleUpdateFormAddress}
+                  placeholder={user.address.zipCode}
+                ></TextField>
+              </Box>
+              <Box className="input_box">
+                <FormLabel>Interior</FormLabel>
+                <TextField
+                  name="apartment"
+                  onChange={handleUpdateFormAddress}
+                  value={formUpdateUserAddress.apartment}
+                  placeholder={user.address.apartment}
+                ></TextField>
+              </Box>
+              <Box className="input_box">
+                <FormLabel>Numero Piso</FormLabel>
+                <TextField
+                  name="floor"
+                  onChange={handleUpdateFormAddress}
+                  value={formUpdateUserAddress.floor}
+                  placeholder={user.address.floor}
+                  type="number"
+                ></TextField>
+              </Box>
             </Box>
           </Box>
-        </Box>
-        <Button className="updater_form-button" onClick={updateData}>
-          Guardar
-        </Button>
-      </FormControl>
-    </Box>
+          <Button className="updater_form-button" onClick={onSubmit}>
+            Guardar
+          </Button>
+        </FormControl>
+      </Box>
+      {showModal && (
+        <Modal>
+          <div>Modal</div>
+          <button onClick={() => setShowModal(false)}>OK</button>
+        </Modal>
+      )}
+    </>
   );
 };
 

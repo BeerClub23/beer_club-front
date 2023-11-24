@@ -39,7 +39,7 @@ const UserSideBar = () => {
       <Box
         sx={{ backgroundColor: "white", boxShadow: "2px 0px 1px #8D8D8D" }}
         className={mobile ? "mobile_version-container" : ""}
-        id={mobile && !show ? "mobile_version-container_showed" : ""}
+        id={mobile & !show ? "mobile_version-container_showed" : ""}
       >
         {mobile && (
           <Box id="menu_drawer">
@@ -115,20 +115,6 @@ const UserSideBar = () => {
                 </ListItemButton>
               </ListItem>
             </Link>
-            {/*  <Link href="/user/account/estadisticas">
-              <ListItem
-                className={
-                  pathname.includes("/user/account/estadisticas") && "active_nav_user"
-                }
-              >
-                <ListItemButton>
-                  <ListItemIcon>
-                    <QueryStatsIcon />
-                  </ListItemIcon>
-                  <ListItemText primary="Estadisticas" />
-                </ListItemButton>
-              </ListItem>
-            </Link> */}
           </List>
         </nav>
       </Box>

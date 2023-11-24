@@ -10,13 +10,31 @@ export async function middleware(request) {
   if (isAuthorized) {
     const token = request.cookies.get("jwt");
     const decodeToken = jwtDecode(token.value.toString());
+    const isExpired = new Date().getTime() > decodeToken.exp * 1000;
 
-    if (new Date().getTime() > decodeToken.expires) {
-      request.cookies.delete("jwt");
+    if (isExpired & !request.nextUrl.pathname.includes("login")) {
       url = request.nextUrl.clone();
       url.pathname = "/login";
       return NextResponse.redirect(url);
-    } 
+    }
+    if (
+      !isExpired &
+      !request.nextUrl.pathname.includes("user") &
+      (decodeToken.role == "ROLE_USER")
+    ) {
+      url = request.nextUrl.clone();
+      url.pathname = "/user";
+      return NextResponse.redirect(url);
+    }
+    if (
+      !isExpired &
+      !request.nextUrl.pathname.includes("admin") &
+      (decodeToken.role == "ROLE_ADMIN")
+    ) {
+      url = request.nextUrl.clone();
+      url.pathname = "/admin/datos-personales";
+      return NextResponse.redirect(url);
+    }
   } else if (
     request.nextUrl.pathname.includes("user") ||
     request.nextUrl.pathname.includes("admin")
@@ -40,38 +58,18 @@ export async function middleware(request) {
     default:
       return NextResponse.next();
   }
-  // let cookieJwt = await request.cookies.get("jwt");
-  // let cookieAgeCheck = await request.cookies.get("AgeCheck");
-  // if (request.url.includes("/")) {
-  //   if (cookieJwt || cookieAgeCheck) {
-  //     const url = request.nextUrl.clone();
-  //     url.pathname = "/home";
-  //     return NextResponse.redirect(url);
-  //   }
-  // }
-  // if (request.url.includes("/home")) {
-  //   if (cookieJwt || cookieAgeCheck) {
-  //     return NextResponse.next();
-  //   } else {
-  //     const url = request.nextUrl.clone();
-  //     url.pathname = "/";
-  //     return NextResponse.redirect(url);
-  //   }
-  // }
-
-  // Chequeo de si esta logueado
-  // let cookie = await request.cookies.get("jwt");
-  // if (!cookie) {
-  //   // const requestPage = request.nextUrl.pathname;
-  //   const url = request.nextUrl.clone();
-  //   url.pathname = "/login";
-  //   // url.search = `p=${requestPage}`;
-  //   return NextResponse.redirect(url);
-  // }
-  //return NextResponse.next();
 }
 
 export const config = {
-  matcher: ["/", "/home", "/login", "/registro", "/planes", "/user/(.*)"],
-  // matcher: ["/registro", "/planes/:path*"],
+  matcher: [
+    "/",
+    "/home",
+    "/login",
+    "/registro",
+    "/planes",
+    "/user",
+    "/admin",
+    "/user/(.*)",
+    "/admin/(.*)",
+  ],
 };

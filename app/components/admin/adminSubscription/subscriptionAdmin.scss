@@ -1,0 +1,64 @@
+@import "../../../globals.scss";
+
+.chip-element {
+  width: 80px;
+}
+.active-chip {
+  background-color: #dae7cd;
+  color: rgb(8, 55, 8);
+}
+.input-modal {
+  width: 100%;
+  margin: 10px 0;
+}
+
+.MuiInputBase-root:hover,
+  .MuiInputBase-root.Mui-focused {
+    border-color: $primary;
+  }
+
+  /* Change the label color on focus */
+  .MuiInputLabel-root.Mui-focused {
+    color: $primary;
+  }
+
+  .MuiInputBase-root:hover .MuiOutlinedInput-notchedOutline,
+  .MuiInputBase-root.Mui-focused .MuiOutlinedInput-notchedOutline {
+    border-color: $primary;
+  }
+.description-input {
+  width: 100%;
+  height: fit-content;
+}
+.modal-title {
+  text-align: center;
+}
+// Buttons
+.add-element-btn {
+  background-color: black;
+  color: white;
+  border: none;
+  &:hover {
+    background-color: $primary;
+    border: none;
+  }
+}
+.cancel-btn {
+  border: none;
+  color: darkgray;
+  &:hover {
+    color: black;
+    background-color: rgba(0, 0, 0, 0.123);
+  }
+}
+.btn-container {
+  display: flex;
+  margin: auto;
+  width: 70%;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-form-container {
+  min-width: 300px;
+}

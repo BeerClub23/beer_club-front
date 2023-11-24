@@ -16,6 +16,7 @@ module.exports = {
     'no-unused-vars': "off",
     semi: "off",
     'react-hooks/exhaustive-deps': "off",
+    "no-useless-escape": "off"
   },
   overrides: [
     {

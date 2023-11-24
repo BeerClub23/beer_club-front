@@ -14,7 +14,6 @@ import { theme } from "../styles/materialThemeForm";
 import { ThemeProvider } from "@mui/material";
 import { homeItems } from "../common/constants/NavBarItems";
 
-
 const PlansPage = () => {
   const { context, setContext } = useAppContext();
   // eslint-disable-next-line no-unused-vars

@@ -15,7 +15,6 @@ import { useRouter } from "next/navigation";
 import { useEffect } from "react";
 import { homeItems } from "../common/constants/NavBarItems";
 
-
 const CheckoutPage = () => {
   const router = useRouter();
   const { context } = useAppContext();
