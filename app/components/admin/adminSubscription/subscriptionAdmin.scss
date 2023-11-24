@@ -13,19 +13,19 @@
 }
 
 .MuiInputBase-root:hover,
-  .MuiInputBase-root.Mui-focused {
-    border-color: $primary;
-  }
+.MuiInputBase-root.Mui-focused {
+  border-color: $primary;
+}
 
-  /* Change the label color on focus */
-  .MuiInputLabel-root.Mui-focused {
-    color: $primary;
-  }
+/* Change the label color on focus */
+.MuiInputLabel-root.Mui-focused {
+  color: $primary;
+}
 
-  .MuiInputBase-root:hover .MuiOutlinedInput-notchedOutline,
-  .MuiInputBase-root.Mui-focused .MuiOutlinedInput-notchedOutline {
-    border-color: $primary;
-  }
+.MuiInputBase-root:hover .MuiOutlinedInput-notchedOutline,
+.MuiInputBase-root.Mui-focused .MuiOutlinedInput-notchedOutline {
+  border-color: $primary;
+}
 .description-input {
   width: 100%;
   height: fit-content;

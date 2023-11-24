@@ -116,7 +116,7 @@ const EditRecommendationForm = ({ initialData, onClose, onSave }) => {
       if (formData.id) {
         await onSave(formData, formData.id); // Update existing recommendation
         onClose();
-      } 
+      }
     } catch (error) {
       console.error("Error in handleSubmit:", error);
     }
@@ -176,43 +176,42 @@ const EditRecommendationForm = ({ initialData, onClose, onSave }) => {
           </Grid>
           <Grid item xs={12}>
             <Typography>Imagen recomendación</Typography>
-{isEditing && formData.image_url && (
-  <Box
-    className="image-name-box"
-    p={1}
-    sx={{
-      display: "flex",
-      alignItems: "center",
-      backgroundColor: "lightgray",
-    }}
-  >
-    <Typography variant="body1">
-      {formData.image_url.length > 30
-        ? `${formData.image_url.substring(0, 30)}...`
-        : formData.image_url}
-    </Typography>
-    <IconButton
-      component="span"
-      onClick={() =>
-        setFormData((prevData) => ({
-          ...prevData,
-          image_url: null,
-        }))
-      }
-    >
-      <CloseIcon />
-    </IconButton>
-  </Box>
-)}
-{(!isEditing || (isEditing && !formData.image_url)) && (
-  <InputFileUpload
-    onFileChange={(file) => handleRecommendationImageUpload(file)}
-    onCancel={() =>
-      setFormData((prevData) => ({ ...prevData, image_url: null }))
-    }
-  />
-)}
-
+            {isEditing && formData.image_url && (
+              <Box
+                className="image-name-box"
+                p={1}
+                sx={{
+                  display: "flex",
+                  alignItems: "center",
+                  backgroundColor: "lightgray",
+                }}
+              >
+                <Typography variant="body1">
+                  {formData.image_url.length > 30
+                    ? `${formData.image_url.substring(0, 30)}...`
+                    : formData.image_url}
+                </Typography>
+                <IconButton
+                  component="span"
+                  onClick={() =>
+                    setFormData((prevData) => ({
+                      ...prevData,
+                      image_url: null,
+                    }))
+                  }
+                >
+                  <CloseIcon />
+                </IconButton>
+              </Box>
+            )}
+            {(!isEditing || (isEditing && !formData.image_url)) && (
+              <InputFileUpload
+                onFileChange={(file) => handleRecommendationImageUpload(file)}
+                onCancel={() =>
+                  setFormData((prevData) => ({ ...prevData, image_url: null }))
+                }
+              />
+            )}
           </Grid>
           <Divider />
           {/* Product Name */}
@@ -264,36 +263,36 @@ const EditRecommendationForm = ({ initialData, onClose, onSave }) => {
               multiple
             />
             <Grid mb={5} container spacing={1}>
-            {Array.isArray(formData.product?.image_url) &&
-  formData.product.image_url.map((image, index) => (
-    <Grid item key={index}>
-      <Box
-        className="image-name-box"
-        p={1}
-        sx={{
-          display: "flex",
-          alignItems: "center",
-          backgroundColor: "lightgray",
-        }}
-      >
-        {image && image.url ? (
-          <>
-            <Typography variant="body1">
-              {image.url.length > 30
-                ? `${image.url.substring(0, 30)}...`
-                : image.url}
-            </Typography>
-            <IconButton
-              component="span"
-              onClick={() => handleRemoveImage(index)}
-            >
-              <CloseIcon />
-            </IconButton>
-          </>
-        ) : null}
-      </Box>
-    </Grid>
-  ))}
+              {Array.isArray(formData.product?.image_url) &&
+                formData.product.image_url.map((image, index) => (
+                  <Grid item key={index}>
+                    <Box
+                      className="image-name-box"
+                      p={1}
+                      sx={{
+                        display: "flex",
+                        alignItems: "center",
+                        backgroundColor: "lightgray",
+                      }}
+                    >
+                      {image && image.url ? (
+                        <>
+                          <Typography variant="body1">
+                            {image.url.length > 30
+                              ? `${image.url.substring(0, 30)}...`
+                              : image.url}
+                          </Typography>
+                          <IconButton
+                            component="span"
+                            onClick={() => handleRemoveImage(index)}
+                          >
+                            <CloseIcon />
+                          </IconButton>
+                        </>
+                      ) : null}
+                    </Box>
+                  </Grid>
+                ))}
             </Grid>
           </Grid>
 
