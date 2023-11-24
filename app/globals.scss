@@ -1,13 +1,14 @@
-
 $dark: #101010;
 $white: #ffffff;
+$background: #fafafa;
 $primary: #ceb5a7;
 $secondary: #f5e1c1;
 $rgb-dark: rgb(16, 16, 16);
 $rgb-white: rgb(255, 255, 255);
 $rgb-primary: rgb(206, 181, 167);
 $rgb-secondary: rgb(245, 225, 193);
-
+$poppins-font: var(--font-poppins); // add as var
+$roboto-font: var(--font-roboto); // add as var
 
 * {
   box-sizing: border-box;
@@ -25,30 +26,10 @@ body {
 body {
   color: $white;
   background: $dark;
+  min-height: 100vh;
 }
 
 a {
   color: inherit;
   text-decoration: none;
 }
-
-
-$poppins-font:var(--font-poppins); // add as var 
-
-
-/* Age */
-
-.recordar-datos {
-  text-align: center;
-}
-.recordar-datos .css-ahj2mt-MuiTypography-root {
-  font-size: 1.5rem;
-  font-family: var(--font-poppins);
-}
-
-.recordar-datos span {
-  display: block;
-  font-weight: 300;
-}
-
-

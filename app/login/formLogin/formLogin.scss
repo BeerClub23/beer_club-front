@@ -1,4 +1,4 @@
-@import "@/app/globals.scss";
+@import "../../globals.scss";
 
 // No funciona el cambiar el stilo del autocompletado
 .loginBox input:-internal-autofill-selected {
@@ -11,5 +11,3 @@
   transition: none !important;
   box-shadow: none !important;
 }
-
-

@@ -2,7 +2,7 @@ import * as React from "react";
 import FormGroup from "@mui/material/FormGroup";
 import FormControl from "@mui/material/FormControl";
 import { Button, Typography } from "@mui/material";
-// import { useRouter } from "next/navigation";
+import { useRouter } from "next/navigation";
 import "aos/dist/aos.css";
 import "./formLogin.scss";
 import Visibility from "@mui/icons-material/Visibility";
@@ -16,10 +16,12 @@ import { useFormContext } from "react-hook-form";
 import { Controller } from "react-hook-form";
 import { CustomTextField } from "../../components/inputs/CustomTextFields";
 import Swal from "sweetalert2";
-import ApiFormLogin from "@/app/services/login";
+import ApiFormLogin from "../../services/login";
+import Cookies from "js-cookie";
+import { jwtDecode } from "jwt-decode";
 
 export default function FormLogin() {
-  // const router = useRouter();
+  const router = useRouter();
   const [showPassword, setShowPassword] = React.useState(false);
   const handleClickShowPassword = () => setShowPassword((show) => !show);
 
@@ -35,15 +37,23 @@ export default function FormLogin() {
   } = useFormContext();
 
   const onSubmit = async (data) => {
-    let respuesta = await ApiFormLogin(data);
-    if (respuesta.token) {
-      // router.push(`/home`)
-      console.log(respuesta.token);
-      console.log("Estas dentro");
-    } else if (respuesta.response.request.status == 401) {
+    let { token, response } = await ApiFormLogin(data);
+    if (token) {
+      console.log(response);
+      const expirationDate = new Date();
+      Cookies.set("jwt", token, {
+        expires: expirationDate.setDate(expirationDate.getDate() + 1),
+      });
+      const decodeToken = jwtDecode(token);
+      if (decodeToken.role === "ROLE_ADMIN") {
+        router.push(`/admin/datos-personales`);
+      } else {
+        router.push(`/user`);
+      }
+    } else if (response.status == 401) {
       Swal.fire({
         title: "Error!",
-        text: "Usuario no registrado",
+        text: response.data,
         imageUrl: "../../images/icons/no-beer.jpg",
         imageWidth: 150,
         imageHeight: 150,
@@ -52,11 +62,11 @@ export default function FormLogin() {
         confirmButtonColor: "#ceb5a7",
         focusConfirm: false,
       });
-      console.error(respuesta.response.data.message);
-    } else if (respuesta.response.request.status == 500) {
+      console.error(response.data);
+    } else if (response.status == 500) {
       Swal.fire({
         title: "Ups!",
-        text: "No se pudo ingresar, intentelo mas tarde",
+        text: response.data,
         imageUrl: "../../images/icons/no-beer.jpg",
         imageWidth: 150,
         imageHeight: 150,
@@ -65,15 +75,15 @@ export default function FormLogin() {
         confirmButtonColor: "#ceb5a7",
         focusConfirm: false,
       });
-      console.error(respuesta.response.data.message);
+      console.error(response.data);
     }
   };
   React.useEffect(() => {
     setFocus("email");
   }, [setFocus]);
-  React.useEffect(() => {
-    console.log(isSubmitting);
-  }, [isSubmitting]);
+  // React.useEffect(() => {
+  //   console.log(isSubmitting);
+  // }, [isSubmitting]);
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} autoComplete="off">
@@ -101,7 +111,7 @@ export default function FormLogin() {
           </Typography>
 
           <Controller
-            name="pass"
+            name="password"
             control={control}
             defaultValue=""
             render={({ field }) => (
@@ -129,7 +139,7 @@ export default function FormLogin() {
             )}
           />
           <Typography variant="caption" color="red">
-            <ErrorMessage errors={errors} name="pass" />
+            <ErrorMessage errors={errors} name="password" />
           </Typography>
 
           {isSubmitting ? (

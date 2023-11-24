@@ -1,6 +1,6 @@
 .cardContainer {
   display: grid;
-  grid-template-columns: 70% auto;
+  grid-template-columns: auto 50% auto;
 }
 .cardContainer_text {
   padding-left: 24px;
@@ -10,4 +10,5 @@
   margin: 0 auto;
   width: auto;
   height: auto;
-}/*# sourceMappingURL=PlanCardForm.css.map */
+  padding-right: -16px;
+} /*# sourceMappingURL=PlanCardForm.css.map */

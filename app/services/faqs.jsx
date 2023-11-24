@@ -25,18 +25,23 @@ const faqs = [
       "Esto no debería pasar, pero no te preocupes que siempre nos podés contactar al whatsapp (+5491140221306) que te vamos a ayudar a que tengas tu degustación lo antes posible.",
   },
   {
-    question: "¿Que pasa si no estoy cuando viene a dejar mi degustación?",
+    question: "¿Que pasa si no estoy cuando viene a dejar mi degustación ?",
     answer:
       "No te preocupes, volveremos a pasar al día siguiente. La idea es que lo puedas degustar, por lo que pasaremos un máximo de tres veces y te estaremos mandando mensajes para mantenerte informado del horario en el que vamos a estar pasando.",
   },
 ];
 
 export const useGetFaqs = () => {
-  const { data, error, isLoading } = useSWR(`${process.env.NEXT_PUBLIC_API_URL}faqs`, get, {
-    fallbackData: faqs,
-    shouldRetryOnError: false,
-    errorRetryCount: 1,
-  });
+  const { data, error, isLoading } = useSWR(
+    `${process.env.NEXT_PUBLIC_API_URL}faqs`,
+    get,
+    {
+      fallbackData: faqs,
+      shouldRetryOnError: false,
+      revalidateOnFocus: false,
+      errorRetryCount: 1,
+    },
+  );
 
   return {
     faqs: data,

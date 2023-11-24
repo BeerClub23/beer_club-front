@@ -14,7 +14,7 @@
 }
 .bc-subscription-section-container {
   background-color: white;
-  padding: 20px;
+  padding: 40px 0px;
 }
 .bc-subscription-section .slick-prev:before,
 .bc-subscription-section .slick-next:before {
@@ -48,4 +48,4 @@
   .bc-subscription-section__title {
     font-size: 48px;
   }
-}/*# sourceMappingURL=SubscriptionSection.css.map */
+} /*# sourceMappingURL=SubscriptionSection.css.map */

@@ -1,4 +1,4 @@
-@import '../../../globals.scss';
+@import "../../../globals.scss";
 .card {
   width: 470px;
   height: 130px;
@@ -43,8 +43,8 @@
     font-size: 11px;
   }
 }
-@media (max-width: 320px){
+@media (max-width: 320px) {
   .card {
-      width: 100%;
-    }
+    width: 100%;
+  }
 }

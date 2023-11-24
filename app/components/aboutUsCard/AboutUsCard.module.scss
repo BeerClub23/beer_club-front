@@ -1,20 +1,25 @@
 .containerArticle {
-  box-shadow: 0px 5px 5px 0px rgba(0, 0, 0, 0.5);
+  box-shadow: 0px 5px 6px 3px rgba(0, 0, 0, 0.5);
+  background-color: rgb(206, 181, 167);
   width: 100%;
   min-height: 30vh;
   display: flex;
   flex-direction: column;
-  position: relative;
+  position: relative !important;
+  border-radius: 7px;
+  // padding:20px;
+  // z-index: 3!important;
 
   &_textContainer {
     background-color: rgb(206, 181, 167);
-    padding: 20px;
+    padding: 40px;
     grid-area: auto;
     display: flex;
     flex-direction: column;
     justify-content: center;
     overflow: hidden;
     z-index: 3;
+    border-radius: 7px;
   }
 
   &_text {
@@ -36,6 +41,7 @@
     background-color: rgb(206, 181, 167);
     align-items: center;
     z-index: 3;
+    border-radius: 7px;
   }
 
   &_picMobile {
@@ -66,6 +72,9 @@
     position: relative;
     z-index: 1;
 
+    &_textContainer {
+      padding: 40px 0px 40px 40px;
+    }
     &_spanText {
       text-align: right;
     }
@@ -74,10 +83,13 @@
       display: flex;
       position: absolute;
       z-index: 2;
-      left: -10px;
-      top: -115px;
       opacity: 0.8;
-      transform: rotate(20deg);
+      // left: -10px;
+      // top: -115px;
+      // transform: rotate(20deg);
+      left: -115px;
+      top: -125px;
+      transform: rotate(-50deg);
     }
 
     &_logo2 {
@@ -85,9 +97,12 @@
       opacity: 0.8;
       position: absolute;
       z-index: 2;
-      right: -10px;
-      top: -115px;
-      transform: rotate(-20deg) scaleX(-1);
+      right: -115px;
+      top: -125px;
+      transform: rotate(50deg) scaleX(-1);
+      // right: -10px;
+      // top: -115px;
+      // transform: rotate(-20deg) scaleX(-1);
     }
 
     &_picMobile {
@@ -106,13 +121,13 @@
 
   @media (min-width: 1300px) {
     &_logo1 {
-      left: -15px;
-      top: -100px;
+      left: -115px;
+      top: -125px;
     }
 
     &_logo2 {
-      right: -15px;
-      top: -100px;
+      right: -115px;
+      top: -125px;
     }
   }
 }

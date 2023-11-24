@@ -8,15 +8,16 @@ import { schema } from "../components/formCheckout/rules/index";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { FormProvider, useForm } from "react-hook-form";
 // import { useRouter } from 'next/navigation';
-import { Typography } from "@mui/material";
+// import { Typography } from "@mui/material";
 import PlanCardFrom from "../components/planCardForm/PlanCardForm";
 import { useAppContext } from "../context/context";
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
+import { homeItems } from "../common/constants/NavBarItems";
 
 const CheckoutPage = () => {
   const router = useRouter();
-  const { context, setContext } = useAppContext();
+  const { context } = useAppContext();
   const category = context;
 
   const methods = useForm({
@@ -28,11 +29,11 @@ const CheckoutPage = () => {
     if (!context?.subscription) {
       router.push("/planes");
     }
-  }, []);
+  }, [context, router]);
 
   return (
     <>
-      <HeaderPublic />
+      <HeaderPublic items={homeItems} />
 
       <Box
         sx={{
@@ -41,12 +42,9 @@ const CheckoutPage = () => {
           flexDirection: "column",
           justifyContent: "space-evenly",
           backgroundColor: "#fafafa",
+          pt: 13,
         }}
       >
-        <Box component="main" sx={{ pt: 13 }}>
-          {/* <Box sx={{ m: "20px" }}> */}
-          <PlanCardFrom category={category?.subscription} />
-        </Box>
         {/* {comic.stock !==0 ? */}
 
         <FormProvider {...methods}>
@@ -61,6 +59,11 @@ const CheckoutPage = () => {
                 </Typography>
               </Box>
             </>                      */}
+
+        <Box component="main" sx={{ pt: 3, pb: 6 }}>
+          {/* <Box sx={{ m: "20px" }}> */}
+          <PlanCardFrom category={category?.subscription} />
+        </Box>
       </Box>
 
       <Footer />

@@ -34,6 +34,7 @@ export const CustomTextField = ({
           {...textFieldProps}
           onBlur={(e) => {
             field.onBlur(e);
+            onBlur?.(e);
           }}
           onChange={(e) => {
             field.onChange(e);

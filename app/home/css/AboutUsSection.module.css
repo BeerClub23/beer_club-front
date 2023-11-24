@@ -11,6 +11,7 @@
   font-style: normal;
   line-height: normal;
   text-align: center;
+  padding-bottom: 20px;
 }
 @media (min-width: 345px) {
   .aboutUsSection_title {
@@ -28,4 +29,4 @@
   .aboutUsSection_title {
     font-size: 48px;
   }
-}/*# sourceMappingURL=AboutUsSection.module.css.map */
+} /*# sourceMappingURL=AboutUsSection.module.css.map */

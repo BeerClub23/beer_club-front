@@ -28,7 +28,7 @@ const UserAvatar = ({ userName }) => {
         </Typography>
       </div>
       <Typography variant="span">
-        Hola, <b>{userName}</b>
+        <b>{userName}</b>
       </Typography>
     </div>
   );

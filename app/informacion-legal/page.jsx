@@ -1,11 +1,11 @@
-import { Button, Container, Typography } from "@mui/material";
+import { Container, Typography } from "@mui/material";
 
 import Box from "@mui/material/Box";
 
 export default function Terms() {
   return (
     <>
-      <Box sx={{ pt: 13, backgroundColor: "#fff", minHeight: "100vh" }}>
+      <Box sx={{ py: 12, backgroundColor: "#fff", minHeight: "100vh" }}>
         <Container>
           <Typography
             variant="h4"

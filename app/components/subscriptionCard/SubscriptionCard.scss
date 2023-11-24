@@ -1,6 +1,6 @@
 .bc-subscription-card {
-  border-radius: 20px;
-  border: 2px solid #8d8d8d;
+  border-radius: 7px;
+  // border: 2px solid #8d8d8d;
   background: #fff;
   color: #000;
   font-size: 24px;
@@ -8,14 +8,15 @@
   font-weight: 400;
   line-height: normal;
   padding: 30px 20px;
-  box-shadow: 0px 5px 5px 0px rgba(0, 0, 0, 0.5);
+  box-shadow: 0px 5px 6px 3px rgba(0, 0, 0, 0.25);
   margin: auto;
   z-index: 1;
   position: relative;
-  margin-bottom: 10px;
+  margin-bottom: 40px;
 
   &-container {
     max-width: 350px;
+    margin: auto;
   }
 
   &__header {
@@ -46,41 +47,35 @@
   }
 
   &__action {
-    border-radius: 20px;
-    border: 1px solid transparent;
-    background: #f5e1c1;
-    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
-    font-size: 24px;
-    font-style: normal;
-    font-weight: 500;
-    line-height: normal;
-    letter-spacing: 2.2px;
-    padding: 12px 50px;
+    display: flex;
+    justify-content: center;
     width: 100%;
-    margin: 12px 0 0;
-
-    &:hover {
-      cursor: pointer;
-      background-color: #ceb5a7;
-    }
-
-    &:active,
-    &:focus {
-      background-color: #eee9e1;
-    }
+    padding: 0px 30px;
   }
 
   &__recommended {
-    height: 75px;
-    width: 100%;
-    border-radius: 20px 20px 0 0;
-    padding: 15px 20px;
+    height: 50px;
+    // width: 100%;
+    border-radius: 7px;
+    padding: 15px 25px;
     position: relative;
-    bottom: -27px;
-    z-index: 0;
+    bottom: -17px;
+    margin: 0px auto;
+    z-index: 3;
+    width: fit-content;
 
     &.active {
-      background-color: #000;
+      background: rgb(16, 16, 16);
+      // background: linear-gradient(180deg, rgba(16,16,16,1) 80%, rgba(103,103,103,1) 100%);
+      box-shadow: 0px 5px 6px 3px rgba(0, 0, 0, 0.25);
+    }
+    &.otro {
+      animation: 2s otro infinite;
+    }
+    @keyframes otro {
+      20% {
+        transform: perspective(300px) translateZ(20px);
+      }
     }
   }
 
@@ -122,4 +117,8 @@
       margin: 0 auto;
     }
   }
+}
+
+button {
+  letter-spacing: 1.8px;
 }

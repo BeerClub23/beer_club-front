@@ -1,6 +1,5 @@
 .bc-subscription-card {
-  border-radius: 20px;
-  border: 2px solid #8d8d8d;
+  border-radius: 7px;
   background: #fff;
   color: #000;
   font-size: 24px;
@@ -8,14 +7,15 @@
   font-weight: 400;
   line-height: normal;
   padding: 30px 20px;
-  box-shadow: 0px 5px 5px 0px rgba(0, 0, 0, 0.5);
+  box-shadow: 0px 5px 6px 3px rgba(0, 0, 0, 0.25);
   margin: auto;
   z-index: 1;
   position: relative;
-  margin-bottom: 10px;
+  margin-bottom: 40px;
 }
 .bc-subscription-card-container {
   max-width: 350px;
+  margin: auto;
 }
 .bc-subscription-card__header {
   display: flex;
@@ -42,37 +42,33 @@
   line-height: normal;
 }
 .bc-subscription-card__action {
-  border-radius: 20px;
-  border: 1px solid transparent;
-  background: #f5e1c1;
-  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
-  font-size: 24px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: normal;
-  letter-spacing: 2.2px;
-  padding: 12px 50px;
+  display: flex;
+  justify-content: center;
   width: 100%;
-  margin: 12px 0 0;
-}
-.bc-subscription-card__action:hover {
-  cursor: pointer;
-  background-color: #ceb5a7;
-}
-.bc-subscription-card__action:active, .bc-subscription-card__action:focus {
-  background-color: #eee9e1;
+  padding: 0px 30px;
 }
 .bc-subscription-card__recommended {
-  height: 75px;
-  width: 100%;
-  border-radius: 20px 20px 0 0;
-  padding: 15px 20px;
+  height: 50px;
+  border-radius: 7px;
+  padding: 15px 25px;
   position: relative;
-  bottom: -27px;
-  z-index: 0;
+  bottom: -17px;
+  margin: 0px auto;
+  z-index: 3;
+  width: -moz-fit-content;
+  width: fit-content;
 }
 .bc-subscription-card__recommended.active {
-  background-color: #000;
+  background: rgb(16, 16, 16);
+  box-shadow: 0px 5px 6px 3px rgba(0, 0, 0, 0.25);
+}
+.bc-subscription-card__recommended.otro {
+  animation: 2s otro infinite;
+}
+@keyframes otro {
+  20% {
+    transform: perspective(300px) translateZ(20px);
+  }
 }
 .bc-subscription-card ul {
   margin-left: 20px;
@@ -106,4 +102,8 @@
   .bc-subscription-card-container {
     margin: 0 auto;
   }
-}/*# sourceMappingURL=SubscriptionCard.css.map */
+}
+
+button {
+  letter-spacing: 1.8px;
+} /*# sourceMappingURL=SubscriptionCard.css.map */

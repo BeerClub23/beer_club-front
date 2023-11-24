@@ -25,6 +25,7 @@
   font-size: 1em;
   letter-spacing: 0.5px;
   width: 90%;
+  padding: 10px 10px 20px;
 }
 @media (min-width: 899px) and (max-width: 1199px) {
   .cardContainer {
@@ -41,4 +42,4 @@
   .cardContainer_description {
     width: 100%;
   }
-}/*# sourceMappingURL=AboutCard.module.css.map */
+} /*# sourceMappingURL=AboutCard.module.css.map */

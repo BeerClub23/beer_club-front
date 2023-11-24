@@ -1,6 +1,7 @@
 .bc-subscription-section {
   /*  display: grid;
     grid-template-columns: auto auto auto;*/
+
   gap: 3%;
 
   &__title {
@@ -16,7 +17,7 @@
   &-container {
     background-color: white;
     // min-height: 100vh;
-    padding: 20px;
+    padding: 40px 0px;
   }
 
   .slick-prev:before,

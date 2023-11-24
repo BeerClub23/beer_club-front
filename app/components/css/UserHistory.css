@@ -1,0 +1,29 @@
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+table tr {
+  line-height: 30px;
+}
+table tr.header_table th {
+  padding: 10px 10px 10px 30px;
+  text-align: end;
+}
+table th.Producto {
+  text-align: start;
+}
+table tr.row_results {
+  border-top: 1px solid #000000;
+  border-bottom: 1px solid #000000;
+}
+table tr.row_results #cell_codigo {
+  padding-left: 10px;
+}
+table tr.row_results #cell_codigo div {
+  display: flex;
+  justify-content: space-around;
+}
+table td {
+  padding: 10px 10px 10px 30px;
+  text-align: end;
+} /*# sourceMappingURL=UserHistory.css.map */

@@ -7,36 +7,24 @@ import FormHelperText from "@mui/material/FormHelperText";
 import { Box, Button, Checkbox, Typography } from "@mui/material";
 import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
+
 import "aos/dist/aos.css";
 import AOS from "aos";
 import "./formAge.scss";
-// import myRoute from 'app/services/IpService/ipService.jsx';
-// import { format } from 'date-fns';
-// import moment from 'moment';
-// import { NextRequest } from "next/server";
 
-
-
-export default function FormAge({saveAge}) {
+export default function FormAge({ saveAge }) {
   const router = useRouter();
 
   const {
     register,
     handleSubmit,
     setFocus,
-    formState: { errors, dirtyFields },
+    formState: { dirtyFields },
   } = useForm();
 
   const onSubmit = async (data) => {
-    // console.log(navigator.geolocation);
-    // console.log( myRoute())
-    // const userIP = NextRequest.headers['x-forwarded-for'] || NextRequest.socket.remoteAddress;
-    // console.log(userIP)
-
     const userDate = `${data.year}-${data.month}-${data.day}`;
-    console.log(data)
     try {
-      console.log(process.env.NEXT_PUBLIC_IPINFO_TOKEN);
       const response = await fetch(
         `https://ipinfo.io?token=${process.env.NEXT_PUBLIC_IPINFO_TOKEN}`,
       );
@@ -47,24 +35,24 @@ export default function FormAge({saveAge}) {
         console.log(
           "IP: " + userIP + ", City: " + userCity + ", Date:  " + userDate,
         );
-        saveAge({ip: userIP, city: userCity, dateOfBirth: userDate, saveInfo: data.saveInfo})
+        saveAge({
+          ip: userIP,
+          city: userCity,
+          dateOfBirth: userDate,
+          saveInfo: data.saveInfo,
+        });
       }
     } catch (error) {
       console.error("Error:", error);
     }
   };
   React.useEffect(() => {
-    const ageCheckLocal = localStorage.getItem("AgeCheck");
-    const ageCheckSession = sessionStorage.getItem("AgeCheck");
-    if (ageCheckLocal || ageCheckSession) {
-      router.push(`/home`);
-    }
     setFocus("day");
   }, [setFocus, router]);
 
   React.useEffect(() => {
     AOS.init({
-      duration: 1200,
+      duration: 1000,
     });
   }, []);
 
@@ -79,7 +67,7 @@ export default function FormAge({saveAge}) {
           Ingresa tu fecha de nacimiento?
         </Typography>
 
-        <FormGroup aria-label="position">
+        <FormGroup aria-label="position" data-aos="fade-up">
           <Box sx={{ mb: 5, mt: 2, mx: "auto", textAlign: "center" }}>
             <FormControl sx={{ m: 1 }} variant="outlined">
               <FormHelperText id="outlined-day-helper-text">DÍA</FormHelperText>
@@ -146,7 +134,7 @@ export default function FormAge({saveAge}) {
                 labelPlacement="end"
               />
               <Typography variant="p">
-                *BEER CLUB ES SOLO PARA MAYORES DE 18 AÑOS, <br /> NO
+                * BEER CLUB ES SOLO PARA MAYORES DE 18 AÑOS, <br /> NO
                 SELECCIONES ESTA OPCIÓN SI COMPARTES ESTE COMPUTADOR CON MENORES
                 DE EDAD.
               </Typography>
@@ -165,3 +153,5 @@ export default function FormAge({saveAge}) {
     </form>
   );
 }
+
+// export default FormAge;

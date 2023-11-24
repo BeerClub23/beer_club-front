@@ -29,27 +29,14 @@ export default function Footer() {
   return (
     <Box
       component="footer"
-      sx={
-        !pathname.includes("/user")
-          ? {
-              width: "100%",
-              height: "auto",
-              backgroundColor: "#EEE9E1",
-              paddingTop: "2rem",
-              paddingBottom: "1rem",
-              color: "#000000",
-              bottom: "0",
-              position: "absolute",
-            }
-          : {
-              width: "100%",
-              height: "auto",
-              backgroundColor: "#EEE9E1",
-              paddingTop: "2rem",
-              paddingBottom: "1rem",
-              color: "#000000",
-            }
-      }
+      sx={{
+        width: "100%",
+        height: "auto",
+        backgroundColor: "#EEE9E1",
+        paddingTop: "2rem",
+        paddingBottom: "1rem",
+        color: "#000000",
+      }}
     >
       <Container maxWidth="lg">
         <Grid
@@ -103,21 +90,21 @@ export default function Footer() {
               <Typography
                 variant="body1"
                 component="div"
-                className="linkItem"
+                className="linkItem linkWapp"
                 sx={{
                   fontWeight: "bold",
                   marginBottom: "2px",
                   display: "flex",
-                  alignItems: "center",
+                  gap: 1,
                 }}
               >
-                <WhatsAppIcon />
                 <Link
                   href={`https://${whatsapp}text=Hola,%20necesito%20hacerles%20una%20consulta...`}
                   target="_blank"
                 >
                   Contáctanos
                 </Link>
+                <WhatsAppIcon />
               </Typography>
             </div>
           </Grid>

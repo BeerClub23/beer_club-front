@@ -16,7 +16,7 @@ const AddressData = () => {
     formState: { errors },
     trigger,
   } = useFormContext();
-  const [country, setCountry] = React.useState([]);
+  const [country, setCountry] = React.useState("");
 
   const handleChange = (event) => {
     setCountry(event.target.value);
@@ -25,9 +25,12 @@ const AddressData = () => {
 
   return (
     <>
+      <Typography variant="h4" align="center" sx={{ mb: 1 }}>
+        Dirección de envio
+      </Typography>
       <CustomTextField
         name="address.street"
-        label="Direccion"
+        label="Dirección"
         type="text"
         control={control}
         defaultValue=""
@@ -43,7 +46,7 @@ const AddressData = () => {
       <Box sx={{ display: "flex", flexDirection: "row", gap: "3px" }}>
         <CustomTextField
           name="address.number"
-          label="Numero"
+          label="Número"
           type="text"
           control={control}
           defaultValue=""
@@ -52,9 +55,9 @@ const AddressData = () => {
             trigger("address.number");
           }}
         />
-        <Typography variant="caption" color="#d32f2fcf">
+        {/* <Typography variant="caption" color="#d32f2fcf">
           <ErrorMessage errors={errors} name="address.number" />
-        </Typography>
+        </Typography> */}
 
         <CustomTextField
           name="address.floor"
@@ -67,9 +70,9 @@ const AddressData = () => {
             trigger("address.floor");
           }}
         />
-        <Typography variant="caption" color="#d32f2fcf">
+        {/* <Typography variant="caption" color="#d32f2fcf">
           <ErrorMessage errors={errors} name="address.floor" />
-        </Typography>
+        </Typography> */}
 
         <CustomTextField
           name="address.apartment"
@@ -84,7 +87,7 @@ const AddressData = () => {
         />
       </Box>
       <Typography variant="caption" color="#d32f2fcf">
-        <ErrorMessage errors={errors} name="address.apartment" />
+        <ErrorMessage errors={errors} name="address.number" />
       </Typography>
 
       <CustomTextField
@@ -113,8 +116,9 @@ const AddressData = () => {
           trigger("address.province");
         }}
       />
-      <ErrorMessage errors={errors} name="address.stprovinceate" />
-      <Typography variant="caption" color="#d32f2fcf"></Typography>
+      <Typography variant="caption" color="#d32f2fcf">
+        <ErrorMessage errors={errors} name="address.province" />
+      </Typography>
 
       <Controller
         name="address.country"
@@ -127,7 +131,7 @@ const AddressData = () => {
               labelId="demo-simple-select-label"
               id="demo-simple-select"
               value={country}
-              label="Pais"
+              label="País"
               onChange={handleChange}
               onBlur={(e) => {
                 field.onChange(e);
@@ -146,7 +150,7 @@ const AddressData = () => {
 
       <CustomTextField
         name="address.zipCode"
-        label="Codigo Postal"
+        label="Código Postal"
         type="text"
         control={control}
         defaultValue=""

@@ -6,7 +6,6 @@ import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
-import QueryStatsIcon from "@mui/icons-material/QueryStats";
 import CloseIcon from "@mui/icons-material/Close";
 import HistoryIcon from "@mui/icons-material/History";
 import EditNoteIcon from "@mui/icons-material/EditNote";
@@ -18,12 +17,12 @@ import Link from "next/link";
 
 const UserSideBar = () => {
   const [mobile, setMobile] = useState(false);
-  const [width, setWidth] = useState(window.innerWidth);
+  const [width, setWidth] = useState();
   const [show, setSHow] = useState(false);
 
-  const handleResize = () => setWidth(window.innerWidth);
+  const handleResize = () => setWidth();
   useEffect(() => {
-    window.addEventListener("resize", handleResize);
+    document.addEventListener("resize", handleResize);
     width < 480 ? setMobile(true) : setMobile(false);
     const container = document.getElementById("cont");
     if ((width < 480) & !show) {
@@ -32,15 +31,15 @@ const UserSideBar = () => {
       container.style.gridTemplateColumns = "1fr 4fr";
     }
     if (width) return () => window.removeEventListener("resize", handleResize);
-  }, [width]);
+  }, [width, show]);
 
   const pathname = usePathname();
   return (
     <>
       <Box
         sx={{ backgroundColor: "white", boxShadow: "2px 0px 1px #8D8D8D" }}
-        className={mobile && "mobile_version-container"}
-        id={mobile & !show && "mobile_version-container_showed"}
+        className={mobile ? "mobile_version-container" : ""}
+        id={mobile & !show ? "mobile_version-container_showed" : ""}
       >
         {mobile && (
           <Box id="menu_drawer">
@@ -62,14 +61,16 @@ const UserSideBar = () => {
         <nav
           aria-label="main mailbox folders"
           id="nav_user"
-          className={mobile && "mobile_version"}
+          className={mobile ? "mobile_version" : ""}
           style={mobile & !show ? { display: "none" } : {}}
         >
           <List>
-            <Link href="/user/adminplan">
+            <Link href="/user/account/subscription">
               <ListItem
                 className={
-                  pathname.includes("/user/adminplan") && "active_nav_user"
+                  pathname.includes("/user/account/subscription")
+                    ? "active_nav_user"
+                    : ""
                 }
               >
                 <ListItemButton>
@@ -82,11 +83,12 @@ const UserSideBar = () => {
                 </ListItemButton>
               </ListItem>
             </Link>
-            <Link href="/user/datos-personales">
+            <Link href="/user/account/datos-personales">
               <ListItem
                 className={
-                  pathname.includes("/user/datos-personales") &&
-                  "active_nav_user"
+                  pathname.includes("/user/account/datos-personales")
+                    ? "active_nav_user"
+                    : ""
                 }
               >
                 <ListItemButton>
@@ -97,10 +99,12 @@ const UserSideBar = () => {
                 </ListItemButton>
               </ListItem>
             </Link>
-            <Link href="/user/historial">
+            <Link href="/user/account/historial">
               <ListItem
                 className={
-                  pathname.includes("/user/historial") && "active_nav_user"
+                  pathname.includes("/user/account/historial")
+                    ? "active_nav_user"
+                    : ""
                 }
               >
                 <ListItemButton>
@@ -108,20 +112,6 @@ const UserSideBar = () => {
                     <HistoryIcon />
                   </ListItemIcon>
                   <ListItemText primary="Historial" />
-                </ListItemButton>
-              </ListItem>
-            </Link>
-            <Link href="/user/estadisticas">
-              <ListItem
-                className={
-                  pathname.includes("/user/estadisticas") && "active_nav_user"
-                }
-              >
-                <ListItemButton>
-                  <ListItemIcon>
-                    <QueryStatsIcon />
-                  </ListItemIcon>
-                  <ListItemText primary="Estadisticas" />
                 </ListItemButton>
               </ListItem>
             </Link>

@@ -1,0 +1,26 @@
+.userdata_box {
+  display: grid;
+  grid-template-columns: 4fr 1fr;
+  color: black;
+  align-items: center;
+  margin: 30px 0;
+  background-color: white;
+  padding: 30px;
+  border-radius: 20px;
+  box-shadow: 2px 0px 1px #8d8d8d;
+}
+
+.userdata_box ul {
+  list-style: none;
+  line-height: 30px;
+}
+
+.userdata_box ul li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+#userdata_box-basicData {
+  border-right: 1px solid #000000;
+} /*# sourceMappingURL=UserBasicData.css.map */

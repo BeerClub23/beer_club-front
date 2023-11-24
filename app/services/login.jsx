@@ -3,7 +3,7 @@ const ApiFormLogin = async (store) => {
     const axios = require("axios");
     axios({
       method: "POST",
-      url: "/api/login",
+      url: `${process.env.NEXT_PUBLIC_API_URL}auth/login`,
       headers: {
         Accept: "application/json",
         "Content-Type": "application/json",
