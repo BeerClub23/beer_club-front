@@ -8,7 +8,7 @@ import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 import QueryStatsIcon from "@mui/icons-material/QueryStats";
 import CloseIcon from "@mui/icons-material/Close";
-import TurnedInNotIcon from '@mui/icons-material/TurnedInNot';
+import TurnedInNotIcon from "@mui/icons-material/TurnedInNot";
 import StarBorderIcon from "@mui/icons-material/StarBorder";
 import EditNoteIcon from "@mui/icons-material/EditNote";
 import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
