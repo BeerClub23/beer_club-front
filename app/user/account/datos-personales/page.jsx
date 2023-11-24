@@ -5,6 +5,7 @@ import UpdateUserData from "../../../components/updateUserData/UpdateUserData";
 import { useUserBeerContext } from "../../../context/user";
 import Cookies from "js-cookie";
 import { updateUserPersonalData } from "../../../services/user";
+import { useGetSubscriptions } from "../../../services/subscriptions";
 
 const DatosPersonales = () => {
   const { user, setUser } = useUserBeerContext();
