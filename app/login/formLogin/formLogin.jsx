@@ -46,7 +46,7 @@ export default function FormLogin() {
       });
       const decodeToken = jwtDecode(token);
       if (decodeToken.role === "ROLE_ADMIN") {
-        router.push(`/admin`);
+        router.push(`/admin/datos-personales`);
       } else {
         router.push(`/user`);
       }

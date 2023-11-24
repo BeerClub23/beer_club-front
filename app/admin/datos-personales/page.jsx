@@ -1,11 +1,11 @@
 "use client";
 import React from "react";
 import { Box } from "@mui/material";
-import UpdateUserData from "../../../components/updateUserData/UpdateUserData";
-import { useUserBeerContext } from "../../../context/user";
+import UpdateUserData from "../../components/updateUserData/UpdateUserData";
+import { useUserBeerContext } from "../../context/user";
 import Cookies from "js-cookie";
-import { updateUserPersonalData } from "../../../services/user";
-import { useGetSubscriptions } from "../../../services/subscriptions";
+import { updateUserPersonalData } from "../../services/user";
+import { useGetSubscriptions } from "../../services/subscriptions";
 
 const DatosPersonales = () => {
   const { user, setUser } = useUserBeerContext();
