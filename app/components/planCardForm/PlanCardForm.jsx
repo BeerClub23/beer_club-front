@@ -5,7 +5,7 @@ import Typography from "@mui/material/Typography";
 import { theme } from "../../styles/materialThemeFormCheckout";
 import ThemeProvider from "@mui/material/styles/ThemeProvider";
 import Image from "next/image";
-import chop from "../../../public/images/aboutUs/lupulo.png";
+import chop from "../../../public/images/aboutUs/lupulo.svg";
 import "./PlanCardForm.scss";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import Link from "next/link";

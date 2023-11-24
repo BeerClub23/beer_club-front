@@ -1,7 +1,7 @@
 import Image from "next/image";
 import styles from "../aboutUsCard/AboutUsCard.module.scss";
-import chop from "../../../public/images/aboutUs/blackTrigo.png";
-import lupulo from "../../../public/images/aboutUs/lupulo.png";
+import chop from "../../../public/images/aboutUs/blackTrigo.svg";
+import lupulo from "../../../public/images/aboutUs/lupulo.svg";
 
 export const AboutUsCard = () => {
   return (
