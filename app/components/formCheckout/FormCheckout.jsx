@@ -67,7 +67,7 @@ export const FormCheckout = ({ category }) => {
         ...data.address,
         cardNumber: data.card.cardNumber,
         expDate: data.card.expDate,
-        cardHolder: data.card.cardHolder.toUpperCase(),
+        cardHolder: data.card.cardHolder,
         cvv: data.card.cvc,
       };
 
