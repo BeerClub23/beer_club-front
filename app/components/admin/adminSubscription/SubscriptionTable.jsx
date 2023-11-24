@@ -26,6 +26,7 @@ import { SearchOff, SearchOutlined } from "@mui/icons-material";
 import {
   UpdateSubscription,
   SaveSubscription,
+  recommendSubscription,
 } from "../../../services/subscriptions";
 import Swal from "sweetalert2";
 import SubscriptionModal from "./SubscriptionModal";
@@ -160,9 +161,9 @@ const EnhancedTableToolbar = ({ onSearch, onAdd, onFilterChange }) => {
           displayEmpty
           inputProps={{ "aria-label": "Without label" }}
         >
-          <MenuItem value="">All</MenuItem>
-          <MenuItem value="true">Active</MenuItem>
-          <MenuItem value="false">Inactive</MenuItem>
+          <MenuItem value="">Todos</MenuItem>
+          <MenuItem value="true">Activo</MenuItem>
+          <MenuItem value="false">Inactivo</MenuItem>
         </Select>
       </Box>
       {!showSearch ? (
@@ -332,28 +333,13 @@ const SubscriptionTable = (props) => {
 
   // Update status and recommended
   const handleIsRecommendedUpdate = async (row) => {
-    const updatedRow = {
-      ...row,
-      isRecommended: !row.isRecommended,
-    };
-    console.log(updatedRow);
-    try {
-      let response = await UpdateSubscription(updatedRow, row.id);
-      if (response.status === 200) {
-        // Update local state directly
-        setSubscriptions((prevSubscriptions) => {
-          return prevSubscriptions.map((s) =>
-            s.id === row.id ? updatedRow : s,
-          );
-        });
-
-        console.log("Successful update");
-      } else {
-        console.log("Failed update");
-      }
-    } catch (error) {
-      console.error("Error updating subscription:", error);
-    }
+    await recommendSubscription(row.id).then((response) => {
+      setSubscriptions((prevSubscriptions) => {
+        return prevSubscriptions.map((s) =>
+          s.id === row.id ? {...row, isRecommended: !row.isRecommended} : {...row, isRecommended: false},
+        );
+      });
+    }).catch((e) => console.log(e));
   };
   const handleIsActiveUpdate = async (row) => {
     const updatedRow = {
