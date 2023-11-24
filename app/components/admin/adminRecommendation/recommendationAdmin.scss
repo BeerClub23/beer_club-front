@@ -1,24 +1,24 @@
 @import "../../../globals.scss";
-.form-container-r{
+.form-container-r {
   width: 80%;
   margin-top: 10px;
 }
 //Input upload styles
-.image-name-box{
-background-color: rgba(201, 201, 201, 0.269);
-margin-left: 10px;
-height:40px ;
-width: 300px;
+.image-name-box {
+  background-color: rgba(201, 201, 201, 0.269);
+  margin-left: 10px;
+  height: 40px;
+  width: 300px;
 }
-.upload-button{
+.upload-button {
   background-color: black;
-    color: white;
+  color: white;
+  border: none;
+
+  &:hover {
+    background-color: $primary;
     border: none;
-  
-    &:hover {
-      background-color: $primary;
-      border: none;
-    }
+  }
 }
 
 //Form buttons
@@ -32,12 +32,12 @@ width: 300px;
     background-color: rgba(0, 0, 0, 0.123);
   }
 }
-.btn-container{
+.btn-container {
   display: flex;
   width: 50%;
-    margin: auto;
-    align-items: center;
-    justify-content: space-evenly;
+  margin: auto;
+  align-items: center;
+  justify-content: space-evenly;
 }
 
 .add-element-btn {
@@ -52,19 +52,18 @@ width: 300px;
   }
 }
 //modal
-.modal-form-container{
+.modal-form-container {
   min-width: 300px;
 }
 
 //input styles
-.input-modal{
+.input-modal {
   margin-bottom: 10px;
 }
 .MuiInputBase-root:hover,
 .MuiInputBase-root.Mui-focused {
   border-color: $primary;
 }
-
 
 /* Change the label color on focus */
 .MuiInputLabel-root.Mui-focused {
