@@ -8,6 +8,7 @@ import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 import QueryStatsIcon from "@mui/icons-material/QueryStats";
 import CloseIcon from "@mui/icons-material/Close";
+import TurnedInNotIcon from '@mui/icons-material/TurnedInNot';
 import StarBorderIcon from "@mui/icons-material/StarBorder";
 import EditNoteIcon from "@mui/icons-material/EditNote";
 import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
@@ -65,6 +66,25 @@ const UserSideBarAdmin = (props) => {
           style={mobile & !show ? { display: "none" } : {}}
         >
           <List>
+            <Link href="/admin/datos-personales">
+              <ListItem
+                className={
+                  pathname.includes("/admin/datos-personales")
+                    ? "active_nav_user"
+                    : ""
+                }
+                sx={{ p: 0 }}
+              >
+                <ListItemButton sx={{ py: 2 }}>
+                  <ListItemIcon>
+                    <EditNoteIcon sx={{ color: "black !important" }} />
+                  </ListItemIcon>
+                  <ListItemText primary="Datos Personales" />
+                </ListItemButton>
+              </ListItem>
+            </Link>
+          </List>
+          <List>
             <Link href="/admin/subscripciones">
               <ListItem
                 className={
@@ -76,7 +96,7 @@ const UserSideBarAdmin = (props) => {
               >
                 <ListItemButton sx={{ py: 2 }}>
                   <ListItemIcon>
-                    <EditNoteIcon sx={{ color: "black !important" }} />
+                    <TurnedInNotIcon sx={{ color: "black !important" }} />
                   </ListItemIcon>
                   <ListItemText primary="Subscripciones" />
                 </ListItemButton>

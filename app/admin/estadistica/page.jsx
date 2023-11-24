@@ -1,5 +1,5 @@
 const EstadisticaPage = () => {
-  return <div style={{ minHeight: "100vh" }}>Aqui Estadistica del admin</div>;
+  return <div style={{ minHeight: "100vh" }}>Proximamente!</div>;
 };
 
 export default EstadisticaPage;
