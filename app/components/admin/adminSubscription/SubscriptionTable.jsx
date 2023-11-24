@@ -339,7 +339,7 @@ const SubscriptionTable = (props) => {
           return prevSubscriptions.map((s) =>
             s.id === row.id
               ? { ...row, isRecommended: !row.isRecommended }
-              : { ...row, isRecommended: false },
+              : { ...s, isRecommended: false },
           );
         });
       })
