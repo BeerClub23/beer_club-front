@@ -16,7 +16,8 @@ module.exports = {
     'no-unused-vars': "off",
     semi: "off",
     'react-hooks/exhaustive-deps': "off",
-    "no-useless-escape": "off"
+    "no-useless-escape": "off",
+    "jsx-a11y/label-has-associated-control":"off"
   },
   overrides: [
     {

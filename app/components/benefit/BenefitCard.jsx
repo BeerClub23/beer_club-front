@@ -1,7 +1,7 @@
 import React from "react";
 import { Box, Typography } from "@mui/material";
 import "./BenefitCard.scss";
-import chop from "../../../public/images/aboutUs/black-trigo.png";
+import chop from "../../../public/images/aboutUs/blacktrigo.png";
 import Image from "next/image";
 import SportsBarIcon from "@mui/icons-material/SportsBar";
 
