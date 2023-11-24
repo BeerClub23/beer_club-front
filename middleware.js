@@ -32,7 +32,8 @@ export async function middleware(request) {
       (decodeToken.role == "ROLE_ADMIN")
     ) {
       url = request.nextUrl.clone();
-      url.pathname = "/admin/datos-personales";
+      // url.pathname = "/admin";
+      url.pathname = "/admin/subscripciones";
       return NextResponse.redirect(url);
     }
   } else if (
