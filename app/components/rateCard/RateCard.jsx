@@ -48,23 +48,6 @@ const RateCard = ({ rate }) => {
     setVoted(true);
   };
 
-  const postRating = (ratingValue, review) => {
-    fetch("URL_BACKEND", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ rating: ratingValue, review: review }),
-    })
-      .then((response) => {
-        console.log(JSON.stringify({ rating: ratingValue, review: review }));
-        console.log(response);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  };
-
   return (
     <Box
       sx={{
@@ -95,7 +78,7 @@ const RateCard = ({ rate }) => {
         <Textarea
           placeholder="Envianos tu comentario"
           // required
-          sx={{ m: 3 }}
+          sx={{ m: 3, width: "100%", minHeight: "150px" }}
           value={textValue}
           onChange={handleTextChange}
           className="commentText"
