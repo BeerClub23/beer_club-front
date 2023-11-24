@@ -15,6 +15,7 @@ module.exports = {
   rules: {
     semi: ["error", "always"],
     "no-unused-vars": "off",
-    "no-useless-escape": "off"
+    "no-useless-escape": "off",
+    "jsx-a11y/label-has-associated-control": "off"
   },
 };

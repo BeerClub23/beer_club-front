@@ -12,13 +12,6 @@ export async function middleware(request) {
     const decodeToken = jwtDecode(token.value.toString());
     const isExpired = new Date().getTime() > decodeToken.exp * 1000;
 
-    console.log(decodeToken);
-    console.log(token.value);
-    console.log(token);
-    console.log(new Date().getTime() > decodeToken.exp * 1000);
-    console.log(!request.nextUrl.pathname.includes("login"));
-    console.log("----------");
-
     if (isExpired & !request.nextUrl.pathname.includes("login")) {
       url = request.nextUrl.clone();
       url.pathname = "/login";
@@ -39,7 +32,8 @@ export async function middleware(request) {
       (decodeToken.role == "ROLE_ADMIN")
     ) {
       url = request.nextUrl.clone();
-      url.pathname = "/admin";
+      // url.pathname = "/admin";
+      url.pathname = "/admin/subscripciones";
       return NextResponse.redirect(url);
     }
   } else if (

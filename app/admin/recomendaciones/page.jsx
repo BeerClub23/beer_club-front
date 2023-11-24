@@ -42,8 +42,8 @@ const RecomendacionesPage = () => {
 
   // CRUD methods
   const handleCreate = async (formData) => {
-    console.log("Data send: " + formData)
-     try {
+    console.log("Data send: " + formData);
+    try {
       console.log(formData);
       const response = await SaveRecommendation(JSON.stringify(formData));
 
@@ -77,15 +77,14 @@ const RecomendacionesPage = () => {
       }
     } catch (error) {
       console.error("Error creating recommendation:", error);
-    } 
+    }
   };
 
   const handleSave = async (formData, id) => {
-    console.log(formData, id)
+    console.log(formData, id);
     try {
-      
       const response = await UpdateRecommendation(formData, id);
-  
+
       if (response.status === 200) {
         Swal.fire({
           title: "Recomendación actualizada",
@@ -98,13 +97,13 @@ const RecomendacionesPage = () => {
         // Update local state by adding the edited recommendation
         setRecommendations((prevRecommendations) =>
           prevRecommendations.map((rec) =>
-            rec.id === id ? { ...rec, ...formData } : rec
-          )
+            rec.id === id ? { ...rec, ...formData } : rec,
+          ),
         );
       } else if (response.status !== 200) {
         const error = Object.keys(response.response.data).reduce(
           (acc, key) => `${acc}${response.response.data[key]}\n`,
-          ""
+          "",
         );
         Swal.fire({
           title: "Error!",
@@ -119,7 +118,6 @@ const RecomendacionesPage = () => {
       console.error("Error editing recommendation:", error);
     }
   };
-  
 
   return (
     <Box

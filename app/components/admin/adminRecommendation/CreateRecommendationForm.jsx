@@ -15,7 +15,7 @@ import {
 import InputFileUpload from "./inputUpload";
 import { useGetSubscriptions } from "../../../services/subscriptions";
 import CloseIcon from "@mui/icons-material/Close";
-import { theme } from "@/app/styles/materialThemeForm";
+import { theme } from "../../../styles/materialThemeForm";
 import { ThemeProvider } from "@mui/material";
 import "./recommendationAdmin.scss";
 
