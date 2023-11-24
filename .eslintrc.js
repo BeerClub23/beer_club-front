@@ -17,7 +17,7 @@ module.exports = {
     semi: "off",
     'react-hooks/exhaustive-deps': "off",
     "no-useless-escape": "off",
-    "jsx-a11y/label-has-associated-control":"off"
+    "jsx-a11y/label-has-associated-control": "off"
   },
   overrides: [
     {

@@ -333,13 +333,17 @@ const SubscriptionTable = (props) => {
 
   // Update status and recommended
   const handleIsRecommendedUpdate = async (row) => {
-    await recommendSubscription(row.id).then((response) => {
-      setSubscriptions((prevSubscriptions) => {
-        return prevSubscriptions.map((s) =>
-          s.id === row.id ? {...row, isRecommended: !row.isRecommended} : {...row, isRecommended: false},
-        );
-      });
-    }).catch((e) => console.log(e));
+    await recommendSubscription(row.id)
+      .then((response) => {
+        setSubscriptions((prevSubscriptions) => {
+          return prevSubscriptions.map((s) =>
+            s.id === row.id
+              ? { ...row, isRecommended: !row.isRecommended }
+              : { ...s, isRecommended: false },
+          );
+        });
+      })
+      .catch((e) => console.log(e));
   };
   const handleIsActiveUpdate = async (row) => {
     const updatedRow = {

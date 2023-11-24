@@ -39,7 +39,7 @@ const AdminLayout = ({ children }) => {
       >
         <UserSideBarAdmin />
         <Box sx={{ padding: "30px" }} id="user_wrapper">
-          {children}
+          {user ? <>{children}</> : <></>}
         </Box>
       </Box>
     </div>
