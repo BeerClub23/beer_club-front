@@ -35,7 +35,7 @@ const getCurrentDate = () => {
 const initialState = {
   title: "",
   description: "",
-  createDate: getCurrentDate(),
+  //createDate: getCurrentDate(),
   product: {
     name: "",
     description: "",
