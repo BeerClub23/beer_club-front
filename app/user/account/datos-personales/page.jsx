@@ -8,11 +8,15 @@ import { updateUserPersonalData } from "../../../services/user";
 
 const DatosPersonales = () => {
   const { user, setUser } = useUserBeerContext();
+  const { subscriptions, isLoading, isError } = useGetSubscriptions();
   const token = Cookies.get("jwt");
 
   const updateUserInfo = async (userData) => {
     const response = await updateUserPersonalData(userData, user.id, token);
-    setUser(response);
+    const currentSubscription = subscriptions.find(
+      (subscription) => subscription.id === response.subscriptionId,
+    );
+    setUser({ ...response, subscription: currentSubscription });
   };
 
   return (
