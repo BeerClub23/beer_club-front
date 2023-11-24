@@ -11,12 +11,15 @@ import {
   Divider,
   InputLabel,
   FormControl,
+  Chip,
 } from "@mui/material";
 import InputFileUpload from "./inputUpload";
 import { useGetSubscriptions } from "../../../services/subscriptions";
 import CloseIcon from "@mui/icons-material/Close";
-import { theme } from "../../../styles/materialThemeForm";
+import { theme } from "@/app/styles/materialThemeForm";
 import { ThemeProvider } from "@mui/material";
+import AddIcon from "@mui/icons-material/Add";
+import { DeleteOutline } from "@mui/icons-material";
 import "./recommendationAdmin.scss";
 
 // SET THE CURRENT DATE FOR THE ELEMENT CREATION
@@ -54,6 +57,15 @@ const CreateRecommendationForm = ({ onClose, onCreate }) => {
     setFormData((prevData) => ({ ...prevData, [name]: value }));
   };
 
+  // PRODUCT EVENTS
+  const handleProductChange = (event) => {
+    const { name, value } = event.target;
+    setFormData((prevData) => ({
+      ...prevData,
+      product: { ...prevData.product, [name]: value },
+    }));
+  };
+
   const handleRecommendationImageUpload = (files) => {
     if (!files || files.length === 0) {
       setFormData((prevData) => ({
@@ -70,16 +82,10 @@ const CreateRecommendationForm = ({ onClose, onCreate }) => {
     }));
   };
 
-  // PRODUCT EVENTS
-  const handleProductChange = (event) => {
-    const { name, value } = event.target;
-    setFormData((prevData) => ({
-      ...prevData,
-      product: { ...prevData.product, [name]: value },
-    }));
-  };
-
-  const handleProductImageUpload = async (files) => {
+  {
+    /**PRODUCT IMAGES WITH DRAG AND DROP */
+  }
+  /*   const handleProductImageUpload = async (files) => {
     if (!files || files.length === 0) {
       return;
     }
@@ -129,6 +135,54 @@ const CreateRecommendationForm = ({ onClose, onCreate }) => {
     if (files.length > 0) {
       handleProductImageUpload(files);
     }
+  }; */
+
+  {
+    /**PRODUCT IMAGES WITH INPUT FIELD */
+  }
+  const handleImagesProductChange = (index, value) => {
+    setFormData((prevData) => {
+      const updatedImages = [...prevData.product.image_url];
+
+      if (value === "") {
+        updatedImages.splice(index, 1);
+      } else {
+        updatedImages[index] = { name: value };
+      }
+
+      return {
+        ...prevData,
+        product: {
+          ...prevData.product,
+          image_url: updatedImages,
+        },
+      };
+    });
+  };
+
+  const handleAddImage = () => {
+    setFormData((prevData) => ({
+      ...prevData,
+      product: {
+        ...prevData.product,
+        image_url: [...prevData.product.image_url, { url: "" }],
+      },
+    }));
+  };
+
+  const handleRemoveImage = (index) => {
+    setFormData((prevData) => {
+      const updatedImages = [...prevData.product.image_url];
+      updatedImages.splice(index, 1);
+
+      return {
+        ...prevData,
+        product: {
+          ...prevData.product,
+          image_url: updatedImages,
+        },
+      };
+    });
   };
 
   const handleSubmit = (event) => {
@@ -145,7 +199,7 @@ const CreateRecommendationForm = ({ onClose, onCreate }) => {
         image_url: imageUrls,
       },
     };
-
+    console.log(formDataToSend);
     onCreate(formDataToSend);
 
     setFormData((prevData) => ({
@@ -213,19 +267,26 @@ const CreateRecommendationForm = ({ onClose, onCreate }) => {
             </FormControl>
           </Grid>
           <Grid item xs={12}>
-            <Typography>Imagen recomendación</Typography>
+            <TextField
+              label="Imagen recomendación"
+              fullWidth
+              name="image_url"
+              value={formData.image_url}
+              onChange={handleChange}
+            />
+            {/*             <Typography>Imagen recomendación</Typography>
             <InputFileUpload
               onFileChange={(file) => handleRecommendationImageUpload(file)}
               onCancel={() =>
                 setFormData((prevData) => ({ ...prevData, image_url: null }))
               }
-            />
+            /> */}
           </Grid>
-          <Divider mt={5} variant="fullWidth" orientation="horizontal">
-            Producto
-          </Divider>
           {/* Product Name */}
           <Grid item xs={12}>
+            <Box mb={2}>
+              <Divider>Producto</Divider>
+            </Box>
             <TextField
               label="Nombre producto"
               fullWidth
@@ -248,8 +309,44 @@ const CreateRecommendationForm = ({ onClose, onCreate }) => {
           </Grid>
           {/* Product Image Upload */}
           <Grid item xs={12}>
-            <label>Imágenes:</label>
-            <div
+            <Typography m={2}>Imágenes producto:</Typography>
+            {formData.product.image_url.map((image, index) => (
+              <div
+                key={index}
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  flexDirection: "row",
+                }}
+              >
+                <TextField
+                  type="text"
+                  name={`image[${index}]`}
+                  label={`imagen ${index + 1}`}
+                  variant="outlined"
+                  fullWidth
+                  value={image.name}
+                  onChange={(e) =>
+                    handleImagesProductChange(index, e.target.value)
+                  }
+                  className="input-modal"
+                />
+
+                <IconButton onClick={() => handleRemoveImage(index)}>
+                  <DeleteOutline />
+                </IconButton>
+              </div>
+            ))}
+            <Button
+              onClick={handleAddImage}
+              variant="outlined"
+              className="add-element-btn"
+              startIcon={<AddIcon />}
+              style={{ marginLeft: "8px" }}
+            >
+              Añadir Imágenes
+            </Button>
+            {/*            <div
               ref={dropRef}
               onDrop={handleDrop}
               onDragEnter={(e) => e.preventDefault()}
@@ -297,7 +394,7 @@ const CreateRecommendationForm = ({ onClose, onCreate }) => {
                   </Box>
                 </Grid>
               ))}
-            </Grid>
+            </Grid> */}
           </Grid>
           {/* Submit Button */}
           <Grid item xs={12}>
