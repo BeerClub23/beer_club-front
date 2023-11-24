@@ -65,7 +65,7 @@ const UserSideBarAdmin = (props) => {
           className={mobile && "mobile_version"}
           style={mobile & !show ? { display: "none" } : {}}
         >
-          <List>
+          {/* <List>
             <Link href="/admin/datos-personales">
               <ListItem
                 className={
@@ -83,7 +83,7 @@ const UserSideBarAdmin = (props) => {
                 </ListItemButton>
               </ListItem>
             </Link>
-          </List>
+          </List> */}
           <List>
             <Link href="/admin/subscripciones">
               <ListItem
