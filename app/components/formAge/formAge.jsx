@@ -75,6 +75,7 @@ export default function FormAge({ saveAge }) {
                 id="outlined-adornment-day"
                 aria-describedby="outlined-day-helper-text"
                 type="number"
+                className="inputAge"
                 placeholder="DD"
                 {...register("day", { required: true, maxLength: 2 })}
                 onInput={(e) => {
@@ -90,6 +91,7 @@ export default function FormAge({ saveAge }) {
                 id="outlined-adornment-month"
                 aria-describedby="outlined-month-helper-text"
                 type="number"
+                className="inputAge"
                 placeholder="MM"
                 {...register("month", { required: true, maxLength: 2 })}
                 onInput={(e) => {
@@ -109,6 +111,7 @@ export default function FormAge({ saveAge }) {
                 id="outlined-adornment-year"
                 aria-describedby="outlined-year-helper-text"
                 type="number"
+                className="inputAge inputAgeYear"
                 placeholder="YYYY"
                 {...register("year", { required: true, maxLength: 4 })}
                 onInput={(e) => {

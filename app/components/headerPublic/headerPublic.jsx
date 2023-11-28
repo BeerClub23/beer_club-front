@@ -147,7 +147,7 @@ export default function HeaderGeneral({ window, items }) {
                   // <Link href={item.route} key={item.name} sx={{ color: "#fff"}} className="navItem">{item.name}</Link>
 
                   user && item.name == "Me" ? (
-                    <div key={item.name}>
+                    <div key={item.name} className="navItem">
                       <Box id="userHeader" onClick={handleClick}>
                         <UserAvatar
                           userName={`${user.firstName}
@@ -167,7 +167,7 @@ export default function HeaderGeneral({ window, items }) {
                       href={item.route}
                       key={item.name}
                       sx={{ color: "#fff" }}
-                      className={"nav_navItem"}
+                      className={"navItem"}
                       style={{ scrollBehavior: "smooth" }}
                     >
                       {item.name}

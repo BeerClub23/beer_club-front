@@ -3,12 +3,10 @@
   grid-template-columns: auto 50% auto;
 }
 .cardContainer_text {
-  padding-left: 24px;
+  padding-left: 24px !important;
 }
 .cardContainer_picMobile {
   transform: rotate(45deg);
   margin: 0 auto;
-  width: auto;
-  height: auto;
   padding-right: -16px;
-} /*# sourceMappingURL=PlanCardForm.css.map */
+}/*# sourceMappingURL=PlanCardForm.css.map */

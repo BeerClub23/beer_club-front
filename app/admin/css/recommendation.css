@@ -1,0 +1,39 @@
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html,
+body {
+  max-width: 100vw;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+}
+
+body {
+  color: #ffffff;
+  background: #101010;
+  min-height: 100vh;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.display-container-btn {
+  width: 45%;
+}
+
+.chip-element {
+  width: 170px;
+  height: 35px;
+  font-weight: 600;
+  margin-left: 10px;
+}
+
+.chip-active {
+  background-color: #ceb5a7;
+  color: black;
+}/*# sourceMappingURL=recommendation.css.map */

@@ -17,12 +17,11 @@
   font-size: 2rem;
   font-family: $poppins-font;
 }
-
-.css-1r61a7i-MuiInputBase-input-MuiOutlinedInput-input {
-  max-width: 45px;
+.inputAge{
+  max-width: 60px;
 }
-.input-year .css-1r61a7i-MuiInputBase-input-MuiOutlinedInput-input {
-  max-width: 65px;
+.inputAgeYear{
+  max-width: 85px!important;
 }
 
 input[type="number"]::-webkit-inner-spin-button,
@@ -32,13 +31,16 @@ input[type="number"]::-webkit-outer-spin-button {
 }
 
 @media (min-width: 450px) {
-  .css-1r61a7i-MuiInputBase-input-MuiOutlinedInput-input {
-    font-size: 1.5rem;
-    max-width: 55px;
+  .inputAge{
+    max-width: 70px;
+    div{
+      font-size: 1.5rem;
+    }
   }
-  .input-year .css-1r61a7i-MuiInputBase-input-MuiOutlinedInput-input {
-    max-width: 75px;
+  .inputAgeYear{
+    max-width: 105px!important;
   }
+
 }
 
 @media (min-width: 600px) {
@@ -48,20 +50,26 @@ input[type="number"]::-webkit-outer-spin-button {
   .mainAge h4 {
     font-size: 3rem;
   }
-  .css-1r61a7i-MuiInputBase-input-MuiOutlinedInput-input {
-    font-size: 2rem;
-    max-width: 70px;
+  .inputAge{
+    max-width: 90px;
+    div{
+      font-size: 2rem;
+    }
   }
-  .input-year .css-1r61a7i-MuiInputBase-input-MuiOutlinedInput-input {
-    max-width: 100px;
+  .inputAgeYear{
+    max-width: 130px!important;
   }
+
 }
 @media (min-width: 900px) {
-  .css-1r61a7i-MuiInputBase-input-MuiOutlinedInput-input {
-    font-size: 2.5rem;
-    max-width: 100px;
+  .inputAge{
+    max-width: 120px;
+    div{
+      font-size: 2.5rem;
+    }
   }
-  .input-year .css-1r61a7i-MuiInputBase-input-MuiOutlinedInput-input {
-    max-width: 150px;
+  .inputAgeYear{
+    max-width: 160px!important;
   }
+
 }
