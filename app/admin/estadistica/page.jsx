@@ -1,4 +1,5 @@
 "use client";
+import React, { useEffect } from "react";
 import { useGetTopProducts } from "../../services/topProducts";
 import { useGetReportingData } from "../../services/reportsData";
 import ChartTopProducts from "../../components/chartTopProducts/ChartTopProduct";
@@ -8,11 +9,11 @@ import { Box } from "@mui/material";
 const EstadisticaPage = () => {
   const { topProducts } = useGetTopProducts();
   const { reportingData } = useGetReportingData();
-  let activeUsers = [];
-  if (reportingData.length) {
-    activeUsers = reportingData.filter((user) => console.log(user.is_active));
-  }
-  
+  const [activeUsers, setActiveUsers] = React.useState();
+  React.useEffect(() => {
+    setActiveUsers(reportingData.filter((user) => user.is_active == 1));
+  }, [reportingData]);
+
   console.log(reportingData);
   return (
     <Box
@@ -28,7 +29,7 @@ const EstadisticaPage = () => {
     >
       <ChartTotalSubscriptors total={activeUsers} />
       <ChartTopProducts topProducts={topProducts} />
-      <ChartPie reportingData={reportingData}/>
+      {activeUsers?.length > 0 && <ChartPie activeUsers={activeUsers} />}
     </Box>
   );
 };
