@@ -18,7 +18,7 @@ export const useGetReportingData = () => {
     `${process.env.NEXT_PUBLIC_API_URL}filters/users/filterGlobalData`,
     (url) => get(url, token),
     {
-      // fallbackData: topProducts,
+      fallbackData: [],
       shouldRetryOnError: false,
       revalidateOnFocus: false,
       errorRetryCount: 1,
