@@ -1,4 +1,5 @@
 "use client";
+import React, { useEffect } from "react";
 import { useGetTopProducts } from "../../services/topProducts";
 import { useGetReportingData } from "../../services/reportsData";
 import ChartTopProducts from "../../components/chartTopProducts/ChartTopProduct";
@@ -9,10 +10,10 @@ import { useState } from "react";
 const EstadisticaPage = () => {
   const { topProducts } = useGetTopProducts();
   const { reportingData } = useGetReportingData();
-  const [activeUsers, setActiveUsers] = useState([]);
-  // if (reportingData.length) {
-  //   setActiveUsers(reportingData.filter((user) => console.log(user.is_active)));
-  // }
+  const [activeUsers, setActiveUsers] = React.useState();
+  React.useEffect(() => {
+    setActiveUsers(reportingData.filter((user) => user.is_active == 1));
+  }, [reportingData]);
 
   console.log(reportingData);
   return (
@@ -29,7 +30,7 @@ const EstadisticaPage = () => {
     >
       <ChartTotalSubscriptors total={activeUsers} />
       <ChartTopProducts topProducts={topProducts} />
-      <ChartPie reportingData={reportingData} />
+      <ChartPie reportingData={reportingData}/>
     </Box>
   );
 };

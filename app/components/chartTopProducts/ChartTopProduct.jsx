@@ -4,11 +4,11 @@ import { Typography, Box } from "@mui/material";
 import "./ChartTopProduct.scss";
 
 const ChartTopProducts = ({ topProducts }) => {
-  console.log(topProducts);
+  // console.log(topProducts);
   const dataName = topProducts?.map((item) =>
     item.name.length >= 10 ? item.name.substring(0, 11) : item.name,
   );
-  console.log(dataName);
+  // console.log(dataName);
   const dataRanking = topProducts?.map((item) => item.productScore);
 
   return (
