@@ -5,14 +5,15 @@ import ChartTopProducts from "../../components/chartTopProducts/ChartTopProduct"
 import ChartTotalSubscriptors from "../../components/chartTotalSubscriptors/ChartTotalSubscriptors";
 import ChartPie from "../../components/chartPie/ChartPie";
 import { Box } from "@mui/material";
+import { useState } from "react";
 const EstadisticaPage = () => {
   const { topProducts } = useGetTopProducts();
   const { reportingData } = useGetReportingData();
-  let activeUsers = [];
-  if (reportingData.length) {
-    activeUsers = reportingData.filter((user) => console.log(user.is_active));
-  }
-  
+  const [activeUsers, setActiveUsers] = useState([]);
+  // if (reportingData.length) {
+  //   setActiveUsers(reportingData.filter((user) => console.log(user.is_active)));
+  // }
+
   console.log(reportingData);
   return (
     <Box
@@ -28,7 +29,7 @@ const EstadisticaPage = () => {
     >
       <ChartTotalSubscriptors total={activeUsers} />
       <ChartTopProducts topProducts={topProducts} />
-      <ChartPie reportingData={reportingData}/>
+      <ChartPie reportingData={reportingData} />
     </Box>
   );
 };
