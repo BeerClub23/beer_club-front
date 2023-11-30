@@ -1,5 +1,7 @@
 import * as React from "react";
 import { PieChart, pieArcLabelClasses } from "@mui/x-charts/PieChart";
+import { Box, Typography } from "@mui/material";
+import './ChartPie.scss'
 
 const size = {
   width: 400,
@@ -37,21 +39,25 @@ export default function ChartPie({ activeUsers }) {
   console.log(TOTAL);
 
   return (
-    <PieChart
-      series={[
-        {
-          arcLabel: getArcLabel,
-          arcLabelMinAngle: 45,
-          data,
-        },
-      ]}
-      sx={{
-        [`& .${pieArcLabelClasses.root}`]: {
-          fill: "white",
-          fontWeight: "bold",
-        },
-      }}
-      {...size}
-    />
+    <Box className= "chartPieContainer">
+      <Typography className="chartPieTitle">% Usuarios por Suscripcion</Typography>
+      <PieChart
+        series={[
+          {
+            arcLabel: getArcLabel,
+            arcLabelMinAngle: 45,
+            data,
+          },
+        ]}
+        sx={{
+          [`& .${pieArcLabelClasses.root}`]: {
+            fill: "white",
+            fontWeight: "bold",
+          },
+        }}
+        {...size}
+      />
+
+    </Box>
   );
 }

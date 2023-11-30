@@ -1,0 +1,40 @@
+@import "../../../globals.scss";
+
+.filterSectionContainer{
+     display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    margin: 30px;
+
+}
+
+.filterContainer{
+    width: 100%;
+    background-color: rgb(247, 245, 245);
+    // box-shadow: 0px 5px 6px 3px rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.datePickerContainer{
+    margin: 10px;
+    // margin: 30px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    
+}
+
+.countryFilterContainer{
+    padding-bottom: 10px;
+     margin: 0 auto;
+    //  width: 300px;
+    display: flex;
+    flex-direction: row;
+    width: 80%;
+    justify-content: space-around;
+    gap: 10px;
+    
+}

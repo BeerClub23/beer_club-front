@@ -1,0 +1,27 @@
+@import "../../globals.scss";
+
+.chartContainerCountry{
+    background-color: "#fafafa";
+    border-radius: 7px;
+    color: $rgb-dark;
+    font-family: $poppins-font !important;
+    box-shadow: 0px 5px 6px 3px rgba(0, 0, 0, 0.5);
+    width: 400px;
+    height: 200px;
+    
+}
+
+.titleTotalCountry{
+    font-size: 24px;
+    text-align: center;
+    padding-top: 24px;
+}
+
+.textCountry{
+    text-align: center;
+    padding-top: 24px;
+    font-size: 24px;
+    font-weight: 600;
+    // letter-spacing: 3px;
+    
+}
