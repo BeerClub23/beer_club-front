@@ -16,7 +16,7 @@ import SearchIcon from "@mui/icons-material/Search";
 import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
 import { useGetReportingDataFiltered } from "../../../services/reportsData";
 
-const FilterSection = () => {
+const FilterSection = ({activeUsers}) => {
   const today = new Date();
   const [endpoint, setEndpoint] = React.useState("");
   const { reportingData } = useGetReportingData();
@@ -31,7 +31,7 @@ const FilterSection = () => {
   
   React.useEffect(() => {
     setFilteredData(reportingDataFilter);
-  }, [reportingDataFilter]);
+  }, []);
 
   console.log(filteredData);
   const suscriptions = reportingData.reduce((acc, object) => {
