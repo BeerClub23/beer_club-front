@@ -28,10 +28,12 @@ const FilterSection = () => {
   const [suscription, setSuscription] = React.useState("");
   const [country, setCountry] = React.useState("");
 
-  
   React.useEffect(() => {
-    setFilteredData(reportingDataFilter);
-  }, [reportingDataFilter]);
+    console.log(reportingDataFilter);
+    !endpoint
+      ? setFilteredData(reportingData)
+      : setFilteredData(reportingDataFilter);
+  }, [reportingDataFilter, reportingData, endpoint]);
 
   console.log(filteredData);
   const suscriptions = reportingData.reduce((acc, object) => {
@@ -77,8 +79,8 @@ const FilterSection = () => {
   const handleSubmit = () => {
     //?typeSubscription=Especialista&paymentStatus=APROBADO
     let url = "";
-    from ? (url += `startDate=${from.$y}-${from.$M + 1}-${from.$D}&`) : "";
-    toDate ? (url += `endDate=${from.$y}-${from.$M + 1}-${from.$D}&`) : "";
+    // from ? (url += `startDate=${from.$y}-${from.$M + 1}-${from.$D}&`) : "";
+    // toDate ? (url += `endDate=${from.$y}-${from.$M + 1}-${from.$D}&`) : "";
     paymentStatus ? (url += `paymentStatus=${paymentStatus}&`) : "";
     suscription ? (url += `typeSubscription=${suscription}&`) : "";
     country ? (url += `country=${country}`) : "";
