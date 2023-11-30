@@ -1,7 +1,7 @@
 import * as React from "react";
 import { PieChart, pieArcLabelClasses } from "@mui/x-charts/PieChart";
 import { Box, Typography } from "@mui/material";
-import './ChartPie.scss'
+import "./ChartPie.scss";
 
 const size = {
   width: 400,
@@ -10,6 +10,7 @@ const size = {
 
 export default function ChartPie({ activeUsers }) {
   const [data, setData] = React.useState([]);
+ 
 
   React.useEffect(() => {
     const newData = activeUsers.reduce(
@@ -31,16 +32,21 @@ export default function ChartPie({ activeUsers }) {
   const TOTAL = activeUsers.length;
 
   const getArcLabel = (params) => {
-    const percent = params.value / TOTAL;
+    // console.log(params)
+    const percent = (params.value)/TOTAL;
     return `${(percent * 100).toFixed(0)}%`;
   };
 
-  console.log(data);
-  console.log(TOTAL);
+  // console.log(data);
+  // console.log(TOTAL);
+
+  // console.log(activeUsers);
 
   return (
-    <Box className= "chartPieContainer">
-      <Typography className="chartPieTitle">% Usuarios por Suscripcion</Typography>
+    <Box className="chartPieContainer">
+      <Typography className="chartPieTitle">
+        % Usuarios por Suscripción
+      </Typography>
       <PieChart
         series={[
           {
@@ -57,7 +63,6 @@ export default function ChartPie({ activeUsers }) {
         }}
         {...size}
       />
-
     </Box>
   );
 }

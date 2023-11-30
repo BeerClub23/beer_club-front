@@ -38,10 +38,10 @@ const EstadisticaPage = () => {
         <ChartTotalSubscriptors total={activeUsers} />
         {activeUsers?.length > 0 && <ChartTotalByCountry total={activeUsers} />}
       </Box>
-       <Box sx={{margin:"0 auto"}}>
+       {/* <Box sx={{margin:"0 auto"}}>
         {reportingData?.length > 0 && <ChartPie activeUsers={reportingData} />}
 
-      </Box>
+      </Box> */}
 
           <FilterSection activeUsers={reportingData} >
 

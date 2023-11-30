@@ -16,7 +16,7 @@ import SearchIcon from "@mui/icons-material/Search";
 import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
 import { useGetReportingDataFiltered } from "../../../services/reportsData";
 
-const FilterSection = ({activeUsers}) => {
+const FilterSection = () => {
   const today = new Date();
   const [endpoint, setEndpoint] = React.useState("");
   const { reportingData } = useGetReportingData();
@@ -28,14 +28,18 @@ const FilterSection = ({activeUsers}) => {
   const [suscription, setSuscription] = React.useState("");
   const [country, setCountry] = React.useState("");
 
+  // React.useEffect(() => {
+  //   console.log(reportingDataFilter);
+  //   !endpoint
+  //     ? setFilteredData(reportingData)
+  //     : setFilteredData(reportingDataFilter);
+  // }, [endpoint, reportingData, reportingDataFilter]);
   React.useEffect(() => {
-    console.log(reportingDataFilter);
-    !endpoint
-      ? setFilteredData(reportingData)
-      : setFilteredData(reportingDataFilter);
-  }, [reportingDataFilter, reportingData, endpoint]);
+      setFilteredData(reportingDataFilter);
 
-  console.log(filteredData);
+  }, [reportingDataFilter]);
+
+  // console.log(reportingDataFilter);
   const suscriptions = reportingData.reduce((acc, object) => {
     if (!acc.some((item) => item.name === object.name)) {
       acc.push({ name: object.name });
@@ -74,13 +78,15 @@ const FilterSection = ({activeUsers}) => {
     setPaymentStatus("");
     setSuscription("");
     setCountry("");
+    // setEndpoint("")
   };
 
   const handleSubmit = () => {
     //?typeSubscription=Especialista&paymentStatus=APROBADO
+   
     let url = "";
-    // from ? (url += `startDate=${from.$y}-${from.$M + 1}-${from.$D}&`) : "";
-    // toDate ? (url += `endDate=${from.$y}-${from.$M + 1}-${from.$D}&`) : "";
+     from ? (url += `startDate=${from.$y}-${from.$M + 1}-${from.$D}&`) : "";
+    toDate ? (url += `endDate=${toDate.$y}-${toDate.$M + 1}-${toDate.$D}&`) : "";
     paymentStatus ? (url += `paymentStatus=${paymentStatus}&`) : "";
     suscription ? (url += `typeSubscription=${suscription}&`) : "";
     country ? (url += `country=${country}`) : "";

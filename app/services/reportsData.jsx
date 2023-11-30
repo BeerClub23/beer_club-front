@@ -47,7 +47,7 @@ export const useGetReportingDataFiltered = (url) => {
   );
 
   return {
-    reportingData: data,
+    reportingDataFilter: data,
     isLoadingTop: isLoading,
     isErrorTop: error,
   };
