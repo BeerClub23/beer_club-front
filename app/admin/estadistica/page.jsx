@@ -7,16 +7,16 @@ import ChartTotalSubscriptors from "../../components/chartTotalSubscriptors/Char
 import ChartTotalByCountry from "../../components/chartTotalByCountry/ChartTotalByCountry";
 import FilterSection from "./filterSection/FilterSection";
 import { Box } from "@mui/material";
-import ChartPie from "../../components/chartPie/ChartPie";
+import ChartPie from "../../components/chartPieUserBySubsc/ChartPieUserBySubsc";
 const EstadisticaPage = () => {
   const { topProducts } = useGetTopProducts();
   const { reportingData } = useGetReportingData();
   const [activeUsers, setActiveUsers] = React.useState();
    React.useEffect(() => {
-     setActiveUsers(reportingData.filter((user) => user.is_active == 1));
+     setActiveUsers(reportingData.filter((user) => user.is_active === 1));
     }, [reportingData]);
 
-  // console.log(reportingData);
+  console.log(reportingData);
   return (
     <Box
       sx={{
