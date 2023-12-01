@@ -11,62 +11,90 @@ const ChartBarPaymentAmout = ({ endpoint }) => {
   const [dataName, setDataName] = React.useState([]);
   const [dataRanking, setDataRanking] = React.useState([]);
 
+  console.log(reportingDataFilter);
+
+  // React.useEffect(() => {
+  //   if (reportingDataFilter && reportingDataFilter.length > 0) {
+  //     const newData = reportingDataFilter.reduce((acc, user) => {
+  //       const existingItem = acc.find((info) => info.label === user.status);
+  //       if (existingItem) {
+  //         existingItem.value += user.lastPaidAmount;
+  //       } else {
+  //         acc.push({ label: user.status, value: user.lastPaidAmount });
+  //       }
+  //       return acc;
+  //     }, []);
+  //     // console.log(newData);
+  //     setData(newData);
+  //     //   setDataName(newData.map((item) => item.status));
+  //     setDataRanking(newData.map((item) => item.value));
+  //     setDataName(newData.map((item) => item.label));
+  //     // setDataRanking(reportingDataFilter.map((item) => item.lastPaidAmount));
+  //   }
+  // }, [endpoint, reportingDataFilter]);
+
+  // console.log(dataRanking);
+  // const dataName = data?.map((item) => item.status);
+  // const dataRanking = data?.map((item) => item.lastPaidAmount);
+
   React.useEffect(() => {
-    if (reportingDataFilter.length > 0) {
-      const newData = reportingDataFilter.reduce(
-        (acc, user) => {
-          const existingItem = acc.find((info) => info.label === user.name);
-          if (existingItem) {
-            existingItem.value += 1;
-          } else {
-            acc.push({ label: user.name, value: 1 });
-          }
-          return acc;
-        },
-        [data],
-      );
-
+    if (reportingDataFilter && reportingDataFilter.length > 0) {
+      const newData = reportingDataFilter.reduce((acc, user) => {
+        const existingItem = acc.find((info) => info.label === user.status);
+        if (existingItem) {
+          existingItem.value += user.lastPaidAmount;
+        } else {
+          acc.push({ label: user.status, value: user.lastPaidAmount });
+        }
+        return acc;
+      }, []);
+  
       setData(newData);
+      setDataRanking(newData.map((item) => item.value));
+      setDataName(newData.map((item) => item.label));
     }
-  }, [endpoint, reportingDataFilter]);
-
-  const dataName = data?.map((item) => item.status);
-  const dataRanking = data?.map((item) => item.lastPaidAmount);
+  }, [reportingDataFilter]);
 
   return (
     <>
       <Box className="chartContainer">
         <Typography className="chartTitle">Importe por Estado</Typography>
-        <BarChart
-          xAxis={[
-            {
-              id: "paymentStatus",
-              label: "Estado del pago",
+        {reportingDataFilter.length > 0 ? (
+          <BarChart
+            xAxis={[
+              {
+                id: "paymentStatus",
+                label: "Estado del pago",
 
-              data: dataName,
-              // data: data,
-              scaleType: "band",
-            },
-          ]}
-          yAxis={[{ label: "Ranking" }]}
-          series={[
-            {
-              value: 1000, //CALCULAR TOTAL
-              data: dataRanking,
-              color: "#ceb5a7",
-            },
-          ]}
-          slotProps={{
-            legend: {
-              labelStyle: {
-                fontSize: 11,
-                fill: "blue",
+                data: ["CANCELADO", "RECHAZADO", "PENDIENTE", "APROBADO"],
+                // data: data,
+                scaleType: "band",
               },
-            },
-          }}
-          width={400}
-          height={300}
-        />
+            ]}
+            yAxis={[{ label: "Ranking" }]}
+            series={[
+              {
+                value: 1000, //CALCULAR TOTAL
+                data: dataRanking,
+                color: "#121111",
+              },
+            ]}
+            slotProps={{
+              legend: {
+                labelStyle: {
+                  fontSize: 11,
+                  fill: "blue",
+                },
+              },
+            }}
+            width={400}
+            height={300}
+          />
+        ) : (
+          <Typography className="chartPieText">
+            No se encontraron resultados para los parametros ingresados
+          </Typography>
+        )}
       </Box>
     </>
   );

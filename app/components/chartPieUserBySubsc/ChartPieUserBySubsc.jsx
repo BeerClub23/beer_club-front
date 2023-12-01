@@ -43,7 +43,7 @@ export default function ChartPieUserBySubsc({ endpoint }) {
   // console.log();
   // console.log(TOTAL);
 
-  console.log(reportingDataFilter);
+  // console.log(reportingDataFilter);
 
   return (
     <Box className="chartPieContainer">

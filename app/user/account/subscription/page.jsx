@@ -20,7 +20,7 @@ const AccountPage = () => {
       token,
     )
       .then((response) => {
-        console.log(response);
+        // console.log(response);
         Swal.fire({
           title: "Subscripción actualizada!",
           text: "Recuerda que el cambio de subscripción se verá reflejado en la siguiente factura. Asi mismo en la visualización del contenido.",
