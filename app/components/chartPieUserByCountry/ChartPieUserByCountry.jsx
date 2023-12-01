@@ -9,6 +9,7 @@ const size = {
   height: 200,
 };
 
+const palette = [ '#f3aacb', '#ab4bde','#1e91ed',"#9ddbc9",  '#15ab92',];
 export default function ChartPieUserByCountry({ endpoint }) {
   const { reportingDataFilter } = useGetReportingDataFiltered(endpoint);
   const [data, setData] = React.useState([]);
@@ -53,6 +54,7 @@ export default function ChartPieUserByCountry({ endpoint }) {
       </Typography>
       {reportingDataFilter.length > 0 ? (
         <PieChart
+          colors={palette}
           series={[
             {
               arcLabel: getArcLabel,

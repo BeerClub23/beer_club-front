@@ -37,7 +37,6 @@ const ChartTotalByCountry = ({ total }) => {
               {` ${item.pais} : ${item.value} `}
             </Typography>
           ))}
-          
         </Box>
       ) : (
         <></>
