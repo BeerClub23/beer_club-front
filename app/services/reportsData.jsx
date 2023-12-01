@@ -52,3 +52,26 @@ export const useGetReportingDataFiltered = (url) => {
     isErrorTop: error,
   };
 };
+
+export const useGetReportingUsers = () => {
+  const token = Cookies.get("jwt");
+  const { data, error, isLoading } = useSWR(
+    // `${process.env.NEXT_PUBLIC_API_URL}filters/users/filterGlobalData?typeSubscription=Especialista&paymentStatus=APROBADO`,
+    `${process.env.NEXT_PUBLIC_API_URL}users/all`,
+    (url) => get(url, token),
+    {
+      fallbackData: [],
+      shouldRetryOnError: false,
+      revalidateOnFocus: false,
+      errorRetryCount: 1,
+    },
+  );
+
+  return {
+    usersData: data,
+    isLoadingTop: isLoading,
+    isErrorTop: error,
+  };
+};
+
+

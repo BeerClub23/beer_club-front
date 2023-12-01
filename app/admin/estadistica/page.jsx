@@ -6,6 +6,7 @@ import ChartTopProducts from "../../components/chartTopProducts/ChartTopProduct"
 import ChartTotalSubscriptors from "../../components/chartTotalSubscriptors/ChartTotalSubscriptors";
 import ChartTotalByCountry from "../../components/chartTotalByCountry/ChartTotalByCountry";
 import FilterSection from "./filterSection/FilterSection";
+import UserSection from "./userSection/UserSection";
 import { Box } from "@mui/material";
 import ChartPie from "../../components/chartPieUserBySubsc/ChartPieUserBySubsc";
 const EstadisticaPage = () => {
@@ -45,6 +46,7 @@ const EstadisticaPage = () => {
 
           <FilterSection activeUsers={reportingData} >
           </FilterSection>
+          <UserSection></UserSection>
     
       <ChartTopProducts topProducts={topProducts} />
     </Box>
