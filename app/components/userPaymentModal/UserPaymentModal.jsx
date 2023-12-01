@@ -1,5 +1,3 @@
-// UserPaymentModal.js
-import React, { useState, useEffect } from "react";
 import { useForm, FormProvider } from "react-hook-form";
 import Dialog from "@mui/material/Dialog";
 import DialogContent from "@mui/material/DialogContent";
@@ -11,8 +9,8 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { schema } from "./rules/index";
 import { Box } from "@mui/material";
 import Swal from "sweetalert2";
-import "./userPaymentModal.scss";
 import { UpdatePayment } from "../../services/payment";
+import "./userPaymentModal.scss";
 
 const UserPaymentModal = ({ open, onClose, payment }) => {
   const methods = useForm({
