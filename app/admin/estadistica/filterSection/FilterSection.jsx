@@ -3,6 +3,7 @@ import "./FilterSection.scss";
 import ChartPieUserBySubsc from "../../../components/chartPieUserBySubsc/ChartPieUserBySubsc";
 import ChartPieUserByCountry from "../../../components/chartPieUserByCountry/ChartPieUserByCountry";
 import ChartBarPaymentAmount from "../../../components/chartBarPaymentAmout/ChartBarPaymentAmout";
+import ChartBarPaymentUser from "../../../components/chartBarPaymentUser/ChartBarPaymentUser";
 import { Box, IconButton, Typography } from "@mui/material";
 import dayjs from "dayjs";
 import { DemoContainer } from "@mui/x-date-pickers/internals/demo";
@@ -21,8 +22,10 @@ const FilterSection = () => {
   const today = new Date();
   const [endpoint, setEndpoint] = React.useState("");
   const { subscriptions } = useGetSubscriptions();
-  const [from, setFrom] = React.useState(dayjs(""));
-  const [toDate, setToDate] = React.useState(dayjs(""));
+  // const [from, setFrom] = React.useState(dayjs(""));
+  const [from, setFrom] = React.useState("");
+  // const [toDate, setToDate] = React.useState(dayjs(""));
+  const [toDate, setToDate] = React.useState("");
   const [paymentStatus, setPaymentStatus] = React.useState("");
   const [suscription, setSuscription] = React.useState("");
   const [country, setCountry] = React.useState("");
@@ -184,6 +187,10 @@ const FilterSection = () => {
         <Box sx={{ margin: "0 auto" }}>
           {/* {filteredData?.length > 0 && <ChartPie activeUsers={filteredData} />} */}
           <ChartBarPaymentAmount endpoint={endpoint} />
+        </Box>
+        <Box sx={{ margin: "0 auto" }}>
+          {/* {filteredData?.length > 0 && <ChartPie activeUsers={filteredData} />} */}
+          <ChartBarPaymentUser endpoint={endpoint} />
         </Box>
       </Box>
     </Box>

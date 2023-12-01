@@ -1,10 +1,10 @@
 import * as React from "react";
 import { BarChart } from "@mui/x-charts/BarChart";
 import { Typography, Box } from "@mui/material";
-import "./ChartBarPaymentAmout.scss";
+import "./ChartBarPaymentUser.scss";
 import { useGetReportingDataFiltered } from "@/app/services/reportsData";
 
-const ChartBarPaymentAmout = ({ endpoint }) => {
+const ChartBarPaymentUser = ({ endpoint }) => {
   const { reportingDataFilter } = useGetReportingDataFiltered(endpoint);
 
   const [data, setData] = React.useState([]);
@@ -45,9 +45,9 @@ const ChartBarPaymentAmout = ({ endpoint }) => {
           (info) => info.label === status,
         );
         if (existingItemIndex !== -1) {
-          newData[existingItemIndex].value += lastPaidAmount;
+          newData[existingItemIndex].value += 1;
         } else {
-          newData.push({ label: status, value: lastPaidAmount });
+          newData.push({ label: status, value: 1 });
         }
       });
 
@@ -64,7 +64,7 @@ const ChartBarPaymentAmout = ({ endpoint }) => {
   return (
     <>
       <Box className="chartContainer">
-        <Typography className="chartTitle">Estado del pago por importe</Typography>
+        <Typography className="chartTitle">Estado del pago por usuario</Typography>
         {dataName.length > 0 && dataRanking.length > 0 ? (
           <BarChart
             xAxis={[
@@ -107,4 +107,4 @@ const ChartBarPaymentAmout = ({ endpoint }) => {
   );
 };
 
-export default ChartBarPaymentAmout;
+export default ChartBarPaymentUser;

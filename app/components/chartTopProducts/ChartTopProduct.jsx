@@ -8,9 +8,9 @@ const ChartTopProducts = ({ topProducts }) => {
   const dataName = topProducts?.map((item) =>
     item.name.length >= 10 ? item.name.substring(0, 11) : item.name,
   );
-  console.log(dataName);
+ 
   const dataRanking = topProducts?.map((item) => item.productScore);
-  console.log(dataRanking);
+
 
   return (
     <>
