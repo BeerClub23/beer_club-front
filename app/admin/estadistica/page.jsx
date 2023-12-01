@@ -16,7 +16,7 @@ const EstadisticaPage = () => {
      setActiveUsers(reportingData.filter((user) => user.is_active === 1));
     }, [reportingData]);
 
-  console.log(reportingData);
+ 
   return (
     <Box
       sx={{
@@ -44,9 +44,7 @@ const EstadisticaPage = () => {
       </Box> */}
 
           <FilterSection activeUsers={reportingData} >
-
           </FilterSection>
-
     
       <ChartTopProducts topProducts={topProducts} />
     </Box>

@@ -11,8 +11,6 @@ const ChartBarPaymentAmout = ({ endpoint }) => {
   const [dataName, setDataName] = React.useState([]);
   const [dataRanking, setDataRanking] = React.useState([]);
 
-  console.log(reportingDataFilter);
-
   // React.useEffect(() => {
   //   if (reportingDataFilter && reportingDataFilter.length > 0) {
   //     const newData = reportingDataFilter.reduce((acc, user) => {
@@ -39,44 +37,51 @@ const ChartBarPaymentAmout = ({ endpoint }) => {
 
   React.useEffect(() => {
     if (reportingDataFilter && reportingDataFilter.length > 0) {
-      const newData = reportingDataFilter.reduce((acc, user) => {
-        const existingItem = acc.find((info) => info.label === user.status);
-        if (existingItem) {
-          existingItem.value += user.lastPaidAmount;
+      const newData = [];
+      reportingDataFilter.forEach((user) => {
+        const { status, lastPaidAmount } = user;
+        const existingItemIndex = newData.findIndex(
+          (info) => info.label === status,
+        );
+        if (existingItemIndex !== -1) {
+          newData[existingItemIndex].value += lastPaidAmount;
         } else {
-          acc.push({ label: user.status, value: user.lastPaidAmount });
+          newData.push({ label: status, value: lastPaidAmount });
         }
-        return acc;
-      }, []);
-  
+      });
+
       setData(newData);
       setDataRanking(newData.map((item) => item.value));
       setDataName(newData.map((item) => item.label));
     }
-  }, [reportingDataFilter]);
+  }, [reportingDataFilter, endpoint]);
+  console.log(data);
+  console.log(dataName);
+  console.log(dataRanking);
 
   return (
     <>
       <Box className="chartContainer">
         <Typography className="chartTitle">Importe por Estado</Typography>
-        {reportingDataFilter.length > 0 ? (
+        {dataName.length > 0 && dataRanking.length > 0 ? (
           <BarChart
             xAxis={[
               {
-                id: "paymentStatus",
+                id: "paymentAmountByStatus",
                 label: "Estado del pago",
 
-                data: ["CANCELADO", "RECHAZADO", "PENDIENTE", "APROBADO"],
-                // data: data,
+                data: dataName,
+                //   data: ["bar A", "bar B", "bar C"],
                 scaleType: "band",
               },
             ]}
-            yAxis={[{ label: "Ranking" }]}
+            yAxis={[{ label: "Importe" }]}
             series={[
               {
-                value: 1000, //CALCULAR TOTAL
+                value: 10,
+                //   data: [2, 5, 3],
                 data: dataRanking,
-                color: "#121111",
+                color: "#ceb5a7",
               },
             ]}
             slotProps={{

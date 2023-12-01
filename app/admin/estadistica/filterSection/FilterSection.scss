@@ -53,8 +53,9 @@
     margin: 10px auto;
     // margin: 10px;
     //  width: 300px;
-    display: flex;
+    display: flex;    
     flex-direction: row;
+    
     width: 80%;
     justify-content: space-around;
     gap: 10px;
@@ -63,4 +64,6 @@
 
 .chartsContainer{
     display: flex;
+    gap: 30px;
+    flex-wrap: wrap;
 }
