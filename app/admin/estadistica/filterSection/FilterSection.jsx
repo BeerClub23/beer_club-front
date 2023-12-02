@@ -54,7 +54,7 @@ const FilterSection = () => {
     setSuscription("");
     setCountry("");
     setUserStatus("");
-    // setEndpoint("")
+    setEndpoint("");
   };
 
   const handleSubmit = () => {

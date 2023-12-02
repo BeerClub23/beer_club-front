@@ -76,8 +76,11 @@ export const getRecommendationBySubscriptionIdAndDate = async (
       method: "GET",
       url: `${
         process.env.NEXT_PUBLIC_API_URL
-      }recommendations/${subscriptionId}/${currentDate.getDate()}-${
-        MONTHS[currentDate.getMonth()]
+      }recommendations/${subscriptionId}/${currentDate
+        .getDate()
+        .toString()
+        .padStart(2, "0")}-${
+        MONTHS[currentDate.getMonth().toString().padStart(2, "0")]
       }-${currentDate.getFullYear()}`,
       headers: {
         Accept: "application/json",

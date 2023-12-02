@@ -68,7 +68,7 @@ const RecommendationSection = ({ id }) => {
         );
       getCurrentRecommendation().then((response) =>
         setRecommendation(response),
-      );
+      ).catch(setRecommendation(""))
     }
     if (recommendation) {
       if (recommendation.description) {
@@ -186,7 +186,11 @@ const RecommendationSection = ({ id }) => {
           </aside>
         </section>
       ) : (
-        <></>
+        <>
+        <Typography sx={{color:"black"}}>
+          PROXIMAMENTE
+        </Typography>
+        </>
       )}
     </>
   );
