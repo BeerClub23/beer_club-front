@@ -1,6 +1,6 @@
 @import "../../globals.scss";
 
-.chartContainerTotal{
+.chartContainerCountry{
     background-color: "#fafafa";
     border-radius: 7px;
     color: $rgb-dark;
@@ -11,19 +11,19 @@
     
 }
 
-.titleTotal{
-  font-size: 24px;
-  text-align: center;
-  padding-top: 24px;
+.titleTotalCountry{
+    font-size: 24px;
+    text-align: center;
+    padding-top: 24px;
 }
 
-.textTotal{
+.textCountry{
     text-align: center;
-    padding-top: 12px !important;
+    padding-top: 12px;
     font-size: 24px !important;
     letter-spacing: 5px !important;
     font-weight: 600;
     opacity: 0.9;
     
-    
+   
 }
