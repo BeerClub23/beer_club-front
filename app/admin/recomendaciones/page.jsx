@@ -64,6 +64,10 @@ const RecomendacionesPage = () => {
           (acc, key) => `${acc}${response.response.data[key]}\n`,
           "",
         );
+        setRecommendations((prevRecommendations) => [
+          ...prevRecommendations,
+          response.data,
+        ]);
         Swal.fire({
           title: "Error!",
           text: error,
