@@ -31,7 +31,14 @@ const UserLayout = ({ children }) => {
         const currentSubscription = subscriptions.find(
           (subscription) => subscription.id === response.subscriptionId,
         );
-        setUser({ ...response, subscription: currentSubscription });
+        let nextSubscription;
+        if (response.nextSubscriptionId) {
+          nextSubscription = subscriptions.find(
+            (subscription) => subscription.id === response.nextSubscriptionId,
+          );
+        }
+        setUser({ ...response, subscription: currentSubscription, nextSubscription});
+        console.log(user)
       });
     }
   }, [subscriptions]);
