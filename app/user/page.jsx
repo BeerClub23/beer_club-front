@@ -12,6 +12,7 @@ const UserPage = () => {
   const { user } = useUserBeerContext();
   const [benefits, setBenefits] = useState([]);
 
+  
   useEffect(() => {
     if (user) {
       setBenefits(user.subscription.benefits);

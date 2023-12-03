@@ -1,20 +1,23 @@
 "use client";
-import React, { useEffect } from "react";
+import React from "react";
 import { useGetTopProducts } from "../../services/topProducts";
 import { useGetReportingData } from "../../services/reportsData";
 import ChartTopProducts from "../../components/chartTopProducts/ChartTopProduct";
 import ChartTotalSubscriptors from "../../components/chartTotalSubscriptors/ChartTotalSubscriptors";
-import ChartPie from "../../components/chartPie/ChartPie";
+import ChartTotalByCountry from "../../components/chartTotalByCountry/ChartTotalByCountry";
+import FilterSection from "./filterSection/FilterSection";
+import UserSection from "./userSection/UserSection";
 import { Box } from "@mui/material";
 const EstadisticaPage = () => {
   const { topProducts } = useGetTopProducts();
   const { reportingData } = useGetReportingData();
   const [activeUsers, setActiveUsers] = React.useState();
+  const [inactiveUsers, setInactiveUsers] = React.useState();
   React.useEffect(() => {
-    setActiveUsers(reportingData.filter((user) => user.is_active == 1));
+    setActiveUsers(reportingData.filter((user) => user.is_active === 1));
+    setInactiveUsers(reportingData.filter((user) => user.is_active === 0));
   }, [reportingData]);
 
-  console.log(reportingData);
   return (
     <Box
       sx={{
@@ -27,9 +30,26 @@ const EstadisticaPage = () => {
         justifyContent: "space-around",
       }}
     >
-      <ChartTotalSubscriptors total={activeUsers} />
-      <ChartTopProducts topProducts={topProducts} />
-      {activeUsers?.length > 0 && <ChartPie activeUsers={activeUsers} />}
+      <Box
+        sx={{
+          display: "flex",
+          flexDirection: "row",
+          justifyContent: "space-around",
+        }}
+      >
+        <ChartTotalSubscriptors total={activeUsers} inactive={inactiveUsers}/>
+        {activeUsers?.length > 0 && <ChartTotalByCountry total={activeUsers} />}
+      
+      </Box>
+      {/* <Box sx={{margin:"0 auto"}}>
+        {reportingData?.length > 0 && <ChartPie activeUsers={reportingData} />}
+
+      </Box> */}
+
+      <FilterSection activeUsers={reportingData}></FilterSection>
+      <UserSection></UserSection>
+
+      {/* <ChartTopProducts topProducts={topProducts} /> */}
     </Box>
   );
 };
