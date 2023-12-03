@@ -10,7 +10,9 @@ import {
   UpdateRecommendation,
 } from "../../services/recommendation";
 import Swal from "sweetalert2";
-import "./recommendation.scss";
+import { ThemeProvider } from "@mui/system";
+import { theme } from "../../styles/materialThemeAdmin";
+//import "./recommendation.scss";
 
 const RecomendacionesPage = () => {
   const [showModal, setShowModal] = useState(false);
@@ -42,7 +44,7 @@ const RecomendacionesPage = () => {
 
   // CRUD methods
   const handleCreate = async (formData) => {
-    console.log("Data send: " + formData);
+    console.log("Data send: " + JSON.stringify(formData));
     try {
       const response = await SaveRecommendation(JSON.stringify(formData));
       if (response.status === 201) {
@@ -62,12 +64,8 @@ const RecomendacionesPage = () => {
       } else if (response.status !== 200) {
         const error = Object.keys(response.response.data).reduce(
           (acc, key) => `${acc}${response.response.data[key]}\n`,
-          "",
+          ""
         );
-        setRecommendations((prevRecommendations) => [
-          ...prevRecommendations,
-          response.data,
-        ]);
         Swal.fire({
           title: "Error!",
           text: error,
@@ -99,13 +97,13 @@ const RecomendacionesPage = () => {
         // Update local state by adding the edited recommendation
         setRecommendations((prevRecommendations) =>
           prevRecommendations.map((rec) =>
-            rec.id === id ? { ...rec, ...formData } : rec,
-          ),
+            rec.id === id ? { ...rec, ...formData } : rec
+          )
         );
       } else if (response.status !== 200) {
         const error = Object.keys(response.response.data).reduce(
           (acc, key) => `${acc}${response.response.data[key]}\n`,
-          "",
+          ""
         );
         Swal.fire({
           title: "Error!",
@@ -122,17 +120,18 @@ const RecomendacionesPage = () => {
   };
 
   return (
-    <Box
-      sx={{
-        backgroundColor: "white",
-        padding: "30px",
-        borderRadius: "20px",
-        boxShadow: "2px 0px 1px #8D8D8D",
-        color: "black",
-      }}
-    >
-      {/**TODO check if this is necessary*/}
-      {/*       <h2>Recomendaciones del mes</h2>
+    <ThemeProvider theme={theme}>
+      <Box
+        sx={{
+          backgroundColor: "white",
+          padding: "30px",
+          borderRadius: "20px",
+          boxShadow: "2px 0px 1px #8D8D8D",
+          color: "black",
+        }}
+      >
+        {/**TODO check if this is necessary*/}
+        {/*       <h2>Recomendaciones del mes</h2>
       <Box
         margin={"auto"}
         width={1000}
@@ -150,36 +149,52 @@ const RecomendacionesPage = () => {
           />
         ))}
       </Box> */}
-      <Box>
-        <Box className="display-container-btn" mb={5}>
-          <Chip
-            className={`chip-element ${showModal ? "chip-active" : ""}`}
-            onClick={handleCreateRecommendation}
-            label={"Crear recomendación"}
-          ></Chip>
-          <Chip
-            className={`chip-element ${!showModal ? "chip-active" : ""}`}
-            onClick={handleShowRecommendation}
-            label={"Ver recomendaciones"}
-          ></Chip>
-        </Box>
-
         <Box>
-          {showModal ? (
-            <Box width={900} m={"auto"}>
-              <CreateRecommendationForm
-                onCreate={handleCreate}
-                onClose={() => setShowModal(false)}
-              />
-            </Box>
-          ) : (
-            <div>
-              <RecommendationTable data={recommendations} onSave={handleSave} />
-            </div>
-          )}
+          <Box sx={{ width: "45%", mb: 5 }}>
+            <Chip
+              sx={{
+                ...theme.components.MuiChip.styleOverrides.chipTable,
+                ...(showModal
+                  ? theme.components.MuiChip.styleOverrides.chipTableActive
+                  : {}),
+              }}
+              //className={`chip-element-table ${showModal ? "chip-active-table" : ""}`}
+              onClick={handleCreateRecommendation}
+              label={"Crear recomendación"}
+            ></Chip>
+            <Chip
+              sx={{
+                ...theme.components.MuiChip.styleOverrides.chipTable,
+                ...(!showModal
+                  ? theme.components.MuiChip.styleOverrides.chipTableActive
+                  : {}),
+              }}
+              //className={`chip-element-table ${!showModal ? "chip-active-table" : ""}`}
+              onClick={handleShowRecommendation}
+              label={"Ver recomendaciones"}
+            ></Chip>
+          </Box>
+
+          <Box>
+            {showModal ? (
+              <Box width={900} m={"auto"}>
+                <CreateRecommendationForm
+                  onCreate={handleCreate}
+                  onClose={() => setShowModal(false)}
+                />
+              </Box>
+            ) : (
+              <div>
+                <RecommendationTable
+                  data={recommendations}
+                  onSave={handleSave}
+                />
+              </div>
+            )}
+          </Box>
         </Box>
       </Box>
-    </Box>
+    </ThemeProvider>
   );
 };
 
