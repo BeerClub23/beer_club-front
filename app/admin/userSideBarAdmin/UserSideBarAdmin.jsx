@@ -12,6 +12,7 @@ import TurnedInNotIcon from "@mui/icons-material/TurnedInNot";
 import StarBorderIcon from "@mui/icons-material/StarBorder";
 import EditNoteIcon from "@mui/icons-material/EditNote";
 import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
+import GroupAddIcon from "@mui/icons-material/GroupAdd";
 import { usePathname } from "next/navigation";
 import "./UserSideBarAdmin.scss";
 import Link from "next/link";
@@ -131,6 +132,23 @@ const UserSideBarAdmin = (props) => {
                     <QueryStatsIcon />
                   </ListItemIcon>
                   <ListItemText primary="Estadisticas" />
+                </ListItemButton>
+              </ListItem>
+            </Link>
+            <Link href="/admin/adminusuarios">
+              <ListItem
+                className={
+                  pathname.includes("/admin/adminusuarios")
+                    ? "active_nav_user"
+                    : ""
+                }
+                sx={{ p: 0 }}
+              >
+                <ListItemButton sx={{ py: 2 }}>
+                  <ListItemIcon>
+                    <GroupAddIcon />
+                  </ListItemIcon>
+                  <ListItemText primary="Admin Usuarios" />
                 </ListItemButton>
               </ListItem>
             </Link>
