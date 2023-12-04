@@ -108,6 +108,7 @@ const AdminUsersModal = ({ open, onClose, onSave, rowData }) => {
               label={"Id"}
               defaultValue={rowData.id}
               className="input-modal"
+              sx={{ mt: 2 }}
             />
           ) : (
             ""
@@ -123,6 +124,7 @@ const AdminUsersModal = ({ open, onClose, onSave, rowData }) => {
             error={!!validationErrors.name}
             helperText={validationErrors.name}
             className="input-modal"
+            sx={{ mt: 2 }}
           />
           <br />
           <TextField
@@ -135,6 +137,7 @@ const AdminUsersModal = ({ open, onClose, onSave, rowData }) => {
             error={!!validationErrors.lastName}
             helperText={validationErrors.lastName}
             className="input-modal"
+            sx={{ mt: 2 }}
           />
           <br />
           <TextField
@@ -145,6 +148,7 @@ const AdminUsersModal = ({ open, onClose, onSave, rowData }) => {
             value={formData.email}
             onChange={handleFieldChange}
             className="input-modal"
+            sx={{ mt: 2 }}
           />
           <br />
           <TextField
@@ -155,6 +159,7 @@ const AdminUsersModal = ({ open, onClose, onSave, rowData }) => {
             value={formData.password}
             onChange={handleFieldChange}
             className="input-modal"
+            sx={{ mt: 2 }}
           />
           <br />
           <TextField
@@ -165,11 +170,12 @@ const AdminUsersModal = ({ open, onClose, onSave, rowData }) => {
             value={formData.passwordConfirm}
             onChange={handleFieldChange}
             className="input-modal"
+            sx={{ mt: 2 }}
           />
         </DialogContent>
         <Box className={"btn-container"}>
           <Button
-            className={"cancel-btn"}
+            className="cancel-element-btn"
             variant="text"
             sx={{
               pt: "7px",
