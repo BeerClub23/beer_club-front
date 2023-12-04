@@ -33,7 +33,6 @@ import "../adminSubscription/subscriptionAdmin.scss";
 import { ThemeProvider } from "@mui/material";
 import { theme } from "@/app/styles/materialThemeForm";
 
-
 // TABLE FUNCTIONS
 
 const getComparator = (order, orderBy) => {
@@ -150,7 +149,6 @@ const EnhancedTableToolbar = ({ onSearch, onAdd, onFilterChange }) => {
       }}
     >
       <Box sx={{ flex: "1 1 45%" }}>
-
         <ThemeProvider theme={theme}>
           <Button
             variant="contained"
@@ -161,7 +159,6 @@ const EnhancedTableToolbar = ({ onSearch, onAdd, onFilterChange }) => {
             + Crear Usuario
           </Button>
         </ThemeProvider>
-
       </Box>
       {/* Add filter dropdown or toggle button */}
       <Box sx={{ flex: "1 1 20%" }}>
