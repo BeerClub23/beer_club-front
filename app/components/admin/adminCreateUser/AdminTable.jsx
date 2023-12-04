@@ -21,9 +21,8 @@ import {
   Typography,
 } from "@mui/material";
 import { visuallyHidden } from "@mui/utils";
-import EditIcon from "@mui/icons-material/Edit";
 import { SearchOff, SearchOutlined } from "@mui/icons-material";
-import { UpdateAdminUsers, SaveAdminUser } from "../../../services/adminUsers";
+import { SaveAdminUser, updateUserPersonalData } from "../../../services/adminUsers";
 import Swal from "sweetalert2";
 import AdminUsersModal from "../adminCreateUser/AdminUsersModal";
 import "../adminSubscription/subscriptionAdmin.scss";
@@ -284,7 +283,7 @@ const AdminTable = (props) => {
     {
       console.log(data);
     }
-    let response = await UpdateAdminUsers(data, id);
+    let response = await updateUserPersonalData(data, id);
     if (response.status === 200) {
       Swal.fire({
         title: "Usuario actualizado",

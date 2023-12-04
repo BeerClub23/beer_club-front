@@ -1,4 +1,3 @@
-import useSWR from "swr";
 import Cookies from "js-cookie";
 
 export const getAllAdminUsers = async () => {
@@ -36,6 +35,25 @@ export const SaveAdminUser = async (store) => {
       data: store,
     })
       .then((response) => resolve(response))
+      .catch((error) => resolve(error));
+  });
+};
+
+export const updateUserPersonalData = async (userInfo, id) => {
+  const token = Cookies.get("jwt");
+  return new Promise((resolve) => {
+    const axios = require("axios");
+    axios({
+      method: "PUT",
+      url: `${process.env.NEXT_PUBLIC_API_URL}users/update/${id}`,
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + token,
+      },
+      data: userInfo,
+    })
+      .then((response) => resolve(response.data))
       .catch((error) => resolve(error));
   });
 };
