@@ -32,7 +32,7 @@ const SubscripcionesPage = () => {
         color: "black",
       }}
     >
-      <h2>Create User Admin</h2>
+      <h2>Usuarios</h2>
       <AdminTable data={adminUsers} />
     </Box>
   );

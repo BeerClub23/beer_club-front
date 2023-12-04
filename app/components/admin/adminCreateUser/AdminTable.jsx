@@ -37,15 +37,18 @@ const getComparator = (order, orderBy) => {
 };
 
 const stableSort = (array, comparator) => {
-  const stabilizedThis = array.map((el, index) => [el, index]);
-  stabilizedThis.sort((a, b) => {
-    const order = comparator(a[0], b[0]);
-    if (order !== 0) {
-      return order;
-    }
-    return a[1] - b[1];
-  });
-  return stabilizedThis.map((el) => el[0]);
+  const stabilizedThis = array?.length && array.map((el, index) => [el, index]) || [];
+  if (stabilizedThis?.length) {
+    stabilizedThis.sort((a, b) => {
+      const order = comparator(a[0], b[0]);
+      if (order !== 0) {
+        return order;
+      }
+      return a[1] - b[1];
+    });
+    return stabilizedThis.map((el) => el[0]);
+  }
+  
 };
 // TABLE HEAD (COLUMN NAMES, ID SORT)
 const EnhancedTableHead = ({ order, orderBy, onRequestSort }) => {
@@ -240,7 +243,7 @@ const AdminTable = (props) => {
       const { id, ...dataWithoutId } = formData;
       const response = await SaveAdminUser(JSON.stringify(dataWithoutId));
 
-      if (response.status === 201) {
+      if (response.status === 200) {
         Swal.fire({
           title: "Usuario creado",
           text: "Nuevo usuario creado exitosamente",
@@ -346,10 +349,11 @@ const AdminTable = (props) => {
   };
 
   const filteredRows = useMemo(() => {
-    return rows.filter((row) => {
+    return rows?.length && rows.filter((row) => {
       const matchesSearch =
-        row.id.toString().includes(searchTerm) ||
-        row.name.toLowerCase().includes(searchTerm.toLowerCase());
+      row.id.toString().includes(searchTerm) ||
+      row.name.toLowerCase().includes(searchTerm.toLowerCase());
+
 
       if (activeFilter === "") {
         return matchesSearch;
@@ -362,11 +366,15 @@ const AdminTable = (props) => {
   }, [rows, searchTerm, activeFilter]);
 
   const visibleRows = useMemo(
-    () =>
-      stableSort(filteredRows, getComparator(order, orderBy)).slice(
-        page * rowsPerPage,
-        page * rowsPerPage + rowsPerPage,
-      ),
+    () => {
+      if (filteredRows?.length) {
+        return stableSort(filteredRows, getComparator(order, orderBy)).slice(
+          page * rowsPerPage,
+          page * rowsPerPage + rowsPerPage,
+        )
+      }
+    }
+    ,
     [filteredRows, order, orderBy, page, rowsPerPage],
   );
   const emptyRows = useMemo(() => {
@@ -393,7 +401,7 @@ const AdminTable = (props) => {
               onRequestSort={handleRequestSort}
             />
             <TableBody>
-              {visibleRows.map((row, index) => {
+              {visibleRows && visibleRows.map((row, index) => {
                 const labelId = `enhanced-table-checkbox-${index}`;
                 return (
                   <TableRow
@@ -452,6 +460,7 @@ const AdminTable = (props) => {
             </TableBody>
           </Table>
         </TableContainer>
+        {filteredRows?.length ?
         <TablePagination
           rowsPerPageOptions={[5, 10, 25]}
           component="div"
@@ -460,7 +469,7 @@ const AdminTable = (props) => {
           page={page}
           onPageChange={handleChangePage}
           onRowsPerPageChange={handleChangeRowsPerPage}
-        />
+        /> : <></>}
       </Paper>
 
       <AdminUsersModal
