@@ -1,5 +1,5 @@
 "use client";
-import { Box } from "@mui/material";
+import { Box, Button } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
@@ -16,6 +16,7 @@ import GroupAddIcon from "@mui/icons-material/GroupAdd";
 import { usePathname } from "next/navigation";
 import "./UserSideBarAdmin.scss";
 import Link from "next/link";
+import { GenerateInvoices } from "../../services/payments";
 
 const UserSideBarAdmin = (props) => {
   const [mobile, setMobile] = useState(false);
@@ -23,6 +24,11 @@ const UserSideBarAdmin = (props) => {
   const [show, setSHow] = useState(false);
 
   const handleResize = () => setWidth();
+
+  const generateInvoices = async () => {
+    await GenerateInvoices();
+  }
+
   useEffect(() => {
     document.addEventListener("resize", handleResize);
     width < 480 ? setMobile(true) : setMobile(false);
@@ -153,6 +159,9 @@ const UserSideBarAdmin = (props) => {
               </ListItem>
             </Link>
           </List>
+          <Button className="invoice-button" onClick={generateInvoices}>
+            Generar Facturación
+          </Button>
         </nav>
       </Box>
     </>

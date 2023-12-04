@@ -3,12 +3,11 @@ import Dialog from "@mui/material/Dialog";
 import DialogContent from "@mui/material/DialogContent";
 import DialogTitle from "@mui/material/DialogTitle";
 import Button from "@mui/material/Button";
-import { Box, IconButton, TextField } from "@mui/material";
-import { theme } from "../../../styles/materialThemeForm";
-import { ThemeProvider } from "@mui/material";
+import { Box, IconButton, TextField, Divider } from "@mui/material";
 import { DeleteOutline } from "@mui/icons-material";
 import AddIcon from "@mui/icons-material/Add";
 import { subscriptionSchema } from "./rules/index";
+import { theme } from "../../../styles/materialThemeAdmin";
 import * as yup from "yup";
 
 const SubscriptionModal = ({ open, onClose, onSave, rowData }) => {
@@ -126,7 +125,7 @@ const SubscriptionModal = ({ open, onClose, onSave, rowData }) => {
       onClose={onClose}
     >
       <form onSubmit={handleSave}>
-        <DialogTitle className={"modal-title"}>
+        <DialogTitle sx={{ textAlign: "center" }}>
           {rowData ? "Editar suscripción" : "Añadir suscripción"}
         </DialogTitle>
         <DialogContent className={"modal-container"}>
@@ -137,7 +136,9 @@ const SubscriptionModal = ({ open, onClose, onSave, rowData }) => {
               variant="outlined"
               label={"Id"}
               defaultValue={rowData.id}
-              className="input-modal"
+              fullWidth
+              sx={{ mt: 2 }}
+              //className="input-modal"
             />
           ) : (
             ""
@@ -152,7 +153,9 @@ const SubscriptionModal = ({ open, onClose, onSave, rowData }) => {
             onChange={handleFieldChange}
             error={!!validationErrors.name}
             helperText={validationErrors.name}
-            className="input-modal"
+            fullWidth
+            sx={{ mt: 2 }}
+            //className="input-modal"
           />
           <br />
           <TextField
@@ -164,7 +167,9 @@ const SubscriptionModal = ({ open, onClose, onSave, rowData }) => {
             onChange={handleFieldChange}
             error={!!validationErrors.price}
             helperText={validationErrors.price}
-            className="input-modal"
+            //className="input-modal"
+            fullWidth
+            sx={{ mt: 2 }}
           />
           <br />
           <TextField
@@ -176,35 +181,37 @@ const SubscriptionModal = ({ open, onClose, onSave, rowData }) => {
             onChange={handleFieldChange}
             multiline
             maxRows={4}
-            className="description-input"
+            //className="description-input"
+            fullWidth
+            sx={{ mt: 2 }}
           />
           <br />
           <Box>
-            <label>
-              Beneficios:
-              {formData.benefits.map((benefit, index) => (
-                <div
-                  key={index}
-                  style={{ display: "flex", alignItems: "center" }}
-                >
-                  <TextField
-                    type="text"
-                    name={`benefits[${index}].name`}
-                    label="Beneficio"
-                    variant="outlined"
-                    value={benefit.name}
-                    onChange={(e) =>
-                      handleBenefitsChange(index, e.target.value)
-                    }
-                    className="input-modal"
-                  />
+            <Box mt={2}>
+              <Divider>Beneficios</Divider>
+            </Box>
+            {formData.benefits.map((benefit, index) => (
+              <div
+                key={index}
+                style={{ display: "flex", alignItems: "center" }}
+              >
+                <TextField
+                  type="text"
+                  name={`benefits[${index}].name`}
+                  label="Beneficio"
+                  variant="outlined"
+                  value={benefit.name}
+                  onChange={(e) => handleBenefitsChange(index, e.target.value)}
+                  //className="input-modal"
+                  fullWidth
+                  sx={{ mt: 2 }}
+                />
 
-                  <IconButton onClick={() => handleRemoveBenefit(index)}>
-                    <DeleteOutline />
-                  </IconButton>
-                </div>
-              ))}
-            </label>
+                <IconButton onClick={() => handleRemoveBenefit(index)}>
+                  <DeleteOutline />
+                </IconButton>
+              </div>
+            ))}
             <span style={{ color: "red", marginTop: "8px", display: "block" }}>
               {validationErrors.benefits && validationErrors.benefits[0]?.name}
             </span>
@@ -212,7 +219,9 @@ const SubscriptionModal = ({ open, onClose, onSave, rowData }) => {
             <Button
               onClick={handleAddBenefit}
               variant="outlined"
-              className="add-element-btn"
+              sx={{
+                ...theme.components.MuiButton.styleOverrides.addElementBtn,
+              }}
               startIcon={<AddIcon />}
               style={{ marginLeft: "8px" }}
             >
@@ -220,11 +229,12 @@ const SubscriptionModal = ({ open, onClose, onSave, rowData }) => {
             </Button>
           </Box>
         </DialogContent>
-        <Box className={"btn-container"}>
+        <Box sx={{ display: "flex", width: "65%", margin: "auto" }}>
           <Button
-            className={"cancel-btn"}
+            // className={"cancel-btn"}
             variant="text"
             sx={{
+              ...theme.components.MuiButton.styleOverrides.cancelBtn,
               pt: "7px",
               mx: "auto",
               mt: 1,
@@ -235,21 +245,19 @@ const SubscriptionModal = ({ open, onClose, onSave, rowData }) => {
           >
             Cancelar
           </Button>
-          <ThemeProvider theme={theme}>
-            <Button
-              type="submit"
-              variant="contained"
-              sx={{
-                pt: "7px",
-                mx: "auto",
-                mt: 1,
-                mb: 4,
-                fontWeight: "bold",
-              }}
-            >
-              Guardar
-            </Button>
-          </ThemeProvider>
+          <Button
+            type="submit"
+            variant="contained"
+            sx={{
+              pt: "7px",
+              mx: "auto",
+              mt: 1,
+              mb: 4,
+              fontWeight: "bold",
+            }}
+          >
+            Guardar
+          </Button>
         </Box>
       </form>
     </Dialog>

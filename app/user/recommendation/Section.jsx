@@ -145,7 +145,16 @@ const RecommendationSection = ({ id }) => {
                 </Typography>
               ))}
             </Box>
-            <RateCard rate={rateProduct} />
+            {
+              recommendation.reviewed ? 
+              <Typography
+                className="recommText"
+                sx={{ fontSize: "16px", padding: "70px 0px" }}
+              >
+                Ya calificaste este producto. ¡Gracias por compartir tu experiencia con todos los miembros!
+              </Typography> :
+              <RateCard rate={rateProduct} />
+            }
           </article>
 
           <aside className="recommAside">
@@ -179,7 +188,7 @@ const RecommendationSection = ({ id }) => {
               navButtonsAlwaysVisible={false}
               navButtonsAlwaysInvisible={false}
             >
-              {personalTopProducts.map((product, index) => (
+              {personalTopProducts?.length && personalTopProducts.map((product, index) => (
                 <TopProductsCard key={index} {...product} />
               ))}
             </Carousel>
