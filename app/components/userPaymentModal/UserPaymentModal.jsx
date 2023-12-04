@@ -78,7 +78,7 @@ const UserPaymentModal = ({ open, onClose, payment }) => {
         } else if (response.status !== 200) {
           const error = Object.keys(response.response.data).reduce(
             (acc, key) => `${acc}${response.response.data[key]}\n`,
-            ""
+            "",
           );
           Swal.fire({
             title: "Error!",

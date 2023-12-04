@@ -1,52 +1,47 @@
 @import "../../globals.scss";
 
-.chartContainer{
-    // background-color: $rgb-white;
-    background-color: #292828 !important;
-    opacity: 0.8;
-    width: fit-content;
-    border-radius: 4px;
-    font-family: $poppins-font !important;
-    border: 1px solid  rgb(112,112,112);
-    // box-shadow: 0px 5px 6px 3px rgba(0, 0, 0, 0.5);
-    font-weight: 300;
-    min-width: 450px;
-    line{
-        stroke: aliceblue !important;
+.chartContainer {
+  // background-color: $rgb-white;
+  background-color: #292828 !important;
+  opacity: 0.8;
+  width: fit-content;
+  border-radius: 4px;
+  font-family: $poppins-font !important;
+  border: 1px solid rgb(112, 112, 112);
+  // box-shadow: 0px 5px 6px 3px rgba(0, 0, 0, 0.5);
+  font-weight: 300;
+  min-width: 450px;
+  line {
+    stroke: aliceblue !important;
+  }
+  g {
+    fill: white !important;
+    // margin-right: 10px !important;
+  }
 
-    }
-    g{
-        fill: white !important;
-        // margin-right: 10px !important;        
-    }
-
-
-    text{
-        fill: white !important;
-    }
-    
-    
+  text {
+    fill: white !important;
+  }
 }
 
-.chartTitle{
-    color: $rgb-white;
-    font-style: normal;
-    font-family: $poppins-font !important;
-    line-height: normal;
-    text-align: center;
-    padding: 20px;
-    font-size: 24px;
-    font-weight: 300;
+.chartTitle {
+  color: $rgb-white;
+  font-style: normal;
+  font-family: $poppins-font !important;
+  line-height: normal;
+  text-align: center;
+  padding: 20px;
+  font-size: 24px;
+  font-weight: 300;
 }
 
-.MuiChartsAxis-tickLabel{
-    font-size: 10px !important;
-    // margin-top: -8px;
+.MuiChartsAxis-tickLabel {
+  font-size: 10px !important;
+  // margin-top: -8px;
 }
 
-.MuiChartsAxis-label{
-    text{
-
-        margin-right: 20px !important;
-    }
+.MuiChartsAxis-label {
+  text {
+    margin-right: 20px !important;
+  }
 }

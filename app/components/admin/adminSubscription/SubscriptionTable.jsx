@@ -146,11 +146,7 @@ const EnhancedTableToolbar = ({ onSearch, onAdd, onFilterChange }) => {
       }}
     >
       <Box sx={{ flex: "1 1 45%" }}>
-        <Button
-          variant="outlined"
-          onClick={onAdd}
-          sx={theme.components.MuiButton.styleOverrides.addElementBtn}
-        >
+        <Button variant="outlined" onClick={onAdd} className="add-element-btn">
           + Crear suscripción
         </Button>
       </Box>
@@ -262,7 +258,7 @@ const SubscriptionTable = (props) => {
       } else if (response.status !== 200) {
         const error = Object.keys(response.response.data).reduce(
           (acc, key) => `${acc}${response.response.data[key]}\n`,
-          ""
+          "",
         );
         Swal.fire({
           title: "Error!",
@@ -300,12 +296,12 @@ const SubscriptionTable = (props) => {
         focusConfirm: false,
       });
       setSubscriptions((prevSubscriptions) =>
-        prevSubscriptions.map((s) => (s.id === id ? editedData : s))
+        prevSubscriptions.map((s) => (s.id === id ? editedData : s)),
       );
     } else if (response.status !== 200) {
       const error = Object.keys(response.response.data).reduce(
         (acc, key) => `${acc}${response.response.data[key]}\n`,
-        ""
+        "",
       );
       Swal.fire({
         title: "Error!",
@@ -340,7 +336,7 @@ const SubscriptionTable = (props) => {
           return prevSubscriptions.map((s) =>
             s.id === row.id
               ? { ...row, isRecommended: !row.isRecommended }
-              : { ...s, isRecommended: false }
+              : { ...s, isRecommended: false },
           );
         });
       })
@@ -357,7 +353,7 @@ const SubscriptionTable = (props) => {
       if (response.status === 200) {
         setSubscriptions((prevSubscriptions) => {
           return prevSubscriptions.map((s) =>
-            s.id === row.id ? updatedRow : s
+            s.id === row.id ? updatedRow : s,
           );
         });
         console.log("Successful update");
@@ -389,9 +385,9 @@ const SubscriptionTable = (props) => {
     () =>
       stableSort(filteredRows, getComparator(order, orderBy)).slice(
         page * rowsPerPage,
-        page * rowsPerPage + rowsPerPage
+        page * rowsPerPage + rowsPerPage,
       ),
-    [filteredRows, order, orderBy, page, rowsPerPage]
+    [filteredRows, order, orderBy, page, rowsPerPage],
   );
   const emptyRows = useMemo(() => {
     // Calculate the number of empty rows based on the filtered data

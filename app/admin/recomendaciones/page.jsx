@@ -64,7 +64,7 @@ const RecomendacionesPage = () => {
       } else if (response.status !== 200) {
         const error = Object.keys(response.response.data).reduce(
           (acc, key) => `${acc}${response.response.data[key]}\n`,
-          ""
+          "",
         );
         Swal.fire({
           title: "Error!",
@@ -97,13 +97,13 @@ const RecomendacionesPage = () => {
         // Update local state by adding the edited recommendation
         setRecommendations((prevRecommendations) =>
           prevRecommendations.map((rec) =>
-            rec.id === id ? { ...rec, ...formData } : rec
-          )
+            rec.id === id ? { ...rec, ...formData } : rec,
+          ),
         );
       } else if (response.status !== 200) {
         const error = Object.keys(response.response.data).reduce(
           (acc, key) => `${acc}${response.response.data[key]}\n`,
-          ""
+          "",
         );
         Swal.fire({
           title: "Error!",
@@ -152,24 +152,28 @@ const RecomendacionesPage = () => {
         <Box>
           <Box sx={{ width: "45%", mb: 5 }}>
             <Chip
-              sx={{
+              /* sx={{
                 ...theme.components.MuiChip.styleOverrides.chipTable,
                 ...(showModal
                   ? theme.components.MuiChip.styleOverrides.chipTableActive
                   : {}),
-              }}
-              //className={`chip-element-table ${showModal ? "chip-active-table" : ""}`}
+              }} */
+              className={`chip-element-table ${
+                showModal ? "chip-active-table" : ""
+              }`}
               onClick={handleCreateRecommendation}
               label={"Crear recomendación"}
             ></Chip>
             <Chip
-              sx={{
+              /* sx={{
                 ...theme.components.MuiChip.styleOverrides.chipTable,
                 ...(!showModal
                   ? theme.components.MuiChip.styleOverrides.chipTableActive
                   : {}),
-              }}
-              //className={`chip-element-table ${!showModal ? "chip-active-table" : ""}`}
+              }} */
+              className={`chip-element-table ${
+                !showModal ? "chip-active-table" : ""
+              }`}
               onClick={handleShowRecommendation}
               label={"Ver recomendaciones"}
             ></Chip>

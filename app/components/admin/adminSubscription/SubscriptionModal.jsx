@@ -219,9 +219,7 @@ const SubscriptionModal = ({ open, onClose, onSave, rowData }) => {
             <Button
               onClick={handleAddBenefit}
               variant="outlined"
-              sx={{
-                ...theme.components.MuiButton.styleOverrides.addElementBtn,
-              }}
+              className="add-element-btn"
               startIcon={<AddIcon />}
               style={{ marginLeft: "8px" }}
             >
@@ -231,10 +229,9 @@ const SubscriptionModal = ({ open, onClose, onSave, rowData }) => {
         </DialogContent>
         <Box sx={{ display: "flex", width: "65%", margin: "auto" }}>
           <Button
-            // className={"cancel-btn"}
+            className="cancel-element-btn"
             variant="text"
             sx={{
-              ...theme.components.MuiButton.styleOverrides.cancelBtn,
               pt: "7px",
               mx: "auto",
               mt: 1,

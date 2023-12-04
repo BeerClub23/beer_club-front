@@ -233,7 +233,7 @@ const RecommendationTable = ({ data, onSave }) => {
             <TableBody>
               {stableSort(
                 visibleRows.slice(page * rowsPerPage, (page + 1) * rowsPerPage),
-                getComparator(order, orderBy)
+                getComparator(order, orderBy),
               ).map((row, index) => (
                 <TableRow
                   key={row.id}

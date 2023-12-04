@@ -9,14 +9,13 @@ const size = {
   height: 200,
 };
 
-const palette = [ '#f3aacb', '#ab4bde','#1e91ed',"#9ddbc9",  '#15ab92',];
+const palette = ["#f3aacb", "#ab4bde", "#1e91ed", "#9ddbc9", "#15ab92"];
 export default function ChartPieUserByCountry({ endpoint }) {
   const { reportingDataFilter } = useGetReportingDataFiltered(endpoint);
   const [data, setData] = React.useState([]);
 
   React.useEffect(() => {
-    if(reportingDataFilter.length >0){
-      
+    if (reportingDataFilter.length > 0) {
       const newData = reportingDataFilter.reduce(
         (acc, user) => {
           const existingItem = acc.find((info) => info.label === user.country);
@@ -29,7 +28,7 @@ export default function ChartPieUserByCountry({ endpoint }) {
         },
         [data],
       );
-  
+
       setData(newData);
     }
   }, [endpoint, reportingDataFilter]);
@@ -49,18 +48,16 @@ export default function ChartPieUserByCountry({ endpoint }) {
 
   return (
     <Box className="chartPieContainer">
-      <Typography className="chartPieTitle">
-        % Usuarios por País
-      </Typography>
+      <Typography className="chartPieTitle">% Usuarios por País</Typography>
       {reportingDataFilter.length > 0 ? (
-        <PieChart          
+        <PieChart
           colors={palette}
           series={[
             {
               arcLabel: getArcLabel,
               arcLabelMinAngle: 45,
               data,
-            }, 
+            },
           ]}
           sx={{
             [`& .${pieArcLabelClasses.root}`]: {
@@ -72,14 +69,14 @@ export default function ChartPieUserByCountry({ endpoint }) {
             legend: {
               labelStyle: {
                 fontSize: 14,
-                fill: 'white',
+                fill: "white",
               },
             },
           }}
           {...size}
         />
       ) : (
-        <Typography className="chartPieText"> 
+        <Typography className="chartPieText">
           No se encontraron resultados para los parametros ingresados
         </Typography>
       )}
