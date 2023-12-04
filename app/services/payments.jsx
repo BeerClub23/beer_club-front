@@ -5,8 +5,8 @@ export const GenerateInvoices = async () => {
     return new Promise((resolve, reject) => {
       const axios = require("axios");
       axios({
-        method: "get",
-        url: `${process.env.NEXT_PUBLIC_API_URL}payments/user/current`,
+        method: "POST",
+        url: `${process.env.NEXT_PUBLIC_API_URL}payments/create`,
         headers: {
           Accept: "application/json",
           "Content-Type": "application/json",

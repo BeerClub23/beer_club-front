@@ -12,10 +12,12 @@ import TurnedInNotIcon from "@mui/icons-material/TurnedInNot";
 import StarBorderIcon from "@mui/icons-material/StarBorder";
 import EditNoteIcon from "@mui/icons-material/EditNote";
 import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
+import GroupAddIcon from "@mui/icons-material/GroupAdd";
 import { usePathname } from "next/navigation";
 import "./UserSideBarAdmin.scss";
 import Link from "next/link";
 import { GenerateInvoices } from "../../services/payments";
+import Swal from "sweetalert2";
 
 const UserSideBarAdmin = (props) => {
   const [mobile, setMobile] = useState(false);
@@ -25,7 +27,28 @@ const UserSideBarAdmin = (props) => {
   const handleResize = () => setWidth();
 
   const generateInvoices = async () => {
-    await GenerateInvoices();
+    await GenerateInvoices().then(() => {
+      Swal.fire({
+        title: "Facturación realizada con exito!",
+        text: "Los miembros del club han recibido su factura!",
+        icon: "success",
+        confirmButtonText: "Continuar",
+        confirmButtonColor: "#ceb5a7",
+        // onClick: handleClick(),
+        focusConfirm: false,
+      });
+    })
+    .catch((error) => {
+      Swal.fire({
+        title: "Error!",
+        text: error,
+        imageAlt: "No se pudo generar la facturación. Intenta Nuevamente!",
+        confirmButtonText: "Continuar",
+        confirmButtonColor: "#ceb5a7",
+        icon: "error",
+        focusConfirm: false,
+      });
+    });
   }
 
   useEffect(() => {
@@ -137,6 +160,23 @@ const UserSideBarAdmin = (props) => {
                     <QueryStatsIcon />
                   </ListItemIcon>
                   <ListItemText primary="Estadisticas" />
+                </ListItemButton>
+              </ListItem>
+            </Link>
+            <Link href="/admin/adminusuarios">
+              <ListItem
+                className={
+                  pathname.includes("/admin/adminusuarios")
+                    ? "active_nav_user"
+                    : ""
+                }
+                sx={{ p: 0 }}
+              >
+                <ListItemButton sx={{ py: 2 }}>
+                  <ListItemIcon>
+                    <GroupAddIcon />
+                  </ListItemIcon>
+                  <ListItemText primary="Admin Usuarios" />
                 </ListItemButton>
               </ListItem>
             </Link>

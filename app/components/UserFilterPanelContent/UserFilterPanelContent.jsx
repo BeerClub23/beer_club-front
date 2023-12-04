@@ -28,7 +28,7 @@ export default function UserFilterPanelContent({ users }) {
       col2: user.lastName,
       col3: user.firstName,
       col4: user.subscriptionDate,
-      col5: user.address.country,
+      col5: user.address?.country,
       col6: getSubscriptionName(user.subscriptionId),
       col7: user.role,
       col8: user.active ? "Activo" : "Inactivo",
