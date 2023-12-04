@@ -29,6 +29,8 @@ import {
 import Swal from "sweetalert2";
 import AdminUsersModal from "../adminCreateUser/AdminUsersModal";
 import "../adminSubscription/subscriptionAdmin.scss";
+import { ThemeProvider } from "@mui/material";
+import { theme } from "@/app/styles/materialThemeForm";
 
 // TABLE FUNCTIONS
 
@@ -146,13 +148,16 @@ const EnhancedTableToolbar = ({ onSearch, onAdd, onFilterChange }) => {
       }}
     >
       <Box sx={{ flex: "1 1 45%" }}>
-        <Button
-          className={"add-element-btn"}
-          variant="outlined"
-          onClick={onAdd}
-        >
-          + Crear Usuario
-        </Button>
+        <ThemeProvider theme={theme}>
+          <Button
+            variant="contained"
+            size="large"
+            sx={{ pt: "7px", mt: 2, mb: 2, fontWeight: "bold" }}
+            onClick={onAdd}
+          >
+            + Crear Usuario
+          </Button>
+        </ThemeProvider>
       </Box>
       {/* Add filter dropdown or toggle button */}
       <Box sx={{ flex: "1 1 20%" }}>

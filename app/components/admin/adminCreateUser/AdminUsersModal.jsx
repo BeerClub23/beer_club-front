@@ -4,7 +4,8 @@ import DialogContent from "@mui/material/DialogContent";
 import DialogTitle from "@mui/material/DialogTitle";
 import Button from "@mui/material/Button";
 import { Box, IconButton, TextField } from "@mui/material";
-import { theme } from "../../../styles/materialThemeForm";
+// import { theme } from "../../../styles/materialThemeForm";
+import { theme } from "../../../styles/materialThemeFormCheckout";
 import { ThemeProvider } from "@mui/material";
 import { DeleteOutline } from "@mui/icons-material";
 import AddIcon from "@mui/icons-material/Add";
@@ -95,94 +96,104 @@ const AdminUsersModal = ({ open, onClose, onSave, rowData }) => {
       open={open}
       onClose={onClose}
     >
-      <form onSubmit={handleSave}>
-        <DialogTitle className={"modal-title"}>
-          {rowData ? "Editar usuario admin" : "Añadir usuario admin"}
-        </DialogTitle>
-        <DialogContent className={"modal-container"}>
-          {rowData ? (
-            <TextField
-              disabled
-              name="id"
-              variant="outlined"
-              label={"Id"}
-              defaultValue={rowData.id}
-              className="input-modal"
-            />
-          ) : (
-            ""
-          )}
-          <br />
-          <TextField
-            type="text"
-            name="name"
-            label="Nombre"
-            variant="outlined"
-            value={formData.name}
-            onChange={handleFieldChange}
-            error={!!validationErrors.name}
-            helperText={validationErrors.name}
-            className="input-modal"
-          />
-          <br />
-          <TextField
-            type="text"
-            name="lastName"
-            label="Apellido"
-            variant="outlined"
-            value={formData.lastName}
-            onChange={handleFieldChange}
-            error={!!validationErrors.lastName}
-            helperText={validationErrors.lastName}
-            className="input-modal"
-          />
-          <br />
-          <TextField
-            type="text"
-            name="email"
-            label="Email"
-            variant="outlined"
-            value={formData.email}
-            onChange={handleFieldChange}
-            className="input-modal"
-          />
-          <br />
-          <TextField
-            type="password"
-            name="password"
-            label="Password"
-            variant="outlined"
-            value={formData.password}
-            onChange={handleFieldChange}
-            className="input-modal"
-          />
-          <br />
-          <TextField
-            type="password"
-            name="passwordConfirm"
-            label="Confirm Password"
-            variant="outlined"
-            value={formData.passwordConfirm}
-            onChange={handleFieldChange}
-            className="input-modal"
-          />
-        </DialogContent>
-        <Box className={"btn-container"}>
-          <Button
-            className={"cancel-btn"}
-            variant="text"
-            sx={{
-              pt: "7px",
-              mx: "auto",
-              mt: 1,
-              mb: 4,
-              fontWeight: "bold",
-            }}
-            onClick={onClose}
+      <ThemeProvider theme={theme}>
+        <form onSubmit={handleSave}>
+          <DialogTitle className={"modal-title"}>
+            {rowData ? "Editar usuario admin" : "Añadir usuario admin"}
+          </DialogTitle>
+          <DialogContent
+            className={"modal-container"}
+            sx={{ flexDirection: "column" }}
           >
-            Cancelar
-          </Button>
-          <ThemeProvider theme={theme}>
+            {rowData ? (
+              <TextField
+                disabled
+                name="id"
+                variant="outlined"
+                label={"Id"}
+                defaultValue={rowData.id}
+                className="input-modal"
+                sx={{ mb: 2 }}
+              />
+            ) : (
+              ""
+            )}
+
+            <TextField
+              type="text"
+              name="name"
+              label="Nombre"
+              variant="outlined"
+              value={formData.name}
+              onChange={handleFieldChange}
+              error={!!validationErrors.name}
+              helperText={validationErrors.name}
+              className="input-modal"
+              sx={{ mb: 2 }}
+            />
+
+            <TextField
+              type="text"
+              name="lastName"
+              label="Apellido"
+              variant="outlined"
+              value={formData.lastName}
+              onChange={handleFieldChange}
+              error={!!validationErrors.lastName}
+              helperText={validationErrors.lastName}
+              className="input-modal"
+              sx={{ mb: 2 }}
+            />
+
+            <TextField
+              type="text"
+              name="email"
+              label="Email"
+              variant="outlined"
+              value={formData.email}
+              onChange={handleFieldChange}
+              className="input-modal"
+              sx={{ mb: 2 }}
+            />
+
+            <TextField
+              type="password"
+              name="password"
+              label="Password"
+              variant="outlined"
+              value={formData.password}
+              onChange={handleFieldChange}
+              className="input-modal"
+              sx={{ mb: 2 }}
+            />
+
+            <TextField
+              type="password"
+              name="passwordConfirm"
+              label="Confirm Password"
+              variant="outlined"
+              value={formData.passwordConfirm}
+              onChange={handleFieldChange}
+              className="input-modal"
+              sx={{ mb: 2 }}
+            />
+          </DialogContent>
+          <Box className={"btn-container"}>
+            <Button
+              className={"cancel-btn"}
+              variant="outline"
+              sx={{
+                pt: "7px",
+                mx: "auto",
+                mt: 1,
+                mb: 4,
+                fontWeight: "bold",
+              }}
+              onClick={onClose}
+            >
+              Cancelar
+            </Button>
+
             <Button
               type="submit"
               variant="contained"
@@ -196,9 +207,9 @@ const AdminUsersModal = ({ open, onClose, onSave, rowData }) => {
             >
               Guardar
             </Button>
-          </ThemeProvider>
-        </Box>
-      </form>
+          </Box>
+        </form>
+      </ThemeProvider>
     </Dialog>
   );
 };
