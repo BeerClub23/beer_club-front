@@ -79,7 +79,7 @@ const ChartBarPaymentUser = ({ endpoint }) => {
                 scaleType: "band",
               },
             ]}
-            yAxis={[{ label: "Importe" }]}
+            yAxis={[{ label: "Cantidad" }]}
             series={[
               {
                 value: 10,

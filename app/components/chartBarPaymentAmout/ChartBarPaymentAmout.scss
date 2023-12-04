@@ -17,8 +17,9 @@
     }
     g{
         fill: white !important;
-        padding-right: 20px !important;
+        // margin-right: 10px !important;        
     }
+
 
     text{
         fill: white !important;
@@ -43,3 +44,9 @@
     // margin-top: -8px;
 }
 
+.MuiChartsAxis-label{
+    text{
+
+        margin-right: 20px !important;
+    }
+}

@@ -14,18 +14,24 @@
     padding-left: 20px;
     line{
         stroke: aliceblue !important;
+       
 
     }
     g{
         fill: white !important;
         margin-right: 10px !important;
         text {
-            transform:"rotate(-90, -28, 150)";
+            padding-right: -10px !important;
+            margin-right: -30px;            
             }
     }
 
     text{
         fill: white !important;
+    }
+
+    tspan{
+        margin-right: 30px !important;
     }
     
     
