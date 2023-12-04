@@ -97,69 +97,71 @@ const UpdateUserData = ({ user, updateData }) => {
               </Box>
             </Box>
           </Box>
-          <Box sx={{ width: "100%" }}>
-            <Typography variant="h4">
-              <b> Datos de envio</b>
-            </Typography>
-            <Box className="updater_form-address">
-              <Box className="input_box">
-                <FormLabel>Direccion</FormLabel>
-                <TextField
-                  name="street"
-                  value={formUpdateUserAddress.street}
-                  onChange={handleUpdateFormAddress}
-                  placeholder={user.address.street}
-                ></TextField>
-              </Box>
-              <Box className="input_box">
-                <FormLabel>Numero</FormLabel>
-                <TextField
-                  name="number"
-                  onChange={handleUpdateFormAddress}
-                  placeholder={user.address.number}
-                  value={formUpdateUserAddress.number}
-                  type="number"
-                ></TextField>
-              </Box>
-              <Box className="input_box">
-                <FormLabel>Ciudad</FormLabel>
-                <TextField
-                  name="city"
-                  onChange={handleUpdateFormAddress}
-                  value={formUpdateUserAddress.city}
-                  placeholder={user.address.city}
-                ></TextField>
-              </Box>
-              <Box className="input_box">
-                <FormLabel>Zip Code</FormLabel>
-                <TextField
-                  name="zipCode"
-                  value={formUpdateUserAddress.zipCode}
-                  onChange={handleUpdateFormAddress}
-                  placeholder={user.address.zipCode}
-                ></TextField>
-              </Box>
-              <Box className="input_box">
-                <FormLabel>Interior</FormLabel>
-                <TextField
-                  name="apartment"
-                  onChange={handleUpdateFormAddress}
-                  value={formUpdateUserAddress.apartment}
-                  placeholder={user.address.apartment}
-                ></TextField>
-              </Box>
-              <Box className="input_box">
-                <FormLabel>Numero Piso</FormLabel>
-                <TextField
-                  name="floor"
-                  onChange={handleUpdateFormAddress}
-                  value={formUpdateUserAddress.floor}
-                  placeholder={user.address.floor}
-                  type="number"
-                ></TextField>
+          {user.role === "USER" && (
+            <Box sx={{ width: "100%" }}>
+              <Typography variant="h4">
+                <b> Datos de envio</b>
+              </Typography>
+              <Box className="updater_form-address">
+                <Box className="input_box">
+                  <FormLabel>Direccion</FormLabel>
+                  <TextField
+                    name="street"
+                    value={formUpdateUserAddress.street}
+                    onChange={handleUpdateFormAddress}
+                    placeholder={user.address.street}
+                  ></TextField>
+                </Box>
+                <Box className="input_box">
+                  <FormLabel>Numero</FormLabel>
+                  <TextField
+                    name="number"
+                    onChange={handleUpdateFormAddress}
+                    placeholder={user.address.number}
+                    value={formUpdateUserAddress.number}
+                    type="number"
+                  ></TextField>
+                </Box>
+                <Box className="input_box">
+                  <FormLabel>Ciudad</FormLabel>
+                  <TextField
+                    name="city"
+                    onChange={handleUpdateFormAddress}
+                    value={formUpdateUserAddress.city}
+                    placeholder={user.address.city}
+                  ></TextField>
+                </Box>
+                <Box className="input_box">
+                  <FormLabel>Zip Code</FormLabel>
+                  <TextField
+                    name="zipCode"
+                    value={formUpdateUserAddress.zipCode}
+                    onChange={handleUpdateFormAddress}
+                    placeholder={user.address.zipCode}
+                  ></TextField>
+                </Box>
+                <Box className="input_box">
+                  <FormLabel>Interior</FormLabel>
+                  <TextField
+                    name="apartment"
+                    onChange={handleUpdateFormAddress}
+                    value={formUpdateUserAddress.apartment}
+                    placeholder={user.address.apartment}
+                  ></TextField>
+                </Box>
+                <Box className="input_box">
+                  <FormLabel>Numero Piso</FormLabel>
+                  <TextField
+                    name="floor"
+                    onChange={handleUpdateFormAddress}
+                    value={formUpdateUserAddress.floor}
+                    placeholder={user.address.floor}
+                    type="number"
+                  ></TextField>
+                </Box>
               </Box>
             </Box>
-          </Box>
+          )}
           <Button className="updater_form-button" onClick={onSubmit}>
             Guardar
           </Button>
