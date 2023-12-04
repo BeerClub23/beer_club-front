@@ -1,0 +1,31 @@
+@import "../../globals.scss";
+
+.chartContainerCountry {
+  // background-color: $rgb-white;
+  // background-color: "#fafafa";
+  background-color: #292828;
+  opacity: 0.8;
+  border-radius: 4px;
+  color: $rgb-white;
+  font-family: $poppins-font !important;
+  border: 1px solid rgb(112, 112, 112);
+  // box-shadow: 0px 5px 6px 3px rgba(0, 0, 0, 0.5);
+  // width: 400px;
+  width: 45%;
+  height: 200px;
+}
+
+.titleTotalCountry {
+  font-size: 24px;
+  text-align: center;
+  padding-top: 24px;
+}
+
+.textCountry {
+  text-align: center;
+  padding-top: 12px;
+  font-size: 24px !important;
+  letter-spacing: 5px !important;
+  font-weight: 600;
+  opacity: 0.9;
+}

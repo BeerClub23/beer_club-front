@@ -80,22 +80,31 @@ const PlansPage = () => {
                 </Button>
               </ThemeProvider>
             </Box>
-            <Box m={"auto"} flex={0.4} textAlign={"left"} className="boxPlan">
-              <Typography className="subtitle" variant="h5" sx={{ mb: 2 }}>
+            <Box
+              sx={{ margin: "50px auto" }}
+              flex={0.4}
+              textAlign={"left"}
+              className="boxPlan"
+            >
+              <Typography className="subtitle" variant="h5" sx={{ mb: 1 }}>
                 Deseas cambiar tu selección?
               </Typography>
-              {subscriptions.map((plan) => (
-                <PlanCard
-                  key={plan.id}
-                  id={plan.id}
-                  title={plan.name}
-                  price={plan.price}
-                  benefit={plan.benefits[0].name}
-                  isRecommended={recommendedPlan}
-                  isChecked={selectedValue == plan.id}
-                  event={handleCardSelect}
-                />
-              ))}
+              <div className="cardContainer">
+                {subscriptions.map((plan) => (
+                  <PlanCard
+                    key={plan.id}
+                    id={plan.id}
+                    title={plan.name}
+                    price={plan.price}
+                    benefit={
+                      plan.benefits.length > 0 ? plan.benefits[0].name : ""
+                    }
+                    isRecommended={recommendedPlan}
+                    isChecked={selectedValue == plan.id}
+                    event={handleCardSelect}
+                  />
+                ))}
+              </div>
             </Box>
           </Box>
         </Container>

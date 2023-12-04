@@ -11,23 +11,26 @@ const Historial = () => {
   const token = Cookies.get("jwt");
   const [userPaymentHistory, setUserPaymentHistory] = useState();
 
-  useEffect(() => {
-    getUserHistory(token)
-      .then((response) => {
-        setUserPaymentHistory(response);
-      })
-      .catch((error) => {
-        Swal.fire({
-          title: "Error!",
-          text: error,
-          imageAlt:
-            "Hubo un error al consultar el historico. Intenta nuevamente!",
-          confirmButtonText: "Continuar",
-          confirmButtonColor: "#ceb5a7",
-          icon: "error",
-          focusConfirm: false,
-        });
+  const fetchData = async () => {
+    try {
+      const response = await getUserHistory(token);
+      setUserPaymentHistory(response);
+    } catch (error) {
+      Swal.fire({
+        title: "Error!",
+        text: error,
+        imageAlt:
+          "Hubo un error al consultar el historico. Intenta nuevamente!",
+        confirmButtonText: "Continuar",
+        confirmButtonColor: "#ceb5a7",
+        icon: "error",
+        focusConfirm: false,
       });
+    }
+  };
+
+  useEffect(() => {
+    fetchData();
   }, [token]);
 
   return (
@@ -36,7 +39,7 @@ const Historial = () => {
         <b>Historial</b>
       </Typography>
       {userPaymentHistory ? (
-        <UserHistory userData={userPaymentHistory} />
+        <UserHistory userData={userPaymentHistory} onUpdateTable={fetchData} />
       ) : (
         <></>
       )}

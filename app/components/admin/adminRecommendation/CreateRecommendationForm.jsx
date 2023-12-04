@@ -12,15 +12,17 @@ import {
   InputLabel,
   FormControl,
   Chip,
+  FormHelperText,
 } from "@mui/material";
 import InputFileUpload from "./inputUpload";
 import { useGetSubscriptions } from "../../../services/subscriptions";
 import CloseIcon from "@mui/icons-material/Close";
-import { theme } from "@/app/styles/materialThemeForm";
-import { ThemeProvider } from "@mui/material";
+import { theme } from "../../../styles/materialThemeAdmin";
 import AddIcon from "@mui/icons-material/Add";
 import { DeleteOutline } from "@mui/icons-material";
-import "./recommendationAdmin.scss";
+import { recommendationSchema } from "./rules/index";
+import * as yup from "yup";
+//import "./recommendationAdmin.scss";
 
 // SET THE CURRENT DATE FOR THE ELEMENT CREATION
 const getCurrentDate = () => {
@@ -49,12 +51,14 @@ const initialState = {
 const CreateRecommendationForm = ({ onClose, onCreate }) => {
   const [formData, setFormData] = useState(initialState);
   const { subscriptions, isLoading, isError } = useGetSubscriptions();
+  const [validationErrors, setValidationErrors] = useState({});
   const dropRef = useRef();
 
   // RECOMMENDATION EVENTS
   const handleChange = (event) => {
     const { name, value } = event.target;
     setFormData((prevData) => ({ ...prevData, [name]: value }));
+    setValidationErrors((prevErrors) => ({ ...prevErrors, [name]: "" }));
   };
 
   // PRODUCT EVENTS
@@ -63,6 +67,14 @@ const CreateRecommendationForm = ({ onClose, onCreate }) => {
     setFormData((prevData) => ({
       ...prevData,
       product: { ...prevData.product, [name]: value },
+    }));
+
+    setValidationErrors((prevErrors) => ({
+      ...prevErrors,
+      product: {
+        ...prevErrors.product,
+        [name]: "",
+      },
     }));
   };
 
@@ -158,6 +170,19 @@ const CreateRecommendationForm = ({ onClose, onCreate }) => {
         },
       };
     });
+    setValidationErrors((prevErrors) => {
+      const updatedErrors = {
+        ...prevErrors,
+        product: {
+          ...prevErrors.product,
+          image_url: [...(prevErrors.product?.image_url || [])],
+        },
+      };
+
+      updatedErrors.product.image_url[index] = "";
+
+      return updatedErrors;
+    });
   };
 
   const handleAddImage = () => {
@@ -185,32 +210,59 @@ const CreateRecommendationForm = ({ onClose, onCreate }) => {
     });
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
 
-    const imageUrls = formData.product.image_url.map((image) => ({
-      url: image.name,
-    }));
+    try {
+      // Clear previous validation errors
+      setValidationErrors({});
 
-    const formDataToSend = {
-      ...formData,
-      product: {
-        ...formData.product,
-        image_url: imageUrls,
-      },
-    };
-    console.log(formDataToSend);
-    onCreate(formDataToSend);
+      // Validate the form data using the yup schema
+      await recommendationSchema.validate(formData, {
+        abortEarly: false,
+      });
 
-    setFormData((prevData) => ({
-      ...prevData,
-      image_url: null,
-    }));
+      // If validation succeeds, proceed with form submission
+      const imageUrls = formData.product.image_url.map((image) => ({
+        url: image.name,
+      }));
 
-    // Reset the form to its initial state
-    setFormData(initialState);
+      const formDataToSend = {
+        ...formData,
+        product: {
+          ...formData.product,
+          image_url: imageUrls,
+        },
+      };
 
-    onClose();
+      // Call the onCreate function with the validated data
+      onCreate(formDataToSend);
+
+      // Reset the form to its initial state
+      setFormData(initialState);
+
+      onClose();
+    } catch (error) {
+      // Handle Yup validation errors
+      if (error instanceof yup.ValidationError) {
+        const errors = {};
+
+        error.inner.forEach((e) => {
+          // Use correct paths for validation errors
+          if (e.path.startsWith("product.")) {
+            // Handle product-related errors
+            errors.product = errors.product || {};
+            errors.product[e.path.substr(8)] = e.message;
+          } else {
+            // Handle other errors
+            errors[e.path] = e.message;
+          }
+        });
+
+        console.log("Validation Errors:", errors);
+        setValidationErrors(errors);
+      }
+    }
   };
 
   const handleCancel = () => {
@@ -234,6 +286,8 @@ const CreateRecommendationForm = ({ onClose, onCreate }) => {
               name="title"
               value={formData.title}
               onChange={handleChange}
+              error={!!validationErrors.title}
+              helperText={validationErrors.title}
             />
           </Grid>
           <Grid item xs={12}>
@@ -245,6 +299,8 @@ const CreateRecommendationForm = ({ onClose, onCreate }) => {
               maxRows={4}
               value={formData.description}
               onChange={handleChange}
+              error={!!validationErrors.description}
+              helperText={validationErrors.description}
             />
           </Grid>
           <Grid item xs={12}>
@@ -257,6 +313,7 @@ const CreateRecommendationForm = ({ onClose, onCreate }) => {
                 name="subscription_id"
                 value={formData.subscription_id}
                 onChange={handleChange}
+                error={!!validationErrors.subscription_id}
               >
                 {subscriptions.map((s) => (
                   <MenuItem key={s.id} value={s.id}>
@@ -264,6 +321,9 @@ const CreateRecommendationForm = ({ onClose, onCreate }) => {
                   </MenuItem>
                 ))}
               </Select>
+              <FormHelperText error={Boolean(validationErrors.subscription_id)}>
+                {validationErrors.subscription_id}
+              </FormHelperText>
             </FormControl>
           </Grid>
           <Grid item xs={12}>
@@ -273,6 +333,8 @@ const CreateRecommendationForm = ({ onClose, onCreate }) => {
               name="image_url"
               value={formData.image_url}
               onChange={handleChange}
+              error={Boolean(validationErrors.image_url)}
+              helperText={validationErrors.image_url}
             />
             {/*             <Typography>Imagen recomendación</Typography>
             <InputFileUpload
@@ -293,6 +355,8 @@ const CreateRecommendationForm = ({ onClose, onCreate }) => {
               name="name"
               value={formData.product.name}
               onChange={(e) => handleProductChange(e)}
+              error={Boolean(validationErrors.product?.name)}
+              helperText={validationErrors.product?.name || ""}
             />
           </Grid>
           {/* Product Description */}
@@ -305,6 +369,8 @@ const CreateRecommendationForm = ({ onClose, onCreate }) => {
               maxRows={4}
               value={formData.product.description}
               onChange={(e) => handleProductChange(e)}
+              error={Boolean(validationErrors.product?.description)}
+              helperText={validationErrors.product?.description || ""}
             />
           </Grid>
           {/* Product Image Upload */}
@@ -329,7 +395,14 @@ const CreateRecommendationForm = ({ onClose, onCreate }) => {
                   onChange={(e) =>
                     handleImagesProductChange(index, e.target.value)
                   }
-                  className="input-modal"
+                  sx={{ mt: 2 }}
+                  //className="input-modal"
+                  error={Boolean(
+                    validationErrors.product?.image_url?.[index]?.name,
+                  )}
+                  helperText={
+                    validationErrors.product?.image_url?.[index]?.name || ""
+                  }
                 />
 
                 <IconButton onClick={() => handleRemoveImage(index)}>
@@ -339,6 +412,9 @@ const CreateRecommendationForm = ({ onClose, onCreate }) => {
             ))}
             <Button
               onClick={handleAddImage}
+              sx={{
+                mt: 2,
+              }}
               variant="outlined"
               className="add-element-btn"
               startIcon={<AddIcon />}
@@ -398,26 +474,36 @@ const CreateRecommendationForm = ({ onClose, onCreate }) => {
           </Grid>
           {/* Submit Button */}
           <Grid item xs={12}>
-            <Box className="btn-container">
-              <Button className="cancel-btn" onClick={handleCancel}>
+            <Box sx={{ display: "flex", width: "65%", margin: "auto" }}>
+              <Button
+                sx={{
+                  width: "150px",
+                  pt: "7px",
+                  mx: "auto",
+                  mt: 1,
+                  mb: 4,
+                  fontWeight: "bold",
+                }}
+                className="cancel-element-btn"
+                onClick={handleCancel}
+              >
                 Cancelar
               </Button>
-              <ThemeProvider theme={theme}>
-                <Button
-                  sx={{
-                    pt: "7px",
-                    mx: "auto",
-                    mt: 1,
-                    mb: 4,
-                    fontWeight: "bold",
-                  }}
-                  type="submit"
-                  variant="contained"
-                  color="primary"
-                >
-                  Enviar
-                </Button>
-              </ThemeProvider>
+              <Button
+                sx={{
+                  width: "150px",
+                  pt: "7px",
+                  mx: "auto",
+                  mt: 1,
+                  mb: 4,
+                  fontWeight: "bold",
+                }}
+                type="submit"
+                variant="contained"
+                color="primary"
+              >
+                Enviar
+              </Button>
             </Box>
           </Grid>
         </Grid>

@@ -77,11 +77,11 @@ const RateCard = ({ rate }) => {
       <form className="commentForm" onSubmit={handleSubmit}>
         <Textarea
           placeholder="Envianos tu comentario"
+          className="rateTextArea commentText"
           // required
-          sx={{ m: 3, width: "100%", minHeight: "150px" }}
+          sx={{ m: 3, width: "100%", minHeight: "75px" }}
           value={textValue}
           onChange={handleTextChange}
-          className="commentText"
           disabled={comment}
         />
         <ThemeProvider theme={theme}>

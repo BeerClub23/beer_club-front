@@ -49,7 +49,8 @@
 }
 
 .imagesGrid {
-  margin-top: 20px;
+  // width: 450px !important ;
+  // margin-top: 20px;
 
   // width: 100%;
 }
@@ -69,7 +70,7 @@
   height: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  // justify-content: space-around;
   justify-content: space-evenly;
 }
 
@@ -164,12 +165,13 @@
     flex-direction: row;
     width: 100%;
     align-items: center;
-    justify-content: space-evenly;
+    justify-content: center;
   }
 
   .titleContainer {
     display: flex;
     justify-content: space-around;
+    padding-left: 20px;
   }
   .recommTitle {
     font-size: 32px;

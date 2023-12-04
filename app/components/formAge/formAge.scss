@@ -17,11 +17,11 @@
   font-size: 2rem;
   font-family: $poppins-font;
 }
-.inputAge{
+.inputAge {
   max-width: 60px;
 }
-.inputAgeYear{
-  max-width: 85px!important;
+.inputAgeYear {
+  max-width: 85px !important;
 }
 
 input[type="number"]::-webkit-inner-spin-button,
@@ -31,16 +31,15 @@ input[type="number"]::-webkit-outer-spin-button {
 }
 
 @media (min-width: 450px) {
-  .inputAge{
+  .inputAge {
     max-width: 70px;
-    div{
+    div {
       font-size: 1.5rem;
     }
   }
-  .inputAgeYear{
-    max-width: 105px!important;
+  .inputAgeYear {
+    max-width: 105px !important;
   }
-
 }
 
 @media (min-width: 600px) {
@@ -50,26 +49,24 @@ input[type="number"]::-webkit-outer-spin-button {
   .mainAge h4 {
     font-size: 3rem;
   }
-  .inputAge{
+  .inputAge {
     max-width: 90px;
-    div{
+    div {
       font-size: 2rem;
     }
   }
-  .inputAgeYear{
-    max-width: 130px!important;
+  .inputAgeYear {
+    max-width: 130px !important;
   }
-
 }
 @media (min-width: 900px) {
-  .inputAge{
+  .inputAge {
     max-width: 120px;
-    div{
+    div {
       font-size: 2.5rem;
     }
   }
-  .inputAgeYear{
-    max-width: 160px!important;
+  .inputAgeYear {
+    max-width: 160px !important;
   }
-
 }
