@@ -28,11 +28,13 @@ export const theme = createTheme({
           fontWeight: 600,
         },
         // Style for chip-table
-        chipTable: {
-          width: "170px",
-          height: "35px",
-          fontWeight: 600,
-          marginLeft: "10px",
+        label: {
+          "&.chipTable": {
+            width: "170px",
+            height: "35px",
+            fontWeight: 600,
+            marginLeft: "10px",
+          },
         },
         // Style for chip-table when active
         chipTableActive: {
@@ -71,21 +73,24 @@ export const theme = createTheme({
     },
     MuiButton: {
       styleOverrides: {
-        addElementBtn: {
-          backgroundColor: "black",
-          color: "white",
-          border: "none",
-          "&:hover": {
-            backgroundColor: "#CEB5A7",
+        root: {
+          "&.addElementBtn": {
+            backgroundColor: "black",
+            color: "white",
             border: "none",
+            "&:hover": {
+              backgroundColor: "#CEB5A7",
+              border: "none",
+            },
           },
-        },
-        cancelBtn: {
-          border: "none",
-          color: "darkgray",
-          "&:hover": {
-            color: "black",
-            backgroundColor: "rgba(0, 0, 0, 0.123)",
+
+          "&.cancelBtn": {
+            border: "none",
+            color: "darkgray",
+            "&:hover": {
+              color: "black",
+              backgroundColor: "rgba(0, 0, 0, 0.123)",
+            },
           },
         },
       },
