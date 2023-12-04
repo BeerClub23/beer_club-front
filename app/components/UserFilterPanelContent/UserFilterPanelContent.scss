@@ -1,9 +1,10 @@
 @import "../../globals.scss";
 
 .userDataTable{
-    border-radius: 7px !important;
+    background-color: $rgb-white;
+    border-radius: 4px !important;
     font-family: $poppins-font !important;
-    box-shadow: 0px 5px 6px 3px rgba(0, 0, 0, 0.5) !important;
+    // box-shadow: 0px 5px 6px 3px rgba(0, 0, 0, 0.5) !important;
     button{
         color:$primary ;
 
