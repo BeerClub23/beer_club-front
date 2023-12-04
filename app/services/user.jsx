@@ -69,17 +69,20 @@ export const getUserHistory = async (token) => {
 };
 
 export const deleteUser = async (userId, token) => {
-  return new Promise((resolve, reject) => {
+  try {
     const axios = require("axios");
-    axios({
-      method: "DELETE",
-      url: `${process.env.NEXT_PUBLIC_API_URL}users/${userId}`,
-      headers: {
-        Accept: "application/json",
-        Authorization: "Bearer " + token,
+    const response = await axios.delete(
+      `${process.env.NEXT_PUBLIC_API_URL}users/${userId}`,
+      {
+        headers: {
+          Accept: "application/json",
+          Authorization: `Bearer ${token}`,
+        },
       },
-    })
-      .then((response) => resolve(response.data))
-      .catch((error) => reject(error));
-  });
+    );
+    return response;
+  } catch (error) {
+    console.error("Error in deleteUser API call:", error);
+    throw error;
+  }
 };
