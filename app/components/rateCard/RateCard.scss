@@ -30,12 +30,15 @@
   justify-content: center;
 }
 
-.css-8qqwlv-JoyTextarea-root:not([data-inverted-colors="false"]) {
-  --Textarea-focusedHighlight: var(
-    --_Textarea-focusedHighlight,
-    var(--joy-palette-focusVisible, var(--joy-palette-primary-500, $primary))
-  );
-  /* Otras propiedades aquí */
+.rateTextArea{
+  .css-8qqwlv-JoyTextarea-root:not([data-inverted-colors="false"]) {
+    --Textarea-focusedHighlight: var(
+      --_Textarea-focusedHighlight,
+      var(--joy-palette-focusVisible, var(--joy-palette-primary-500, $primary))
+    );
+    
+  }
+  
 }
 
 .commentButton {
