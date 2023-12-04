@@ -55,7 +55,7 @@ export default function ChartPieUserBySubsc({ endpoint }) {
       </Typography>
       {reportingDataFilter.length > 0 ? (
         <PieChart
-        colors={palette}
+          colors={palette}
           series={[
             {
               arcLabel: getArcLabel,
@@ -67,6 +67,14 @@ export default function ChartPieUserBySubsc({ endpoint }) {
             [`& .${pieArcLabelClasses.root}`]: {
               fill: "white",
               fontWeight: "bold",
+            },
+          }}
+          slotProps={{
+            legend: {
+              labelStyle: {
+                fontSize: 14,
+                fill: 'white',
+              },
             },
           }}
           {...size}

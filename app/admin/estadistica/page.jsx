@@ -21,7 +21,8 @@ const EstadisticaPage = () => {
   return (
     <Box
       sx={{
-        backgroundColor: "rgb(247, 245, 245)",
+        // backgroundColor: "rgb(247, 245, 245)",
+        backgroundColor: "#rgb(16, 16, 16)",
         minHeight: "100vh",
         borderRadius: "4px",
         padding: "30px",

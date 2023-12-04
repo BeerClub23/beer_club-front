@@ -54,17 +54,18 @@ const ChartBarPaymentAmout = ({ endpoint }) => {
       setData(newData);
       setDataRanking(newData.map((item) => item.value));
       setDataName(newData.map((item) => item.label));
-    }else{
+    } else {
       setDataRanking([]);
       setDataName([]);
     }
   }, [reportingDataFilter, endpoint]);
 
-
   return (
     <>
       <Box className="chartContainer">
-        <Typography className="chartTitle">Estado del pago por importe</Typography>
+        <Typography className="chartTitle">
+          Estado del pago por importe
+        </Typography>
         {dataName.length > 0 && dataRanking.length > 0 ? (
           <BarChart
             xAxis={[
@@ -90,7 +91,7 @@ const ChartBarPaymentAmout = ({ endpoint }) => {
               legend: {
                 labelStyle: {
                   fontSize: 11,
-                  fill: "blue",
+                  fill: "white",
                 },
               },
             }}

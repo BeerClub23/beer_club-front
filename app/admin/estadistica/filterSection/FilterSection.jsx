@@ -17,6 +17,7 @@ import Select from "@mui/material/Select";
 import SearchIcon from "@mui/icons-material/Search";
 import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
 import { useGetSubscriptions } from "@/app/services/subscriptions";
+import { red } from "@mui/material/colors";
 
 const FilterSection = () => {
   const today = new Date();
@@ -84,8 +85,8 @@ const FilterSection = () => {
     <Box className="filterSectionContainer">
       <Box className="filterContainer">
         <Box className="countryFilterContainer">
-          <FormControl fullWidth>
-            <InputLabel id="demo-simple-select-label">País</InputLabel>
+          <FormControl fullWidth className="filterInputs">
+            <InputLabel id="demo-simple-select-label" >País</InputLabel>
             <Select
               labelId="demo-simple-select-label"
               id="demo-simple-select-country"
@@ -98,7 +99,7 @@ const FilterSection = () => {
               <MenuItem value="Colombia">Colombia</MenuItem>
             </Select>
           </FormControl>
-          <FormControl fullWidth>
+          <FormControl fullWidth className="filterInputs">
             <InputLabel id="demo-simple-select-label">Tipo</InputLabel>
             <Select
               labelId="demo-simple-select-label"
@@ -115,7 +116,7 @@ const FilterSection = () => {
               ))}
             </Select>
           </FormControl>
-          <FormControl fullWidth>
+          <FormControl fullWidth className="filterInputs">
             <InputLabel id="demo-simple-select-label">Pago</InputLabel>
             <Select
               labelId="demo-simple-select-label"
@@ -131,7 +132,7 @@ const FilterSection = () => {
               <MenuItem value="RECHAZADO">RECHAZADO</MenuItem>
             </Select>
           </FormControl>
-          <FormControl fullWidth>
+          <FormControl fullWidth className="filterInputs">
             <InputLabel id="demo-simple-select-label">Estado</InputLabel>
             <Select
               labelId="demo-simple-select-label"
@@ -145,19 +146,19 @@ const FilterSection = () => {
               <MenuItem value="0">Inactivo</MenuItem>
             </Select>
           </FormControl>
-          <IconButton aria-label="search" onClick={handleSubmit}>
+          <IconButton aria-label="search" onClick={handleSubmit} sx={{color:"rgba(235, 232, 232, 0.795)"}}>
             <SearchIcon />
           </IconButton>
-          <IconButton aria-label="search" onClick={handleDeleteFilter}>
+          <IconButton aria-label="search" onClick={handleDeleteFilter} sx={{color:"rgba(235, 232, 232, 0.795)"}}>
             <DeleteForeverIcon />
           </IconButton>
         </Box>
         <Typography className="dataPickerTitle">
           Filtrar por fecha de alta:
         </Typography>
-        <Box className="datePickerContainer">
-          <LocalizationProvider dateAdapter={AdapterDayjs}>
-            <DemoContainer components={["DatePicker", "DatePicker"]}>
+        <Box className="datePickerContainer" >
+          <LocalizationProvider dateAdapter={AdapterDayjs} >
+            <DemoContainer components={["DatePicker", "DatePicker"]} >
               <DatePicker
                 className="inputDate"
                 label="Desde"
