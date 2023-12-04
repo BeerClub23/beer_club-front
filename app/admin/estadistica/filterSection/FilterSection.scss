@@ -10,12 +10,36 @@
 
 .filterContainer{
     width: 100%;
-    background-color: rgb(247, 245, 245);
+    background-color: #292828 !important;
     // box-shadow: 0px 5px 6px 3px rgba(0, 0, 0, 0.5);
     display: flex;
     align-items: center;
     flex-direction: column;
     justify-content: space-evenly;
+   
+}
+
+.filterInputs{
+    color: rgba(235, 232, 232, 0.795)!important;
+    border-color: rgba(235, 232, 232, 0.795) !important;
+    fieldset{
+        // border-color: $rgb-dark !important;
+        // border-color: rgba(0, 0, 0, 0.3) !important;
+        border-color: rgba(235, 232, 232, 0.795) !important;
+    };
+    label{
+        color: rgba(235, 232, 232, 0.795) !important;
+    }
+    input{
+        color: rgba(235, 232, 232, 0.795)!important;
+    }
+    svg{
+        color: rgba(235, 232, 232, 0.795)!important;
+    }
+    div{
+        color: rgba(235, 232, 232, 0.795)!important;
+        
+    }
 }
 
 .datePickerContainer{
@@ -29,7 +53,7 @@
 
 .dataPickerTitle{
     
-    color: $rgb-dark;
+    color: $rgb-white;
     font-family: $poppins-font;
     
 }
@@ -37,13 +61,18 @@
 .inputDate{
     fieldset{
         // border-color: $rgb-dark !important;
-        border-color: rgba(0, 0, 0, 0.3) !important;
+        // border-color: rgba(0, 0, 0, 0.3) !important;
+        border-color: rgba(235, 232, 232, 0.795) !important;
     };
     label{
-        color: rgba(0, 0, 0, 0.54) !important;
+        color: rgba(235, 232, 232, 0.795) !important;
     }
     input{
-        color: rgba(0, 0, 0, 0.54) !important;
+        color: rgba(235, 232, 232, 0.795)!important;
+    }
+    button{
+        color: rgba(235, 232, 232, 0.795)!important;
+        
     }
 
 }

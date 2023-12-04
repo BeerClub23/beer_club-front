@@ -13,7 +13,7 @@ const UserSection = () => {
 
   return (
     <Box className="userSectionContainer">
-      <Typography sx={{ color: "#000" }} className="userSectionTitle">
+      <Typography className="userSectionTitle">
         Detalle de Usuarios
       </Typography>
       {usersData.length > 0 && (

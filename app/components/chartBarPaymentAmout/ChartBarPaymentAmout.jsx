@@ -11,30 +11,6 @@ const ChartBarPaymentAmout = ({ endpoint }) => {
   const [dataName, setDataName] = React.useState([]);
   const [dataRanking, setDataRanking] = React.useState([]);
 
-  // React.useEffect(() => {
-  //   if (reportingDataFilter && reportingDataFilter.length > 0) {
-  //     const newData = reportingDataFilter.reduce((acc, user) => {
-  //       const existingItem = acc.find((info) => info.label === user.status);
-  //       if (existingItem) {
-  //         existingItem.value += user.lastPaidAmount;
-  //       } else {
-  //         acc.push({ label: user.status, value: user.lastPaidAmount });
-  //       }
-  //       return acc;
-  //     }, []);
-  //     // console.log(newData);
-  //     setData(newData);
-  //     //   setDataName(newData.map((item) => item.status));
-  //     setDataRanking(newData.map((item) => item.value));
-  //     setDataName(newData.map((item) => item.label));
-  //     // setDataRanking(reportingDataFilter.map((item) => item.lastPaidAmount));
-  //   }
-  // }, [endpoint, reportingDataFilter]);
-
-  // console.log(dataRanking);
-  // const dataName = data?.map((item) => item.status);
-  // const dataRanking = data?.map((item) => item.lastPaidAmount);
-
   React.useEffect(() => {
     if (reportingDataFilter && reportingDataFilter.length > 0) {
       console.log(reportingDataFilter);
@@ -54,17 +30,18 @@ const ChartBarPaymentAmout = ({ endpoint }) => {
       setData(newData);
       setDataRanking(newData.map((item) => item.value));
       setDataName(newData.map((item) => item.label));
-    }else{
+    } else {
       setDataRanking([]);
       setDataName([]);
     }
   }, [reportingDataFilter, endpoint]);
 
-
   return (
     <>
       <Box className="chartContainer">
-        <Typography className="chartTitle">Estado del pago por importe</Typography>
+        <Typography className="chartTitle">
+          Estado del pago por importe
+        </Typography>
         {dataName.length > 0 && dataRanking.length > 0 ? (
           <BarChart
             xAxis={[
@@ -89,8 +66,8 @@ const ChartBarPaymentAmout = ({ endpoint }) => {
             slotProps={{
               legend: {
                 labelStyle: {
-                  fontSize: 11,
-                  fill: "blue",
+                  fontSize: 10,
+                  fill: "white",
                 },
               },
             }}

@@ -53,19 +53,27 @@ export default function ChartPieUserByCountry({ endpoint }) {
         % Usuarios por País
       </Typography>
       {reportingDataFilter.length > 0 ? (
-        <PieChart
+        <PieChart          
           colors={palette}
           series={[
             {
               arcLabel: getArcLabel,
               arcLabelMinAngle: 45,
               data,
-            },
+            }, 
           ]}
           sx={{
             [`& .${pieArcLabelClasses.root}`]: {
               fill: "white",
               fontWeight: "bold",
+            },
+          }}
+          slotProps={{
+            legend: {
+              labelStyle: {
+                fontSize: 14,
+                fill: 'white',
+              },
             },
           }}
           {...size}
