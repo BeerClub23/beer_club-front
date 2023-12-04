@@ -21,9 +21,9 @@ const EstadisticaPage = () => {
   return (
     <Box
       sx={{
-        backgroundColor: "#fff",
+        backgroundColor: "rgb(247, 245, 245)",
         minHeight: "100vh",
-        borderRadius: "7px",
+        borderRadius: "4px",
         padding: "30px",
         display: "flex",
         flexDirection: "column",
