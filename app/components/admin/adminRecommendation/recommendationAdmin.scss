@@ -24,7 +24,8 @@
 //Form buttons
 .cancel-btn {
   font-weight: 600;
-  border: none;
+  border: 1px solid darkgray;
+  border-radius: 4px;
   color: darkgray;
 
   &:hover {

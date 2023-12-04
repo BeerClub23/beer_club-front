@@ -19,7 +19,9 @@ const RecommendationModal = ({
       open={isModalOpen}
       onClose={onClose}
     >
-      <DialogTitle>Editar recomendación</DialogTitle>
+      <DialogTitle sx={{ textAlign: "center" }}>
+        Editar recomendación
+      </DialogTitle>
       <DialogContent>
         <EditRecommendationForm
           initialData={editingRowData}

@@ -5,6 +5,7 @@
   justify-content: flex-start;
   background-color: #ffffff !important;
   color: black;
+  position: relative;
 }
 
 #mobile_version-container_showed {
@@ -61,4 +62,14 @@
 #nav_user li div span {
   color: black !important;
   font-weight: bold !important;
+}
+
+.invoice-button {
+  background-color: #f5e1c1;
+  color: black;
+  font-weight: bold;
+  border-radius: 5px;
+  padding: 5px 40px;
+  width: 80%;
+  margin: 50px auto;
 }

@@ -14,8 +14,9 @@ import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
 import { usePathname } from "next/navigation";
 import "./UserSideBar.scss";
 import Link from "next/link";
+import Button from "@mui/material/Button";
 
-const UserSideBar = () => {
+const UserSideBar = ({ handleDeactivateAccount }) => {
   const [mobile, setMobile] = useState(false);
   const [width, setWidth] = useState();
   const [show, setSHow] = useState(false);
@@ -116,6 +117,24 @@ const UserSideBar = () => {
               </ListItem>
             </Link>
           </List>
+          {/* Deactivate Account Button */}
+          <Button
+            variant="outlined"
+            sx={{
+              width: "80%",
+              margin: "10px auto",
+              color: "gray",
+              borderColor: "gray",
+              "&:hover": {
+                backgroundColor: "darkGray",
+                borderColor: "darkGray",
+                color: "white",
+              },
+            }}
+            onClick={handleDeactivateAccount}
+          >
+            Desactivar cuenta
+          </Button>
         </nav>
       </Box>
     </>

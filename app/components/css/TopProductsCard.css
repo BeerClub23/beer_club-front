@@ -42,7 +42,7 @@ a {
 
 .productImg {
   -o-object-fit: cover;
-     object-fit: cover;
+  object-fit: cover;
   margin-top: 10px;
 }
 
@@ -59,4 +59,4 @@ a {
   .topProductContainer {
     width: 90%;
   }
-}/*# sourceMappingURL=TopProductsCard.css.map */
+} /*# sourceMappingURL=TopProductsCard.css.map */

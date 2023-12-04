@@ -39,14 +39,14 @@ export default function FormLogin() {
   const onSubmit = async (data) => {
     let { token, response } = await ApiFormLogin(data);
     if (token) {
-      console.log(response);
+      // console.log(response);
       const expirationDate = new Date();
       Cookies.set("jwt", token, {
         expires: expirationDate.setDate(expirationDate.getDate() + 1),
       });
       const decodeToken = jwtDecode(token);
       if (decodeToken.role === "ROLE_ADMIN") {
-        router.push(`/admin/subscripciones`);
+        router.push(`/admin/datos-personales`);
         // router.push(`/admin/datos-personales`);
       } else {
         router.push(`/user`);

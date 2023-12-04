@@ -14,12 +14,10 @@ import {
 } from "@mui/material";
 import InputFileUpload from "./inputUpload";
 import { useGetSubscriptions } from "../../../services/subscriptions";
-import CloseIcon from "@mui/icons-material/Close";
-import { theme } from "@/app/styles/materialThemeForm";
-import { ThemeProvider } from "@mui/material";
 import AddIcon from "@mui/icons-material/Add";
 import { DeleteOutline } from "@mui/icons-material";
-import "./recommendationAdmin.scss";
+import { theme } from "../../../styles/materialThemeAdmin";
+//import "./recommendationAdmin.scss";
 
 const EditRecommendationForm = ({ initialData, onClose, onSave }) => {
   const [formData, setFormData] = useState(initialData || {});
@@ -188,6 +186,16 @@ const EditRecommendationForm = ({ initialData, onClose, onSave }) => {
         <Grid container spacing={2}>
           <Grid item xs={12}>
             <TextField
+              label="Id"
+              fullWidth
+              name="id"
+              value={formData.id}
+              disabled
+              sx={{ marginTop: 2 }}
+            />
+          </Grid>
+          <Grid item xs={12}>
+            <TextField
               label="Titulo"
               fullWidth
               name="title"
@@ -323,7 +331,8 @@ const EditRecommendationForm = ({ initialData, onClose, onSave }) => {
                   onChange={(e) =>
                     handleImagesProductChange(index, e.target.value)
                   }
-                  className="input-modal"
+                  sx={{ mt: 2 }}
+                  //className="input-modal"
                 />
 
                 <IconButton onClick={() => handleRemoveImage(index)}>
@@ -334,6 +343,9 @@ const EditRecommendationForm = ({ initialData, onClose, onSave }) => {
             <Button
               onClick={handleAddImage}
               variant="outlined"
+              sx={{
+                mt: 2,
+              }}
               className="add-element-btn"
               startIcon={<AddIcon />}
               style={{ marginLeft: "8px" }}
@@ -399,26 +411,33 @@ const EditRecommendationForm = ({ initialData, onClose, onSave }) => {
 
           {/* Submit Button */}
           <Grid item xs={12}>
-            <Box className="btn-container">
-              <Button className="cancel-btn" onClick={handleCancel}>
+            <Box sx={{ display: "flex", width: "65%", margin: "auto" }}>
+              <Button
+                sx={{
+                  pt: "7px",
+                  mx: "auto",
+                  mt: 1,
+                  mb: 4,
+                  fontWeight: "bold",
+                }}
+                className="cancel-element-btn"
+                onClick={handleCancel}
+              >
                 Cancelar
               </Button>
-              <ThemeProvider theme={theme}>
-                <Button
-                  sx={{
-                    pt: "7px",
-                    mx: "auto",
-                    mt: 1,
-                    mb: 4,
-                    fontWeight: "bold",
-                  }}
-                  type="submit"
-                  variant="contained"
-                  color="primary"
-                >
-                  Enviar
-                </Button>
-              </ThemeProvider>
+              <Button
+                sx={{
+                  pt: "7px",
+                  mx: "auto",
+                  mt: 1,
+                  mb: 4,
+                  fontWeight: "bold",
+                }}
+                type="submit"
+                variant="contained"
+              >
+                Enviar
+              </Button>
             </Box>
           </Grid>
         </Grid>

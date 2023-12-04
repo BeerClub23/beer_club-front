@@ -1,26 +1,41 @@
 @import "../../globals.scss";
 
-.chartContainerTotal{
-    background-color: "#fafafa";
-    border-radius: 7px;
-    color: $rgb-dark;
-    font-family: $poppins-font !important;
-    box-shadow: 0px 5px 6px 3px rgba(0, 0, 0, 0.5);
-    width: 400px;
-    height: 200px;
-    
+.chartContainerTotal {
+  // background-color: $rgb-white;
+  background-color: #292828;
+  opacity: 0.8;
+  border-radius: 4px;
+  color: $rgb-dark;
+  color: $rgb-white;
+  font-family: $poppins-font !important;
+  border: 1px solid rgb(112, 112, 112);
+  // box-shadow: 0px 5px 6px 3px rgba(0, 0, 0, 0.5);
+  width: 45%;
+  // width: 400px;
+  height: 200px;
 }
 
-.titleTotal{
-    font-size: 24px;
-    text-align: center;
-    padding-top: 24px;
+.titleTotal {
+  font-size: 24px;
+  text-align: center;
+  padding-top: 24px;
 }
 
-.textTotal{
-    text-align: center;
-    padding-top: 24px;
-    font-size: 54px;
-    letter-spacing: 10px;
-    
+.textTotal {
+  text-align: center;
+  padding-top: 12px !important;
+  font-size: 24px !important;
+  letter-spacing: 5px !important;
+  font-weight: 600;
+  opacity: 0.9;
+}
+
+.upIcon {
+  color: green;
+  opacity: 0.7;
+}
+
+.downIcon {
+  color: red;
+  opacity: 0.7;
 }

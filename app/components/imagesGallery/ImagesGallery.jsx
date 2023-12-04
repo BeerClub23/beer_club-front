@@ -9,8 +9,6 @@ const ImagesGallery = ({ images }) => {
   //   ...rest,
   // }));
 
-
-
   const imagesWithSrc = images.map(({ url, ...rest }) => ({
     original: url,
     thumbnail: url,

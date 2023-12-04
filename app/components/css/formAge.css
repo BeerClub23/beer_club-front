@@ -49,8 +49,8 @@ a {
   max-width: 85px !important;
 }
 
-input[type=number]::-webkit-inner-spin-button,
-input[type=number]::-webkit-outer-spin-button {
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
@@ -93,4 +93,4 @@ input[type=number]::-webkit-outer-spin-button {
   .inputAgeYear {
     max-width: 160px !important;
   }
-}/*# sourceMappingURL=formAge.css.map */
+} /*# sourceMappingURL=formAge.css.map */

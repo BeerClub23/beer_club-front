@@ -32,9 +32,9 @@ export default function FormAge({ saveAge }) {
         const dateResponse = await response.json();
         const userIP = dateResponse.ip;
         const userCity = dateResponse.city;
-        console.log(
-          "IP: " + userIP + ", City: " + userCity + ", Date:  " + userDate,
-        );
+        // console.log(
+        //   "IP: " + userIP + ", City: " + userCity + ", Date:  " + userDate,
+        // );
         saveAge({
           ip: userIP,
           city: userCity,
