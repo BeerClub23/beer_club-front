@@ -23,7 +23,7 @@ export const recommendationSchema = yup.object().shape({
     image_url: yup.array().of(
       yup.object().shape({
         name: yup.string().required("El nombre de la imagen es requerido"),
-      })
+      }),
     ),
   }),
 });

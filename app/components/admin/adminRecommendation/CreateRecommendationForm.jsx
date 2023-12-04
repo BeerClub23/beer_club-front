@@ -398,7 +398,7 @@ const CreateRecommendationForm = ({ onClose, onCreate }) => {
                   sx={{ mt: 2 }}
                   //className="input-modal"
                   error={Boolean(
-                    validationErrors.product?.image_url?.[index]?.name
+                    validationErrors.product?.image_url?.[index]?.name,
                   )}
                   helperText={
                     validationErrors.product?.image_url?.[index]?.name || ""
@@ -413,7 +413,6 @@ const CreateRecommendationForm = ({ onClose, onCreate }) => {
             <Button
               onClick={handleAddImage}
               sx={{
-                ...theme.components.MuiButton.styleOverrides.addElementBtn,
                 mt: 2,
               }}
               variant="outlined"
@@ -478,7 +477,6 @@ const CreateRecommendationForm = ({ onClose, onCreate }) => {
             <Box sx={{ display: "flex", width: "65%", margin: "auto" }}>
               <Button
                 sx={{
-                  ...theme.components.MuiButton.styleOverrides.cancelBtn,
                   width: "150px",
                   pt: "7px",
                   mx: "auto",
@@ -486,6 +484,7 @@ const CreateRecommendationForm = ({ onClose, onCreate }) => {
                   mb: 4,
                   fontWeight: "bold",
                 }}
+                className="cancel-element-btn"
                 onClick={handleCancel}
               >
                 Cancelar

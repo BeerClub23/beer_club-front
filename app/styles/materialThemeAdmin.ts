@@ -21,25 +21,21 @@ export const theme = createTheme({
       styleOverrides: {
         root: {
           width: "80px",
+          "&.chip-element-table": {
+            width: "170px",
+            height: "35px",
+            fontWeight: 600,
+            marginLeft: "10px",
+            "&.chip-active-table": {
+              backgroundColor: "#CEB5A7",
+              color: "black",
+            },
+          },
         },
         colorPrimary: {
           backgroundColor: "#dae7cd",
           color: "rgb(8, 55, 8)",
           fontWeight: 600,
-        },
-        // Style for chip-table
-        label: {
-          "&.chipTable": {
-            width: "170px",
-            height: "35px",
-            fontWeight: 600,
-            marginLeft: "10px",
-          },
-        },
-        // Style for chip-table when active
-        chipTableActive: {
-          backgroundColor: "#CEB5A7",
-          color: "black",
         },
       },
     },
@@ -74,7 +70,7 @@ export const theme = createTheme({
     MuiButton: {
       styleOverrides: {
         root: {
-          "&.addElementBtn": {
+          "&.add-element-btn": {
             backgroundColor: "black",
             color: "white",
             border: "none",
@@ -83,8 +79,7 @@ export const theme = createTheme({
               border: "none",
             },
           },
-
-          "&.cancelBtn": {
+          "&.cancel-element-btn": {
             border: "none",
             color: "darkgray",
             "&:hover": {

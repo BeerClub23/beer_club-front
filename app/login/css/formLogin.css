@@ -26,11 +26,11 @@ a {
   background-color: #101010 !important;
   color: white !important;
   -webkit-appearance: menulist-button;
-     -moz-appearance: menulist-button;
-          appearance: menulist-button;
+  -moz-appearance: menulist-button;
+  appearance: menulist-button;
 }
 
 .swal2-styled {
   transition: none !important;
   box-shadow: none !important;
-}/*# sourceMappingURL=formLogin.css.map */
+} /*# sourceMappingURL=formLogin.css.map */

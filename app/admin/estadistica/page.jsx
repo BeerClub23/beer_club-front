@@ -38,9 +38,8 @@ const EstadisticaPage = () => {
           justifyContent: "space-around",
         }}
       >
-        <ChartTotalSubscriptors total={activeUsers} inactive={inactiveUsers}/>
+        <ChartTotalSubscriptors total={activeUsers} inactive={inactiveUsers} />
         {activeUsers?.length > 0 && <ChartTotalByCountry total={activeUsers} />}
-      
       </Box>
       {/* <Box sx={{margin:"0 auto"}}>
         {reportingData?.length > 0 && <ChartPie activeUsers={reportingData} />}

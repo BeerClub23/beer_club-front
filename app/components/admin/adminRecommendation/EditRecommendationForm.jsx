@@ -344,10 +344,9 @@ const EditRecommendationForm = ({ initialData, onClose, onSave }) => {
               onClick={handleAddImage}
               variant="outlined"
               sx={{
-                ...theme.components.MuiButton.styleOverrides.addElementBtn,
                 mt: 2,
               }}
-              //className="add-element-btn"
+              className="add-element-btn"
               startIcon={<AddIcon />}
               style={{ marginLeft: "8px" }}
             >
@@ -415,13 +414,13 @@ const EditRecommendationForm = ({ initialData, onClose, onSave }) => {
             <Box sx={{ display: "flex", width: "65%", margin: "auto" }}>
               <Button
                 sx={{
-                  ...theme.components.MuiButton.styleOverrides.cancelBtn,
                   pt: "7px",
                   mx: "auto",
                   mt: 1,
                   mb: 4,
                   fontWeight: "bold",
                 }}
+                className="cancel-element-btn"
                 onClick={handleCancel}
               >
                 Cancelar

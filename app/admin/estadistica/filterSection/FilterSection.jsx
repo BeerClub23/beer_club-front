@@ -86,7 +86,7 @@ const FilterSection = () => {
       <Box className="filterContainer">
         <Box className="countryFilterContainer">
           <FormControl fullWidth className="filterInputs">
-            <InputLabel id="demo-simple-select-label" >País</InputLabel>
+            <InputLabel id="demo-simple-select-label">País</InputLabel>
             <Select
               labelId="demo-simple-select-label"
               id="demo-simple-select-country"
@@ -146,19 +146,27 @@ const FilterSection = () => {
               <MenuItem value="0">Inactivo</MenuItem>
             </Select>
           </FormControl>
-          <IconButton aria-label="search" onClick={handleSubmit} sx={{color:"rgba(235, 232, 232, 0.795)"}}>
+          <IconButton
+            aria-label="search"
+            onClick={handleSubmit}
+            sx={{ color: "rgba(235, 232, 232, 0.795)" }}
+          >
             <SearchIcon />
           </IconButton>
-          <IconButton aria-label="search" onClick={handleDeleteFilter} sx={{color:"rgba(235, 232, 232, 0.795)"}}>
+          <IconButton
+            aria-label="search"
+            onClick={handleDeleteFilter}
+            sx={{ color: "rgba(235, 232, 232, 0.795)" }}
+          >
             <DeleteForeverIcon />
           </IconButton>
         </Box>
         <Typography className="dataPickerTitle">
           Filtrar por fecha de alta:
         </Typography>
-        <Box className="datePickerContainer" >
-          <LocalizationProvider dateAdapter={AdapterDayjs} >
-            <DemoContainer components={["DatePicker", "DatePicker"]} >
+        <Box className="datePickerContainer">
+          <LocalizationProvider dateAdapter={AdapterDayjs}>
+            <DemoContainer components={["DatePicker", "DatePicker"]}>
               <DatePicker
                 className="inputDate"
                 label="Desde"

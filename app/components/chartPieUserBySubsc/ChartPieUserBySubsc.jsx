@@ -9,8 +9,7 @@ const size = {
   height: 200,
 };
 
-
-const palette = ['#1e91ed', '#ab4bde', '#15ab92', '#f3aacb', "#9ddbc9"];
+const palette = ["#1e91ed", "#ab4bde", "#15ab92", "#f3aacb", "#9ddbc9"];
 
 export default function ChartPieUserBySubsc({ endpoint }) {
   const { reportingDataFilter } = useGetReportingDataFiltered(endpoint);
@@ -73,7 +72,7 @@ export default function ChartPieUserBySubsc({ endpoint }) {
             legend: {
               labelStyle: {
                 fontSize: 14,
-                fill: 'white',
+                fill: "white",
               },
             },
           }}

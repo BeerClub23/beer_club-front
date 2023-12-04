@@ -22,7 +22,10 @@ import {
 } from "@mui/material";
 import { visuallyHidden } from "@mui/utils";
 import { SearchOff, SearchOutlined } from "@mui/icons-material";
-import { SaveAdminUser, updateUserPersonalData } from "../../../services/adminUsers";
+import {
+  SaveAdminUser,
+  updateUserPersonalData,
+} from "../../../services/adminUsers";
 import Swal from "sweetalert2";
 import AdminUsersModal from "../adminCreateUser/AdminUsersModal";
 import "../adminSubscription/subscriptionAdmin.scss";
@@ -36,7 +39,8 @@ const getComparator = (order, orderBy) => {
 };
 
 const stableSort = (array, comparator) => {
-  const stabilizedThis = array?.length && array.map((el, index) => [el, index]) || [];
+  const stabilizedThis =
+    (array?.length && array.map((el, index) => [el, index])) || [];
   if (stabilizedThis?.length) {
     stabilizedThis.sort((a, b) => {
       const order = comparator(a[0], b[0]);
@@ -47,7 +51,6 @@ const stableSort = (array, comparator) => {
     });
     return stabilizedThis.map((el) => el[0]);
   }
-  
 };
 // TABLE HEAD (COLUMN NAMES, ID SORT)
 const EnhancedTableHead = ({ order, orderBy, onRequestSort }) => {
@@ -294,7 +297,7 @@ const AdminTable = (props) => {
         focusConfirm: false,
       });
       setAdminUsers((prevUser) =>
-        prevUser.map((s) => (s.id === id ? editedData : s))
+        prevUser.map((s) => (s.id === id ? editedData : s)),
       );
     } else if (response.status !== 200) {
       const error = Object.keys(response.response.data).reduce(
@@ -333,7 +336,7 @@ const AdminTable = (props) => {
     };
     console.log(updatedRow);
     try {
-      let response = await UpdateAdminUsers(updatedRow, row.id);
+      let response = await updateUserPersonalData(updatedRow, row.id);
       if (response.status === 200) {
         setAdminUsers((prevUsers) => {
           return prevUsers.map((s) => (s.id === row.id ? updatedRow : s));
@@ -348,34 +351,32 @@ const AdminTable = (props) => {
   };
 
   const filteredRows = useMemo(() => {
-    return rows?.length && rows.filter((row) => {
-      const matchesSearch =
-      row.id.toString().includes(searchTerm) ||
-      row.name.toLowerCase().includes(searchTerm.toLowerCase());
+    return (
+      rows?.length &&
+      rows.filter((row) => {
+        const matchesSearch =
+          row.id.toString().includes(searchTerm) ||
+          row.name.toLowerCase().includes(searchTerm.toLowerCase());
 
-
-      if (activeFilter === "") {
-        return matchesSearch;
-      } else if (activeFilter === "true") {
-        return matchesSearch && row.active;
-      } else if (activeFilter === "false") {
-        return matchesSearch && !row.active;
-      }
-    });
+        if (activeFilter === "") {
+          return matchesSearch;
+        } else if (activeFilter === "true") {
+          return matchesSearch && row.active;
+        } else if (activeFilter === "false") {
+          return matchesSearch && !row.active;
+        }
+      })
+    );
   }, [rows, searchTerm, activeFilter]);
 
-  const visibleRows = useMemo(
-    () => {
-      if (filteredRows?.length) {
-        return stableSort(filteredRows, getComparator(order, orderBy)).slice(
-          page * rowsPerPage,
-          page * rowsPerPage + rowsPerPage,
-        )
-      }
+  const visibleRows = useMemo(() => {
+    if (filteredRows?.length) {
+      return stableSort(filteredRows, getComparator(order, orderBy)).slice(
+        page * rowsPerPage,
+        page * rowsPerPage + rowsPerPage,
+      );
     }
-    ,
-    [filteredRows, order, orderBy, page, rowsPerPage],
-  );
+  }, [filteredRows, order, orderBy, page, rowsPerPage]);
   const emptyRows = useMemo(() => {
     // Calculate the number of empty rows based on the filtered data
     return (
@@ -400,53 +401,54 @@ const AdminTable = (props) => {
               onRequestSort={handleRequestSort}
             />
             <TableBody>
-              {visibleRows && visibleRows.map((row, index) => {
-                const labelId = `enhanced-table-checkbox-${index}`;
-                return (
-                  <TableRow
-                    tabIndex={-1}
-                    key={row.id}
-                    sx={{
-                      borderBottom: "2px solid #e0e0e0",
-                      cursor: "default",
-                    }}
-                  >
-                    <TableCell padding="checkbox">
-                      <Checkbox
-                        style={{ visibility: "hidden" }}
-                        inputProps={{ "aria-label": "spacer" }}
-                        sx={{ padding: "8px" }}
-                      />
-                    </TableCell>
-                    <TableCell
-                      component="th"
-                      id={labelId}
-                      scope="row"
-                      padding="normal"
+              {visibleRows &&
+                visibleRows.map((row, index) => {
+                  const labelId = `enhanced-table-checkbox-${index}`;
+                  return (
+                    <TableRow
+                      tabIndex={-1}
+                      key={row.id}
+                      sx={{
+                        borderBottom: "2px solid #e0e0e0",
+                        cursor: "default",
+                      }}
                     >
-                      {row.id}
-                    </TableCell>
-                    <TableCell align="right">{row.firstName}</TableCell>
-                    <TableCell align="right">{row.lastName}</TableCell>
-                    <TableCell align="right">{row.email}</TableCell>
-                    <TableCell align="right">
-                      {row.active ? (
-                        <Chip
-                          className={"chip-element active-chip"}
-                          label={"activo"}
-                          onClick={() => handleIsActiveUpdate(row)}
-                        ></Chip>
-                      ) : (
-                        <Chip
-                          className={"chip-element"}
-                          label={"inactivo"}
-                          onClick={() => handleIsActiveUpdate(row)}
-                        ></Chip>
-                      )}
-                    </TableCell>
-                  </TableRow>
-                );
-              })}
+                      <TableCell padding="checkbox">
+                        <Checkbox
+                          style={{ visibility: "hidden" }}
+                          inputProps={{ "aria-label": "spacer" }}
+                          sx={{ padding: "8px" }}
+                        />
+                      </TableCell>
+                      <TableCell
+                        component="th"
+                        id={labelId}
+                        scope="row"
+                        padding="normal"
+                      >
+                        {row.id}
+                      </TableCell>
+                      <TableCell align="right">{row.firstName}</TableCell>
+                      <TableCell align="right">{row.lastName}</TableCell>
+                      <TableCell align="right">{row.email}</TableCell>
+                      <TableCell align="right">
+                        {row.active ? (
+                          <Chip
+                            className={"chip-element active-chip"}
+                            label={"activo"}
+                            onClick={() => handleIsActiveUpdate(row)}
+                          ></Chip>
+                        ) : (
+                          <Chip
+                            className={"chip-element"}
+                            label={"inactivo"}
+                            onClick={() => handleIsActiveUpdate(row)}
+                          ></Chip>
+                        )}
+                      </TableCell>
+                    </TableRow>
+                  );
+                })}
               {emptyRows > 0 && (
                 <TableRow
                   style={{
@@ -459,16 +461,19 @@ const AdminTable = (props) => {
             </TableBody>
           </Table>
         </TableContainer>
-        {filteredRows?.length ?
-        <TablePagination
-          rowsPerPageOptions={[5, 10, 25]}
-          component="div"
-          count={filteredRows.length}
-          rowsPerPage={rowsPerPage}
-          page={page}
-          onPageChange={handleChangePage}
-          onRowsPerPageChange={handleChangeRowsPerPage}
-        /> : <></>}
+        {filteredRows?.length ? (
+          <TablePagination
+            rowsPerPageOptions={[5, 10, 25]}
+            component="div"
+            count={filteredRows.length}
+            rowsPerPage={rowsPerPage}
+            page={page}
+            onPageChange={handleChangePage}
+            onRowsPerPageChange={handleChangeRowsPerPage}
+          />
+        ) : (
+          <></>
+        )}
       </Paper>
 
       <AdminUsersModal

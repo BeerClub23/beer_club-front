@@ -27,35 +27,36 @@ const UserSideBarAdmin = (props) => {
   const handleResize = () => setWidth();
 
   const generateInvoices = async () => {
-    await GenerateInvoices().then(() => {
-      Swal.fire({
-        title: "Facturación realizada con exito!",
-        text: "Los miembros del club han recibido su factura!",
-        icon: "success",
-        confirmButtonText: "Continuar",
-        confirmButtonColor: "#ceb5a7",
-        // onClick: handleClick(),
-        focusConfirm: false,
+    await GenerateInvoices()
+      .then(() => {
+        Swal.fire({
+          title: "Facturación realizada con exito!",
+          text: "Los miembros del club han recibido su factura!",
+          icon: "success",
+          confirmButtonText: "Continuar",
+          confirmButtonColor: "#ceb5a7",
+          // onClick: handleClick(),
+          focusConfirm: false,
+        });
+      })
+      .catch((error) => {
+        Swal.fire({
+          title: "Error!",
+          text: error,
+          imageAlt: "No se pudo generar la facturación. Intenta Nuevamente!",
+          confirmButtonText: "Continuar",
+          confirmButtonColor: "#ceb5a7",
+          icon: "error",
+          focusConfirm: false,
+        });
       });
-    })
-    .catch((error) => {
-      Swal.fire({
-        title: "Error!",
-        text: error,
-        imageAlt: "No se pudo generar la facturación. Intenta Nuevamente!",
-        confirmButtonText: "Continuar",
-        confirmButtonColor: "#ceb5a7",
-        icon: "error",
-        focusConfirm: false,
-      });
-    });
-  }
+  };
 
   useEffect(() => {
     document.addEventListener("resize", handleResize);
     width < 480 ? setMobile(true) : setMobile(false);
     const container = document.getElementById("cont");
-    if ((width < 480) & !show) {
+    if (width < 480 && !show) {
       container.style.gridTemplateColumns = "auto";
     } else {
       container.style.gridTemplateColumns = "1fr 4fr";
@@ -181,7 +182,20 @@ const UserSideBarAdmin = (props) => {
               </ListItem>
             </Link>
           </List>
-          <Button className="invoice-button" onClick={generateInvoices}>
+          <Button
+            sx={{
+              width: "80%",
+              pt: "7px",
+              mx: "auto",
+              my: "50px",
+              fontWeight: "bold",
+              borderRadius: "5px",
+              padding: "5px 40px",
+              backgroundColor: "#f5e1c1",
+              color: "black",
+            }}
+            onClick={generateInvoices}
+          >
             Generar Facturación
           </Button>
         </nav>
