@@ -29,8 +29,10 @@ import {
 import Swal from "sweetalert2";
 import AdminUsersModal from "../adminCreateUser/AdminUsersModal";
 import "../adminSubscription/subscriptionAdmin.scss";
+
 import { ThemeProvider } from "@mui/material";
 import { theme } from "@/app/styles/materialThemeFormCheckout";
+
 
 // TABLE FUNCTIONS
 
@@ -148,6 +150,7 @@ const EnhancedTableToolbar = ({ onSearch, onAdd, onFilterChange }) => {
       }}
     >
       <Box sx={{ flex: "1 1 45%" }}>
+
         <ThemeProvider theme={theme}>
           <Button
             variant="contained"
@@ -158,6 +161,7 @@ const EnhancedTableToolbar = ({ onSearch, onAdd, onFilterChange }) => {
             + Crear Usuario
           </Button>
         </ThemeProvider>
+
       </Box>
       {/* Add filter dropdown or toggle button */}
       <Box sx={{ flex: "1 1 20%" }}>
@@ -391,103 +395,105 @@ const AdminTable = (props) => {
   }, [filteredRows, rowsPerPage, page]);
 
   return (
-    <Box sx={{ width: "100%", mt: 2 }}>
-      <Paper sx={{ width: "100%", mb: 2 }}>
-        <EnhancedTableToolbar
-          onSearch={handleSearch}
-          onAdd={handleAddClick}
-          onFilterChange={handleFilterChange}
-        />
-        <TableContainer>
-          <Table aria-labelledby="tableTitle">
-            <EnhancedTableHead
-              order={order}
-              orderBy={orderBy}
-              onRequestSort={handleRequestSort}
-            />
-            <TableBody>
-              {visibleRows &&
-                visibleRows.map((row, index) => {
-                  const labelId = `enhanced-table-checkbox-${index}`;
-                  return (
-                    <TableRow
-                      tabIndex={-1}
-                      key={row.id}
-                      sx={{
-                        borderBottom: "2px solid #e0e0e0",
-                        cursor: "default",
-                      }}
-                    >
-                      <TableCell padding="checkbox">
-                        <Checkbox
-                          style={{ visibility: "hidden" }}
-                          inputProps={{ "aria-label": "spacer" }}
-                          sx={{ padding: "8px" }}
-                        />
-                      </TableCell>
-                      <TableCell
-                        component="th"
-                        id={labelId}
-                        scope="row"
-                        padding="normal"
-                      >
-                        {row.id}
-                      </TableCell>
-                      <TableCell align="right">{row.firstName}</TableCell>
-                      <TableCell align="right">{row.lastName}</TableCell>
-                      <TableCell align="right">{row.email}</TableCell>
-                      <TableCell align="right">
-                        {row.active ? (
-                          <Chip
-                            className={"chip-element active-chip"}
-                            label={"activo"}
-                            onClick={() => handleIsActiveUpdate(row)}
-                          ></Chip>
-                        ) : (
-                          <Chip
-                            className={"chip-element"}
-                            label={"inactivo"}
-                            onClick={() => handleIsActiveUpdate(row)}
-                          ></Chip>
-                        )}
-                      </TableCell>
-                    </TableRow>
-                  );
-                })}
-              {emptyRows > 0 && (
-                <TableRow
-                  style={{
-                    height: 53 * emptyRows,
-                  }}
-                >
-                  <TableCell colSpan={6} />
-                </TableRow>
-              )}
-            </TableBody>
-          </Table>
-        </TableContainer>
-        {filteredRows?.length ? (
-          <TablePagination
-            rowsPerPageOptions={[5, 10, 25]}
-            component="div"
-            count={filteredRows.length}
-            rowsPerPage={rowsPerPage}
-            page={page}
-            onPageChange={handleChangePage}
-            onRowsPerPageChange={handleChangeRowsPerPage}
+    <ThemeProvider theme={theme}>
+      <Box sx={{ width: "100%", mt: 2 }}>
+        <Paper sx={{ width: "100%", mb: 2 }}>
+          <EnhancedTableToolbar
+            onSearch={handleSearch}
+            onAdd={handleAddClick}
+            onFilterChange={handleFilterChange}
           />
-        ) : (
-          <></>
-        )}
-      </Paper>
+          <TableContainer>
+            <Table aria-labelledby="tableTitle">
+              <EnhancedTableHead
+                order={order}
+                orderBy={orderBy}
+                onRequestSort={handleRequestSort}
+              />
+              <TableBody>
+                {visibleRows &&
+                  visibleRows.map((row, index) => {
+                    const labelId = `enhanced-table-checkbox-${index}`;
+                    return (
+                      <TableRow
+                        tabIndex={-1}
+                        key={row.id}
+                        sx={{
+                          borderBottom: "2px solid #e0e0e0",
+                          cursor: "default",
+                        }}
+                      >
+                        <TableCell padding="checkbox">
+                          <Checkbox
+                            style={{ visibility: "hidden" }}
+                            inputProps={{ "aria-label": "spacer" }}
+                            sx={{ padding: "8px" }}
+                          />
+                        </TableCell>
+                        <TableCell
+                          component="th"
+                          id={labelId}
+                          scope="row"
+                          padding="normal"
+                        >
+                          {row.id}
+                        </TableCell>
+                        <TableCell align="right">{row.firstName}</TableCell>
+                        <TableCell align="right">{row.lastName}</TableCell>
+                        <TableCell align="right">{row.email}</TableCell>
+                        <TableCell align="right">
+                          {row.active ? (
+                            <Chip
+                              className={"chip-element active-chip"}
+                              label={"activo"}
+                              onClick={() => handleIsActiveUpdate(row)}
+                            ></Chip>
+                          ) : (
+                            <Chip
+                              className={"chip-element"}
+                              label={"inactivo"}
+                              onClick={() => handleIsActiveUpdate(row)}
+                            ></Chip>
+                          )}
+                        </TableCell>
+                      </TableRow>
+                    );
+                  })}
+                {emptyRows > 0 && (
+                  <TableRow
+                    style={{
+                      height: 53 * emptyRows,
+                    }}
+                  >
+                    <TableCell colSpan={6} />
+                  </TableRow>
+                )}
+              </TableBody>
+            </Table>
+          </TableContainer>
+          {filteredRows?.length ? (
+            <TablePagination
+              rowsPerPageOptions={[5, 10, 25]}
+              component="div"
+              count={filteredRows.length}
+              rowsPerPage={rowsPerPage}
+              page={page}
+              onPageChange={handleChangePage}
+              onRowsPerPageChange={handleChangeRowsPerPage}
+            />
+          ) : (
+            <></>
+          )}
+        </Paper>
 
-      <AdminUsersModal
-        open={editModalOpen}
-        onClose={() => setEditModalOpen(false)}
-        onSave={handleSave}
-        rowData={editingRowData}
-      />
-    </Box>
+        <AdminUsersModal
+          open={editModalOpen}
+          onClose={() => setEditModalOpen(false)}
+          onSave={handleSave}
+          rowData={editingRowData}
+        />
+      </Box>
+    </ThemeProvider>
   );
 };
 
