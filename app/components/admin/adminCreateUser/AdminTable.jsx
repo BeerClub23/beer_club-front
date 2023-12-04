@@ -31,7 +31,7 @@ import AdminUsersModal from "../adminCreateUser/AdminUsersModal";
 import "../adminSubscription/subscriptionAdmin.scss";
 
 import { ThemeProvider } from "@mui/material";
-import { theme } from "@/app/styles/materialThemeForm";
+import { theme } from "@/app/styles/materialThemeFormCheckout";
 
 // TABLE FUNCTIONS
 
