@@ -11,7 +11,22 @@
     // box-shadow: 0px 5px 6px 3px rgba(0, 0, 0, 0.5);
     font-weight: 300;
     min-width: 450px;
-    
+    padding-left: 20px;
+    line{
+        stroke: aliceblue !important;
+
+    }
+    g{
+        fill: white !important;
+        margin-right: 10px !important;
+        text {
+            transform:"rotate(-90, -28, 150)";
+            }
+    }
+
+    text{
+        fill: white !important;
+    }
     
     
 }
@@ -27,7 +42,9 @@
     font-weight: 300;
 }
 
-.MuiChartsAxis-tickLabel{
+.MuiChartsAxis-tickLabel{      
+
     font-size: 10px !important;
     // margin-top: -8px;
 }
+

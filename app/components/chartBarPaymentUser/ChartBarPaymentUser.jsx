@@ -54,19 +54,21 @@ const ChartBarPaymentUser = ({ endpoint }) => {
       setData(newData);
       setDataRanking(newData.map((item) => item.value));
       setDataName(newData.map((item) => item.label));
-    }else{
+    } else {
       setDataRanking([]);
       setDataName([]);
     }
   }, [reportingDataFilter, endpoint]);
 
-
   return (
     <>
       <Box className="chartContainer">
-        <Typography className="chartTitle">Estado del pago por usuario</Typography>
+        <Typography className="chartTitle">
+          Estado del pago por usuario
+        </Typography>
         {dataName.length > 0 && dataRanking.length > 0 ? (
           <BarChart
+            className="barChartLabels"
             xAxis={[
               {
                 id: "paymentAmountByStatus",
@@ -81,19 +83,10 @@ const ChartBarPaymentUser = ({ endpoint }) => {
             series={[
               {
                 value: 10,
-                //   data: [2, 5, 3],
                 data: dataRanking,
                 color: "#ceb5a7",
               },
             ]}
-            slotProps={{
-              legend: {
-                labelStyle: {
-                  fontSize: 11,
-                  fill: "blue",
-                },
-              },
-            }}
             width={400}
             height={300}
           />

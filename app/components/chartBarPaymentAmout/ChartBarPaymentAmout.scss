@@ -12,8 +12,16 @@
     font-weight: 300;
     min-width: 450px;
     line{
-        color: aliceblue !important;
+        stroke: aliceblue !important;
 
+    }
+    g{
+        fill: white !important;
+        padding-right: 20px !important;
+    }
+
+    text{
+        fill: white !important;
     }
     
     
