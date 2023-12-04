@@ -2,8 +2,15 @@ import React, { useState } from "react";
 import "./UpdateUserData.scss";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
-import { Box, FormControl, FormLabel, Typography } from "@mui/material";
+import {
+  Box,
+  FormControl,
+  FormLabel,
+  ThemeProvider,
+  Typography,
+} from "@mui/material";
 import Modal from "../../common/Modal/Modal";
+import { theme } from "@/app/styles/materialThemeForm";
 
 const UpdateUserData = ({ user, updateData }) => {
   const [userUpdated, setUserUpdated] = useState(user);
@@ -162,9 +169,19 @@ const UpdateUserData = ({ user, updateData }) => {
               </Box>
             </Box>
           )}
-          <Button className="updater_form-button" onClick={onSubmit}>
+          <ThemeProvider theme={theme}>
+            <Button
+              variant="contained"
+              size="large"
+              sx={{ pt: "7px", ms: "auto", mt: 3, mb: 4, fontWeight: "bold" }}
+              onClick={onSubmit}
+            >
+              Guardar
+            </Button>
+          </ThemeProvider>
+          {/* <Button className="updater_form-button" onClick={onSubmit}>
             Guardar
-          </Button>
+          </Button> */}
         </FormControl>
       </Box>
       {showModal && (

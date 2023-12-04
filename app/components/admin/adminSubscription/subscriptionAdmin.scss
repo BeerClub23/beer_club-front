@@ -44,7 +44,8 @@
   }
 }
 .cancel-btn {
-  border: none;
+  border:1px solid darkgray;
+  border-radius: 4px ;
   color: darkgray;
   &:hover {
     color: black;
