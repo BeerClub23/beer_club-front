@@ -32,7 +32,7 @@ const UserHistory = ({ userData, onUpdateTable }) => {
       name: "Valor",
     },
     {
-      name: "Fecha de creación",
+      name: "Fecha de pago",
     },
     {
       name: "Status",
@@ -73,7 +73,7 @@ const UserHistory = ({ userData, onUpdateTable }) => {
                   <span>$ {row.amount}</span>
                 </td>
                 <td style={{ textAlign: "center" }}>
-                  <span>{row.date}</span>
+                  <span>{row.paymentDate || row.date}</span>
                 </td>
                 <td style={{ textAlign: "center" }}>
                   <span>{row.paymentStatus}</span>

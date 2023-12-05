@@ -6,7 +6,6 @@ import "./UserSection.scss";
 
 const UserSection = () => {
   const { usersData } = useGetReportingUsers();
-  // console.log(usersData);
 
   const usersRoleUser = usersData.filter((user) => user.role === "USER");
 
