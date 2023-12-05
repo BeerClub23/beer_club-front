@@ -81,7 +81,6 @@ const RecomendacionesPage = () => {
   };
 
   const handleSave = async (formData, id) => {
-    console.log(formData, id);
     try {
       const response = await UpdateRecommendation(formData, id);
 
