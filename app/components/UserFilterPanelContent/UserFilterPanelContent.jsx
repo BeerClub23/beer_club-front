@@ -34,7 +34,6 @@ export default function UserFilterPanelContent({ users }) {
       col8: user.active ? "Activo" : "Inactivo",
     };
   });
-  console.log(subscriptions);
   return (
     <div style={{ height: 400, width: "100%" }}>
       <DataGrid
